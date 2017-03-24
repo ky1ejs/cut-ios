@@ -35,7 +35,9 @@ struct RottenTomatoesMovieParser: JSONParser {
     static func parse(json: JsonType) throws -> Movie {
         let id: Int = try json.parse(key: "id")
         let title: String = try json.parse(key: "title")
-        return Movie(id: id, title: title, status: nil)
+        let posterUrlString: String = try (json.parse(key: "poster") as [String : String]).parse(key: "thumbnail")
+        guard let posterURL = URL(string: posterUrlString) else { throw ParserError.couldNotParse }
+        return Movie(id: id, title: title, posterURL: posterURL, status: nil)
     }
 }
 

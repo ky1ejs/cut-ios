@@ -8,10 +8,16 @@
 
 import UIKit
 import RxSwift
+import Kingfisher
 
 class MovieTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        tableView.registerClass(MovieTableCell.self)
+        
         loadMovies()
         
         _ = tableView
@@ -32,9 +38,9 @@ class MovieTVC: UITableViewController {
         _ = RottenTomatoesListMovies()
             .call()
             .takeUntil(self.rx.deallocated)
-            .bindTo(tableView.rx.items(cellIdentifier: "Cell")) { (index, movie, cell) in
+            .bindTo(tableView.rx.items(cellIdentifier: MovieTableCell.reuseIdentifier, cellType: MovieTableCell.self)) { (index, movie, cell) in
                 assert(Thread.isMainThread)
-                cell.textLabel?.text = movie.title
+                cell.movie = movie
         }
     }
 }

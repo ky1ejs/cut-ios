@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 50 MB
+        ImageCache.default.maxDiskCacheSize = UInt(50 * 1024 * 1024)
+        // 3 days
+        ImageCache.default.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
+        
         return true
     }
 
