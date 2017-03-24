@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0D1E8483B00033CEEF /* RxCocoa.framework */; };
+		AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0E1E8483B00033CEEF /* RxSwift.framework */; };
+		AF168E131E8483E70033CEEF /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF168E121E8483E60033CEEF /* JSON.swift */; };
+		AF168E1B1E849A2C0033CEEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF168E1A1E849A2C0033CEEF /* Main.storyboard */; };
 		AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
-		AF3EED241E68E96100553D86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED231E68E96100553D86 /* ViewController.swift */; };
-		AF3EED271E68E96100553D86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED251E68E96100553D86 /* Main.storyboard */; };
 		AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED281E68E96100553D86 /* Assets.xcassets */; };
-		AF3EED2C1E68E96100553D86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED2A1E68E96100553D86 /* LaunchScreen.storyboard */; };
+		AF3EED341E68E9B300553D86 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED331E68E9B300553D86 /* Movie.swift */; };
+		AF3EED361E68EBE000553D86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */; };
+		AF3EED381E68EC3900553D86 /* MovieTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED371E68EC3900553D86 /* MovieTVC.swift */; };
+		AF94AF561E831F980087080B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF551E831F980087080B /* Endpoint.swift */; };
+		AF94AF581E8320840087080B /* RottenTomatoesListMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF571E8320840087080B /* RottenTomatoesListMovies.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF168E0D1E8483B00033CEEF /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		AF168E0E1E8483B00033CEEF /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		AF168E121E8483E60033CEEF /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		AF168E1A1E849A2C0033CEEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AF3EED1E1E68E96100553D86 /* Cut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3EED211E68E96100553D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF3EED231E68E96100553D86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AF3EED261E68E96100553D86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF3EED281E68E96100553D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AF3EED2B1E68E96100553D86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF3EED2D1E68E96100553D86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF3EED331E68E9B300553D86 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF3EED371E68EC3900553D86 /* MovieTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTVC.swift; sourceTree = "<group>"; };
+		AF94AF551E831F980087080B /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		AF94AF571E8320840087080B /* RottenTomatoesListMovies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RottenTomatoesListMovies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,16 +41,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */,
+				AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF168E111E8483B40033CEEF /* Carthage */ = {
+			isa = PBXGroup;
+			children = (
+				AF168E0D1E8483B00033CEEF /* RxCocoa.framework */,
+				AF168E0E1E8483B00033CEEF /* RxSwift.framework */,
+			);
+			name = Carthage;
+			sourceTree = "<group>";
+		};
 		AF3EED151E68E96100553D86 = {
 			isa = PBXGroup;
 			children = (
 				AF3EED201E68E96100553D86 /* Cut */,
+				AF168E111E8483B40033CEEF /* Carthage */,
 				AF3EED1F1E68E96100553D86 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,10 +79,14 @@
 			isa = PBXGroup;
 			children = (
 				AF3EED211E68E96100553D86 /* AppDelegate.swift */,
-				AF3EED231E68E96100553D86 /* ViewController.swift */,
-				AF3EED251E68E96100553D86 /* Main.storyboard */,
+				AF3EED331E68E9B300553D86 /* Movie.swift */,
+				AF3EED371E68EC3900553D86 /* MovieTVC.swift */,
+				AF94AF551E831F980087080B /* Endpoint.swift */,
+				AF168E121E8483E60033CEEF /* JSON.swift */,
+				AF94AF571E8320840087080B /* RottenTomatoesListMovies.swift */,
+				AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */,
+				AF168E1A1E849A2C0033CEEF /* Main.storyboard */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
-				AF3EED2A1E68E96100553D86 /* LaunchScreen.storyboard */,
 				AF3EED2D1E68E96100553D86 /* Info.plist */,
 			);
 			path = Cut;
@@ -74,6 +102,7 @@
 				AF3EED1A1E68E96100553D86 /* Sources */,
 				AF3EED1B1E68E96100553D86 /* Frameworks */,
 				AF3EED1C1E68E96100553D86 /* Resources */,
+				AF168E141E848E6C0033CEEF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -123,44 +152,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF3EED2C1E68E96100553D86 /* LaunchScreen.storyboard in Resources */,
+				AF168E1B1E849A2C0033CEEF /* Main.storyboard in Resources */,
+				AF3EED361E68EBE000553D86 /* LaunchScreen.storyboard in Resources */,
 				AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */,
-				AF3EED271E68E96100553D86 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AF168E141E848E6C0033CEEF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AF3EED1A1E68E96100553D86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF3EED241E68E96100553D86 /* ViewController.swift in Sources */,
 				AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */,
+				AF3EED341E68E9B300553D86 /* Movie.swift in Sources */,
+				AF94AF581E8320840087080B /* RottenTomatoesListMovies.swift in Sources */,
+				AF168E131E8483E70033CEEF /* JSON.swift in Sources */,
+				AF94AF561E831F980087080B /* Endpoint.swift in Sources */,
+				AF3EED381E68EC3900553D86 /* MovieTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		AF3EED251E68E96100553D86 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF3EED261E68E96100553D86 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		AF3EED2A1E68E96100553D86 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF3EED2B1E68E96100553D86 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AF3EED2E1E68E96100553D86 /* Debug */ = {
@@ -189,6 +221,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -208,6 +241,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -238,6 +272,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -249,6 +284,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -258,6 +294,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Cut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.Cut;
@@ -270,6 +310,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Cut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.Cut;
@@ -297,6 +341,7 @@
 				AF3EED321E68E96100553D86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
