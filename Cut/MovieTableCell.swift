@@ -9,8 +9,9 @@
 import UIKit
 import Kingfisher
 import EasyPeasy
+import SwipeCellKit
 
-class MovieTableCell: UITableViewCell {
+class MovieTableCell: SwipeTableViewCell {
     fileprivate var _textLabel: UILabel
     override var textLabel: UILabel {
         get { return _textLabel }
@@ -53,11 +54,32 @@ class MovieTableCell: UITableViewCell {
             Leading(5),
             Size(CGSize(width: 61, height: 91))
         ]
+        
+        delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension MovieTableCell: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        let watchAction = SwipeAction(style: .default, title: "Watch") { action, indexPath in
+            guard let movieCell = tableView.cellForRow(at: indexPath) as? MovieTableCell else { return }
+            movieCell.movie?.addToWatchList()
+        }
+        
+        return [watchAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        options.expansionStyle = .selection
+        return options
+    }
+}
+
 
 extension MovieTableCell: TableCellIdentifiable {}

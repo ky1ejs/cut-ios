@@ -22,6 +22,7 @@
 		AFC304F51E85CCA60012515E /* MovieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC304F41E85CCA60012515E /* MovieTableCell.swift */; };
 		AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */; };
 		AFC304F91E85D1EE0012515E /* EasyPeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304F81E85D1EE0012515E /* EasyPeasy.framework */; };
+		AFC304FB1E85E95F0012515E /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		AFC304F41E85CCA60012515E /* MovieTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableCell.swift; sourceTree = "<group>"; };
 		AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellIdentifiable.swift; sourceTree = "<group>"; };
 		AFC304F81E85D1EE0012515E /* EasyPeasy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyPeasy.framework; path = Carthage/Build/iOS/EasyPeasy.framework; sourceTree = "<group>"; };
+		AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */,
+				AFC304FB1E85E95F0012515E /* SwipeCellKit.framework in Frameworks */,
 				AFC304F31E85CB9E0012515E /* Kingfisher.framework in Frameworks */,
 				AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */,
 				AFC304F91E85D1EE0012515E /* EasyPeasy.framework in Frameworks */,
@@ -62,6 +65,7 @@
 		AF168E111E8483B40033CEEF /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
+				AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */,
 				AFC304F81E85D1EE0012515E /* EasyPeasy.framework */,
 				AFC304F21E85CB9E0012515E /* Kingfisher.framework */,
 				AF168E0D1E8483B00033CEEF /* RxCocoa.framework */,
@@ -185,6 +189,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EasyPeasy.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwipeCellKit.framework",
 			);
 			outputPaths = (
 			);
