@@ -10,7 +10,6 @@
 		AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0D1E8483B00033CEEF /* RxCocoa.framework */; };
 		AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0E1E8483B00033CEEF /* RxSwift.framework */; };
 		AF168E131E8483E70033CEEF /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF168E121E8483E60033CEEF /* JSON.swift */; };
-		AF168E1B1E849A2C0033CEEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF168E1A1E849A2C0033CEEF /* Main.storyboard */; };
 		AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
 		AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED281E68E96100553D86 /* Assets.xcassets */; };
 		AF3EED341E68E9B300553D86 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED331E68E9B300553D86 /* Movie.swift */; };
@@ -29,7 +28,6 @@
 		AF168E0D1E8483B00033CEEF /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		AF168E0E1E8483B00033CEEF /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		AF168E121E8483E60033CEEF /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		AF168E1A1E849A2C0033CEEF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AF3EED1E1E68E96100553D86 /* Cut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3EED211E68E96100553D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF3EED281E68E96100553D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 				AF168E121E8483E60033CEEF /* JSON.swift */,
 				AF94AF571E8320840087080B /* RottenTomatoesListMovies.swift */,
 				AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */,
-				AF168E1A1E849A2C0033CEEF /* Main.storyboard */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
 				AF3EED2D1E68E96100553D86 /* Info.plist */,
 			);
@@ -170,7 +167,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF168E1B1E849A2C0033CEEF /* Main.storyboard in Resources */,
 				AF3EED361E68EBE000553D86 /* LaunchScreen.storyboard in Resources */,
 				AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */,
 			);

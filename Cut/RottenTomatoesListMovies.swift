@@ -8,8 +8,26 @@
 
 import Foundation
 
+enum RottenTomatoesMovieFilter: String {
+    case popular = "popular"
+    case topBoxOffice = "top-box-office"
+    case upcoming = "theater-upcoming"
+    case newDvdReleases = "new-release-dvds"
+}
+
+extension RottenTomatoesMovieFilter: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .popular:          return "In Theaters"
+        case .topBoxOffice:     return "Top Box Office"
+        case .upcoming:         return "Upcoming"
+        case .newDvdReleases:   return "DVDs"
+        }
+    }
+}
+
 struct RottenTomatoesListMovies {
-    
+    var filter: RottenTomatoesMovieFilter
 }
 
 extension RottenTomatoesListMovies: Endpoint {
@@ -20,7 +38,7 @@ extension RottenTomatoesListMovies: Endpoint {
             "cbr" : "1",
             "country" : "UK",
             "deviceType" : "iPhone",
-            "filter" : "theater-upcoming",
+            "filter" : filter.rawValue,
             "limit" : "100",
             "locale" : "en_GB",
             "version" : "7.13.3",

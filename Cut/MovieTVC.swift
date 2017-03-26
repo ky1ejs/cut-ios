@@ -11,6 +11,18 @@ import RxSwift
 import Kingfisher
 
 class MovieTVC: UITableViewController {
+    let filter: RottenTomatoesMovieFilter
+    
+    init(filter: RottenTomatoesMovieFilter) {
+        self.filter = filter
+        super.init(style: .plain)
+        title = filter.description
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +47,7 @@ class MovieTVC: UITableViewController {
     
     
     func loadMovies() {
-        _ = RottenTomatoesListMovies()
+        _ = RottenTomatoesListMovies(filter: filter)
             .call()
             .takeUntil(self.rx.deallocated)
             .bindTo(tableView.rx.items(cellIdentifier: MovieTableCell.reuseIdentifier, cellType: MovieTableCell.self)) { (index, movie, cell) in
