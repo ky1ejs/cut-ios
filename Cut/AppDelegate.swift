@@ -23,12 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 3 days
         ImageCache.default.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
         
-        let filters: [RottenTomatoesMovieFilter] = [.popular, .upcoming, .newDvdReleases]
-        let movieVCs = filters.map(MovieTVC.init)
-        let navCons = movieVCs.map(UINavigationController.init)
-        
         let tabBar = UITabBarController(nibName: nil, bundle: nil)
-        tabBar.viewControllers = navCons
+        tabBar.viewControllers = [MovieTVC()]
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabBar

@@ -14,3 +14,9 @@ extension Dictionary {
         return value
     }
 }
+
+extension Dictionary where Key == AnyHashable, Value == AnyObject {
+    func parseDict(key: Key) throws -> [Key : Value] {
+        return try parse(key: key)
+    }
+}

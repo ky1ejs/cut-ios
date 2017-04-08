@@ -9,9 +9,11 @@
 import Foundation
 
 struct Movie {
-    let id: Int
+    let id: String
     let title: String
+    let synopsis: String
     let posterURL: URL
+    let runningTime: Int?
     fileprivate(set) var status: MovieStatus?
     
     mutating func addToWatchList() {
@@ -40,4 +42,22 @@ enum Rating: Int {
     case three
     case four
     case five
+}
+
+extension Movie: JSONDecodeable {
+    typealias JsonType = [AnyHashable : AnyObject]
+    
+    init(json: JsonType) throws {
+        id = try json.parse(key: "id")
+        title = try json.parse(key: "title")
+        runningTime = try json.parse(key: "running_time")
+        synopsis = try json.parse(key: "synopsis")
+        
+        let wantToWatch: Bool = try json.parse(key: "want_to_watch")
+        status = wantToWatch ? .wantToWatch : nil
+        
+        let posterUrlString: String = try json.parseDict(key: "posters").parseDict(key: "thumbnail").parse(key: "url")
+        guard let posterURL = URL(string: posterUrlString) else { throw ParserError.couldNotParse }
+        self.posterURL = posterURL
+    }
 }
