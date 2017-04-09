@@ -64,6 +64,7 @@ enum ParserError: Error {
 }
 
 struct NoSuccessData: URLResponseDecodeable {
+    init() {}
     init(responseParams: NSURLSessionCompletionHandlerParams) throws {}
 }
 
@@ -82,6 +83,7 @@ extension Endpoint {
         
         if body.count > 0 {
             request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: [])
+            request.allHTTPHeaderFields?["Content-Type"] = "application/json"
         }
         
         if headers.count > 0 {
@@ -98,6 +100,12 @@ extension Endpoint {
         return Observable.create { observer in
             
             let task = URLSession.shared.dataTask(with: self.request) { (data, response, error) in
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    observer.on(.error(RxError.unknown))
+                    observer.on(.completed)
+                    return
+                }
+                
                 do {
                     let params = NSURLSessionCompletionHandlerParams(response: response, data: data, error: error)
                     let data = try SuccessData(responseParams: params)

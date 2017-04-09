@@ -30,6 +30,7 @@ class MovieTableCell: SwipeTableViewCell {
             textLabel.text = movie.title
             posterImageView.kf.indicatorType = .activity
             posterImageView.kf.setImage(with: movie.posterURL, placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil, completionHandler: nil)
+            backgroundColor = movie.status == .wantToWatch ? .red : .white
         }
     }
     
@@ -68,7 +69,13 @@ extension MovieTableCell: SwipeTableViewCellDelegate {
         
         let watchAction = SwipeAction(style: .default, title: "Watch") { action, indexPath in
             guard let movieCell = tableView.cellForRow(at: indexPath) as? MovieTableCell else { return }
-            movieCell.movie?.addToWatchList()
+            _ = movieCell.movie?.addToWatchList().subscribe({ event in
+                switch event {
+                case .next: movieCell.backgroundColor = .red
+                case .error(let error): print(error)
+                case .completed: break
+                }
+            })
         }
         
         return [watchAction]

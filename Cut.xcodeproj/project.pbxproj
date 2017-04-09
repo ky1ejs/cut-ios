@@ -24,6 +24,7 @@
 		AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */; };
 		AFC304F91E85D1EE0012515E /* EasyPeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304F81E85D1EE0012515E /* EasyPeasy.framework */; };
 		AFC304FB1E85E95F0012515E /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */; };
+		AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellIdentifiable.swift; sourceTree = "<group>"; };
 		AFC304F81E85D1EE0012515E /* EasyPeasy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyPeasy.framework; path = Carthage/Build/iOS/EasyPeasy.framework; sourceTree = "<group>"; };
 		AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
+		AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFilmToWatchList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				AF168E121E8483E60033CEEF /* JSON.swift */,
 				AF2D69431E977D9C004F4E6B /* RegisterDevice.swift */,
 				AF94AF571E8320840087080B /* ListMovies.swift */,
+				AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */,
 				AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
 				AF3EED2D1E68E96100553D86 /* Info.plist */,
@@ -212,6 +215,7 @@
 				AF3EED341E68E9B300553D86 /* Movie.swift in Sources */,
 				AF94AF581E8320840087080B /* ListMovies.swift in Sources */,
 				AF168E131E8483E70033CEEF /* JSON.swift in Sources */,
+				AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */,
 				AF94AF561E831F980087080B /* Endpoint.swift in Sources */,
 				AFC304F51E85CCA60012515E /* MovieTableCell.swift in Sources */,
 				AF2D69441E977D9C004F4E6B /* RegisterDevice.swift in Sources */,
