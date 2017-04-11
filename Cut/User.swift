@@ -9,31 +9,16 @@
 import Foundation
 import RxSwift
 
-private typealias Credentials = (email: String, username: String)
-
 class User: JSONDecodeable {
     typealias JsonType = [AnyHashable : Any]
-    private var details: Credentials?
     
-    var email: String? { return details?.email }
-    var username: String? { return details?.username }
-    var isFullUser: Bool { return details != nil }
+    var email: Variable<String?>
+    var username: Variable<String?>
+    var isFullUser: Bool { return email.value != nil && username.value != nil }
     
     required init(json: JsonType) throws {
-        let email = json["email"] as? String
-        let username = json["username"] as? String
-        
-        details = try {
-            if let email = email, let username = username {
-                return (email, username)
-            }
-
-            if email != nil && username == nil || email == nil && username != nil {
-                throw ParserError.couldNotParse
-            }
-            
-            return nil
-        }()
+        email = Variable(json["email"] as? String)
+        username = Variable(json["username"] as? String)
     }
     
     func signUp(email: String, username: String, password: String) -> Observable<User> {
@@ -52,8 +37,8 @@ class User: JSONDecodeable {
                 }
                 switch event {
                 case .next(let user):
-                    safeSelf.details?.email = user.email!
-                    safeSelf.details?.username = user.username!
+                    safeSelf.email.value = user.email.value
+                    safeSelf.username.value = user.username.value
                     observer.onNext(safeSelf)
                     observer.onCompleted()
                 case .error(let error):

@@ -7,21 +7,40 @@
 //
 
 import UIKit
+import EasyPeasy
 
 class ProfileView: UIView {
-    var user: User? {
-        didSet {
-            guard user?.isFullUser == true else { return }
-            emailLabel.text = user?.email
-            usernameLabel.text = user?.username
-        }
-    }
-    
-    private let emailLabel = UILabel()
-    private let usernameLabel = UILabel()
+    let emailLabel = UILabel()
+    let usernameLabel = UILabel()
     
     init() {
         super.init(frame: .zero)
+        
+        backgroundColor = .white
+        
+        let centeringContainer = UIView()
+        
+        addSubview(centeringContainer)
+        centeringContainer.addSubview(emailLabel)
+        centeringContainer.addSubview(usernameLabel)
+        
+        centeringContainer <- [
+            Leading(),
+            CenterX(),
+            CenterY()
+        ]
+        
+        emailLabel <- [
+            Leading(30),
+            Top(),
+            CenterX()
+        ]
+        
+        usernameLabel <- [
+            Leading().to(emailLabel, .leading),
+            Top(10).to(emailLabel),
+            Bottom()
+        ]
     }
     
     required init?(coder aDecoder: NSCoder) {

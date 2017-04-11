@@ -124,10 +124,9 @@
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
 				AFA9B24B1E9D82A60072401F /* API */,
 				AFA9B2481E9D826E0072401F /* Model */,
-				AFA9B24D1E9D82C20072401F /* Movie TVC */,
+				AFA9B24D1E9D82C20072401F /* Movie List */,
 				AFA9B2471E9D825D0072401F /* Networking */,
-				AFA9B2551E9D84370072401F /* SignUpVC.swift */,
-				AFA9B2451E9CB20F0072401F /* SignUpView.swift */,
+				AFBEB1B71E9D945D0095D66E /* Sign Up */,
 				AFA9B2491E9D828F0072401F /* Profile */,
 				AFA9B24A1E9D82980072401F /* Protocols */,
 				AFA9B24C1E9D82B10072401F /* Supporting Files */,
@@ -193,13 +192,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AFA9B24D1E9D82C20072401F /* Movie TVC */ = {
+		AFA9B24D1E9D82C20072401F /* Movie List */ = {
 			isa = PBXGroup;
 			children = (
 				AF3EED371E68EC3900553D86 /* MovieTVC.swift */,
 				AFC304F41E85CCA60012515E /* MovieTableCell.swift */,
 			);
-			name = "Movie TVC";
+			name = "Movie List";
 			sourceTree = "<group>";
 		};
 		AFA9B2521E9D836D0072401F /* List Movies */ = {
@@ -209,6 +208,15 @@
 				AFA9B2501E9D835A0072401F /* FilmFilter.swift */,
 			);
 			name = "List Movies";
+			sourceTree = "<group>";
+		};
+		AFBEB1B71E9D945D0095D66E /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				AFA9B2551E9D84370072401F /* SignUpVC.swift */,
+				AFA9B2451E9CB20F0072401F /* SignUpView.swift */,
+			);
+			name = "Sign Up";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

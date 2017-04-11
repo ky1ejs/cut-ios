@@ -12,6 +12,18 @@ import RxSwift
 
 class ProfileVC: UIViewController {
     let profileView = ProfileView()
+    var user: User? {
+        didSet {
+            _ = user?.username
+                .asObservable()
+                .takeUntil(rx.deallocated)
+                .bindTo(profileView.usernameLabel.rx.text)
+            _ = user?.email
+                .asObservable()
+                .takeUntil(rx.deallocated)
+                .bindTo(profileView.emailLabel.rx.text)
+        }
+    }
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -27,9 +39,8 @@ class ProfileVC: UIViewController {
         _ = GetUser().call().observeOn(MainScheduler.instance).subscribe { [weak self] event in
             switch event {
             case .next(let user):
-                if user.isFullUser {
-                    self?.profileView.user = user
-                } else {
+                self?.user = user
+                if !user.isFullUser {
                     print(Thread.current.isMainThread)
                     self?.present(SignUpVC(user: user), animated: true)
                 }
