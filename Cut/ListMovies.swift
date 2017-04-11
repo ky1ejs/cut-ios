@@ -26,14 +26,11 @@ extension MovieFilter: CustomStringConvertible {
     }
 }
 
-struct ListMovies {
-    let deviceID = "ios_\(UIDevice.current.identifierForVendor!.uuidString)"
-}
+struct ListMovies {}
 
 extension ListMovies: Endpoint {
     typealias SuccessData = ArrayResponse<Movie>
     var url: URL { return URL(string: "http://localhost:3000/v1/films")! }
-    var headers: [String : String] { return ["device_id" : deviceID] }
 }
 
 struct ArrayResponse<Model: JSONDecodeable>: JSONDecodeable {

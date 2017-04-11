@@ -6,7 +6,7 @@
 //  Copyright © 2017 Kyle McAlpine. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 
@@ -89,6 +89,7 @@ extension Endpoint {
         if headers.count > 0 {
             headers.forEach() { request.allHTTPHeaderFields?[$0] = $1 }
         }
+        request.allHTTPHeaderFields?["device_id"] = UIDevice.current.cutID
         
         print(headers)
         print(body)

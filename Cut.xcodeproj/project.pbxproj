@@ -19,12 +19,18 @@
 		AF8FDA631E99775D00D5DEA2 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8FDA621E99775D00D5DEA2 /* KeychainAccess.framework */; };
 		AF94AF561E831F980087080B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF551E831F980087080B /* Endpoint.swift */; };
 		AF94AF581E8320840087080B /* ListMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF571E8320840087080B /* ListMovies.swift */; };
+		AFA9B2421E9CABC90072401F /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2411E9CABC90072401F /* UIDevice.swift */; };
+		AFA9B2441E9CAC9A0072401F /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2431E9CAC9A0072401F /* GetUser.swift */; };
+		AFA9B2461E9CB20F0072401F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2451E9CB20F0072401F /* SignUpView.swift */; };
 		AFC304F31E85CB9E0012515E /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304F21E85CB9E0012515E /* Kingfisher.framework */; };
 		AFC304F51E85CCA60012515E /* MovieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC304F41E85CCA60012515E /* MovieTableCell.swift */; };
 		AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */; };
 		AFC304F91E85D1EE0012515E /* EasyPeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304F81E85D1EE0012515E /* EasyPeasy.framework */; };
 		AFC304FB1E85E95F0012515E /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */; };
+		AFCCA5C51E9C1176000B6102 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C41E9C1176000B6102 /* ProfileView.swift */; };
+		AFCCA5C71E9C118D000B6102 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C61E9C118D000B6102 /* User.swift */; };
 		AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */; };
+		AFE548AE1E9C108300C99278 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AD1E9C108300C99278 /* ProfileVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,12 +48,18 @@
 		AF8FDA621E99775D00D5DEA2 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		AF94AF551E831F980087080B /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		AF94AF571E8320840087080B /* ListMovies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMovies.swift; sourceTree = "<group>"; };
+		AFA9B2411E9CABC90072401F /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		AFA9B2431E9CAC9A0072401F /* GetUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUser.swift; sourceTree = "<group>"; };
+		AFA9B2451E9CB20F0072401F /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		AFC304F21E85CB9E0012515E /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		AFC304F41E85CCA60012515E /* MovieTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableCell.swift; sourceTree = "<group>"; };
 		AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellIdentifiable.swift; sourceTree = "<group>"; };
 		AFC304F81E85D1EE0012515E /* EasyPeasy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyPeasy.framework; path = Carthage/Build/iOS/EasyPeasy.framework; sourceTree = "<group>"; };
 		AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
+		AFCCA5C41E9C1176000B6102 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AFCCA5C61E9C118D000B6102 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFilmToWatchList.swift; sourceTree = "<group>"; };
+		AFE548AD1E9C108300C99278 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,12 @@
 				AF3EED211E68E96100553D86 /* AppDelegate.swift */,
 				AF3EED331E68E9B300553D86 /* Movie.swift */,
 				AF3EED371E68EC3900553D86 /* MovieTVC.swift */,
+				AFE548AD1E9C108300C99278 /* ProfileVC.swift */,
+				AFA9B2451E9CB20F0072401F /* SignUpView.swift */,
+				AFCCA5C41E9C1176000B6102 /* ProfileView.swift */,
+				AFCCA5C61E9C118D000B6102 /* User.swift */,
+				AFA9B2431E9CAC9A0072401F /* GetUser.swift */,
+				AFA9B2411E9CABC90072401F /* UIDevice.swift */,
 				AFC304F41E85CCA60012515E /* MovieTableCell.swift */,
 				AF94AF551E831F980087080B /* Endpoint.swift */,
 				AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */,
@@ -212,15 +230,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */,
+				AFE548AE1E9C108300C99278 /* ProfileVC.swift in Sources */,
 				AF3EED341E68E9B300553D86 /* Movie.swift in Sources */,
+				AFA9B2441E9CAC9A0072401F /* GetUser.swift in Sources */,
 				AF94AF581E8320840087080B /* ListMovies.swift in Sources */,
+				AFCCA5C71E9C118D000B6102 /* User.swift in Sources */,
+				AFCCA5C51E9C1176000B6102 /* ProfileView.swift in Sources */,
 				AF168E131E8483E70033CEEF /* JSON.swift in Sources */,
 				AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */,
 				AF94AF561E831F980087080B /* Endpoint.swift in Sources */,
 				AFC304F51E85CCA60012515E /* MovieTableCell.swift in Sources */,
 				AF2D69441E977D9C004F4E6B /* RegisterDevice.swift in Sources */,
+				AFA9B2461E9CB20F0072401F /* SignUpView.swift in Sources */,
 				AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */,
 				AF3EED381E68EC3900553D86 /* MovieTVC.swift in Sources */,
+				AFA9B2421E9CABC90072401F /* UIDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
