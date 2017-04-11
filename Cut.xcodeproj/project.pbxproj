@@ -24,6 +24,8 @@
 		AFA9B2461E9CB20F0072401F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2451E9CB20F0072401F /* SignUpView.swift */; };
 		AFA9B24F1E9D83270072401F /* ArrayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B24E1E9D83270072401F /* ArrayResponse.swift */; };
 		AFA9B2511E9D835A0072401F /* FilmFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2501E9D835A0072401F /* FilmFilter.swift */; };
+		AFA9B2541E9D838B0072401F /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2531E9D838B0072401F /* SignUp.swift */; };
+		AFA9B2561E9D84370072401F /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2551E9D84370072401F /* SignUpVC.swift */; };
 		AFC304F31E85CB9E0012515E /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304F21E85CB9E0012515E /* Kingfisher.framework */; };
 		AFC304F51E85CCA60012515E /* MovieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC304F41E85CCA60012515E /* MovieTableCell.swift */; };
 		AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */; };
@@ -55,6 +57,8 @@
 		AFA9B2451E9CB20F0072401F /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		AFA9B24E1E9D83270072401F /* ArrayResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayResponse.swift; sourceTree = "<group>"; };
 		AFA9B2501E9D835A0072401F /* FilmFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmFilter.swift; sourceTree = "<group>"; };
+		AFA9B2531E9D838B0072401F /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		AFA9B2551E9D84370072401F /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		AFC304F21E85CB9E0012515E /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		AFC304F41E85CCA60012515E /* MovieTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableCell.swift; sourceTree = "<group>"; };
 		AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellIdentifiable.swift; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 				AFA9B2481E9D826E0072401F /* Model */,
 				AFA9B24D1E9D82C20072401F /* Movie TVC */,
 				AFA9B2471E9D825D0072401F /* Networking */,
+				AFA9B2551E9D84370072401F /* SignUpVC.swift */,
+				AFA9B2451E9CB20F0072401F /* SignUpView.swift */,
 				AFA9B2491E9D828F0072401F /* Profile */,
 				AFA9B24A1E9D82980072401F /* Protocols */,
 				AFA9B24C1E9D82B10072401F /* Supporting Files */,
@@ -153,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				AFE548AD1E9C108300C99278 /* ProfileVC.swift */,
-				AFA9B2451E9CB20F0072401F /* SignUpView.swift */,
 				AFCCA5C41E9C1176000B6102 /* ProfileView.swift */,
 			);
 			name = Profile;
@@ -174,6 +179,7 @@
 				AFA9B2431E9CAC9A0072401F /* GetUser.swift */,
 				AFA9B2521E9D836D0072401F /* List Movies */,
 				AF2D69431E977D9C004F4E6B /* RegisterDevice.swift */,
+				AFA9B2531E9D838B0072401F /* SignUp.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -307,6 +313,7 @@
 				AFA9B2511E9D835A0072401F /* FilmFilter.swift in Sources */,
 				AF94AF581E8320840087080B /* ListMovies.swift in Sources */,
 				AFCCA5C71E9C118D000B6102 /* User.swift in Sources */,
+				AFA9B2561E9D84370072401F /* SignUpVC.swift in Sources */,
 				AFCCA5C51E9C1176000B6102 /* ProfileView.swift in Sources */,
 				AF168E131E8483E70033CEEF /* JSON.swift in Sources */,
 				AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */,
@@ -315,6 +322,7 @@
 				AF2D69441E977D9C004F4E6B /* RegisterDevice.swift in Sources */,
 				AFA9B2461E9CB20F0072401F /* SignUpView.swift in Sources */,
 				AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */,
+				AFA9B2541E9D838B0072401F /* SignUp.swift in Sources */,
 				AF3EED381E68EC3900553D86 /* MovieTVC.swift in Sources */,
 				AFA9B2421E9CABC90072401F /* UIDevice.swift in Sources */,
 			);

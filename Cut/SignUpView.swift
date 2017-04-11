@@ -23,8 +23,18 @@ class SignUpView: UIView {
         backgroundColor = .white
         
         emailTextField.placeholder = "Email"
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.autocorrectionType = .no
+        emailTextField.spellCheckingType = .no
+        emailTextField.autocapitalizationType = .none
+        
         usernameTextField.placeholder = "Username"
+        usernameTextField.autocorrectionType = .no
+        usernameTextField.spellCheckingType = .no
+        usernameTextField.autocapitalizationType = .none
+        
         passwordTextField.placeholder = "Password"
+        passwordTextField.isSecureTextEntry = true
         
         signUpButton.setTitle("Sign Up", for: .normal)
         signUpButton.setTitleColor(.blue, for: .normal)

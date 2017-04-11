@@ -12,7 +12,6 @@ import RxSwift
 
 class ProfileVC: UIViewController {
     let profileView = ProfileView()
-    let signUpView = SignUpView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -20,11 +19,6 @@ class ProfileVC: UIViewController {
     
     override func loadView() {
         view = profileView
-        
-        view.addSubview(signUpView)
-        signUpView.alpha = 0
-        signUpView <- Edges()
-        
     }
     
     override func viewDidLoad() {
@@ -37,7 +31,7 @@ class ProfileVC: UIViewController {
                     self?.profileView.user = user
                 } else {
                     print(Thread.current.isMainThread)
-                    self?.signUpView.alpha = 1
+                    self?.present(SignUpVC(user: user), animated: true)
                 }
             case .error(let error):
                 print(error)
