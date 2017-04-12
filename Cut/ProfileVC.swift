@@ -27,6 +27,7 @@ class ProfileVC: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        title = "Profile"
     }
     
     override func loadView() {
