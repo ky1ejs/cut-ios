@@ -1,5 +1,5 @@
 //
-//  MovieTVC.swift
+//  FilmTVC.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 03/03/2017.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import Kingfisher
 
-class MovieTVC: UITableViewController {
+class FilmTVC: UITableViewController {
     
     init() { super.init(style: .plain) }
     
@@ -23,9 +23,9 @@ class MovieTVC: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        tableView.registerClass(MovieTableCell.self)
+        tableView.registerClass(FilmTableCell.self)
         
-        loadMovies()
+        loadFilms()
         
         _ = tableView
             .rx
@@ -41,13 +41,13 @@ class MovieTVC: UITableViewController {
     }
     
     
-    func loadMovies() {
-        _ = ListMovies()
+    func loadFilms() {
+        _ = ListFilms()
             .call()
             .takeUntil(rx.deallocated)
-            .bindTo(tableView.rx.items(cellIdentifier: MovieTableCell.reuseIdentifier, cellType: MovieTableCell.self)) { (index, movie, cell) in
+            .bindTo(tableView.rx.items(cellIdentifier: FilmTableCell.reuseIdentifier, cellType: FilmTableCell.self)) { (index, film, cell) in
                 assert(Thread.isMainThread)
-                cell.movie = movie
+                cell.film = film
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 struct AddFilmToWatchList {
-    let film: Movie
+    let film: Film
 }
 
 extension AddFilmToWatchList: Endpoint {

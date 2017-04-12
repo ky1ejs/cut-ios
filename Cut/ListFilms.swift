@@ -1,5 +1,5 @@
 //
-//  RottenTomatoesListMovies.swift
+//  ListFilms.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 22/03/2017.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-struct ListMovies {}
+struct ListFilms {}
 
-extension ListMovies: Endpoint {
-    typealias SuccessData = ArrayResponse<Movie>
+extension ListFilms: Endpoint {
+    typealias SuccessData = ArrayResponse<Film>
     var url: URL { return URL(string: "http://localhost:3000/v1/films")! }
 }

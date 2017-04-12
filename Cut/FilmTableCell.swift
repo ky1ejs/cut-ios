@@ -1,5 +1,5 @@
 //
-//  MovieTableCell.swift
+//  FilmTableCell.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 24/03/2017.
@@ -11,7 +11,7 @@ import Kingfisher
 import EasyPeasy
 import SwipeCellKit
 
-class MovieTableCell: SwipeTableViewCell {
+class FilmTableCell: SwipeTableViewCell {
     fileprivate var _textLabel: UILabel
     override var textLabel: UILabel {
         get { return _textLabel }
@@ -19,18 +19,18 @@ class MovieTableCell: SwipeTableViewCell {
     }
     var posterImageView: UIImageView
     
-    var movie: Movie? {
+    var film: Film? {
         didSet {
-            guard let movie = movie else {
+            guard let film = film else {
                 textLabel.text = nil
                 posterImageView.image = nil
                 return
             }
             
-            textLabel.text = movie.title
+            textLabel.text = film.title
             posterImageView.kf.indicatorType = .activity
-            posterImageView.kf.setImage(with: movie.posterURL, placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil, completionHandler: nil)
-            backgroundColor = movie.status == .wantToWatch ? .red : .white
+            posterImageView.kf.setImage(with: film.posterURL, placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil, completionHandler: nil)
+            backgroundColor = film.status == .wantToWatch ? .red : .white
         }
     }
     
@@ -64,14 +64,14 @@ class MovieTableCell: SwipeTableViewCell {
     }
 }
 
-extension MovieTableCell: SwipeTableViewCellDelegate {
+extension FilmTableCell: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
         let watchAction = SwipeAction(style: .default, title: "Watch") { action, indexPath in
-            guard let movieCell = tableView.cellForRow(at: indexPath) as? MovieTableCell else { return }
-            _ = movieCell.movie?.addToWatchList().subscribe({ event in
+            guard let filmCell = tableView.cellForRow(at: indexPath) as? FilmTableCell else { return }
+            _ = filmCell.film?.addToWatchList().subscribe({ event in
                 switch event {
-                case .next: movieCell.backgroundColor = .red
+                case .next: filmCell.backgroundColor = .red
                 case .error(let error): print(error)
                 case .completed: break
                 }
@@ -89,4 +89,4 @@ extension MovieTableCell: SwipeTableViewCellDelegate {
 }
 
 
-extension MovieTableCell: TableCellIdentifiable {}
+extension FilmTableCell: TableCellIdentifiable {}

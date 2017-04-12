@@ -1,5 +1,5 @@
 //
-//  Movie.swift
+//  Film.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 03/03/2017.
@@ -9,13 +9,13 @@
 import Foundation
 import RxSwift
 
-class Movie {
+class Film {
     let id: String
     let title: String
     let synopsis: String
     let posterURL: URL
     let runningTime: Int?
-    fileprivate(set) var status: MovieStatus?
+    fileprivate(set) var status: FilmStatus?
     
     required init(json: JsonType) throws {
         id = try json.parse(key: "id")
@@ -56,13 +56,13 @@ class Movie {
     }
 }
 
-enum MovieStatus {
+enum FilmStatus {
     case wantToWatch
     case watched(Rating?)
 }
 
-extension MovieStatus: Equatable {}
-func ==(lhs: MovieStatus, rhs: MovieStatus) -> Bool {
+extension FilmStatus: Equatable {}
+func ==(lhs: FilmStatus, rhs: FilmStatus) -> Bool {
     switch (lhs, rhs) {
     case (.wantToWatch, .wantToWatch): return true
     case let (.watched(lhsRating), .watched(rhsRating)): return lhsRating == rhsRating
@@ -78,6 +78,6 @@ enum Rating: Int {
     case five
 }
 
-extension Movie: JSONDecodeable {
+extension Film: JSONDecodeable {
     typealias JsonType = [AnyHashable : AnyObject]
 }

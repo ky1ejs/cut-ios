@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum MovieFilter: String {
+enum FilmFilter: String {
     case popular = "popular"
     case topBoxOffice = "top-box-office"
     case upcoming = "theater-upcoming"
     case newDvdReleases = "new-release-dvds"
 }
 
-extension MovieFilter: CustomStringConvertible {
+extension FilmFilter: CustomStringConvertible {
     var description: String {
         switch self {
         case .popular:          return "In Theaters"
