@@ -20,10 +20,11 @@ class Film {
     required init(json: JsonType) throws {
         id = try json.parse(key: "id")
         title = try json.parse(key: "title")
-        runningTime = try json.parse(key: "running_time")
         synopsis = try json.parse(key: "synopsis")
         
-        let wantToWatch: Bool = try json.parse(key: "want_to_watch")
+        runningTime = json["running_time"] as? Int
+        
+        let wantToWatch = json["want_to_watch"] as? Bool ?? false
         status = wantToWatch ? .wantToWatch : nil
         
         let posterUrlString: String = try json.parseDict(key: "posters").parseDict(key: "thumbnail").parse(key: "url")
@@ -79,5 +80,5 @@ enum Rating: Int {
 }
 
 extension Film: JSONDecodeable {
-    typealias JsonType = [AnyHashable : AnyObject]
+    typealias JsonType = [AnyHashable : Any]
 }

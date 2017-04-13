@@ -15,7 +15,7 @@ extension Dictionary {
     }
 }
 
-extension Dictionary where Key == AnyHashable, Value == AnyObject {
+extension Dictionary where Key == AnyHashable, Value == Any {
     func parseDict(key: Key) throws -> [Key : Value] {
         return try parse(key: key)
     }
