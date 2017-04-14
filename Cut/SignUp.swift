@@ -24,5 +24,5 @@ extension SignUp: Endpoint {
             "password" : password
         ]
     }
-    static var method: HTTPMethod { return .post }
+    var method: HTTPMethod { return .post }
 }

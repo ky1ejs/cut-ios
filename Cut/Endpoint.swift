@@ -45,6 +45,7 @@ extension JSONDecodeable  {
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
+    case delete = "DELETE"
 }
 
 protocol Endpoint {
@@ -54,7 +55,7 @@ protocol Endpoint {
     var urlParams: [String : String] { get }
     var body: [String : Any] { get }
     var headers: [String : String] { get }
-    static var method: HTTPMethod { get }
+    var method: HTTPMethod { get }
 }
 
 enum ParserError: Error {
@@ -72,14 +73,14 @@ extension Endpoint {
     var urlParams: [String : String] { return [:] }
     var body: [String : Any] { return [:] }
     var headers: [String : String] { return [:] }
-    static var method: HTTPMethod { return .get }
+    var method: HTTPMethod { return .get }
     
     private var request: URLRequest {
         var comps = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         comps.queryItems = urlParams.map { URLQueryItem(name: $0, value: $1) }
         
         var request = URLRequest(url: comps.url!)
-        request.httpMethod = type(of: self).method.rawValue
+        request.httpMethod = method.rawValue
         
         if body.count > 0 {
             request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: [])
@@ -91,8 +92,7 @@ extension Endpoint {
         }
         request.allHTTPHeaderFields?["device_id"] = UIDevice.current.cutID
         
-        print(headers)
-        print(body)
+        print(request.allHTTPHeaderFields)
         
         return request
     }

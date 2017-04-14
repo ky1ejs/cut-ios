@@ -16,5 +16,5 @@ extension AddFilmToWatchList: Endpoint {
     typealias SuccessData = NoSuccessData
     var url: URL { return URL(string: "http://localhost:3000/v1/watch-list")! }
     var body: [String : Any] { return ["film_id" : film.id] }
-    static var method: HTTPMethod { return .post }
+    var method: HTTPMethod { return .post }
 }
