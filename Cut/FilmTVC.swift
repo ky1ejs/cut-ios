@@ -26,7 +26,7 @@ class FilmTVC: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        tableView.registerClass(FilmTableCell.self)
+        tableView.register(cellClass: FilmTableCell.self)
         
         loadFilms()
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol TableCellIdentifiable: class {
     static var reuseIdentifier: String { get }
@@ -17,11 +18,17 @@ extension TableCellIdentifiable {
 }
 
 extension UITableView {
-    func registerClass<CellClass: TableCellIdentifiable>(_ klass: CellClass.Type) {
+    func register<CellClass: TableCellIdentifiable>(cellClass klass: CellClass.Type) {
         self.register(klass, forCellReuseIdentifier: klass.reuseIdentifier)
     }
     
-    func dequeueReusableCellOfClass<C: TableCellIdentifiable>(_: C.Type) -> C? {
+    func dequeueReusableCell<C: TableCellIdentifiable>(ofClass: C.Type) -> C? {
         return self.dequeueReusableCell(withIdentifier: C.reuseIdentifier) as? C
+    }
+}
+
+extension Reactive where Base == UITableView {
+    func items<S, Cell: TableCellIdentifiable, O>(cellClass klass: Cell.Type) -> (O) -> (@escaping (Int, S.Iterator.Element, Cell) -> Swift.Void) -> Disposable where S : Sequence, Cell : UITableViewCell, O : ObservableType, O.E == S {
+        return items(cellIdentifier: klass.reuseIdentifier, cellType: klass)
     }
 }

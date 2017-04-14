@@ -31,6 +31,19 @@ class SearchVC: UIViewController {
                 guard let `self` = self, let term = `self`.searchTF.text else { return }
                 `self`.search(withTerm: term)
             })
+        
+        searchView.filmTableView.register(cellClass: FilmTableCell.self)
+        searchView.userTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        searchView.filmTableView.estimatedRowHeight = 60
+        searchView.filmTableView.rowHeight = UITableViewAutomaticDimension
+        
+        _ = searchView.segmentedControl.rx.controlEvent(.valueChanged).map {
+            return self.searchView.segmentedControl.selectedSegmentIndex == 0
+            }.observeOn(MainScheduler.instance)
+            .subscribe(onNext: { showFilms in
+                self.searchView.filmTableView.isHidden = !showFilms
+            })
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,26 +61,13 @@ class SearchVC: UIViewController {
         ]
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        searchView.filmTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        searchView.userTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        
-        _ = searchView.segmentedControl.rx.controlEvent(.valueChanged).map {
-            return self.searchView.segmentedControl.selectedSegmentIndex == 0
-            }.observeOn(MainScheduler.instance)
-            .subscribe(onNext: { showFilms in
-            self.searchView.filmTableView.isHidden = !showFilms
-        })
-    }
-    
     func search(withTerm term: String) {
         _ = Search(term: term).call()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { results in
             _ = Observable.just(results.films)
-                .bindTo(self.searchView.filmTableView.rx.items(cellIdentifier: "Cell")) { _, film, cell in
-                    cell.textLabel?.text = film.title
+                .bindTo(self.searchView.filmTableView.rx.items(cellClass: FilmTableCell.self)) { _, film, cell in
+                    cell.film = film
             }
             _ = Observable.just(results.users)
                 .bindTo(self.searchView.userTableView.rx.items(cellIdentifier: "Cell")) { _, user, cell in

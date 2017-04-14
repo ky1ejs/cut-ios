@@ -128,6 +128,7 @@
 			children = (
 				AF3EED211E68E96100553D86 /* AppDelegate.swift */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
+				AF41395F1EA0DCF700F7AB8D /* Views */,
 				AFA9B24B1E9D82A60072401F /* API */,
 				AFA9B2481E9D826E0072401F /* Model */,
 				AFA9B24D1E9D82C20072401F /* Film List */,
@@ -148,6 +149,14 @@
 				AF918DB01EA029F800ABAE3A /* SearchView.swift */,
 			);
 			name = Search;
+			sourceTree = "<group>";
+		};
+		AF41395F1EA0DCF700F7AB8D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AFC304F41E85CCA60012515E /* FilmTableCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		AFA9B2471E9D825D0072401F /* Networking */ = {
@@ -213,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				AF3EED371E68EC3900553D86 /* FilmTVC.swift */,
-				AFC304F41E85CCA60012515E /* FilmTableCell.swift */,
 			);
 			name = "Film List";
 			sourceTree = "<group>";
