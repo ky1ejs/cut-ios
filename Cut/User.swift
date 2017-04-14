@@ -14,11 +14,19 @@ class User: JSONDecodeable {
     
     var email: Variable<String?>
     var username: Variable<String?>
+    let profileImageURL: URL?
     var isFullUser: Bool { return email.value != nil && username.value != nil }
     
     required init(json: JsonType) throws {
         email = Variable(json["email"] as? String)
         username = Variable(json["username"] as? String)
+        
+        profileImageURL = {
+            if let imageUrl = json["profile_image"] as? String {
+                return URL(string: imageUrl)
+            }
+            return nil
+        }()
     }
     
     func signUp(email: String, username: String, password: String) -> Observable<User> {

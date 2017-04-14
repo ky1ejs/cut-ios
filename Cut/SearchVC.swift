@@ -33,10 +33,13 @@ class SearchVC: UIViewController {
             })
         
         searchView.filmTableView.register(cellClass: FilmTableCell.self)
-        searchView.userTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        searchView.userTableView.register(cellClass: UserCell.self)
         
         searchView.filmTableView.estimatedRowHeight = 60
         searchView.filmTableView.rowHeight = UITableViewAutomaticDimension
+        
+        searchView.userTableView.estimatedRowHeight = 60
+        searchView.userTableView.rowHeight = UITableViewAutomaticDimension
         
         _ = searchView.segmentedControl.rx.controlEvent(.valueChanged).map {
             return self.searchView.segmentedControl.selectedSegmentIndex == 0
@@ -70,8 +73,8 @@ class SearchVC: UIViewController {
                     cell.film = film
             }
             _ = Observable.just(results.users)
-                .bindTo(self.searchView.userTableView.rx.items(cellIdentifier: "Cell")) { _, user, cell in
-                    cell.textLabel?.text = user.username.value
+                .bindTo(self.searchView.userTableView.rx.items(cellClass: UserCell.self)) { _, user, cell in
+                    cell.user = user
             }
         })
     }
