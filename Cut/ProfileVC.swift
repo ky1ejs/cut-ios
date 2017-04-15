@@ -12,16 +12,26 @@ import RxSwift
 
 class ProfileVC: UIViewController {
     let profileView = ProfileView()
+    
+    var userDisposeBag = DisposeBag()
     var user: User? {
         didSet {
+            profileView.emailLabel.text = user?.email.value
+            profileView.usernameLabel.text = user?.username.value
+            
+            userDisposeBag = DisposeBag()
+            
             _ = user?.username
                 .asObservable()
                 .takeUntil(rx.deallocated)
                 .bindTo(profileView.usernameLabel.rx.text)
+                .disposed(by: userDisposeBag)
+                
             _ = user?.email
                 .asObservable()
                 .takeUntil(rx.deallocated)
                 .bindTo(profileView.emailLabel.rx.text)
+                .disposed(by: userDisposeBag)
         }
     }
     
