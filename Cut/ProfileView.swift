@@ -13,19 +13,35 @@ class ProfileView: UIView {
     let emailLabel = UILabel()
     let usernameLabel = UILabel()
     
+    let watchListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilmPosterLayout())
+    let ratedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilmPosterLayout())
+    
+    
     init() {
         super.init(frame: .zero)
         
         backgroundColor = .white
         
-        let centeringContainer = UIView()
+        let detailsContainer = UIView()
+        let detailsCenteringContainer = UIView()
         
-        addSubview(centeringContainer)
-        centeringContainer.addSubview(emailLabel)
-        centeringContainer.addSubview(usernameLabel)
+        addSubview(detailsContainer)
+        addSubview(detailsCenteringContainer)
+        addSubview(ratedCollectionView)
+        addSubview(watchListCollectionView)
         
-        centeringContainer <- [
+        detailsCenteringContainer.addSubview(emailLabel)
+        detailsCenteringContainer.addSubview(usernameLabel)
+        
+        detailsContainer <- [
             Leading(),
+            Top(),
+            CenterX(),
+            Height(*0.3)
+        ]
+        
+        detailsCenteringContainer <- [
+            Leading(20),
             CenterX(),
             CenterY()
         ]
@@ -39,6 +55,20 @@ class ProfileView: UIView {
         usernameLabel <- [
             Leading().to(emailLabel, .leading),
             Top(10).to(emailLabel),
+            Bottom()
+        ]
+        
+        watchListCollectionView <- [
+            Top().to(detailsContainer),
+            Leading(),
+            CenterX(),
+            Bottom()
+        ]
+        
+        ratedCollectionView <- [
+            Top().to(detailsContainer),
+            Leading(),
+            CenterX(),
             Bottom()
         ]
     }

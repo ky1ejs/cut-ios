@@ -21,6 +21,8 @@
 		AF918DB11EA029F800ABAE3A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF918DB01EA029F800ABAE3A /* SearchView.swift */; };
 		AF94AF561E831F980087080B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF551E831F980087080B /* Endpoint.swift */; };
 		AF94AF581E8320840087080B /* ListFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF571E8320840087080B /* ListFilms.swift */; };
+		AF971AD31EA279EC003A249E /* FilmCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF971AD21EA279EC003A249E /* FilmCollectionCell.swift */; };
+		AF971AD51EA27AE1003A249E /* CollectionCellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF971AD41EA27AE1003A249E /* CollectionCellIdentifiable.swift */; };
 		AFA9B2421E9CABC90072401F /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2411E9CABC90072401F /* UIDevice.swift */; };
 		AFA9B2441E9CAC9A0072401F /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2431E9CAC9A0072401F /* GetUser.swift */; };
 		AFA9B2461E9CB20F0072401F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2451E9CB20F0072401F /* SignUpView.swift */; };
@@ -37,6 +39,7 @@
 		AFC304FB1E85E95F0012515E /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */; };
 		AFCCA5C51E9C1176000B6102 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C41E9C1176000B6102 /* ProfileView.swift */; };
 		AFCCA5C71E9C118D000B6102 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C61E9C118D000B6102 /* User.swift */; };
+		AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */; };
 		AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */; };
 		AFE548AE1E9C108300C99278 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AD1E9C108300C99278 /* ProfileVC.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,8 @@
 		AF918DB01EA029F800ABAE3A /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AF94AF551E831F980087080B /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		AF94AF571E8320840087080B /* ListFilms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFilms.swift; sourceTree = "<group>"; };
+		AF971AD21EA279EC003A249E /* FilmCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCollectionCell.swift; sourceTree = "<group>"; };
+		AF971AD41EA27AE1003A249E /* CollectionCellIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCellIdentifiable.swift; sourceTree = "<group>"; };
 		AFA9B2411E9CABC90072401F /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		AFA9B2431E9CAC9A0072401F /* GetUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUser.swift; sourceTree = "<group>"; };
 		AFA9B2451E9CB20F0072401F /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -74,6 +79,7 @@
 		AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		AFCCA5C41E9C1176000B6102 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AFCCA5C61E9C118D000B6102 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmPosterLayout.swift; sourceTree = "<group>"; };
 		AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFilmToWatchList.swift; sourceTree = "<group>"; };
 		AFE548AD1E9C108300C99278 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,7 +192,9 @@
 			isa = PBXGroup;
 			children = (
 				AFE548AD1E9C108300C99278 /* ProfileVC.swift */,
+				AF971AD21EA279EC003A249E /* FilmCollectionCell.swift */,
 				AFCCA5C41E9C1176000B6102 /* ProfileView.swift */,
+				AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -195,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */,
+				AF971AD41EA27AE1003A249E /* CollectionCellIdentifiable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -342,6 +351,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFA9B24F1E9D83270072401F /* ArrayResponse.swift in Sources */,
+				AF971AD51EA27AE1003A249E /* CollectionCellIdentifiable.swift in Sources */,
+				AF971AD31EA279EC003A249E /* FilmCollectionCell.swift in Sources */,
 				AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */,
 				AFE548AE1E9C108300C99278 /* ProfileVC.swift in Sources */,
 				AF3EED341E68E9B300553D86 /* Film.swift in Sources */,
@@ -358,6 +369,7 @@
 				AF918DB11EA029F800ABAE3A /* SearchView.swift in Sources */,
 				AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */,
 				AF94AF561E831F980087080B /* Endpoint.swift in Sources */,
+				AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */,
 				AFC304F51E85CCA60012515E /* FilmTableCell.swift in Sources */,
 				AF2D69441E977D9C004F4E6B /* RegisterDevice.swift in Sources */,
 				AFA9B2461E9CB20F0072401F /* SignUpView.swift in Sources */,
