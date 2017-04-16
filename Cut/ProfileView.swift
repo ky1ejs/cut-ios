@@ -26,7 +26,7 @@ class ProfileView: UIView {
         let detailsCenteringContainer = UIView()
         
         addSubview(detailsContainer)
-        addSubview(detailsCenteringContainer)
+        detailsContainer.addSubview(detailsCenteringContainer)
         addSubview(ratedCollectionView)
         addSubview(watchListCollectionView)
         
@@ -37,7 +37,7 @@ class ProfileView: UIView {
             Leading(),
             Top(),
             CenterX(),
-            Height(*0.3)
+            Height(*0.3).like(self)
         ]
         
         detailsCenteringContainer <- [
