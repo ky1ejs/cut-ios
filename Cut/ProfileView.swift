@@ -12,6 +12,7 @@ import EasyPeasy
 class ProfileView: UIView {
     let emailLabel = UILabel()
     let usernameLabel = UILabel()
+    let segmentedControl = UISegmentedControl(items: ["Watch List", "Ratings"])
     
     let watchListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilmPosterLayout())
     let ratedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilmPosterLayout())
@@ -22,11 +23,22 @@ class ProfileView: UIView {
         
         backgroundColor = .white
         
+        segmentedControl.selectedSegmentIndex = 0
+        
+        _ = segmentedControl
+            .rx
+            .controlEvent(.valueChanged)
+            .map() { self.segmentedControl.selectedSegmentIndex == 0 }
+            .subscribe(onNext: { showWatchList in
+                self.watchListCollectionView.isHidden = !showWatchList
+        })
+        
         let detailsContainer = UIView()
         let detailsCenteringContainer = UIView()
         
         addSubview(detailsContainer)
         detailsContainer.addSubview(detailsCenteringContainer)
+        detailsContainer.addSubview(segmentedControl)
         addSubview(ratedCollectionView)
         addSubview(watchListCollectionView)
         
@@ -44,6 +56,11 @@ class ProfileView: UIView {
             Leading(20),
             CenterX(),
             CenterY()
+        ]
+        
+        segmentedControl <- [
+            Bottom(10),
+            CenterX()
         ]
         
         emailLabel <- [
