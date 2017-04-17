@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AF00B2091EA376C2009BF608 /* GetWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00B2081EA376C2009BF608 /* GetWatchList.swift */; };
+		AF00B20B1EA3E5F4009BF608 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00B20A1EA3E5F4009BF608 /* Star.swift */; };
 		AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0D1E8483B00033CEEF /* RxCocoa.framework */; };
 		AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0E1E8483B00033CEEF /* RxSwift.framework */; };
 		AF168E131E8483E70033CEEF /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF168E121E8483E60033CEEF /* JSON.swift */; };
@@ -18,6 +19,8 @@
 		AF3EED361E68EBE000553D86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */; };
 		AF3EED381E68EC3900553D86 /* FilmTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED371E68EC3900553D86 /* FilmTVC.swift */; };
 		AF4139611EA0E04100F7AB8D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4139601EA0E04100F7AB8D /* UserCell.swift */; };
+		AF5317A71EA3F35900AB90B9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317A61EA3F35900AB90B9 /* R.generated.swift */; };
+		AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5317A81EA3F44900AB90B9 /* Rswift.framework */; };
 		AF8FDA631E99775D00D5DEA2 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8FDA621E99775D00D5DEA2 /* KeychainAccess.framework */; };
 		AF918DB11EA029F800ABAE3A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF918DB01EA029F800ABAE3A /* SearchView.swift */; };
 		AF94AF561E831F980087080B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF551E831F980087080B /* Endpoint.swift */; };
@@ -47,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		AF00B2081EA376C2009BF608 /* GetWatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetWatchList.swift; sourceTree = "<group>"; };
+		AF00B20A1EA3E5F4009BF608 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		AF168E0D1E8483B00033CEEF /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		AF168E0E1E8483B00033CEEF /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		AF168E121E8483E60033CEEF /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 		AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF3EED371E68EC3900553D86 /* FilmTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmTVC.swift; sourceTree = "<group>"; };
 		AF4139601EA0E04100F7AB8D /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		AF5317A61EA3F35900AB90B9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		AF5317A81EA3F44900AB90B9 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		AF8FDA621E99775D00D5DEA2 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		AF918DB01EA029F800ABAE3A /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AF94AF551E831F980087080B /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -96,6 +102,7 @@
 				AFC304FB1E85E95F0012515E /* SwipeCellKit.framework in Frameworks */,
 				AFC304F31E85CB9E0012515E /* Kingfisher.framework in Frameworks */,
 				AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */,
+				AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */,
 				AFC304F91E85D1EE0012515E /* EasyPeasy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +113,7 @@
 		AF168E111E8483B40033CEEF /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
+				AF5317A81EA3F44900AB90B9 /* Rswift.framework */,
 				AF8FDA621E99775D00D5DEA2 /* KeychainAccess.framework */,
 				AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */,
 				AFC304F81E85D1EE0012515E /* EasyPeasy.framework */,
@@ -137,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				AF3EED211E68E96100553D86 /* AppDelegate.swift */,
+				AF5317A61EA3F35900AB90B9 /* R.generated.swift */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
 				AF41395F1EA0DCF700F7AB8D /* Views */,
 				AFA9B24B1E9D82A60072401F /* API */,
@@ -165,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				AFC304F41E85CCA60012515E /* FilmTableCell.swift */,
+				AF00B20A1EA3E5F4009BF608 /* Star.swift */,
 				AF4139601EA0E04100F7AB8D /* UserCell.swift */,
 			);
 			name = Views;
@@ -266,10 +276,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF3EED301E68E96100553D86 /* Build configuration list for PBXNativeTarget "Cut" */;
 			buildPhases = (
+				AF5317A51EA3F31400AB90B9 /* R.swift */,
 				AF3EED1A1E68E96100553D86 /* Sources */,
 				AF3EED1B1E68E96100553D86 /* Frameworks */,
 				AF3EED1C1E68E96100553D86 /* Resources */,
-				AF168E141E848E6C0033CEEF /* ShellScript */,
+				AF168E141E848E6C0033CEEF /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -327,7 +338,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AF168E141E848E6C0033CEEF /* ShellScript */ = {
+		AF168E141E848E6C0033CEEF /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -339,12 +350,28 @@
 				"$(SRCROOT)/Carthage/Build/iOS/EasyPeasy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwipeCellKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 			);
+			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		AF5317A51EA3F31400AB90B9 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/rswift\" \"$SRCROOT/Cut\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -370,6 +397,7 @@
 				AFCCA5C51E9C1176000B6102 /* ProfileView.swift in Sources */,
 				AFBEB1BD1E9FFBC50095D66E /* Search.swift in Sources */,
 				AF168E131E8483E70033CEEF /* JSON.swift in Sources */,
+				AF5317A71EA3F35900AB90B9 /* R.generated.swift in Sources */,
 				AF918DB11EA029F800ABAE3A /* SearchView.swift in Sources */,
 				AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */,
 				AF94AF561E831F980087080B /* Endpoint.swift in Sources */,
@@ -380,6 +408,7 @@
 				AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */,
 				AFA9B2541E9D838B0072401F /* SignUp.swift in Sources */,
 				AF3EED381E68EC3900553D86 /* FilmTVC.swift in Sources */,
+				AF00B20B1EA3E5F4009BF608 /* Star.swift in Sources */,
 				AFA9B2421E9CABC90072401F /* UIDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

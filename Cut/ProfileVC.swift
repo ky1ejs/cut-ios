@@ -49,12 +49,10 @@ class ProfileVC: UIViewController {
         
         profileView.watchListCollectionView.register(cellClass: FilmCollectionCell.self)
         
-        
         _ = GetWatchList().call()
             .bindTo(profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
                 cell.film = film
         }
-        
         
         _ = GetUser().call().observeOn(MainScheduler.instance).subscribe { [weak self] event in
             switch event {

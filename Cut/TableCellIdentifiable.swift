@@ -17,6 +17,8 @@ extension TableCellIdentifiable {
     static var reuseIdentifier: String { return String(describing: self) }
 }
 
+extension UITableViewCell: TableCellIdentifiable {}
+
 extension UITableView {
     func register<CellClass: TableCellIdentifiable>(cellClass klass: CellClass.Type) {
         self.register(klass, forCellReuseIdentifier: klass.reuseIdentifier)

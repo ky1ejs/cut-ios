@@ -1,5 +1,5 @@
 github "ReactiveX/RxSwift" ~> 3.0
 github "onevcat/Kingfisher"
 github "nakiostudio/EasyPeasy"
-github "jerkoch/SwipeCellKit"
 github "kishikawakatsumi/KeychainAccess"
+github "mac-cain13/R.swift.Library"
