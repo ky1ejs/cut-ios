@@ -70,6 +70,7 @@ class FilmTableCell: UITableViewCell {
         
         
         panGesture.addTarget(self, action: #selector(pan(gesture:)))
+        panGesture.delegate = self
         addGestureRecognizer(panGesture)
     }
     
@@ -164,6 +165,15 @@ class FilmTableCell: UITableViewCell {
         
         starContainer.removeFromSuperview()
         self.starContainer = nil
+    }
+}
+
+extension FilmTableCell { // UIGestureRecognizerDelegate
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let view = gestureRecognizer.view,
+            let pan = gestureRecognizer as? UIPanGestureRecognizer else { return super.gestureRecognizerShouldBegin(gestureRecognizer) }
+        let translation = pan.translation(in: view)
+        return abs(translation.y) <= abs(translation.x)
     }
 }
 
