@@ -14,11 +14,11 @@ enum StarSize {
     case half
     case full
     
-    var image: UIImage? {
+    var image: UIImage {
         switch self {
-        case .empty: return nil
-        case .half: return R.image.halfStar()
-        case .full: return R.image.fullStar()
+        case .empty: return R.image.emptyStar()!
+        case .half: return R.image.halfStar()!
+        case .full: return R.image.fullStar()!
         }
     }
 }
