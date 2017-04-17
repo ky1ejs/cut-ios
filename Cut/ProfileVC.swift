@@ -48,9 +48,15 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         
         profileView.watchListCollectionView.register(cellClass: FilmCollectionCell.self)
+        profileView.ratedCollectionView.register(cellClass: FilmCollectionCell.self)
         
-        _ = GetWatchList().call()
-            .bindTo(profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
+//        _ = GetWatchList().call()
+//            .bindTo(profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
+//                cell.film = film
+//        }
+        
+        _ = GetRatedFilms().call()
+            .bindTo(profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
                 cell.film = film
         }
         
@@ -68,8 +74,6 @@ class ProfileVC: UIViewController {
                 break
             }
         }
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

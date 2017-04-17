@@ -37,7 +37,7 @@ class User: JSONDecodeable {
                 return Disposables.create()
             }
             
-            let signUp = SignUp(email: email, username: 	username, password: password).call().subscribe { [weak self] event in
+            let signUp = SignUp(email: email, username: username, password: password).call().subscribe { [weak self] event in
                 guard let safeSelf = self else {
                     observer.on(.error(RxError.unknown))
                     observer.on(.completed)

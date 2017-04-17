@@ -52,7 +52,7 @@ protocol Endpoint {
     
     var url: URL { get }
     var urlParams: [String : String] { get }
-    var body: [String : String] { get }
+    var body: [String : Any] { get }
     var headers: [String : String] { get }
     static var method: HTTPMethod { get }
 }
@@ -70,7 +70,7 @@ struct NoSuccessData: URLResponseDecodeable {
 
 extension Endpoint {
     var urlParams: [String : String] { return [:] }
-    var body: [String : String] { return [:] }
+    var body: [String : Any] { return [:] }
     var headers: [String : String] { return [:] }
     static var method: HTTPMethod { return .get }
     

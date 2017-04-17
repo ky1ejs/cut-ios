@@ -11,6 +11,8 @@ import Kingfisher
 import EasyPeasy
 
 class FilmTableCell: UITableViewCell {
+    weak var delegate: FilmTableCellDelegate?
+    
     fileprivate var _textLabel: UILabel
     override var textLabel: UILabel {
         get { return _textLabel }
@@ -85,14 +87,11 @@ class FilmTableCell: UITableViewCell {
         case .changed:
             guard let starContainer = starContainer else { return }
             let translation = -gesture.translation(in: view).x
-            let starPadding: CGFloat = 20
+            let starPadding: CGFloat = 30
             for star in stars {
                 let starOriginX = translation - star.frame.origin.x
                 let halfThreshold = starOriginX - (star.frame.width / 2) + starPadding
                 let fullThreshold = starOriginX + starPadding
-                
-                print(halfThreshold)
-                print(fullThreshold)
                 
                 star.size = {
                     switch translation {
@@ -104,8 +103,6 @@ class FilmTableCell: UITableViewCell {
                         return .empty
                     }
                 }()
-                
-                print(star.size)
             }
             center = CGPoint(x: originalCenter.x - translation, y: originalCenter.y)
             starContainer <- Width(translation)
@@ -116,6 +113,11 @@ class FilmTableCell: UITableViewCell {
                 guard finished else { return }
                 self.removeStars()
             })
+            
+            guard let film = film else { return }
+            let rating: Double = stars.reduce(0) { $0 + $1.size.value }
+            print(rating)
+            delegate?.rate(film: film, rating: rating)
         default:
             break
         }
@@ -163,4 +165,8 @@ class FilmTableCell: UITableViewCell {
         starContainer.removeFromSuperview()
         self.starContainer = nil
     }
+}
+
+protocol FilmTableCellDelegate: class {
+    func rate(film: Film, rating: Double)
 }

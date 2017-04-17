@@ -51,7 +51,16 @@ class FilmTVC: UITableViewController {
             .bindTo(tableView.rx.items(cellIdentifier: FilmTableCell.reuseIdentifier, cellType: FilmTableCell.self)) { (index, film, cell) in
                 assert(Thread.isMainThread)
                 cell.film = film
+                cell.delegate = self
         }
+    }
+}
+
+extension FilmTVC: FilmTableCellDelegate {
+    func rate(film: Film, rating: Double) {
+        _ = RateFilm(film: film, rating: rating).call().subscribe({ event in
+            print(event)
+        })
     }
 }
 

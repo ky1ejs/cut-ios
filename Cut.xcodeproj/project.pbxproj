@@ -12,7 +12,6 @@
 		AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0D1E8483B00033CEEF /* RxCocoa.framework */; };
 		AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0E1E8483B00033CEEF /* RxSwift.framework */; };
 		AF168E131E8483E70033CEEF /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF168E121E8483E60033CEEF /* JSON.swift */; };
-		AF2D69441E977D9C004F4E6B /* RegisterDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D69431E977D9C004F4E6B /* RegisterDevice.swift */; };
 		AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
 		AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED281E68E96100553D86 /* Assets.xcassets */; };
 		AF3EED341E68E9B300553D86 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED331E68E9B300553D86 /* Film.swift */; };
@@ -21,6 +20,8 @@
 		AF4139611EA0E04100F7AB8D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4139601EA0E04100F7AB8D /* UserCell.swift */; };
 		AF5317A71EA3F35900AB90B9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317A61EA3F35900AB90B9 /* R.generated.swift */; };
 		AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5317A81EA3F44900AB90B9 /* Rswift.framework */; };
+		AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */; };
+		AF5317AD1EA4FDFF00AB90B9 /* GetRatedFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */; };
 		AF8FDA631E99775D00D5DEA2 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8FDA621E99775D00D5DEA2 /* KeychainAccess.framework */; };
 		AF918DB11EA029F800ABAE3A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF918DB01EA029F800ABAE3A /* SearchView.swift */; };
 		AF94AF561E831F980087080B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF551E831F980087080B /* Endpoint.swift */; };
@@ -54,7 +55,6 @@
 		AF168E0D1E8483B00033CEEF /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		AF168E0E1E8483B00033CEEF /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		AF168E121E8483E60033CEEF /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		AF2D69431E977D9C004F4E6B /* RegisterDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterDevice.swift; sourceTree = "<group>"; };
 		AF3EED1E1E68E96100553D86 /* Cut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3EED211E68E96100553D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF3EED281E68E96100553D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,6 +65,8 @@
 		AF4139601EA0E04100F7AB8D /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		AF5317A61EA3F35900AB90B9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		AF5317A81EA3F44900AB90B9 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
+		AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateFilm.swift; sourceTree = "<group>"; };
+		AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRatedFilms.swift; sourceTree = "<group>"; };
 		AF8FDA621E99775D00D5DEA2 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		AF918DB01EA029F800ABAE3A /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AF94AF551E831F980087080B /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -227,7 +229,8 @@
 				AFA9B2431E9CAC9A0072401F /* GetUser.swift */,
 				AF00B2081EA376C2009BF608 /* GetWatchList.swift */,
 				AFA9B2521E9D836D0072401F /* List Films */,
-				AF2D69431E977D9C004F4E6B /* RegisterDevice.swift */,
+				AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */,
+				AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */,
 				AFBEB1BC1E9FFBC50095D66E /* Search.swift */,
 				AFA9B2531E9D838B0072401F /* SignUp.swift */,
 			);
@@ -385,6 +388,7 @@
 				AF971AD31EA279EC003A249E /* FilmCollectionCell.swift in Sources */,
 				AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */,
 				AF00B2091EA376C2009BF608 /* GetWatchList.swift in Sources */,
+				AF5317AD1EA4FDFF00AB90B9 /* GetRatedFilms.swift in Sources */,
 				AFE548AE1E9C108300C99278 /* ProfileVC.swift in Sources */,
 				AF3EED341E68E9B300553D86 /* Film.swift in Sources */,
 				AFBEB1B91E9E14240095D66E /* SearchVC.swift in Sources */,
@@ -403,9 +407,9 @@
 				AF94AF561E831F980087080B /* Endpoint.swift in Sources */,
 				AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */,
 				AFC304F51E85CCA60012515E /* FilmTableCell.swift in Sources */,
-				AF2D69441E977D9C004F4E6B /* RegisterDevice.swift in Sources */,
 				AFA9B2461E9CB20F0072401F /* SignUpView.swift in Sources */,
 				AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */,
+				AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */,
 				AFA9B2541E9D838B0072401F /* SignUp.swift in Sources */,
 				AF3EED381E68EC3900553D86 /* FilmTVC.swift in Sources */,
 				AF00B20B1EA3E5F4009BF608 /* Star.swift in Sources */,

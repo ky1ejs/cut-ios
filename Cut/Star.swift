@@ -21,6 +21,14 @@ enum StarSize {
         case .full: return R.image.fullStar()!
         }
     }
+    
+    var value: Double {
+        switch self {
+        case .empty: return 0
+        case .half: return 0.5
+        case .full: return 1
+        }
+    }
 }
 
 class Star: UIView {

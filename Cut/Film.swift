@@ -16,6 +16,7 @@ class Film {
     let posterURL: URL
     let runningTime: Int?
     fileprivate(set) var status: FilmStatus?
+    let userRatingScore: Variable<Double?>
     
     required init(json: JsonType) throws {
         id = try json.parse(key: "id")
@@ -23,6 +24,9 @@ class Film {
         synopsis = try json.parse(key: "synopsis")
         
         runningTime = json["running_time"] as? Int
+        
+        let userRating = json["user_rating"] as? [AnyHashable : Any]
+        userRatingScore = Variable(userRating?["rating"] as? Double)
         
         let wantToWatch = json["want_to_watch"] as? Bool ?? false
         status = wantToWatch ? .wantToWatch : nil
