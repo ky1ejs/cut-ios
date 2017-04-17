@@ -28,6 +28,7 @@ class UserCell: UITableViewCell {
         contentView.addSubview(usernameTitleLabel)
         
         profileImageView.layer.cornerRadius = 5
+        profileImageView.clipsToBounds = true
         
         profileImageView <- [
             Leading(20),
