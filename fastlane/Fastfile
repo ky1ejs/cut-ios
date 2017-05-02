@@ -1,0 +1,58 @@
+default_platform :ios
+
+class Config
+  ITUNES_CONNECT_EMAIL = "k@kylejm.io".freeze
+  TARGETS = {
+    store: {
+      app_identifier: "io.kylejm.cut",
+    }
+  }
+end
+
+module FastlaneHelpers
+  module_function
+
+  def download_all_profiles(readonly, type, renew)
+    if renew
+      nuke_type = type == "appstore" ? "distribution" : type
+      sh "fastlane match nuke #{nuke_type} --skip_confirmation -a #{Config::TARGETS[:store][:app_identifier]}"
+    end
+
+    identifiers = Config::TARGETS.map { |k, v| v[:app_identifier] }
+    match(app_identifier: identifiers, readonly: readonly, type: type, shallow_clone: 1)
+  end
+end
+
+extend FastlaneHelpers
+
+platform :ios do
+  lane :download_all_dev_profiles do
+      download_all_profiles(true, "development", false)
+  end
+
+  lane :download_all_store_profiles do
+      download_all_profiles(true, "appstore", false)
+  end
+
+  lane :download_all_profiles do
+      download_all_dev_profiles
+      download_all_store_profiles
+  end
+
+  lane :renew_all_dev_profiles do
+      download_all_profiles(false, "development", true)
+  end
+
+  lane :renew_all_store_profiles do
+      download_all_profiles(false, "appstore", true)
+  end
+
+  lane :renew_all_profiles do
+      renew_all_dev_profiles
+      renew_all_store_profiles
+  end
+end
+
+
+# More information about multiple platforms in fastlane:
+# https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md

@@ -18,8 +18,8 @@
 		AF3EED361E68EBE000553D86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */; };
 		AF3EED381E68EC3900553D86 /* FilmTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED371E68EC3900553D86 /* FilmTVC.swift */; };
 		AF4139611EA0E04100F7AB8D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4139601EA0E04100F7AB8D /* UserCell.swift */; };
-		AF5317A71EA3F35900AB90B9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317A61EA3F35900AB90B9 /* R.generated.swift */; };
 		AF4292881EA0EE1A008D387C /* FollowUnfollowUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4292871EA0EE1A008D387C /* FollowUnfollowUser.swift */; };
+		AF5317A71EA3F35900AB90B9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317A61EA3F35900AB90B9 /* R.generated.swift */; };
 		AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5317A81EA3F44900AB90B9 /* Rswift.framework */; };
 		AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */; };
 		AF5317AD1EA4FDFF00AB90B9 /* GetRatedFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */; };
@@ -48,6 +48,7 @@
 		AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */; };
 		AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */; };
 		AFE548AE1E9C108300C99278 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AD1E9C108300C99278 /* ProfileVC.swift */; };
+		AFE6E33B1EB9196C000453D4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE6E33A1EB9196C000453D4 /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,8 +65,8 @@
 		AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF3EED371E68EC3900553D86 /* FilmTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmTVC.swift; sourceTree = "<group>"; };
 		AF4139601EA0E04100F7AB8D /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		AF5317A61EA3F35900AB90B9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		AF4292871EA0EE1A008D387C /* FollowUnfollowUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUnfollowUser.swift; sourceTree = "<group>"; };
+		AF5317A61EA3F35900AB90B9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		AF5317A81EA3F44900AB90B9 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateFilm.swift; sourceTree = "<group>"; };
 		AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRatedFilms.swift; sourceTree = "<group>"; };
@@ -94,6 +95,8 @@
 		AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmPosterLayout.swift; sourceTree = "<group>"; };
 		AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFilmToWatchList.swift; sourceTree = "<group>"; };
 		AFE548AD1E9C108300C99278 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		AFE6E3391EB918C6000453D4 /* Cut.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cut.entitlements; sourceTree = "<group>"; };
+		AFE6E33A1EB9196C000453D4 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,7 @@
 		AF3EED201E68E96100553D86 /* Cut */ = {
 			isa = PBXGroup;
 			children = (
+				AFE6E33A1EB9196C000453D4 /* StringExtensions.swift */,
 				AF3EED211E68E96100553D86 /* AppDelegate.swift */,
 				AF5317A61EA3F35900AB90B9 /* R.generated.swift */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
@@ -243,6 +247,7 @@
 		AFA9B24C1E9D82B10072401F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AFE6E3391EB918C6000453D4 /* Cut.entitlements */,
 				AF3EED351E68EBE000553D86 /* LaunchScreen.storyboard */,
 				AF3EED2D1E68E96100553D86 /* Info.plist */,
 			);
@@ -309,7 +314,13 @@
 				TargetAttributes = {
 					AF3EED1D1E68E96100553D86 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = X2TBSUCASC;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -392,6 +403,7 @@
 				AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */,
 				AF00B2091EA376C2009BF608 /* GetWatchList.swift in Sources */,
 				AF5317AD1EA4FDFF00AB90B9 /* GetRatedFilms.swift in Sources */,
+				AFE6E33B1EB9196C000453D4 /* StringExtensions.swift in Sources */,
 				AFE548AE1E9C108300C99278 /* ProfileVC.swift in Sources */,
 				AF3EED341E68E9B300553D86 /* Film.swift in Sources */,
 				AFBEB1B91E9E14240095D66E /* SearchVC.swift in Sources */,
@@ -523,14 +535,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cut/Cut.entitlements;
+				DEVELOPMENT_TEAM = X2TBSUCASC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Cut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.Cut;
+				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.cut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e7965bb4-eb2c-48c1-8d1d-6446052bb70a";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development io.kylejm.cut";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -539,14 +555,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cut/Cut.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = X2TBSUCASC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Cut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.Cut;
+				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.cut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "67b01d5d-f499-4120-a524-57b3ab501287";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore io.kylejm.cut";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
