@@ -26,6 +26,14 @@ class FilmTableCell: UITableViewCell {
     let stars: [Star] = {
         return (0..<5).map() { _ in Star(size: .full) }
     }()
+    var ratingActionView: UIView?
+    
+    let glasses: UIView = {
+        let glasses = UIView()
+        glasses.backgroundColor = .blue
+        return glasses
+    }()
+    var watchActionView: UIView?
     
     var film: Film? {
         didSet {
@@ -38,11 +46,9 @@ class FilmTableCell: UITableViewCell {
             textLabel.text = film.title
             posterImageView.kf.indicatorType = .activity
             posterImageView.kf.setImage(with: film.posterURL, placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil, completionHandler: nil)
-            backgroundColor = film.status == .wantToWatch ? .red : .white
+            backgroundColor = film.status.value == .wantToWatch ? .red : .white
         }
     }
-    
-    var starContainer: UIView?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         _textLabel = UILabel()
@@ -67,8 +73,6 @@ class FilmTableCell: UITableViewCell {
             Size(CGSize(width: 61, height: 91))
         ]
         
-        
-        
         panGesture.addTarget(self, action: #selector(pan(gesture:)))
         panGesture.delegate = self
         addGestureRecognizer(panGesture)
@@ -83,10 +87,13 @@ class FilmTableCell: UITableViewCell {
         
         switch gesture.state {
         case .began:
-            addStars()
+            addRatingActionView()
+            addWatchActionView()
             originalCenter = center
         case .changed:
-            guard let starContainer = starContainer else { return }
+            guard let ratingActionView = ratingActionView else { return }
+            guard let watchActionView = watchActionView else { return }
+            
             let translation = -gesture.translation(in: view).x
             let starPadding: CGFloat = 30
             for star in stars {
@@ -105,34 +112,79 @@ class FilmTableCell: UITableViewCell {
                     }
                 }()
             }
+            
             center = CGPoint(x: originalCenter.x - translation, y: originalCenter.y)
-            starContainer <- Width(translation)
+            
+            ratingActionView <- Width(translation)
+            
+            watchActionView <- Width(-translation)
+            
+            let fullColorThreshold = glasses.frame.origin.x + glasses.frame.width + 20
+            let glassesTranslationDifference = fullColorThreshold - -translation
+            let watchBackgroundColorAlpha: CGFloat = glassesTranslationDifference/(fullColorThreshold/100)
+            watchActionView.backgroundColor = UIColor.red.withAlphaComponent(watchBackgroundColorAlpha)
         case .ended:
             UIView.animate(withDuration: 0.3, animations: {
                 self.center = self.originalCenter
             }, completion: { finished in
                 guard finished else { return }
-                self.removeStars()
+                self.removeRatingActionView()
+                self.removeWatchActionView()
             })
+            
             
             guard let film = film else { return }
             let rating: Double = stars.reduce(0) { $0 + $1.size.value }
-            print(rating)
-            delegate?.rate(film: film, rating: rating)
+            if rating > 0 { delegate?.rate(film: film, rating: rating) }
         default:
             break
         }
     }
     
-    func addStars() {
-        guard self.starContainer == nil else { return }
+    func addWatchActionView() {
+        guard self.watchActionView == nil else { return }
         
-        let starContainer = UIView()
-        starContainer.clipsToBounds = true
+        let watchActionView = UIView()
+        watchActionView.clipsToBounds = true
+        watchActionView.backgroundColor = .red
+        
+        addSubview(watchActionView)
+        watchActionView.addSubview(glasses)
+        
+        watchActionView <- [
+            Trailing().to(self, .leading),
+            Top(),
+            Height().like(self),
+            Width(0)
+        ]
+        
+        glasses <- [
+            Leading(>=30),
+            Trailing(30).with(.low),
+            Height(50),
+            Width(50),
+            CenterY()
+        ]
+        
+        self.watchActionView = watchActionView
+    }
+    
+    func removeWatchActionView() {
+        guard let watchActionView = watchActionView else { return }
+        glasses.removeFromSuperview()
+        watchActionView.removeFromSuperview()
+        self.watchActionView = nil
+    }
+    
+    func addRatingActionView() {
+        guard self.ratingActionView == nil else { return }
+        
+        let ratingActionView = UIView()
+        ratingActionView.clipsToBounds = true
         
         var previousStar: Star?
         for star in stars {
-            starContainer.addSubview(star)
+            ratingActionView.addSubview(star)
             
             star <- [
                 CenterY(),
@@ -148,23 +200,23 @@ class FilmTableCell: UITableViewCell {
             previousStar = star
         }
         
-        addSubview(starContainer)
+        addSubview(ratingActionView)
         
-        starContainer <- [
+        ratingActionView <- [
             Leading().to(self, .trailing),
             Top(),
             Height().like(self),
             Width(0)
         ]
         
-        self.starContainer = starContainer
+        self.ratingActionView = ratingActionView
     }
     
-    func removeStars() {
-        guard let starContainer = self.starContainer else { return }
+    func removeRatingActionView() {
+        guard let ratingActionView = self.ratingActionView else { return }
         
-        starContainer.removeFromSuperview()
-        self.starContainer = nil
+        ratingActionView.removeFromSuperview()
+        self.ratingActionView = nil
     }
 }
 

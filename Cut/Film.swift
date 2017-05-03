@@ -12,24 +12,26 @@ import RxSwift
 class Film {
     let id: String
     let title: String
-    let synopsis: String
+    let synopsis: String?
     let posterURL: URL
     let runningTime: Int?
-    fileprivate(set) var status: FilmStatus?
-    let userRatingScore: Variable<Double?>
+    fileprivate(set) var status: Variable<FilmStatus?>
     
     required init(json: JsonType) throws {
         id = try json.parse(key: "id")
         title = try json.parse(key: "title")
-        synopsis = try json.parse(key: "synopsis")
         
         runningTime = json["running_time"] as? Int
+        synopsis = json["synopsis"] as? String
         
         let userRating = json["user_rating"] as? [AnyHashable : Any]
-        userRatingScore = Variable(userRating?["rating"] as? Double)
-        
-        let wantToWatch = json["want_to_watch"] as? Bool ?? false
-        status = wantToWatch ? .wantToWatch : nil
+        if let userRatingScore = userRating?["rating"] as? Double, let rating = Rating(rawValue: userRatingScore) {
+            status = Variable(.rated(rating))
+        } else if let wantToWatch = json["want_to_watch"] as? Bool, wantToWatch {
+            status = Variable(.wantToWatch)
+        } else {
+            status = Variable(nil)
+        }
         
         let posterUrlString: String = try json.parseDict(key: "posters").parseDict(key: "thumbnail").parse(key: "url")
         guard let posterURL = URL(string: posterUrlString) else { throw ParserError.couldNotParse }
@@ -38,7 +40,7 @@ class Film {
     
     func addToWatchList() -> Observable<AddFilmToWatchList.SuccessData> {
         return Observable.create { obserable in
-            guard self.status != .wantToWatch else {
+            guard self.status.value != .wantToWatch else {
                 obserable.on(.next(NoSuccessData()))
                 obserable.on(.completed)
                 return Disposables.create()
@@ -48,7 +50,7 @@ class Film {
             return observable.subscribe { [weak self] event in
                 switch event {
                 case .next(let success):
-                    self?.status = .wantToWatch
+                    self?.status.value = .wantToWatch
                     obserable.on(.next(success))
                 case .error(let error):
                     obserable.on(.error(error))
@@ -63,24 +65,30 @@ class Film {
 
 enum FilmStatus {
     case wantToWatch
-    case watched(Rating?)
+    case rated(Rating)
 }
 
 extension FilmStatus: Equatable {}
 func ==(lhs: FilmStatus, rhs: FilmStatus) -> Bool {
     switch (lhs, rhs) {
     case (.wantToWatch, .wantToWatch): return true
-    case let (.watched(lhsRating), .watched(rhsRating)): return lhsRating == rhsRating
+    case let (.rated(lhsRating), .rated(rhsRating)): return lhsRating == rhsRating
     default: return false
     }
 }
 
-enum Rating: Int {
-    case one
-    case two
-    case three
-    case four
-    case five
+enum Rating: Double, RawRepresentable {
+    case one = 1
+    case onePointFive = 1.5
+    case two = 2
+    case twoPointFive = 2.5
+    case three = 3
+    case threePointFive = 3.5
+    case four = 4
+    case fourPointFive = 4.5
+    case five = 5
+    
+    public typealias RawValue = Double
 }
 
 extension Film: JSONDecodeable {
