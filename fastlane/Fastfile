@@ -15,11 +15,16 @@ module FastlaneHelpers
   def download_all_profiles(readonly, type, renew)
     if renew
       nuke_type = type == "appstore" ? "distribution" : type
-      sh "fastlane match nuke #{nuke_type} --skip_confirmation -a #{Config::TARGETS[:store][:app_identifier]}"
+      sh "fastlane match nuke #{nuke_type} --skip_confirmation -a #{Config::TARGETS[:store][:app_identifier]} --git_full_name 'Fastlane Match' --git_user_email 'match@fastlane.tools'"
     end
 
     identifiers = Config::TARGETS.map { |k, v| v[:app_identifier] }
-    match(app_identifier: identifiers, readonly: readonly, type: type, shallow_clone: 1)
+    match(app_identifier: identifiers,
+          readonly: readonly,
+          type: type,
+          shallow_clone: 1,
+          git_full_name: 'Fastlane Match',
+          git_user_email: 'match@fastlane.tools')
   end
 end
 
@@ -50,6 +55,24 @@ platform :ios do
   lane :renew_all_profiles do
       renew_all_dev_profiles
       renew_all_store_profiles
+  end
+
+  lane :renew_push_certs do
+    Config::TARGETS.each do |k, v|
+      pem(
+        force: true,
+        development: true,
+        app_identifier: v[:app_identifier]
+      )
+
+      pem(
+        force: true,
+        development: false,
+        app_identifier: v[:app_identifier]
+      )
+
+      renew_all_profiles
+    end
   end
 end
 
