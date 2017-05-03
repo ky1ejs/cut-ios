@@ -46,6 +46,7 @@
 		AFCCA5C51E9C1176000B6102 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C41E9C1176000B6102 /* ProfileView.swift */; };
 		AFCCA5C71E9C118D000B6102 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C61E9C118D000B6102 /* User.swift */; };
 		AFDC63F31EB93F1C006195E8 /* CutEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */; };
+		AFDC63F51EB9C2C1006195E8 /* UploadPushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC63F41EB9C2C1006195E8 /* UploadPushToken.swift */; };
 		AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */; };
 		AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */; };
 		AFE548AE1E9C108300C99278 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AD1E9C108300C99278 /* ProfileVC.swift */; };
@@ -94,6 +95,7 @@
 		AFCCA5C41E9C1176000B6102 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AFCCA5C61E9C118D000B6102 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutEndpoints.swift; sourceTree = "<group>"; };
+		AFDC63F41EB9C2C1006195E8 /* UploadPushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPushToken.swift; sourceTree = "<group>"; };
 		AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmPosterLayout.swift; sourceTree = "<group>"; };
 		AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFilmToWatchList.swift; sourceTree = "<group>"; };
 		AFE548AD1E9C108300C99278 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				AFBEB1BC1E9FFBC50095D66E /* Search.swift */,
 				AFA9B2531E9D838B0072401F /* SignUp.swift */,
 				AF4292871EA0EE1A008D387C /* FollowUnfollowUser.swift */,
+				AFDC63F41EB9C2C1006195E8 /* UploadPushToken.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFA9B24F1E9D83270072401F /* ArrayResponse.swift in Sources */,
+				AFDC63F51EB9C2C1006195E8 /* UploadPushToken.swift in Sources */,
 				AF971AD51EA27AE1003A249E /* CollectionCellIdentifiable.swift in Sources */,
 				AF971AD31EA279EC003A249E /* FilmCollectionCell.swift in Sources */,
 				AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */,

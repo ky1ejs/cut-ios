@@ -61,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print(String(hexData: deviceToken))
+        _ = UploadPushToken(token: String(hexData: deviceToken)).call().subscribe()
     }
 }
 
