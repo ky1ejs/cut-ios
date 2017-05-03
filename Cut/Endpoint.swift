@@ -91,6 +91,10 @@ extension Endpoint {
             headers.forEach() { request.allHTTPHeaderFields?[$0] = $1 }
         }
         request.allHTTPHeaderFields?["device_id"] = UIDevice.current.cutID
+        #if DEBUG
+            request.allHTTPHeaderFields?["is_dev_device"] = "true"
+        #endif
+        
         
         print(request.allHTTPHeaderFields)
         
