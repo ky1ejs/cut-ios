@@ -12,5 +12,5 @@ struct GetUser {}
 
 extension GetUser: Endpoint {
     typealias SuccessData = User
-    var url: URL { return URL(string: "http://localhost:3000/v1/users")! }
+    var url: URL { return CutEndpoints.users }
 }

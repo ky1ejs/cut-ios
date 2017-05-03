@@ -12,5 +12,5 @@ struct GetWatchList {}
 
 extension GetWatchList: Endpoint {
     typealias SuccessData = ArrayResponse<Film>
-    var url: URL { return URL(string: "http://localhost:3000/v1/watch-list")! }
+    var url: URL { return CutEndpoints.watchList }
 }

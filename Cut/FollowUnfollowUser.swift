@@ -15,6 +15,6 @@ struct FollowUnfollowUser {
 
 extension FollowUnfollowUser: Endpoint {
     typealias SuccessData = NoSuccessData
-    var url: URL { return URL(string: "http://localhost:3000/v1/users/\(username)")! }
+    var url: URL { return CutEndpoints.users.appendingPathComponent(username) }
     var method: HTTPMethod { return follow ? .post : .delete }
 }

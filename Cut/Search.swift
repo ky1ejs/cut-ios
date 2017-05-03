@@ -14,7 +14,7 @@ struct Search {
 
 extension Search: Endpoint {
     typealias SuccessData = SearchResults
-    var url: URL { return URL(string: "http://localhost:3000/v1/search")! }
+    var url: URL { return CutEndpoints.search }
     var urlParams: [String : String] { return ["term" : term] }
 }
 

@@ -12,5 +12,5 @@ struct GetRatedFilms {}
 
 extension GetRatedFilms: Endpoint {
     typealias SuccessData = ArrayResponse<Film>
-    var url: URL { return URL(string: "http://localhost:3000/v1/ratings")! }
+    var url: URL { return CutEndpoints.ratings }
 }

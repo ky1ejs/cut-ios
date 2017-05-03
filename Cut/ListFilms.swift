@@ -12,5 +12,5 @@ struct ListFilms {}
 
 extension ListFilms: Endpoint {
     typealias SuccessData = ArrayResponse<Film>
-    var url: URL { return URL(string: "http://localhost:3000/v1/films")! }
+    var url: URL { return CutEndpoints.films }
 }
