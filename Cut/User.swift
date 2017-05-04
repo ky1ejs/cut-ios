@@ -21,7 +21,9 @@ class User: JSONDecodeable {
     required init(json: JsonType) throws {
         email = Variable(json["email"] as? String)
         username = Variable(json["username"] as? String)
-        following = Variable(try json.parse(key: "following"))
+        
+        let following = (json["following"] as? Bool) ?? false
+        self.following = Variable(following)
         
         profileImageURL = {
             if let imageUrl = json["profile_image"] as? String {
