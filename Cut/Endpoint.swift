@@ -90,21 +90,32 @@ extension Endpoint {
         if headers.count > 0 {
             headers.forEach() { request.allHTTPHeaderFields?[$0] = $1 }
         }
-        request.allHTTPHeaderFields?["device_id"] = UIDevice.current.cutID
+        request.allHTTPHeaderFields?["device-id"] = UIDevice.current.cutID
         #if DEBUG
             request.allHTTPHeaderFields?["is_dev_device"] = "true"
         #endif
         
         
         print(request.allHTTPHeaderFields)
-        
+
         return request
     }
     
     func call() -> Observable<SuccessData> {
         return Observable.create { observer in
             
+            #if DEBUG
+                print(self.request.allHTTPHeaderFields as Any)
+                print(self.body)
+            #endif
+            
             let task = URLSession.shared.dataTask(with: self.request) { (data, response, error) in
+                #if DEBUG
+                    print(response as Any)
+                    print(error)
+                    if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) { print(json) }
+                #endif
+                
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     observer.on(.error(RxError.unknown))
                     observer.on(.completed)
