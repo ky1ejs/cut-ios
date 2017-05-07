@@ -92,7 +92,7 @@ extension Endpoint {
         }
         request.allHTTPHeaderFields?["device-id"] = UIDevice.current.cutID
         #if DEBUG
-            request.allHTTPHeaderFields?["is_dev_device"] = "true"
+            request.allHTTPHeaderFields?["is-dev-device"] = "true"
         #endif
         
         
