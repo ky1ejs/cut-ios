@@ -119,9 +119,11 @@ class FilmTableCell: UITableViewCell {
             
             watchActionView <- Width(-translation)
             
-            let fullColorThreshold = glasses.frame.origin.x + glasses.frame.width + 20
-            let glassesTranslationDifference = fullColorThreshold - -translation
-            let watchBackgroundColorAlpha: CGFloat = glassesTranslationDifference/(fullColorThreshold/100)
+            let fullColorThreshold          = glasses.frame.origin.x + glasses.frame.width + 20
+            let distanceLeftToTravel        = fullColorThreshold - -translation
+            let distanceTravelled           = fullColorThreshold - distanceLeftToTravel
+            let watchBackgroundColorAlpha   = distanceTravelled / fullColorThreshold
+            
             watchActionView.backgroundColor = UIColor.red.withAlphaComponent(watchBackgroundColorAlpha)
         case .ended:
             UIView.animate(withDuration: 0.3, animations: {
