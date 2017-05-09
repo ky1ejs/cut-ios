@@ -17,5 +17,5 @@ extension RateFilm: Endpoint {
     typealias SuccessData = NoSuccessData
     var url: URL { return CutEndpoints.ratings }
     var body: [String : Any] { return ["film_id" : film.id, "rating" : rating] }
-    static var method: HTTPMethod { return .post }
+    var method: HTTPMethod { return .post }
 }
