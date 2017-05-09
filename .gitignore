@@ -41,3 +41,7 @@ fastlane/*.html
 
 ## R.swift https://github.com/mac-cain13/R.swift
 *.generated.swift
+
+*.pkey
+*.pem
+*.p12

@@ -553,10 +553,10 @@
 				);
 				INFOPLIST_FILE = Cut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.cut;
+				PRODUCT_BUNDLE_IDENTIFIER = watch.cut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e7965bb4-eb2c-48c1-8d1d-6446052bb70a";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development io.kylejm.cut";
+				PROVISIONING_PROFILE = "64c3d1d7-3e0e-45ce-bc0e-c13008b8b2ce";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development watch.cut";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -574,10 +574,10 @@
 				);
 				INFOPLIST_FILE = Cut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.cut;
+				PRODUCT_BUNDLE_IDENTIFIER = watch.cut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "67b01d5d-f499-4120-a524-57b3ab501287";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore io.kylejm.cut";
+				PROVISIONING_PROFILE = "a30fcc29-2666-4dab-9dc7-1c7657439c45";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore watch.cut";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

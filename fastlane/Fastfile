@@ -1,10 +1,9 @@
 default_platform :ios
 
 class Config
-  ITUNES_CONNECT_EMAIL = "k@kylejm.io".freeze
   TARGETS = {
     store: {
-      app_identifier: "io.kylejm.cut",
+      app_identifier: "watch.cut",
     }
   }
 end
