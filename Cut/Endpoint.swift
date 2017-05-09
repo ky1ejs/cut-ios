@@ -31,7 +31,6 @@ extension JSONDecodeable  {
         let json: JsonType = try {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
                 guard let expectedTypeJson = json as? JsonType else { throw ParserError.invalidJsonType }
                 return expectedTypeJson
             } catch let error {
@@ -77,7 +76,7 @@ extension Endpoint {
     
     private var request: URLRequest {
         var comps = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-        comps.queryItems = urlParams.map { URLQueryItem(name: $0, value: $1) }
+        comps.queryItems = urlParams.count > 0 ? urlParams.map { URLQueryItem(name: $0, value: $1) } : nil
         
         var request = URLRequest(url: comps.url!)
         request.httpMethod = method.rawValue
@@ -94,9 +93,6 @@ extension Endpoint {
         #if DEBUG
             request.allHTTPHeaderFields?["is-dev-device"] = "true"
         #endif
-        
-        
-        print(request.allHTTPHeaderFields)
 
         return request
     }
@@ -104,16 +100,16 @@ extension Endpoint {
     func call() -> Observable<SuccessData> {
         return Observable.create { observer in
             
-            #if DEBUG
-                print(self.request.allHTTPHeaderFields as Any)
-                print(self.body)
-            #endif
-            
             let task = URLSession.shared.dataTask(with: self.request) { (data, response, error) in
                 #if DEBUG
-                    print(response as Any)
-                    print(error)
+                    print("#########################################")
+                    print(self.url)
+                    print("Headers - \(self.request.allHTTPHeaderFields as Any)")
+                    print("Body    - \(self.body)")
+                    print(response ?? "No Response")
+                    print(error ?? "No Error")
                     if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) { print(json) }
+                    print("#########################################")
                 #endif
                 
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
