@@ -19,6 +19,11 @@
 		AF3EED381E68EC3900553D86 /* FilmTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED371E68EC3900553D86 /* FilmTVC.swift */; };
 		AF4139611EA0E04100F7AB8D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4139601EA0E04100F7AB8D /* UserCell.swift */; };
 		AF4292881EA0EE1A008D387C /* FollowUnfollowUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4292871EA0EE1A008D387C /* FollowUnfollowUser.swift */; };
+		AF449E4A1EC274B900053DAC /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF449E491EC274B900053DAC /* RatingView.swift */; };
+		AF449E4C1EC2753500053DAC /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF449E4B1EC2753500053DAC /* Rating.swift */; };
+		AF449E4E1EC2759F00053DAC /* RatingScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF449E4D1EC2759F00053DAC /* RatingScore.swift */; };
+		AF449E501EC275E500053DAC /* FIlmStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF449E4F1EC275E500053DAC /* FIlmStatus.swift */; };
+		AF449E521EC276CD00053DAC /* RatingSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF449E511EC276CD00053DAC /* RatingSource.swift */; };
 		AF5317A71EA3F35900AB90B9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317A61EA3F35900AB90B9 /* R.generated.swift */; };
 		AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5317A81EA3F44900AB90B9 /* Rswift.framework */; };
 		AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */; };
@@ -68,6 +73,11 @@
 		AF3EED371E68EC3900553D86 /* FilmTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmTVC.swift; sourceTree = "<group>"; };
 		AF4139601EA0E04100F7AB8D /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		AF4292871EA0EE1A008D387C /* FollowUnfollowUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUnfollowUser.swift; sourceTree = "<group>"; };
+		AF449E491EC274B900053DAC /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		AF449E4B1EC2753500053DAC /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		AF449E4D1EC2759F00053DAC /* RatingScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingScore.swift; sourceTree = "<group>"; };
+		AF449E4F1EC275E500053DAC /* FIlmStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIlmStatus.swift; sourceTree = "<group>"; };
+		AF449E511EC276CD00053DAC /* RatingSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingSource.swift; sourceTree = "<group>"; };
 		AF5317A61EA3F35900AB90B9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		AF5317A81EA3F44900AB90B9 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateFilm.swift; sourceTree = "<group>"; };
@@ -186,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				AFC304F41E85CCA60012515E /* FilmTableCell.swift */,
+				AF449E491EC274B900053DAC /* RatingView.swift */,
 				AF00B20A1EA3E5F4009BF608 /* Star.swift */,
 				AF4139601EA0E04100F7AB8D /* UserCell.swift */,
 			);
@@ -205,6 +216,10 @@
 		AFA9B2481E9D826E0072401F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AF449E4B1EC2753500053DAC /* Rating.swift */,
+				AF449E511EC276CD00053DAC /* RatingSource.swift */,
+				AF449E4D1EC2759F00053DAC /* RatingScore.swift */,
+				AF449E4F1EC275E500053DAC /* FIlmStatus.swift */,
 				AF3EED331E68E9B300553D86 /* Film.swift */,
 				AFA9B2411E9CABC90072401F /* UIDevice.swift */,
 				AFCCA5C61E9C118D000B6102 /* User.swift */,
@@ -406,6 +421,8 @@
 				AFA9B24F1E9D83270072401F /* ArrayResponse.swift in Sources */,
 				AFDC63F51EB9C2C1006195E8 /* UploadPushToken.swift in Sources */,
 				AF971AD51EA27AE1003A249E /* CollectionCellIdentifiable.swift in Sources */,
+				AF449E521EC276CD00053DAC /* RatingSource.swift in Sources */,
+				AF449E4A1EC274B900053DAC /* RatingView.swift in Sources */,
 				AF971AD31EA279EC003A249E /* FilmCollectionCell.swift in Sources */,
 				AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */,
 				AF00B2091EA376C2009BF608 /* GetWatchList.swift in Sources */,
@@ -413,6 +430,7 @@
 				AFE6E33B1EB9196C000453D4 /* StringExtensions.swift in Sources */,
 				AFE548AE1E9C108300C99278 /* ProfileVC.swift in Sources */,
 				AF3EED341E68E9B300553D86 /* Film.swift in Sources */,
+				AF449E501EC275E500053DAC /* FIlmStatus.swift in Sources */,
 				AFBEB1B91E9E14240095D66E /* SearchVC.swift in Sources */,
 				AFA9B2441E9CAC9A0072401F /* GetUser.swift in Sources */,
 				AFA9B2511E9D835A0072401F /* FilmFilter.swift in Sources */,
@@ -431,9 +449,11 @@
 				AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */,
 				AF4292881EA0EE1A008D387C /* FollowUnfollowUser.swift in Sources */,
 				AFC304F51E85CCA60012515E /* FilmTableCell.swift in Sources */,
+				AF449E4E1EC2759F00053DAC /* RatingScore.swift in Sources */,
 				AFA9B2461E9CB20F0072401F /* SignUpView.swift in Sources */,
 				AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */,
 				AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */,
+				AF449E4C1EC2753500053DAC /* Rating.swift in Sources */,
 				AFA9B2541E9D838B0072401F /* SignUp.swift in Sources */,
 				AF3EED381E68EC3900553D86 /* FilmTVC.swift in Sources */,
 				AF00B20B1EA3E5F4009BF608 /* Star.swift in Sources */,

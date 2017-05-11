@@ -20,6 +20,13 @@ class FilmTableCell: UITableViewCell {
     }
     var posterImageView: UIImageView
     
+    let ratingViews: [RatingSource : RatingView] = [
+        .cutUsers : RatingView(),
+        .rottenTomatoes : RatingView(),
+        .flixsterUsers : RatingView(),
+        .imdbUsers :RatingView()
+    ]
+    
     let panGesture = UIPanGestureRecognizer()
     var originalCenter = CGPoint.zero
     
@@ -37,6 +44,10 @@ class FilmTableCell: UITableViewCell {
     
     var film: Film? {
         didSet {
+            var ratingsBySource = [RatingSource : Rating]()
+            film?.ratings.forEach() { ratingsBySource[$0.source] = $0 }
+            ratingViews.forEach { $1.rating = ratingsBySource[$0] }
+            
             guard let film = film else {
                 textLabel.text = nil
                 posterImageView.image = nil
@@ -58,6 +69,25 @@ class FilmTableCell: UITableViewCell {
         
         contentView.addSubview(textLabel)
         contentView.addSubview(posterImageView)
+        
+        let orderedRatingViewSources: [RatingSource] = [.cutUsers, .rottenTomatoes, .flixsterUsers, .imdbUsers]
+        
+        var previousRatingView: RatingView?
+        for key in orderedRatingViewSources {
+            guard let view = ratingViews[key] else { continue }
+                
+            contentView.addSubview(view)
+            
+            view <- Bottom().to(posterImageView, .bottom)
+            
+            if let previousRatingView = previousRatingView {
+                view <- Leading(15).to(previousRatingView)
+            } else {
+                view <- Leading(60).to(posterImageView)
+            }
+            
+            previousRatingView = view
+        }
         
         textLabel <- [
             Leading(30).to(posterImageView),
