@@ -16,10 +16,10 @@ class ProfileVC: UIViewController {
     var userDisposeBag = DisposeBag()
     var user: User? {
         didSet {
+            userDisposeBag = DisposeBag() // Empties the bag by generating a new one
+            
             profileView.emailLabel.text = user?.email.value
             profileView.usernameLabel.text = user?.username.value
-            
-            userDisposeBag = DisposeBag()
             
             _ = user?.username
                 .asObservable()
@@ -40,6 +40,10 @@ class ProfileVC: UIViewController {
         title = "Profile"
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = profileView
     }
@@ -50,22 +54,29 @@ class ProfileVC: UIViewController {
         profileView.watchListCollectionView.register(cellClass: FilmCollectionCell.self)
         profileView.ratedCollectionView.register(cellClass: FilmCollectionCell.self)
         
-//        _ = GetWatchList().call()
-//            .bindTo(profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
-//                cell.film = film
-//        }
+        _ = GetWatchList()
+            .call()
+            .takeUntil(rx.deallocated)
+            .bindTo(profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
+                cell.film = film
+        }
         
-        _ = GetRatedFilms().call()
+        _ = GetRatedFilms()
+            .call()
+            .takeUntil(rx.deallocated)
             .bindTo(profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
                 cell.film = film
         }
         
-        _ = GetUser().call().observeOn(MainScheduler.instance).subscribe { [weak self] event in
+        _ = GetUser()
+            .call()
+            .takeUntil(rx.deallocated)
+            .observeOn(MainScheduler.instance)
+            .subscribe { [weak self] event in
             switch event {
             case .next(let user):
                 self?.user = user
                 if !user.isFullUser {
-                    print(Thread.current.isMainThread)
                     self?.present(SignUpVC(user: user), animated: true)
                 }
             case .error(let error):
@@ -74,9 +85,5 @@ class ProfileVC: UIViewController {
                 break
             }
         }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
