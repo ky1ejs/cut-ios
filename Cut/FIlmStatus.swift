@@ -11,6 +11,13 @@ import Foundation
 enum FilmStatus {
     case wantToWatch
     case rated(RatingScore)
+    
+    var ratingScore: RatingScore? {
+        switch self {
+        case .rated(let score): return score
+        default:                return nil
+        }
+    }
 }
 
 extension FilmStatus: Equatable {}

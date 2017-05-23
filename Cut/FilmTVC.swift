@@ -35,11 +35,10 @@ class FilmTVC: UITableViewController {
             .itemSelected
             .takeUntil(self.rx.deallocated)
             .subscribe(onNext: { [weak self] indexPath in
-                assert(Thread.isMainThread)
                 guard let safeSelf = self else { return }
-                guard let cell = safeSelf.tableView.cellForRow(at: indexPath) else { return }
-                print(cell.textLabel?.text ?? "")
-                safeSelf.tableView.deselectRow(at: indexPath, animated: true)
+                guard let cell = safeSelf.tableView.cellForRow(at: indexPath) as? FilmTableCell else { return }
+                guard let film = cell.film else { return }
+                safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
         })
     }
     

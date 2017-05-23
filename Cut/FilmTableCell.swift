@@ -56,7 +56,7 @@ class FilmTableCell: UITableViewCell {
             
             textLabel.text = film.title
             posterImageView.kf.indicatorType = .activity
-            posterImageView.kf.setImage(with: film.posterURL, placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil, completionHandler: nil)
+            posterImageView.kf.setImage(with: film.thumbnailImageURL, placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil, completionHandler: nil)
             backgroundColor = film.status.value == .wantToWatch ? .red : .white
         }
     }

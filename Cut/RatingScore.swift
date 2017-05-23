@@ -9,6 +9,7 @@
 import Foundation
 
 enum RatingScore: Double, RawRepresentable {
+    case pointFive = 0.5
     case one = 1
     case onePointFive = 1.5
     case two = 2

@@ -13,7 +13,9 @@ class Film {
     let id: String
     let title: String
     let synopsis: String?
-    let posterURL: URL
+    let thumbnailImageURL: URL
+    let profileImageURL: URL
+    let heroImageURL: URL
     let runningTime: Int?
     let ratings: [Rating]
     fileprivate(set) var status: Variable<FilmStatus?>
@@ -36,9 +38,18 @@ class Film {
         
         ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.flatMap(Rating.init) ?? [Rating]()
         
-        let posterUrlString: String = try json.parseDict(key: "posters").parseDict(key: "thumbnail").parse(key: "url")
-        guard let posterURL = URL(string: posterUrlString) else { throw ParserError.couldNotParse }
-        self.posterURL = posterURL
+        let posters = try json.parseDict(key: "posters")
+        let thumbnailUrlString: String = try posters.parseDict(key: "thumbnail").parse(key: "url")
+        let profileUrlString: String = try posters.parseDict(key: "profile").parse(key: "url")
+        let heroUrlString: String = try posters.parseDict(key: "hero").parse(key: "url")
+        
+        guard let thumbnailUrl = URL(string: thumbnailUrlString) else { throw ParserError.couldNotParse }
+        guard let profileUrl = URL(string: profileUrlString) else { throw ParserError.couldNotParse }
+        guard let heroImageURL = URL(string: heroUrlString) else { throw ParserError.couldNotParse }
+        
+        self.thumbnailImageURL = thumbnailUrl
+        self.profileImageURL = profileUrl
+        self.heroImageURL = heroImageURL
     }
     
     func addToWatchList() -> Observable<AddFilmToWatchList.SuccessData> {

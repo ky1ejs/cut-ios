@@ -13,7 +13,7 @@ import Kingfisher
 class FilmCollectionCell: UICollectionViewCell {
     var film: Film? {
         didSet {
-            posterImageView.kf.setImage(with: film?.posterURL)
+            posterImageView.kf.setImage(with: film?.profileImageURL)
         }
     }
     
