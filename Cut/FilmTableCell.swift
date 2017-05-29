@@ -11,13 +11,12 @@ import Kingfisher
 import EasyPeasy
 
 class FilmTableCell: UITableViewCell {
-    weak var delegate: FilmTableCellDelegate?
-    
     fileprivate var _textLabel: UILabel
     override var textLabel: UILabel {
         get { return _textLabel }
         set { _textLabel = newValue }
     }
+    let releaseDateLabel = UILabel()
     var posterImageView: UIImageView
     
     let ratingViews: [RatingSource : RatingView] = [
@@ -51,6 +50,7 @@ class FilmTableCell: UITableViewCell {
             guard let film = film else {
                 textLabel.text = nil
                 posterImageView.image = nil
+                releaseDateLabel.text = nil
                 return
             }
             
@@ -58,6 +58,7 @@ class FilmTableCell: UITableViewCell {
             posterImageView.kf.indicatorType = .activity
             posterImageView.kf.setImage(with: film.thumbnailImageURL, placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil, completionHandler: nil)
             backgroundColor = film.status.value == .wantToWatch ? .red : .white
+            releaseDateLabel.text = film.relativeTheaterReleaseDate
         }
     }
     
@@ -67,7 +68,11 @@ class FilmTableCell: UITableViewCell {
         
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         
+        releaseDateLabel.textColor = .gray
+        releaseDateLabel.font = .systemFont(ofSize: 10)
+        
         contentView.addSubview(textLabel)
+        contentView.addSubview(releaseDateLabel)
         contentView.addSubview(posterImageView)
         
         let orderedRatingViewSources: [RatingSource] = [.cutUsers, .rottenTomatoes, .flixsterUsers, .imdbUsers]
@@ -90,10 +95,15 @@ class FilmTableCell: UITableViewCell {
         }
         
         textLabel <- [
+            Bottom(2).to(self, .centerY),
             Leading(30).to(posterImageView),
-            CenterY(),
-            Bottom(>=20),
             Trailing(5)
+        ]
+        
+        releaseDateLabel <- [
+            Top(2).to(self, .centerY),
+            Top(5).to(textLabel),
+            Leading().to(textLabel, .leading)
         ]
         
         posterImageView <- [

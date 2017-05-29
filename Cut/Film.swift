@@ -10,14 +10,17 @@ import Foundation
 import RxSwift
 
 class Film {
-    let id: String
-    let title: String
-    let synopsis: String?
-    let thumbnailImageURL: URL
-    let profileImageURL: URL
-    let heroImageURL: URL
-    let runningTime: Int?
-    let ratings: [Rating]
+    let id:                             String
+    let title:                          String
+    let synopsis:                       String?
+    let thumbnailImageURL:              URL
+    let profileImageURL:                URL
+    let heroImageURL:                   URL
+    let runningTime:                    Int?
+    let ratings:                        [Rating]
+    let theaterReleaseDate:             Date?
+    let relativeTheaterReleaseDate:    String?
+    
     fileprivate(set) var status: Variable<FilmStatus?>
     
     required init(json: JsonType) throws {
@@ -35,6 +38,16 @@ class Film {
         } else {
             status = Variable(nil)
         }
+        
+        if let releaseDateString = json["theater_release_date"] as? String {
+            let df = DateFormatter()
+            df.locale = Locale(identifier: "en_US_POSIX")
+            df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            theaterReleaseDate = df.date(from: releaseDateString)
+        } else {
+            theaterReleaseDate = nil
+        }
+        relativeTheaterReleaseDate = json["relative_theater_release_date"] as? String
         
         ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.flatMap(Rating.init) ?? [Rating]()
         
