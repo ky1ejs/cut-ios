@@ -47,6 +47,16 @@ class SearchVC: UIViewController {
             .subscribe(onNext: { showFilms in
                 self.searchView.filmTableView.isHidden = !showFilms
             })
+        
+        _ = searchView.filmTableView.rx
+            .itemSelected
+            .takeUntil(self.rx.deallocated)
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let safeSelf = self else { return }
+                guard let cell = safeSelf.searchView.filmTableView.cellForRow(at: indexPath) as? FilmTableCell else { return }
+                guard let film = cell.film else { return }
+                safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
+            })
     }
     
     required init?(coder aDecoder: NSCoder) {
