@@ -34,7 +34,7 @@ class UserRatingView: UIView {
             for i in 0...ceilRating {
                 let star = stars[i]
                 if i == ceilRating && rating.rawValue > Double(ceilRating) - 1 {
-                    star.image = R.image.halfStar()
+                    star.image = R.image.halfStarLeft()
                 } else {
                     star.image = R.image.fullStar()
                 }

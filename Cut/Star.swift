@@ -9,18 +9,22 @@
 import UIKit
 import EasyPeasy
 
+enum StarHalfSide {
+    case right
+    case left
+    
+    var image: UIImage {
+        switch self {
+        case .left: return R.image.halfStarLeft()!
+        case .right: return R.image.halfStarRight()!
+        }
+    }
+}
+
 enum StarSize {
     case empty
     case half
     case full
-    
-    var image: UIImage {
-        switch self {
-        case .empty: return R.image.emptyStar()!
-        case .half: return R.image.halfStar()!
-        case .full: return R.image.fullStar()!
-        }
-    }
     
     var value: Double {
         switch self {
@@ -29,12 +33,20 @@ enum StarSize {
         case .full: return 1
         }
     }
+    
+    func image(halfDirection: StarHalfSide = .left) -> UIImage {
+        switch self {
+        case .empty:    return R.image.emptyStar()!
+        case .half:     return halfDirection.image
+        case .full:     return R.image.fullStar()!
+        }
+    }
 }
 
 class Star: UIView {
     var size: StarSize {
         didSet {
-            imageView.image = size.image
+            imageView.image = size.image()
         }
     }
     private let imageView = UIImageView()
@@ -44,7 +56,7 @@ class Star: UIView {
         
         super.init(frame: .zero)
         
-        imageView.image = size.image
+        imageView.image = size.image()
         addSubview(imageView)
         
         imageView <- [

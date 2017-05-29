@@ -134,12 +134,12 @@ class FilmTableCell: UITableViewCell {
             guard let ratingActionView = ratingActionView else { return }
             guard let watchActionView = watchActionView else { return }
             
-            let translation = -gesture.translation(in: view).x
-            let starPadding: CGFloat = 30
+            let translation = gesture.translation(in: view).x
+            let starPadding: CGFloat = 10
             for star in stars {
-                let starOriginX = translation - star.frame.origin.x
-                let halfThreshold = starOriginX - (star.frame.width / 2) + starPadding
-                let fullThreshold = starOriginX + starPadding
+                let starEndX = star.frame.origin.x + star.frame.width
+                let halfThreshold = starEndX - (star.frame.width / 2) + starPadding
+                let fullThreshold = starEndX + starPadding
                 
                 star.size = {
                     switch translation {
@@ -153,10 +153,9 @@ class FilmTableCell: UITableViewCell {
                 }()
             }
             
-            center = CGPoint(x: originalCenter.x - translation, y: originalCenter.y)
+            center = CGPoint(x: originalCenter.x + translation, y: originalCenter.y)
             
             ratingActionView <- Width(translation)
-            
             watchActionView <- Width(-translation)
             
             let fullColorThreshold          = glasses.frame.origin.x + glasses.frame.width + 20
@@ -173,7 +172,6 @@ class FilmTableCell: UITableViewCell {
                 self.removeRatingActionView()
                 self.removeWatchActionView()
             })
-            
             
             guard let film = film else { return }
             let rating: Double = stars.reduce(0) { $0 + $1.size.value }
@@ -194,15 +192,15 @@ class FilmTableCell: UITableViewCell {
         watchActionView.addSubview(glasses)
         
         watchActionView <- [
-            Trailing().to(self, .leading),
+            Leading().to(self, .trailing),
             Top(),
             Height().like(self),
             Width(0)
         ]
         
         glasses <- [
-            Leading(>=30),
-            Trailing(30).with(.low),
+            Trailing(>=30),
+            Leading(30).with(.low),
             Height(50),
             Width(50),
             CenterY()
@@ -234,9 +232,9 @@ class FilmTableCell: UITableViewCell {
             ]
             
             if let previousStar = previousStar {
-                star <- Trailing(15).to(previousStar)
+                star <- Leading(15).to(previousStar)
             } else {
-                star <- Trailing(20)
+                star <- Leading(20)
             }
             
             previousStar = star
@@ -245,7 +243,7 @@ class FilmTableCell: UITableViewCell {
         addSubview(ratingActionView)
         
         ratingActionView <- [
-            Leading().to(self, .trailing),
+            Trailing().to(self, .leading),
             Top(),
             Height().like(self),
             Width(0)
