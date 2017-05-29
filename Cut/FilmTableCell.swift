@@ -177,7 +177,7 @@ class FilmTableCell: UITableViewCell {
             
             guard let film = film else { return }
             let rating: Double = stars.reduce(0) { $0 + $1.size.value }
-            if rating > 0 { delegate?.rate(film: film, rating: rating) }
+            if rating > 0 { _ = RateFilm(film: film, rating: rating).call().subscribe() }
         default:
             break
         }
@@ -269,8 +269,4 @@ extension FilmTableCell { // UIGestureRecognizerDelegate
         let translation = pan.translation(in: view)
         return abs(translation.y) <= abs(translation.x)
     }
-}
-
-protocol FilmTableCellDelegate: class {
-    func rate(film: Film, rating: Double)
 }
