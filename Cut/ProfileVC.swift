@@ -54,20 +54,6 @@ class ProfileVC: UIViewController {
         profileView.watchListCollectionView.register(cellClass: FilmCollectionCell.self)
         profileView.ratedCollectionView.register(cellClass: FilmCollectionCell.self)
         
-        _ = GetWatchList()
-            .call()
-            .takeUntil(rx.deallocated)
-            .bindTo(profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
-                cell.film = film
-        }
-        
-        _ = GetRatedFilms()
-            .call()
-            .takeUntil(rx.deallocated)
-            .bindTo(profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
-                cell.film = film
-        }
-        
         _ = GetUser()
             .call()
             .takeUntil(rx.deallocated)
@@ -84,6 +70,34 @@ class ProfileVC: UIViewController {
             case .completed:
                 break
             }
+        }
+        
+        _ = profileView.watchListCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
+            guard let safeSelf = self else { return }
+            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
+        })
+        
+        _ = profileView.ratedCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
+            guard let safeSelf = self else { return }
+            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        _ = GetWatchList()
+            .call()
+            .takeUntil(rx.deallocated)
+            .bindTo(profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
+                cell.film = film
+        }
+        
+        _ = GetRatedFilms()
+            .call()
+            .takeUntil(rx.deallocated)
+            .bindTo(profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
+                cell.film = film
         }
     }
 }
