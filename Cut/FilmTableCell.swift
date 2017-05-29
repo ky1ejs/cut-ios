@@ -124,6 +124,7 @@ class FilmTableCell: UITableViewCell {
     
     func pan(gesture: UIPanGestureRecognizer) {
         guard let view = gesture.view else { return }
+        let translation = gesture.translation(in: view).x
         
         switch gesture.state {
         case .began:
@@ -134,7 +135,6 @@ class FilmTableCell: UITableViewCell {
             guard let ratingActionView = ratingActionView else { return }
             guard let watchActionView = watchActionView else { return }
             
-            let translation = gesture.translation(in: view).x
             let starPadding: CGFloat = 10
             for star in stars {
                 let starEndX = star.frame.origin.x + star.frame.width
@@ -174,8 +174,16 @@ class FilmTableCell: UITableViewCell {
             })
             
             guard let film = film else { return }
-            let rating: Double = stars.reduce(0) { $0 + $1.size.value }
-            if rating > 0 { _ = RateFilm(film: film, rating: rating).call().subscribe() }
+            
+            if translation > 0 {
+                let rating: Double = stars.reduce(0) { $0 + $1.size.value }
+                if rating > 0 { _ = RateFilm(film: film, rating: rating).call().subscribe() }
+            } else {
+                guard let bgColor = watchActionView?.backgroundColor else { return }
+                let alpha = bgColor.cgColor.alpha
+                guard alpha >= 1 else { return }
+                _ = AddFilmToWatchList(film: film).call().subscribe()
+            }
         default:
             break
         }
