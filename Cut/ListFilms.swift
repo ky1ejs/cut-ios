@@ -8,9 +8,14 @@
 
 import UIKit
 
-struct ListFilms {}
+struct ListFilms {
+    let filter: FilmFilter
+    init()                      { filter = .inTheaters }
+    init(filter: FilmFilter)    { self.filter = filter }
+}
 
 extension ListFilms: Endpoint {
     typealias SuccessData = ArrayResponse<Film>
+    var urlParams: [String : String] { return ["filter" : filter.rawValue] }
     var url: URL { return CutEndpoints.films }
 }

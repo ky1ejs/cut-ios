@@ -9,19 +9,21 @@
 import Foundation
 
 enum FilmFilter: String {
-    case popular = "popular"
-    case topBoxOffice = "top-box-office"
-    case upcoming = "theater-upcoming"
-    case newDvdReleases = "new-release-dvds"
+    case inTheaters         = "in-theaters"
+    case releasingSoon      = "releasing-soon"
+    case hotRightNow        = "hot-right-now"
+    case newStoreReleases   = "new-store-releases"
+    case topRatedAllTime    = "top-rated-all-time"
 }
 
 extension FilmFilter: CustomStringConvertible {
     var description: String {
         switch self {
-        case .popular:          return "In Theaters"
-        case .topBoxOffice:     return "Top Box Office"
-        case .upcoming:         return "Upcoming"
-        case .newDvdReleases:   return "DVDs"
+        case .inTheaters:       return "In Theaters"
+        case .releasingSoon:    return "Releasing Soon"
+        case .hotRightNow:      return "Hot Right Now"
+        case .newStoreReleases: return "New Store Releases"
+        case .topRatedAllTime:  return "Top Rated All Time"
         }
     }
 }
