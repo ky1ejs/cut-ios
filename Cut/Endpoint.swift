@@ -55,6 +55,7 @@ protocol Endpoint {
     var body: [String : Any] { get }
     var headers: [String : String] { get }
     var method: HTTPMethod { get }
+    var onSuccess: () -> () { get }
 }
 
 enum ParserError: Error {
@@ -73,6 +74,7 @@ extension Endpoint {
     var body: [String : Any] { return [:] }
     var headers: [String : String] { return [:] }
     var method: HTTPMethod { return .get }
+    var onSuccess: () -> () { return {} }
     
     private var request: URLRequest {
         var comps = URLComponents(url: url, resolvingAgainstBaseURL: false)!
@@ -121,6 +123,7 @@ extension Endpoint {
                 do {
                     let params = NSURLSessionCompletionHandlerParams(response: response, data: data, error: error)
                     let data = try SuccessData(responseParams: params)
+                    self.onSuccess()
                     observer.on(.next(data))
                     observer.on(.completed)
                 } catch let error {

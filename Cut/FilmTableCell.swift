@@ -163,7 +163,8 @@ class FilmTableCell: UITableViewCell {
             let distanceTravelled           = fullColorThreshold - distanceLeftToTravel
             let watchBackgroundColorAlpha   = distanceTravelled / fullColorThreshold
             
-            watchActionView.backgroundColor = UIColor.red.withAlphaComponent(watchBackgroundColorAlpha)
+            let color: UIColor = film?.status.value == nil ? .green : .red
+            watchActionView.backgroundColor = color.withAlphaComponent(watchBackgroundColorAlpha)
         case .ended:
             UIView.animate(withDuration: 0.3, animations: {
                 self.center = self.originalCenter
@@ -182,7 +183,7 @@ class FilmTableCell: UITableViewCell {
                 guard let bgColor = watchActionView?.backgroundColor else { return }
                 let alpha = bgColor.cgColor.alpha
                 guard alpha >= 1 else { return }
-                _ = AddFilmToWatchList(film: film).call().subscribe()
+                _ = AddFilmToWatchList(film: film, delete: film.status.value != nil).call().subscribe()
             }
         default:
             break

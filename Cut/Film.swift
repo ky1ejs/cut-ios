@@ -19,7 +19,7 @@ class Film {
     let runningTime:                    Int?
     let ratings:                        [Rating]
     let theaterReleaseDate:             Date?
-    let relativeTheaterReleaseDate:    String?
+    let relativeTheaterReleaseDate:     String?
     
     fileprivate(set) var status: Variable<FilmStatus?>
     
