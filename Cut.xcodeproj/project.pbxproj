@@ -356,6 +356,7 @@
 					AF3EED1D1E68E96100553D86 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = X2TBSUCASC;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -613,7 +614,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "64c3d1d7-3e0e-45ce-bc0e-c13008b8b2ce";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development watch.cut";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -634,7 +636,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a30fcc29-2666-4dab-9dc7-1c7657439c45";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore watch.cut";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
