@@ -51,7 +51,6 @@
 		AFC304F51E85CCA60012515E /* FilmTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC304F41E85CCA60012515E /* FilmTableCell.swift */; };
 		AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */; };
 		AFC304F91E85D1EE0012515E /* EasyPeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304F81E85D1EE0012515E /* EasyPeasy.framework */; };
-		AFC304FB1E85E95F0012515E /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */; };
 		AFCCA5C51E9C1176000B6102 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C41E9C1176000B6102 /* ProfileView.swift */; };
 		AFCCA5C71E9C118D000B6102 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C61E9C118D000B6102 /* User.swift */; };
 		AFDC63F31EB93F1C006195E8 /* CutEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */; };
@@ -109,7 +108,6 @@
 		AFC304F41E85CCA60012515E /* FilmTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmTableCell.swift; sourceTree = "<group>"; };
 		AFC304F61E85D0580012515E /* TableCellIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellIdentifiable.swift; sourceTree = "<group>"; };
 		AFC304F81E85D1EE0012515E /* EasyPeasy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyPeasy.framework; path = Carthage/Build/iOS/EasyPeasy.framework; sourceTree = "<group>"; };
-		AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		AFCCA5C41E9C1176000B6102 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AFCCA5C61E9C118D000B6102 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutEndpoints.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 			files = (
 				AF8FDA631E99775D00D5DEA2 /* KeychainAccess.framework in Frameworks */,
 				AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */,
-				AFC304FB1E85E95F0012515E /* SwipeCellKit.framework in Frameworks */,
 				AFC304F31E85CB9E0012515E /* Kingfisher.framework in Frameworks */,
 				AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */,
 				AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */,
@@ -144,7 +141,6 @@
 			children = (
 				AF5317A81EA3F44900AB90B9 /* Rswift.framework */,
 				AF8FDA621E99775D00D5DEA2 /* KeychainAccess.framework */,
-				AFC304FA1E85E95F0012515E /* SwipeCellKit.framework */,
 				AFC304F81E85D1EE0012515E /* EasyPeasy.framework */,
 				AFC304F21E85CB9E0012515E /* Kingfisher.framework */,
 				AF168E0D1E8483B00033CEEF /* RxCocoa.framework */,
@@ -407,7 +403,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EasyPeasy.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwipeCellKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 			);
