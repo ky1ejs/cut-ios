@@ -12,14 +12,24 @@ module FastlaneHelpers
   module_function
 
   def download_all_profiles(readonly, type, renew)
-    if renew
-      nuke_type = type == "appstore" ? "distribution" : type
-      sh "fastlane match nuke #{nuke_type} --skip_confirmation -a #{Config::TARGETS[:store][:app_identifier]} --git_full_name 'Fastlane Match' --git_user_email 'match@fastlane.tools'"
-    end
-
     identifiers = Config::TARGETS.map { |k, v| v[:app_identifier] }
     match(app_identifier: identifiers,
           readonly: readonly,
+          type: type,
+          shallow_clone: 1,
+          git_full_name: 'Fastlane Match',
+          git_user_email: 'match@fastlane.tools',
+          force: renew)
+  end
+
+  def renew_certificates(type)
+    nuke_type = type == "appstore" ? "distribution" : type
+    sh "fastlane match nuke #{nuke_type} --skip_confirmation -a #{Config::TARGETS[:store][:app_identifier]} --git_full_name 'Fastlane Match' --git_user_email 'match@fastlane.tools'"
+
+    # renew all profiles too since they'll be invalid now
+    identifiers = Config::TARGETS.map { |k, v| v[:app_identifier] }
+    match(app_identifier: identifiers,
+          readonly: false,
           type: type,
           shallow_clone: 1,
           git_full_name: 'Fastlane Match',
@@ -30,6 +40,17 @@ end
 extend FastlaneHelpers
 
 platform :ios do
+  lane :renew_certificates do
+    puts ''
+    puts '##################################'
+    puts 'WARNING - All profiles and certificates are going to be removed (except push certs)'
+    puts '##################################'
+    puts ''
+
+    renew_certificates("development")
+    renew_certificates("appstore")
+  end
+
   lane :download_all_dev_profiles do
       download_all_profiles(true, "development", false)
   end
@@ -69,7 +90,6 @@ platform :ios do
         development: false,
         app_identifier: v[:app_identifier]
       )
-
       renew_all_profiles
     end
   end
