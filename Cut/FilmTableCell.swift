@@ -45,7 +45,7 @@ class FilmTableCell: UITableViewCell {
         didSet {
             var ratingsBySource = [RatingSource : Rating]()
             film?.ratings.forEach() { ratingsBySource[$0.source] = $0 }
-            ratingViews.forEach { $1.rating = ratingsBySource[$0] }
+            ratingViews.forEach { $0.value.rating = ratingsBySource[$0.key] }
             
             guard let film = film else {
                 textLabel.text = nil
@@ -122,7 +122,7 @@ class FilmTableCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func pan(gesture: UIPanGestureRecognizer) {
+    @objc func pan(gesture: UIPanGestureRecognizer) {
         guard let view = gesture.view else { return }
         let translation = gesture.translation(in: view).x
         
@@ -183,7 +183,8 @@ class FilmTableCell: UITableViewCell {
                 guard let bgColor = watchActionView?.backgroundColor else { return }
                 let alpha = bgColor.cgColor.alpha
                 guard alpha >= 1 else { return }
-                _ = AddFilmToWatchList(film: film, delete: film.status.value != nil).call().subscribe()
+                let action: WatchListAction = film.status.value == nil ? .add : .remove
+                _ = AddFilmToWatchList(film: film, action: action).call().subscribe()
             }
         default:
             break

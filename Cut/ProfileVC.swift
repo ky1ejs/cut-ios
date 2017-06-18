@@ -24,13 +24,13 @@ class ProfileVC: UIViewController {
             _ = user?.username
                 .asObservable()
                 .takeUntil(rx.deallocated)
-                .bindTo(profileView.usernameLabel.rx.text)
+                .bind(to: profileView.usernameLabel.rx.text)
                 .disposed(by: userDisposeBag)
                 
             _ = user?.email
                 .asObservable()
                 .takeUntil(rx.deallocated)
-                .bindTo(profileView.emailLabel.rx.text)
+                .bind(to: profileView.emailLabel.rx.text)
                 .disposed(by: userDisposeBag)
         }
     }
@@ -89,14 +89,14 @@ class ProfileVC: UIViewController {
         _ = GetWatchList()
             .call()
             .takeUntil(rx.deallocated)
-            .bindTo(profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
+            .bind(to: profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
                 cell.film = film
         }
         
         _ = GetRatedFilms()
             .call()
             .takeUntil(rx.deallocated)
-            .bindTo(profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
+            .bind(to: profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
                 cell.film = film
         }
     }

@@ -47,7 +47,7 @@ class FilmTVC: UITableViewController {
         _ = ListFilms()
             .call()
             .takeUntil(rx.deallocated)
-            .bindTo(tableView.rx.items(cellIdentifier: FilmTableCell.reuseIdentifier, cellType: FilmTableCell.self)) { (index, film, cell) in
+            .bind(to: tableView.rx.items(cellIdentifier: FilmTableCell.reuseIdentifier, cellType: FilmTableCell.self)) { (index, film, cell) in
                 assert(Thread.isMainThread)
                 cell.film = film
         }

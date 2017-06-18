@@ -1,5 +1,5 @@
-github "ReactiveX/RxSwift" ~> 3.0
-github "onevcat/Kingfisher"
-github "nakiostudio/EasyPeasy"
-github "kishikawakatsumi/KeychainAccess"
-github "mac-cain13/R.swift.Library"
+github "volodg/RxSwift" "swift4"
+github "onevcat/Kingfisher" "swift4"
+github "muukii/EasyPeasy" "muukii/fix-swift4"
+github "kylejm/KeychainAccess" "swift4"
+github "mac-cain13/R.swift.Library" "release/4.0"

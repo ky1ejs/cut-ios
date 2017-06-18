@@ -28,7 +28,7 @@ class ProfileView: UIView {
         _ = segmentedControl
             .rx
             .controlEvent(.valueChanged)
-            .map() { self.segmentedControl.selectedSegmentIndex == 0 }
+            .map() { _ in self.segmentedControl.selectedSegmentIndex == 0 }
             .subscribe(onNext: { showWatchList in
                 self.watchListCollectionView.isHidden = !showWatchList
         })

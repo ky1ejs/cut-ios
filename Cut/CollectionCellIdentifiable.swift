@@ -30,7 +30,7 @@ extension UICollectionView {
 }
 
 extension Reactive where Base == UICollectionView {
-    func items<S, Cell: CollectionCellIdentifiable, O>(cellClass klass: Cell.Type) -> (O) -> (@escaping (Int, S.Iterator.Element, Cell) -> Swift.Void) -> Disposable where S : Sequence, Cell : UICollectionViewCell, O : ObservableType, O.E == S {
+    func items<S, Cell, O>(cellClass klass: Cell.Type) -> (O) -> (@escaping (Int, S.Iterator.Element, Cell) -> Swift.Void) -> Disposable where S : Sequence, Cell : UICollectionViewCell, O : ObservableType, O.E == S {
         return items(cellIdentifier: klass.reuseIdentifier, cellType: klass)
     }
 }

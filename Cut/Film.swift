@@ -73,7 +73,7 @@ class Film {
                 return Disposables.create()
             }
             
-            let observable = AddFilmToWatchList(film: self).call()
+            let observable = AddFilmToWatchList(film: self, action: .add).call()
             return observable.subscribe { [weak self] event in
                 switch event {
                 case .next(let success):

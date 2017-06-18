@@ -78,7 +78,7 @@ extension Endpoint {
     
     private var request: URLRequest {
         var comps = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-        comps.queryItems = urlParams.count > 0 ? urlParams.map { URLQueryItem(name: $0, value: $1) } : nil
+        comps.queryItems = urlParams.count > 0 ? urlParams.map { URLQueryItem(name: $0.key, value: $0.value) } : nil
         
         var request = URLRequest(url: comps.url!)
         request.httpMethod = method.rawValue
@@ -89,7 +89,7 @@ extension Endpoint {
         }
         
         if headers.count > 0 {
-            headers.forEach() { request.allHTTPHeaderFields?[$0] = $1 }
+            headers.forEach() { request.allHTTPHeaderFields?[$0.key] = $0.value }
         }
         request.allHTTPHeaderFields?["device-id"] = UIDevice.current.cutID
         #if DEBUG

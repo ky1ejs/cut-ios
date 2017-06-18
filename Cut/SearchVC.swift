@@ -41,7 +41,7 @@ class SearchVC: UIViewController {
         searchView.userTableView.estimatedRowHeight = 60
         searchView.userTableView.rowHeight = UITableViewAutomaticDimension
         
-        _ = searchView.segmentedControl.rx.controlEvent(.valueChanged).map {
+        _ = searchView.segmentedControl.rx.controlEvent(.valueChanged).map { _ in 
             return self.searchView.segmentedControl.selectedSegmentIndex == 0
             }.observeOn(MainScheduler.instance)
             .subscribe(onNext: { showFilms in
@@ -79,11 +79,11 @@ class SearchVC: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { results in
             _ = Observable.just(results.films)
-                .bindTo(self.searchView.filmTableView.rx.items(cellClass: FilmTableCell.self)) { _, film, cell in
+                .bind(to: self.searchView.filmTableView.rx.items(cellClass: FilmTableCell.self)) { _, film, cell in
                     cell.film = film
             }
             _ = Observable.just(results.users)
-                .bindTo(self.searchView.userTableView.rx.items(cellClass: UserCell.self)) { _, user, cell in
+                .bind(to: self.searchView.userTableView.rx.items(cellClass: UserCell.self)) { _, user, cell in
                     cell.user = user
             }
         })
