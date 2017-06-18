@@ -15,6 +15,7 @@ class FilmDetailVC: UIViewController {
     init(film: Film) {
         self.film = film
         super.init(nibName: nil, bundle: nil)
+        title = film.title
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,6 +32,5 @@ class FilmDetailVC: UIViewController {
             Top().to(self.topLayoutGuide),
             Bottom().to(self.bottomLayoutGuide)
         ]
-        
     }
 }
