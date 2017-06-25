@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EasyPeasy
 
 class WatchView: UIView {
     let film                : Film

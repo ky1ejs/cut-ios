@@ -77,25 +77,67 @@ class FilmDetailView: UIView {
         addSubview(runningTimeLabel)
         addSubview(synopsisLabel)
         
-        let ratings = film.ratings.filter {
-            r -> Bool in return r.source == .flixsterUsers ||
-                r.source == .cutUsers ||
-                r.source == .rottenTomatoes
-        }
-        let ratingViews = ratings.map(CircularRatingView.init)
-        var lastRatingView: CircularRatingView?
-        for v in ratingViews {
-            addSubview(v)
-            if let lastRatingView = lastRatingView {
-                v <- Leading(40).to(lastRatingView)
+        let ratingViews: [RatingSource : CircularRatingView] = [
+            .cutUsers       : CircularRatingView(),
+            .rottenTomatoes : CircularRatingView(),
+            .flixsterUsers  : CircularRatingView()
+        ]
+        let orderedKeys: [RatingSource] = [.cutUsers, .rottenTomatoes, .flixsterUsers]
+        var ratingsBySource = [RatingSource : Rating]()
+        film.ratings.forEach() { ratingsBySource[$0.source] = $0 }
+        ratingViews.forEach { $0.value.rating = ratingsBySource[$0.key] }
+        
+        let ratingsContainer = UIView()
+        var spacers = [UIView]()
+        for i in 0..<orderedKeys.count {
+            guard let v = ratingViews[orderedKeys[i]] else { continue }
+            
+//            let spacer = UIView()
+//            spacers.append(spacer)
+//            ratingsContainer.addSubview(spacer)
+            
+            ratingsContainer.addSubview(v)
+            
+            v <- [
+//                Leading().to(spacer),
+                Leading(),
+                Top(),
+                Bottom()
+            ]
+            
+//            if i > 0 {
+//                spacer <- Leading().to(ratingViews[orderedKeys[i - 1]]!)
+//            } else {
+//                spacer <- Leading()
+//            }
+            
+            if i > 0 {
+                v <- Leading().to(ratingViews[orderedKeys[i - 1]]!)
             } else {
-                v <- Leading(40)
+                v <- Leading()
             }
             
-            v <- Top(30).to(synopsisLabel)
-            
-            lastRatingView = v
+//            if i == orderedKeys.count - 1 { spacer <- Trailing() }
+            if i == orderedKeys.count - 1 { v <- Trailing() }
         }
+        
+//        var previousSpacer: UIView?
+//        for s in spacers {
+//            guard let prev = previousSpacer else {
+//                previousSpacer = s
+//                continue
+//            }
+//            s <- Width().like(prev)
+//            previousSpacer = s
+//        }
+        
+        addSubview(ratingsContainer)
+        ratingsContainer.backgroundColor = .red
+        ratingsContainer <- [
+            Leading().to(synopsisLabel, .leading),
+            CenterX(),
+            Top(15).to(synopsisLabel)
+        ]
         
         trailerView <- [
             Top(),

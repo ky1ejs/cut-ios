@@ -13,36 +13,31 @@ class CircularRatingView: UIView {
     let arcLayer = CAShapeLayer()
     let icon = UIImageView()
     
-    var rating: Rating {
+    var rating: Rating? {
         didSet {
+            guard let rating = rating else {
+                icon.image = nil
+                return
+            }
+            
             icon.image = rating.icon
             setNeedsDisplay()
         }
     }
     
-    init(rating: Rating) {
-        self.rating = rating
-        
+    init() {
         super.init(frame: .zero)
         
         backgroundColor = .white
         
-        icon.image = rating.icon
+        icon.image = rating?.icon
         
-        let container = UIView()
+        addSubview(icon)
+        layer.addSublayer(arcLayer)
         
-        container.addSubview(icon)
-        addSubview(container)
-        
-        container.layer.addSublayer(arcLayer)
-        
-        container <- [
+        self <- [
             Width(55),
-            Height().like(container, .width),
-            CenterX(),
-            CenterY(),
-            Leading(>=0),
-            Top(>=0)
+            Height().like(self, .width),
         ]
         
         icon <- [
@@ -63,6 +58,8 @@ class CircularRatingView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        guard let rating = rating else { return }
+        
         arcLayer.strokeColor = UIColor.red.cgColor
         arcLayer.fillColor = UIColor.clear.cgColor
         arcLayer.lineWidth = 6
