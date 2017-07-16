@@ -9,8 +9,12 @@
 import Foundation
 
 struct CutEndpoints {
-//    static let host = URL(string: "https://cut.watch")!
-    static let host = URL(string: "http://localhost:3000")!
+    #if LOCAL
+        static let host = URL(string: "http://localhost:3000")!
+    #else
+        static let host = URL(string: "https://cut.watch")!
+    #endif
+    
     static let version = host.appendingPathComponent("v1")
     
     static let watchList    = version.appendingPathComponent("watch-list")
