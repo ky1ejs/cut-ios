@@ -92,47 +92,37 @@ class FilmDetailView: UIView {
         for i in 0..<orderedKeys.count {
             guard let v = ratingViews[orderedKeys[i]] else { continue }
             
-//            let spacer = UIView()
-//            spacers.append(spacer)
-//            ratingsContainer.addSubview(spacer)
-            
-            ratingsContainer.addSubview(v)
-            
-            v <- [
-//                Leading().to(spacer),
-                Leading(),
-                Top(),
-                Bottom()
-            ]
-            
-//            if i > 0 {
-//                spacer <- Leading().to(ratingViews[orderedKeys[i - 1]]!)
-//            } else {
-//                spacer <- Leading()
-//            }
-            
+            let spacer = UIView()
+            spacers.append(spacer)
+            ratingsContainer.addSubview(spacer)
             if i > 0 {
-                v <- Leading().to(ratingViews[orderedKeys[i - 1]]!)
+                spacer <- Leading().to(ratingViews[orderedKeys[i - 1]]!)
             } else {
-                v <- Leading()
+                spacer <- Leading()
             }
             
-//            if i == orderedKeys.count - 1 { spacer <- Trailing() }
-            if i == orderedKeys.count - 1 { v <- Trailing() }
+            ratingsContainer.addSubview(v)
+            v <- [Leading().to(spacer), Top(), Bottom()]
+            
+            if i == orderedKeys.count - 1 {
+                let trailingSpacer = UIView()
+                spacers.append(trailingSpacer)
+                ratingsContainer.addSubview(trailingSpacer)
+                trailingSpacer <- [Leading().to(v), Trailing()]
+            }
         }
         
-//        var previousSpacer: UIView?
-//        for s in spacers {
-//            guard let prev = previousSpacer else {
-//                previousSpacer = s
-//                continue
-//            }
-//            s <- Width().like(prev)
-//            previousSpacer = s
-//        }
+        var previousSpacer: UIView?
+        for s in spacers {
+            guard let prev = previousSpacer else {
+                previousSpacer = s
+                continue
+            }
+            s <- Width().like(prev)
+            previousSpacer = s
+        }
         
         addSubview(ratingsContainer)
-        ratingsContainer.backgroundColor = .red
         ratingsContainer <- [
             Leading().to(synopsisLabel, .leading),
             CenterX(),
