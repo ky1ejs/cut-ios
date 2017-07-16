@@ -102,7 +102,6 @@ class FilmTableCell: UITableViewCell {
         
         releaseDateLabel <- [
             Top(2).to(self, .centerY),
-            Top(5).to(textLabel),
             Leading().to(textLabel, .leading)
         ]
         
