@@ -12,6 +12,12 @@
 		AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0D1E8483B00033CEEF /* RxCocoa.framework */; };
 		AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0E1E8483B00033CEEF /* RxSwift.framework */; };
 		AF168E131E8483E70033CEEF /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF168E121E8483E60033CEEF /* JSON.swift */; };
+		AF2106CD1F201FD100FBF0DB /* FeedTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2106CC1F201FD100FBF0DB /* FeedTVC.swift */; };
+		AF2106CE1F201FD100FBF0DB /* FeedTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2106CC1F201FD100FBF0DB /* FeedTVC.swift */; };
+		AF2106D01F20202E00FBF0DB /* GetFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2106CF1F20202E00FBF0DB /* GetFeed.swift */; };
+		AF2106D11F20202E00FBF0DB /* GetFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2106CF1F20202E00FBF0DB /* GetFeed.swift */; };
+		AF2106D31F20206A00FBF0DB /* Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2106D21F20206A00FBF0DB /* Watch.swift */; };
+		AF2106D41F20206A00FBF0DB /* Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2106D21F20206A00FBF0DB /* Watch.swift */; };
 		AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
 		AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED281E68E96100553D86 /* Assets.xcassets */; };
 		AF3EED341E68E9B300553D86 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED331E68E9B300553D86 /* Film.swift */; };
@@ -125,6 +131,9 @@
 		AF168E0D1E8483B00033CEEF /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		AF168E0E1E8483B00033CEEF /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		AF168E121E8483E60033CEEF /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		AF2106CC1F201FD100FBF0DB /* FeedTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTVC.swift; sourceTree = "<group>"; };
+		AF2106CF1F20202E00FBF0DB /* GetFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeed.swift; sourceTree = "<group>"; };
+		AF2106D21F20206A00FBF0DB /* Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watch.swift; sourceTree = "<group>"; };
 		AF3EED1E1E68E96100553D86 /* Cut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3EED211E68E96100553D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF3EED281E68E96100553D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -224,6 +233,24 @@
 			name = Carthage;
 			sourceTree = "<group>";
 		};
+		AF2106D51F20251000FBF0DB /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				AF2106CC1F201FD100FBF0DB /* FeedTVC.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		AF2106D61F20253A00FBF0DB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF9F90E51ECBA9E60068182E /* CGFloatExtensions.swift */,
+				AFA3882D1EF6EE6F00CF70F8 /* CGRectExtensions.swift */,
+				AFE6E33A1EB9196C000453D4 /* StringExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AF3EED151E68E96100553D86 = {
 			isa = PBXGroup;
 			children = (
@@ -246,21 +273,20 @@
 			isa = PBXGroup;
 			children = (
 				AF3EED211E68E96100553D86 /* AppDelegate.swift */,
-				AFE6E33A1EB9196C000453D4 /* StringExtensions.swift */,
-				AF9F90E51ECBA9E60068182E /* CGFloatExtensions.swift */,
-				AFA3882D1EF6EE6F00CF70F8 /* CGRectExtensions.swift */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
-				AF41395F1EA0DCF700F7AB8D /* Views */,
 				AFA9B24B1E9D82A60072401F /* API */,
+				AF2106D61F20253A00FBF0DB /* Extensions */,
+				AF2106D51F20251000FBF0DB /* Feed */,
 				AF802F8C1ED415D500CF197C /* Film Detail */,
 				AFA9B24D1E9D82C20072401F /* Film List */,
 				AFA9B2481E9D826E0072401F /* Model */,
 				AFA9B2471E9D825D0072401F /* Networking */,
-				AF41395E1EA0347200F7AB8D /* Search */,
-				AFBEB1B71E9D945D0095D66E /* Sign Up */,
 				AFA9B2491E9D828F0072401F /* Profile */,
 				AFA9B24A1E9D82980072401F /* Protocols */,
+				AF41395E1EA0347200F7AB8D /* Search */,
+				AFBEB1B71E9D945D0095D66E /* Sign Up */,
 				AFA9B24C1E9D82B10072401F /* Supporting Files */,
+				AF41395F1EA0DCF700F7AB8D /* Views */,
 			);
 			path = Cut;
 			sourceTree = "<group>";
@@ -310,13 +336,14 @@
 		AFA9B2481E9D826E0072401F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AF449E4B1EC2753500053DAC /* Rating.swift */,
-				AF449E511EC276CD00053DAC /* RatingSource.swift */,
-				AF449E4D1EC2759F00053DAC /* RatingScore.swift */,
-				AF449E4F1EC275E500053DAC /* FIlmStatus.swift */,
 				AF3EED331E68E9B300553D86 /* Film.swift */,
+				AF449E4F1EC275E500053DAC /* FIlmStatus.swift */,
+				AF449E4B1EC2753500053DAC /* Rating.swift */,
+				AF449E4D1EC2759F00053DAC /* RatingScore.swift */,
+				AF449E511EC276CD00053DAC /* RatingSource.swift */,
 				AFA9B2411E9CABC90072401F /* UIDevice.swift */,
 				AFCCA5C61E9C118D000B6102 /* User.swift */,
+				AF2106D21F20206A00FBF0DB /* Watch.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -344,17 +371,18 @@
 		AFA9B24B1E9D82A60072401F /* API */ = {
 			isa = PBXGroup;
 			children = (
-				AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */,
 				AFE548AB1E999A0C00C99278 /* AddFilmToWatchList.swift */,
+				AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */,
+				AF4292871EA0EE1A008D387C /* FollowUnfollowUser.swift */,
+				AF2106CF1F20202E00FBF0DB /* GetFeed.swift */,
+				AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */,
 				AFA9B2431E9CAC9A0072401F /* GetUser.swift */,
 				AF00B2081EA376C2009BF608 /* GetWatchList.swift */,
-				AFA9B2521E9D836D0072401F /* List Films */,
 				AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */,
-				AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */,
 				AFBEB1BC1E9FFBC50095D66E /* Search.swift */,
 				AFA9B2531E9D838B0072401F /* SignUp.swift */,
-				AF4292871EA0EE1A008D387C /* FollowUnfollowUser.swift */,
 				AFDC63F41EB9C2C1006195E8 /* UploadPushToken.swift */,
+				AFA9B2521E9D836D0072401F /* List Films */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -602,6 +630,7 @@
 				AFDC63F31EB93F1C006195E8 /* CutEndpoints.swift in Sources */,
 				AFA9B2561E9D84370072401F /* SignUpVC.swift in Sources */,
 				AFCCA5C51E9C1176000B6102 /* ProfileView.swift in Sources */,
+				AF2106D01F20202E00FBF0DB /* GetFeed.swift in Sources */,
 				AFA3882E1EF6EE6F00CF70F8 /* CGRectExtensions.swift in Sources */,
 				AFBEB1BD1E9FFBC50095D66E /* Search.swift in Sources */,
 				AF168E131E8483E70033CEEF /* JSON.swift in Sources */,
@@ -620,6 +649,8 @@
 				AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */,
 				AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */,
 				AF9F90E61ECBA9E60068182E /* CGFloatExtensions.swift in Sources */,
+				AF2106CD1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
+				AF2106D31F20206A00FBF0DB /* Watch.swift in Sources */,
 				AF449E4C1EC2753500053DAC /* Rating.swift in Sources */,
 				AFA9B2541E9D838B0072401F /* SignUp.swift in Sources */,
 				AF3EED381E68EC3900553D86 /* FilmTVC.swift in Sources */,
@@ -656,6 +687,7 @@
 				AFB0C7F81F1C0AEC00A96169 /* CutEndpoints.swift in Sources */,
 				AFB0C7F91F1C0AEC00A96169 /* SignUpVC.swift in Sources */,
 				AFB0C7FA1F1C0AEC00A96169 /* ProfileView.swift in Sources */,
+				AF2106D11F20202E00FBF0DB /* GetFeed.swift in Sources */,
 				AFB0C7FB1F1C0AEC00A96169 /* CGRectExtensions.swift in Sources */,
 				AFB0C7FC1F1C0AEC00A96169 /* Search.swift in Sources */,
 				AFB0C7FD1F1C0AEC00A96169 /* JSON.swift in Sources */,
@@ -674,6 +706,8 @@
 				AFB0C80A1F1C0AEC00A96169 /* TableCellIdentifiable.swift in Sources */,
 				AFB0C80B1F1C0AEC00A96169 /* RateFilm.swift in Sources */,
 				AFB0C80C1F1C0AEC00A96169 /* CGFloatExtensions.swift in Sources */,
+				AF2106CE1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
+				AF2106D41F20206A00FBF0DB /* Watch.swift in Sources */,
 				AFB0C80D1F1C0AEC00A96169 /* Rating.swift in Sources */,
 				AFB0C80E1F1C0AEC00A96169 /* SignUp.swift in Sources */,
 				AFB0C80F1F1C0AEC00A96169 /* FilmTVC.swift in Sources */,

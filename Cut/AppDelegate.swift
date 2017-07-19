@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ImageCache.default.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
         
         let tabBar = UITabBarController(nibName: nil, bundle: nil)
-        tabBar.viewControllers = [FilmTVC(), SearchVC(), ProfileVC()].map(UINavigationController.init)
+        tabBar.viewControllers = [FilmTVC(), FeedTVC(), SearchVC(), ProfileVC()].map(UINavigationController.init)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabBar
