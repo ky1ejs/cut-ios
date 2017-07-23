@@ -10,9 +10,9 @@ import Foundation
 
 enum FilmStatus {
     case wantToWatch
-    case rated(RatingScore)
+    case rated(StarRating)
     
-    var ratingScore: RatingScore? {
+    var ratingScore: StarRating? {
         switch self {
         case .rated(let score): return score
         default:                return nil

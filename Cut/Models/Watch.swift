@@ -11,8 +11,12 @@ import Foundation
 struct Watch {
     let user: User
     let film: Film
-    let rating: RatingScore?
+    let rating: StarRating?
     let comment: String?
+    
+    var watched: Bool {
+        return rating != nil || comment != nil
+    }
 }
 
 extension Watch: JSONDecodeable {
@@ -21,7 +25,7 @@ extension Watch: JSONDecodeable {
     init(json: JsonType) throws {
         user = try User(json: try json.parseDict(key: "user"))
         film = try Film(json: try json.parseDict(key: "film"))
-        rating = RatingScore(rawValue: try json.parse(key: "rating"))
+        rating = StarRating(rawValue: try json.parse(key: "rating"))
         comment = try json.parse(key: "comment")
     }
 }

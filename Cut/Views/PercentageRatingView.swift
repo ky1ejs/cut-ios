@@ -1,5 +1,5 @@
 //
-//  RatingView.swift
+//  PercentageRatingView.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 09/05/2017.
@@ -9,11 +9,11 @@
 import UIKit
 import EasyPeasy
 
-class RatingView: UIView {
+class PercentageRatingView: UIView {
     private let label = UILabel()
     let icon = UIImageView()
     
-    var rating: Rating? {
+    var rating: PercentageRating? {
         didSet {
             guard let rating = rating else {
                 label.text = nil

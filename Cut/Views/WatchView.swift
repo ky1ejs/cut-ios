@@ -11,13 +11,13 @@ import EasyPeasy
 
 class WatchView: UIView {
     let film                : Film
-    let ratingView          : UserRatingView
+    let ratingView          : StarRatingView
     let rateButton          = UIButton()
     let addWatchListButton  = UIButton()
     
     init(film: Film) {
         self.film = film
-        ratingView = UserRatingView()
+        ratingView = StarRatingView()
         
         super.init(frame: .zero)
         

@@ -83,7 +83,7 @@ class FilmDetailView: UIView {
             .flixsterUsers  : CircularRatingView()
         ]
         let orderedKeys: [RatingSource] = [.cutUsers, .rottenTomatoes, .flixsterUsers]
-        var ratingsBySource = [RatingSource : Rating]()
+        var ratingsBySource = [RatingSource : PercentageRating]()
         film.ratings.forEach() { ratingsBySource[$0.source] = $0 }
         ratingViews.forEach { $0.value.rating = ratingsBySource[$0.key] }
         

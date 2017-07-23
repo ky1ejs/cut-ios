@@ -17,7 +17,7 @@ class Film {
     let profileImageURL:                URL
     let heroImageURL:                   URL
     let runningTime:                    Int?
-    let ratings:                        [Rating]
+    let ratings:                        [PercentageRating]
     let theaterReleaseDate:             Date?
     let relativeTheaterReleaseDate:     String?
     
@@ -31,7 +31,7 @@ class Film {
         synopsis = json["synopsis"] as? String
         
         let userRating = json["user_rating"] as? [AnyHashable : Any]
-        if let userRatingScore = userRating?["rating"] as? Double, let rating = RatingScore(rawValue: userRatingScore) {
+        if let userRatingScore = userRating?["rating"] as? Double, let rating = StarRating(rawValue: userRatingScore) {
             status = Variable(.rated(rating))
         } else if let wantToWatch = json["want_to_watch"] as? Bool, wantToWatch {
             status = Variable(.wantToWatch)
@@ -49,7 +49,7 @@ class Film {
         }
         relativeTheaterReleaseDate = json["relative_theater_release_date"] as? String
         
-        ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.flatMap(Rating.init) ?? [Rating]()
+        ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.flatMap(PercentageRating.init) ?? [PercentageRating]()
         
         let posters = try json.parseDict(key: "posters")
         let thumbnailUrlString: String = try posters.parseDict(key: "thumbnail").parse(key: "url")

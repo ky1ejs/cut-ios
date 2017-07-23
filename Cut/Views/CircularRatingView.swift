@@ -13,7 +13,7 @@ class CircularRatingView: UIView {
     let arcLayer = CAShapeLayer()
     let icon = UIImageView()
     
-    var rating: Rating? {
+    var rating: PercentageRating? {
         didSet {
             guard let rating = rating else {
                 icon.image = nil

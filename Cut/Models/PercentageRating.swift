@@ -1,5 +1,5 @@
 //
-//  Rating.swift
+//  PercentageRating.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 09/05/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Rating: JSONDecodeable {
+struct PercentageRating: JSONDecodeable {
     let source: RatingSource
     let score: Double
     let count: Int?

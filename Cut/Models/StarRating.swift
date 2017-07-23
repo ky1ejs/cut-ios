@@ -1,5 +1,5 @@
 //
-//  RatingScore.swift
+//  StarRating.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 09/05/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum RatingScore: Double, RawRepresentable {
+enum StarRating: Double, RawRepresentable {
     case pointFive = 0.5
     case one = 1
     case onePointFive = 1.5

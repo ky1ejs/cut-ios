@@ -19,11 +19,11 @@ class FilmTableCell: UITableViewCell {
     let releaseDateLabel = UILabel()
     var posterImageView: UIImageView
     
-    let ratingViews: [RatingSource : RatingView] = [
-        .cutUsers : RatingView(),
-        .rottenTomatoes : RatingView(),
-        .flixsterUsers : RatingView(),
-        .imdbUsers :RatingView()
+    let ratingViews: [RatingSource : PercentageRatingView] = [
+        .cutUsers : PercentageRatingView(),
+        .rottenTomatoes : PercentageRatingView(),
+        .flixsterUsers : PercentageRatingView(),
+        .imdbUsers :PercentageRatingView()
     ]
     
     let panGesture = UIPanGestureRecognizer()
@@ -43,7 +43,7 @@ class FilmTableCell: UITableViewCell {
     
     var film: Film? {
         didSet {
-            var ratingsBySource = [RatingSource : Rating]()
+            var ratingsBySource = [RatingSource : PercentageRating]()
             film?.ratings.forEach() { ratingsBySource[$0.source] = $0 }
             ratingViews.forEach { $0.value.rating = ratingsBySource[$0.key] }
             
@@ -77,7 +77,7 @@ class FilmTableCell: UITableViewCell {
         
         let orderedRatingViewSources: [RatingSource] = [.cutUsers, .rottenTomatoes, .flixsterUsers, .imdbUsers]
         
-        var previousRatingView: RatingView?
+        var previousRatingView: PercentageRatingView?
         for key in orderedRatingViewSources {
             guard let view = ratingViews[key] else { continue }
                 

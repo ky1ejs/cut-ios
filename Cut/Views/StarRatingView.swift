@@ -1,5 +1,5 @@
 //
-//  UserRatingView.swift
+//  StarRatingView.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 15/05/2017.
@@ -9,10 +9,10 @@
 import UIKit
 import EasyPeasy
 
-class UserRatingView: UIView {
+class StarRatingView: UIView {
     private let stars: [UIImageView]
     
-    var rating: RatingScore? {
+    var rating: StarRating? {
         didSet {
             guard let rating = rating else {
                 stars.forEach() { $0.image = nil }
