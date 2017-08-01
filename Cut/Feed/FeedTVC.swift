@@ -24,7 +24,7 @@ class FeedTVC: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        tableView.register(cellClass: FilmTableCell.self)
+        tableView.register(cellClass: FeedCell.self)
         
         loadFilms()
         
@@ -34,8 +34,8 @@ class FeedTVC: UITableViewController {
             .takeUntil(self.rx.deallocated)
             .subscribe(onNext: { [weak self] indexPath in
                 guard let safeSelf = self else { return }
-                guard let cell = safeSelf.tableView.cellForRow(at: indexPath) as? FilmTableCell else { return }
-                guard let film = cell.film else { return }
+                guard let cell = safeSelf.tableView.cellForRow(at: indexPath) as? FeedCell else { return }
+                guard let film = cell.watch?.film else { return }
                 safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
             })
     }
@@ -45,9 +45,9 @@ class FeedTVC: UITableViewController {
         _ = GetFeed()
             .call()
             .takeUntil(rx.deallocated)
-            .bind(to: tableView.rx.items(cellIdentifier: FilmTableCell.reuseIdentifier, cellType: FilmTableCell.self)) { (index, watch, cell) in
+            .bind(to: tableView.rx.items(cellIdentifier: FeedCell.reuseIdentifier, cellType: FeedCell.self)) { (index, watch, cell) in
                 assert(Thread.isMainThread)
-                cell.film = watch.film
+                cell.watch = watch
         }
     }
 

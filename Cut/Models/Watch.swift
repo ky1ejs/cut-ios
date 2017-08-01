@@ -25,7 +25,11 @@ extension Watch: JSONDecodeable {
     init(json: JsonType) throws {
         user = try User(json: try json.parseDict(key: "user"))
         film = try Film(json: try json.parseDict(key: "film"))
-        rating = StarRating(rawValue: try json.parse(key: "rating"))
-        comment = try json.parse(key: "comment")
+        if let ratingValue = json["rating"] as? Double {
+            rating = StarRating(rawValue: ratingValue)
+        } else {
+            rating = nil
+        }
+        comment = json["comment"] as? String
     }
 }

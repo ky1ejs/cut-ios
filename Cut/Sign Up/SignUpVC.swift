@@ -28,28 +28,46 @@ class SignUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = signUpView.signUpButton.rx.tap.takeUntil(rx.deallocated).subscribe(onNext: { [weak self] _ in
+        _ = signUpView.actionButton.rx.tap.takeUntil(rx.deallocated).subscribe(onNext: { [weak self] _ in
             guard let safeSelf = self else { return }
             
-            guard let email = safeSelf.signUpView.emailTextField.text,
-                let username = safeSelf.signUpView.usernameTextField.text,
+            guard let emailOrUsername = safeSelf.signUpView.emailTextField.text,
                 let password = safeSelf.signUpView.passwordTextField.text else {
                     return
             }
             
-            _ = safeSelf.user.signUp(email: email, username: username, password: password)
-                .observeOn(MainScheduler.instance)
-                .subscribe { [weak self] event in
-                guard let safeSelf = self else { return }
-                switch event {
-                case .next:
-                    safeSelf.dismiss(animated: true, completion: nil)
-                case .error(let error):
-                    let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: ":simple_smile:", style: .default, handler: nil))
-                    safeSelf.present(alert, animated: true)
-                case .completed:
-                    break
+            if safeSelf.signUpView.mode == .logIn {
+                _ = safeSelf.user.login(emailOrUsername: emailOrUsername, password: password)
+                    .observeOn(MainScheduler.instance)
+                    .subscribe { [weak self] event in
+                        guard let safeSelf = self else { return }
+                        switch event {
+                        case .next:
+                            safeSelf.dismiss(animated: true, completion: nil)
+                        case .error(let error):
+                            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: ":simple_smile:", style: .default, handler: nil))
+                            safeSelf.present(alert, animated: true)
+                        case .completed:
+                            break
+                        }
+                }
+            } else {
+                guard let username = safeSelf.signUpView.usernameTextField.text else { return }
+                _ = safeSelf.user.signUp(email: emailOrUsername, username: username, password: password)
+                    .observeOn(MainScheduler.instance)
+                    .subscribe { [weak self] event in
+                        guard let safeSelf = self else { return }
+                        switch event {
+                        case .next:
+                            safeSelf.dismiss(animated: true, completion: nil)
+                        case .error(let error):
+                            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: ":simple_smile:", style: .default, handler: nil))
+                            safeSelf.present(alert, animated: true)
+                        case .completed:
+                            break
+                        }
                 }
             }
         })

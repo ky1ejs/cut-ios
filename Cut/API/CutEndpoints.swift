@@ -18,11 +18,13 @@ struct CutEndpoints {
     static let version = host.appendingPathComponent("v1")
     
     static let watchList    = version.appendingPathComponent("watch-list")
-    static let users        = version.appendingPathComponent("users")
     static let films        = version.appendingPathComponent("films")
     static let feed         = version.appendingPathComponent("feed")
     static let ratings      = version.appendingPathComponent("ratings")
     static let search       = version.appendingPathComponent("search")
     static let devices      = version.appendingPathComponent("devices")
     static let deviceToken  = devices.appendingPathComponent("token")
+    
+    static let users        = version.appendingPathComponent("users")
+    static let login        = users.appendingPathComponent("login")
 }

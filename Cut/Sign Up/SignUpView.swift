@@ -10,17 +10,32 @@ import UIKit
 import EasyPeasy
 
 class SignUpView: UIView {
-    let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
-    let emailTextField = UITextField()
-    let usernameTextField = UITextField()
-    let passwordTextField = UITextField()
-    let signUpButton = UIButton()
+    let segmentedControl    = UISegmentedControl(items: ["Sign Up", "Log In"])
+    let titleLabel          = UILabel()
+    let descriptionLabel    = UILabel()
+    let emailTextField      = UITextField()
+    let usernameTextField   = UITextField()
+    let passwordTextField   = UITextField()
+    let actionButton        = UIButton()
+    
+    var mode: SignUpMode = .signUp {
+        didSet {
+            passwordTextField <- Top(20).to(mode == .signUp ? usernameTextField : emailTextField)
+            actionButton.setTitle(mode.title, for: .normal)
+            UIView.animate(withDuration: 0.3) {
+                self.usernameTextField.alpha = self.mode == .signUp ? 1 : 0
+                self.layoutIfNeeded()
+            }
+        }
+    }
     
     init() {
         super.init(frame: .zero)
         
         backgroundColor = .white
+        
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(changeMethod), for: .valueChanged)
         
         emailTextField.placeholder = "Email"
         emailTextField.keyboardType = .emailAddress
@@ -36,8 +51,8 @@ class SignUpView: UIView {
         passwordTextField.placeholder = "Password"
         passwordTextField.isSecureTextEntry = true
         
-        signUpButton.setTitle("Sign Up", for: .normal)
-        signUpButton.setTitleColor(.blue, for: .normal)
+        actionButton.setTitle("Sign Up", for: .normal)
+        actionButton.setTitleColor(.blue, for: .normal)
         
         let titleDescriptionContainer = UIView()
         let textFieldContainer = UIView()
@@ -54,10 +69,11 @@ class SignUpView: UIView {
         titleCenteringContainer.addSubview(titleLabel)
         titleCenteringContainer.addSubview(descriptionLabel)
         
+        textFieldCenteringContainer.addSubview(segmentedControl)
         textFieldCenteringContainer.addSubview(emailTextField)
         textFieldCenteringContainer.addSubview(usernameTextField)
         textFieldCenteringContainer.addSubview(passwordTextField)
-        textFieldCenteringContainer.addSubview(signUpButton)
+        textFieldCenteringContainer.addSubview(actionButton)
         
         titleDescriptionContainer <- [
             Top(),
@@ -98,8 +114,13 @@ class SignUpView: UIView {
             Bottom()
         ]
         
-        emailTextField <- [
+        segmentedControl <- [
             Top(),
+            CenterX()
+        ]
+        
+        emailTextField <- [
+            Top(30).to(segmentedControl),
             Leading(30),
             CenterX(),
         ]
@@ -116,7 +137,7 @@ class SignUpView: UIView {
             CenterX()
         ]
         
-        signUpButton <- [
+        actionButton <- [
             Top(20).to(passwordTextField),
             Leading().to(passwordTextField, .leading),
             CenterX(),
@@ -126,5 +147,22 @@ class SignUpView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func changeMethod() {
+        guard let mode = SignUpMode(rawValue: segmentedControl.selectedSegmentIndex) else { return }
+        self.mode = mode
+    }
+}
+
+enum SignUpMode: Int {
+    case signUp = 0
+    case logIn = 1
+    
+    var title: String {
+        switch self {
+        case .signUp:   return "Sign Up"
+        case .logIn:    return "Log In"
+        }
     }
 }

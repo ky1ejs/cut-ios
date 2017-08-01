@@ -38,6 +38,7 @@ class ProfileVC: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         title = "Profile"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAccountController))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,17 +60,11 @@ class ProfileVC: UIViewController {
             .takeUntil(rx.deallocated)
             .observeOn(MainScheduler.instance)
             .subscribe { [weak self] event in
-            switch event {
-            case .next(let user):
-                self?.user = user
-                if !user.isFullUser {
-                    self?.present(SignUpVC(user: user), animated: true)
+                switch event {
+                case .next(let user):   self?.user = user
+                case .error(let error): print(error)
+                case .completed:        break
                 }
-            case .error(let error):
-                print(error)
-            case .completed:
-                break
-            }
         }
         
         _ = profileView.watchListCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
@@ -99,5 +94,9 @@ class ProfileVC: UIViewController {
             .bind(to: profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
                 cell.film = film
         }
+    }
+    
+    @objc func showAccountController() {
+        present(SignUpVC(user: user!), animated: true)
     }
 }

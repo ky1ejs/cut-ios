@@ -60,9 +60,38 @@ class User: JSONDecodeable {
                 }
             }
             
-            return Disposables.create {
-                signUp.dispose()
+            return Disposables.create { signUp.dispose() }
+        }
+    }
+    
+    func login(emailOrUsername: String, password: String) -> Observable<User> {
+        return Observable.create { [weak self] observer in
+            guard let safeSelf = self, !safeSelf.isFullUser else {
+                observer.on(.error(RxError.unknown))
+                observer.on(.completed)
+                return Disposables.create()
             }
+            
+            let login = LogIn(emailOrUsername: emailOrUsername, password: password).call().subscribe { [weak self] event in
+                guard let safeSelf = self else {
+                    observer.on(.error(RxError.unknown))
+                    observer.on(.completed)
+                    return
+                }
+                switch event {
+                case .next(let user):
+                    safeSelf.email.value = user.email.value
+                    safeSelf.username.value = user.username.value
+                    observer.onNext(safeSelf)
+                    observer.onCompleted()
+                case .error(let error):
+                    observer.onError(error)
+                case .completed:
+                    observer.onCompleted()
+                }
+            }
+            
+            return Disposables.create { login.dispose() }
         }
     }
     
@@ -89,9 +118,7 @@ class User: JSONDecodeable {
                 }
             }
             
-            return Disposables.create {
-                followUnfollow.dispose()
-            }
+            return Disposables.create { followUnfollow.dispose() }
         }
     }
 }
