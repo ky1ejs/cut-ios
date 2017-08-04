@@ -91,8 +91,8 @@ class ProfileVC: UIViewController {
         _ = GetRatedFilms()
             .call()
             .takeUntil(rx.deallocated)
-            .bind(to: profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
-                cell.film = film
+            .bind(to: profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, watch, cell in
+                cell.film = watch.film
         }
     }
     
