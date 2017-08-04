@@ -15,16 +15,17 @@ struct CutEndpoints {
         static let host = URL(string: "https://cut.watch")!
     #endif
     
-    static let version = host.appendingPathComponent("v1")
+    static let base = host.appendingPathComponent("v1")
     
-    static let watchList    = version.appendingPathComponent("watch-list")
-    static let films        = version.appendingPathComponent("films")
-    static let feed         = version.appendingPathComponent("feed")
-    static let ratings      = version.appendingPathComponent("ratings")
-    static let search       = version.appendingPathComponent("search")
-    static let devices      = version.appendingPathComponent("devices")
-    static let deviceToken  = devices.appendingPathComponent("token")
+    static let watchList        = base.appendingPathComponent("watch-list")
+    static let films            = base.appendingPathComponent("films")
+    static let feed             = base.appendingPathComponent("feed")
+    static let ratings          = base.appendingPathComponent("ratings")
+    static let search           = base.appendingPathComponent("search")
+    static let users            = base.appendingPathComponent("users")
+    static let login            = base.appendingPathComponent("login")
+    static let signUp           = base.appendingPathComponent("sign-up")
     
-    static let users        = version.appendingPathComponent("users")
-    static let login        = users.appendingPathComponent("login")
+    static let devices          = base.appendingPathComponent("devices")
+    static let devicePushToken  = devices.appendingPathComponent("push-token")
 }

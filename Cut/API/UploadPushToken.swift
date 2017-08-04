@@ -14,7 +14,7 @@ struct UploadPushToken {
 
 extension UploadPushToken: Endpoint {
     typealias SuccessData = NoSuccessData
-    var url: URL { return CutEndpoints.deviceToken }
+    var url: URL { return CutEndpoints.devicePushToken }
     var method: HTTPMethod { return .post }
     var body: [String : Any] { return ["push_token" : token] }
 }
