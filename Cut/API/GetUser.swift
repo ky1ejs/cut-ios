@@ -12,5 +12,5 @@ struct GetUser {}
 
 extension GetUser: Endpoint {
     typealias SuccessData = User
-    var url: URL { return CutEndpoints.users }
+    var url: URL { return CutEndpoints.base }
 }
