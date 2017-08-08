@@ -33,7 +33,10 @@ class FeedCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        userProfileImageView.layer.cornerRadius = 25
+        userProfileImageView.layer.cornerRadius = 15
+        userProfileImageView.backgroundColor = .red
+        
+        posterImageView.backgroundColor = .blue
         
         addSubview(userProfileImageView)
         addSubview(posterImageView)
@@ -44,17 +47,9 @@ class FeedCell: UITableViewCell {
         addSubview(ratingView)
         
         userProfileImageView <- [
-            Leading(40).to(posterImageView),
-            Top().to(posterImageView, .top),
-            Size(CGSize(width: 50, height: 50))
-        ]
-        
-        posterImageView <- [
-            Leading(30),
-            CenterY(),
-            Bottom(20),
-            Width(100),
-            Height(*CGFloat.posterWidthToHeightRation).like(posterImageView, .width)
+            Leading(20),
+            Top(10),
+            Size(CGSize(width: 30, height: 30))
         ]
         
         usernameLabel <- [
@@ -62,22 +57,34 @@ class FeedCell: UITableViewCell {
             Bottom().to(userProfileImageView, .bottom)
         ]
         
+        createdLabel <- [
+            Bottom().to(userProfileImageView, .bottom),
+            Trailing(20)
+        ]
+        
         titleLabel <- [
+            Leading().to(userProfileImageView, .leading),
+            Top(20).to(userProfileImageView),
         ]
         
         bodyLabel <- [
             Leading().to(userProfileImageView, .leading),
-            Top(30).to(userProfileImageView)
-        ]
-        
-        createdLabel <- [
-            Top(20).to(bodyLabel),
-            Leading().to(bodyLabel, .leading)
+            Top(10).to(titleLabel)
         ]
         
         ratingView <- [
-            Top(20).to(createdLabel),
-            Leading().to(createdLabel, .leading)
+            Top(10).to(bodyLabel),
+            Leading().to(bodyLabel, .leading)
+        ]
+        
+        let posterWidth: CGFloat = 100
+        posterImageView <- [
+            Leading(30).to(titleLabel),
+            Trailing().to(createdLabel, .trailing),
+            Top().to(userProfileImageView, .top),
+            CenterY(),
+            Width(100),
+            Height(posterWidth * .posterWidthToHeightRation)
         ]
     }
     
