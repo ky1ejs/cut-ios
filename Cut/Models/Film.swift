@@ -13,9 +13,9 @@ class Film {
     let id:                             String
     let title:                          String
     let synopsis:                       String?
-    let thumbnailImageURL:              URL
-    let profileImageURL:                URL
-    let heroImageURL:                   URL
+    let thumbnailImageURL:              URL?
+    let profileImageURL:                URL?
+    let heroImageURL:                   URL?
     let runningTime:                    Int?
     let ratings:                        [PercentageRating]
     let theaterReleaseDate:             Date?
@@ -51,18 +51,23 @@ class Film {
         
         ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.flatMap(PercentageRating.init) ?? [PercentageRating]()
         
-        let posters = try json.parseDict(key: "posters")
-        let thumbnailUrlString: String = try posters.parseDict(key: "thumbnail").parse(key: "url")
-        let profileUrlString: String = try posters.parseDict(key: "profile").parse(key: "url")
-        let heroUrlString: String = try posters.parseDict(key: "hero").parse(key: "url")
+        if let posters = json.tryParseDict(key: "posters") {
+            let thumbnailUrlString: String = try posters.parseDict(key: "thumbnail").parse(key: "url")
+            let profileUrlString:   String = try posters.parseDict(key: "profile").parse(key: "url")
+            let heroUrlString:      String = try posters.parseDict(key: "hero").parse(key: "url")
         
-        guard let thumbnailUrl = URL(string: thumbnailUrlString) else { throw ParserError.couldNotParse }
-        guard let profileUrl = URL(string: profileUrlString) else { throw ParserError.couldNotParse }
-        guard let heroImageURL = URL(string: heroUrlString) else { throw ParserError.couldNotParse }
-        
-        self.thumbnailImageURL = thumbnailUrl
-        self.profileImageURL = profileUrl
-        self.heroImageURL = heroImageURL
+            guard let thumbnailUrl  = URL(string: thumbnailUrlString)   else { throw ParserError.couldNotParse }
+            guard let profileUrl    = URL(string: profileUrlString)     else { throw ParserError.couldNotParse }
+            guard let heroImageURL  = URL(string: heroUrlString)        else { throw ParserError.couldNotParse }
+            
+            self.thumbnailImageURL = thumbnailUrl
+            self.profileImageURL = profileUrl
+            self.heroImageURL = heroImageURL
+        } else {
+            thumbnailImageURL = nil
+            profileImageURL = nil
+            heroImageURL = nil
+        }
     }
     
     func addToWatchList() -> Observable<AddFilmToWatchList.SuccessData> {
