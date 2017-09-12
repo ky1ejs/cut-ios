@@ -1,5 +1,5 @@
 //
-//  SignUpVC.swift
+//  AuthenticationVC.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 11/04/2017.
@@ -9,9 +9,9 @@
 import UIKit
 import RxSwift
 
-class SignUpVC: UIViewController {
+class AuthenticationVC: UIViewController {
     let user: User
-    let signUpView = SignUpView()
+    let authView = AuthenticationView()
     
     init(user: User) {
         self.user = user
@@ -23,20 +23,20 @@ class SignUpVC: UIViewController {
     }
     
     override func loadView() {
-        view = signUpView
+        view = authView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = signUpView.actionButton.rx.tap.takeUntil(rx.deallocated).subscribe(onNext: { [weak self] _ in
+        _ = authView.actionButton.rx.tap.takeUntil(rx.deallocated).subscribe(onNext: { [weak self] _ in
             guard let safeSelf = self else { return }
             
-            guard let emailOrUsername = safeSelf.signUpView.emailTextField.text,
-                let password = safeSelf.signUpView.passwordTextField.text else {
+            guard let emailOrUsername = safeSelf.authView.emailTextField.text,
+                let password = safeSelf.authView.passwordTextField.text else {
                     return
             }
             
-            if safeSelf.signUpView.mode == .logIn {
+            if safeSelf.authView.mode == .logIn {
                 _ = safeSelf.user.login(emailOrUsername: emailOrUsername, password: password)
                     .observeOn(MainScheduler.instance)
                     .subscribe { [weak self] event in
@@ -53,7 +53,7 @@ class SignUpVC: UIViewController {
                         }
                 }
             } else {
-                guard let username = safeSelf.signUpView.usernameTextField.text else { return }
+                guard let username = safeSelf.authView.usernameTextField.text else { return }
                 _ = safeSelf.user.signUp(email: emailOrUsername, username: username, password: password)
                     .observeOn(MainScheduler.instance)
                     .subscribe { [weak self] event in
@@ -70,6 +70,10 @@ class SignUpVC: UIViewController {
                         }
                 }
             }
+        })
+        
+        _ = authView.cancelButton.rx.controlEvent(.touchUpInside).takeUntil(rx.deallocated).subscribe(onNext: { _ in
+            self.dismiss(animated: true, completion: nil)
         })
     }
 }

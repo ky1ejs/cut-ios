@@ -1,5 +1,5 @@
 //
-//  SignUpView.swift
+//  AuthenticationView.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 11/04/2017.
@@ -9,7 +9,7 @@
 import UIKit
 import EasyPeasy
 
-class SignUpView: UIView {
+class AuthenticationView: UIView {
     let segmentedControl    = UISegmentedControl(items: ["Sign Up", "Log In"])
     let titleLabel          = UILabel()
     let descriptionLabel    = UILabel()
@@ -17,6 +17,7 @@ class SignUpView: UIView {
     let usernameTextField   = UITextField()
     let passwordTextField   = UITextField()
     let actionButton        = UIButton()
+    let cancelButton        = UIButton()
     
     var mode: SignUpMode = .signUp {
         didSet {
@@ -54,6 +55,9 @@ class SignUpView: UIView {
         actionButton.setTitle("Sign Up", for: .normal)
         actionButton.setTitleColor(.blue, for: .normal)
         
+        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitleColor(.blue, for: .normal)
+        
         let titleDescriptionContainer = UIView()
         let textFieldContainer = UIView()
         
@@ -62,6 +66,7 @@ class SignUpView: UIView {
         
         addSubview(titleDescriptionContainer)
         addSubview(textFieldContainer)
+        addSubview(cancelButton)
         
         titleDescriptionContainer.addSubview(titleCenteringContainer)
         textFieldContainer.addSubview(textFieldCenteringContainer)
@@ -142,6 +147,11 @@ class SignUpView: UIView {
             Leading().to(passwordTextField, .leading),
             CenterX(),
             Bottom()
+        ]
+        
+        cancelButton <- [
+            Top(40),
+            Leading(20)
         ]
     }
     

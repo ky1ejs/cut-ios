@@ -97,6 +97,6 @@ class ProfileVC: UIViewController {
     }
     
     @objc func showAccountController() {
-        present(SignUpVC(user: user!), animated: true)
+        present(AuthenticationVC(user: user!), animated: true)
     }
 }
