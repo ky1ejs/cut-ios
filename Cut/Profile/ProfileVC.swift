@@ -12,6 +12,8 @@ import RxSwift
 
 class ProfileVC: UIViewController {
     let profileView = ProfileView()
+    let authButton = UIBarButtonItem(title: "Login/Sign Up", style: .plain, target: nil, action: nil)
+    let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: nil, action: nil)
     
     var userDisposeBag = DisposeBag()
     var user: User? {
@@ -21,16 +23,31 @@ class ProfileVC: UIViewController {
             profileView.emailLabel.text = user?.email.value
             profileView.usernameLabel.text = user?.username.value
             
-            _ = user?.username
+            guard let user = user else { return }
+            
+            _ = user.username
                 .asObservable()
                 .takeUntil(rx.deallocated)
                 .bind(to: profileView.usernameLabel.rx.text)
                 .disposed(by: userDisposeBag)
                 
-            _ = user?.email
+            _ = user.email
                 .asObservable()
                 .takeUntil(rx.deallocated)
                 .bind(to: profileView.emailLabel.rx.text)
+                .disposed(by: userDisposeBag)
+            
+            
+            
+            _ = Observable.combineLatest(user.email.asObservable(), user.username.asObservable(), resultSelector: { (email, username) -> Bool in
+                guard let _ = email else { return false }
+                guard let _ = username else { return false }
+                return true
+            }).takeUntil(rx.deallocated)
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { isLoggedIn in
+                    self.navigationItem.rightBarButtonItem = isLoggedIn ? self.logOutButton : self.authButton
+                })
                 .disposed(by: userDisposeBag)
         }
     }
@@ -38,7 +55,12 @@ class ProfileVC: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         title = "Profile"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAccountController))
+        
+        authButton.target = self
+        authButton.action = #selector(showAccountController)
+        
+        logOutButton.target = self
+        logOutButton.action = #selector(logOut)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -98,5 +120,9 @@ class ProfileVC: UIViewController {
     
     @objc func showAccountController() {
         present(AuthenticationVC(user: user!), animated: true)
+    }
+    
+    @objc func logOut() {
+        _ = user?.logOut().takeUntil(rx.deallocated).subscribe()
     }
 }

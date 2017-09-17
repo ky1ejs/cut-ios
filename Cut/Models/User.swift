@@ -95,6 +95,37 @@ class User: JSONDecodeable {
         }
     }
     
+    func logOut() -> Observable<User> {
+        return Observable.create { [weak self] observer in
+            guard let safeSelf = self, safeSelf.isFullUser else {
+                observer.on(.error(RxError.unknown))
+                observer.on(.completed)
+                return Disposables.create()
+            }
+            
+            let logout = LogOut().call().subscribe { [weak self] event in
+                guard let safeSelf = self else {
+                    observer.on(.error(RxError.unknown))
+                    observer.on(.completed)
+                    return
+                }
+                switch event {
+                case .next(let user):
+                    safeSelf.email.value = user.email.value
+                    safeSelf.username.value = user.username.value
+                    observer.onNext(safeSelf)
+                    observer.onCompleted()
+                case .error(let error):
+                    observer.onError(error)
+                case .completed:
+                    observer.onCompleted()
+                }
+            }
+            
+            return Disposables.create { logout.dispose() }
+        }
+    }
+    
     func toggleFollowing() -> Observable<FollowUnfollowUser.SuccessData> {
         guard let username = username.value else {
             return Observable.create { observer in
