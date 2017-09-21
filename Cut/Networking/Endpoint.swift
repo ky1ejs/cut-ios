@@ -92,9 +92,7 @@ extension Endpoint {
             headers.forEach() { request.allHTTPHeaderFields?[$0.key] = $0.value }
         }
         request.allHTTPHeaderFields?["device-id"] = UIDevice.current.cutID
-        #if DEBUG
-            request.allHTTPHeaderFields?["is-dev-device"] = "true"
-        #endif
+        request.allHTTPHeaderFields?["app-id"] = Bundle.main.bundleIdentifier
 
         return request
     }
