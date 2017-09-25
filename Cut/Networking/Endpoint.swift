@@ -93,6 +93,9 @@ extension Endpoint {
         }
         request.allHTTPHeaderFields?["device-id"] = UIDevice.current.cutID
         request.allHTTPHeaderFields?["app-id"] = Bundle.main.bundleIdentifier
+        #if DEBUG
+            request.allHTTPHeaderFields?["is-dev-device"] = "true"
+        #endif
 
         return request
     }
