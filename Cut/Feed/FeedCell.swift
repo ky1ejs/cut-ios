@@ -38,13 +38,13 @@ class FeedCell: UITableViewCell {
         
         posterImageView.backgroundColor = .blue
         
-        addSubview(userProfileImageView)
-        addSubview(posterImageView)
-        addSubview(usernameLabel)
-        addSubview(titleLabel)
-        addSubview(createdLabel)
-        addSubview(bodyLabel)
-        addSubview(ratingView)
+        contentView.addSubview(userProfileImageView)
+        contentView.addSubview(posterImageView)
+        contentView.addSubview(usernameLabel)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(createdLabel)
+        contentView.addSubview(bodyLabel)
+        contentView.addSubview(ratingView)
         
         userProfileImageView <- [
             Leading(20),
@@ -82,9 +82,9 @@ class FeedCell: UITableViewCell {
             Leading(30).to(titleLabel),
             Trailing().to(createdLabel, .trailing),
             Top().to(userProfileImageView, .top),
-            CenterY(),
             Width(100),
-            Height(posterWidth * .posterWidthToHeightRation)
+            Height(posterWidth * .posterWidthToHeightRation),
+            CenterY().with(.medium)
         ]
     }
     
