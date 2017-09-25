@@ -12,6 +12,7 @@ import Kingfisher
 import AVKit
 
 class FilmDetailView: UIView {
+    let scrollView          = UIScrollView()
     let trailerView         = UIImageView()
     let posterImageView     = UIImageView()
     let watchView           : WatchView
@@ -69,13 +70,16 @@ class FilmDetailView: UIView {
         titleLabel.numberOfLines = 2
         synopsisLabel.numberOfLines = 0
         
-        addSubview(trailerView)
-        addSubview(posterImageView)
-        addSubview(watchView)
-        addSubview(titleLabel)
-        addSubview(releaseDateLabel)
-        addSubview(runningTimeLabel)
-        addSubview(synopsisLabel)
+        addSubview(scrollView)
+        scrollView.addSubview(trailerView)
+        scrollView.addSubview(posterImageView)
+        scrollView.addSubview(watchView)
+        scrollView.addSubview(titleLabel)
+        scrollView.addSubview(releaseDateLabel)
+        scrollView.addSubview(runningTimeLabel)
+        scrollView.addSubview(synopsisLabel)
+        
+        scrollView <- Edges()
         
         let ratingViews: [RatingSource : CircularRatingView] = [
             .cutUsers       : CircularRatingView(),
@@ -88,6 +92,9 @@ class FilmDetailView: UIView {
         ratingViews.forEach { $0.value.rating = ratingsBySource[$0.key] }
         
         let ratingsContainer = UIView()
+        
+        ratingsContainer.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        
         var spacers = [UIView]()
         for i in 0..<orderedKeys.count {
             guard let v = ratingViews[orderedKeys[i]] else { continue }
@@ -122,16 +129,18 @@ class FilmDetailView: UIView {
             previousSpacer = s
         }
         
-        addSubview(ratingsContainer)
+        scrollView.addSubview(ratingsContainer)
         ratingsContainer <- [
             Leading().to(synopsisLabel, .leading),
-            CenterX(),
-            Top(15).to(synopsisLabel)
+            Trailing().to(synopsisLabel, .trailing),
+            Top(15).to(synopsisLabel),
+            Bottom(30)
         ]
         
         trailerView <- [
             Top(),
             Leading(),
+            Trailing(),
             Width().like(self),
             Height(*0.5625).like(trailerView, .width)
         ]
@@ -146,7 +155,7 @@ class FilmDetailView: UIView {
         watchView <- [
             Leading(20).to(posterImageView),
             Bottom().to(posterImageView, .bottom),
-            Trailing(40)
+            Trailing(40).to(trailerView, .trailing)
         ]
         
         titleLabel <- [
