@@ -45,3 +45,5 @@ fastlane/*.html
 *.pkey
 *.pem
 *.p12
+
+Cut/Extensions/BuggerConfigExtensions.swift

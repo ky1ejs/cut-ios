@@ -8,6 +8,8 @@
 
 import UIKit
 import Kingfisher
+import Bugger
+import BuggerImgurStore
 import UserNotifications
 
 @UIApplicationMain
@@ -16,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Kingfisher
+        ImageCache.default.maxDiskCacheSize         = 50 * 1024 * 1024 // 50 MB
+        ImageCache.default.maxCachePeriodInSecond   = 60 * 60 * 24 * 3 // 3 days
         
-        // 50 MB
-        ImageCache.default.maxDiskCacheSize = UInt(50 * 1024 * 1024)
-        // 3 days
-        ImageCache.default.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
+        // Bugger
+        Bugger.with(config: BuggerConfig.cutConfig)
         
         let tabBar = UITabBarController(nibName: nil, bundle: nil)
         tabBar.viewControllers = [FilmTVC(), FeedTVC(), SearchVC(), ProfileVC()].map(UINavigationController.init)
