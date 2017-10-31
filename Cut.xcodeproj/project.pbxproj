@@ -654,6 +654,7 @@
 				AFA9B2461E9CB20F0072401F /* AuthenticationView.swift in Sources */,
 				AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */,
 				AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */,
+				AF219C331FA71DB9004C7E1A /* BuggerConfigExtensions.swift in Sources */,
 				AF9F90E61ECBA9E60068182E /* CGFloatExtensions.swift in Sources */,
 				AF2106CD1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
 				AF2106D31F20206A00FBF0DB /* Watch.swift in Sources */,
@@ -714,6 +715,7 @@
 				AFB0C8091F1C0AEC00A96169 /* AuthenticationView.swift in Sources */,
 				AFB0C80A1F1C0AEC00A96169 /* TableCellIdentifiable.swift in Sources */,
 				AFB0C80B1F1C0AEC00A96169 /* RateFilm.swift in Sources */,
+				AF219C341FA71DB9004C7E1A /* BuggerConfigExtensions.swift in Sources */,
 				AFB0C80C1F1C0AEC00A96169 /* CGFloatExtensions.swift in Sources */,
 				AF2106CE1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
 				AF2106D41F20206A00FBF0DB /* Watch.swift in Sources */,
@@ -850,6 +852,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Cut/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = watch.cut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -872,6 +875,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Cut/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = watch.cut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -893,6 +897,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Cut/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DLOCAL $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = watch.cut;
@@ -916,6 +921,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Cut/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DLOCAL $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = watch.cut;

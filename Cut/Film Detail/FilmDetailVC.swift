@@ -23,14 +23,6 @@ class FilmDetailVC: UIViewController {
     }
     
     override func loadView() {
-        view = UIView()
-        let filmView = FilmDetailView(film: film)
-        view.addSubview(filmView)
-        filmView <- [
-            Leading(),
-            CenterX(),
-            Top().to(self.topLayoutGuide),
-            Bottom().to(self.bottomLayoutGuide)
-        ]
+        view = FilmDetailView(film: film)
     }
 }

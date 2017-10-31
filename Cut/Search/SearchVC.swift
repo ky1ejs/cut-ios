@@ -64,14 +64,7 @@ class SearchVC: UIViewController {
     }
     
     override func loadView() {
-        view = UIView()
-        view.addSubview(searchView)
-        searchView <- [
-            Top().to(topLayoutGuide),
-            Leading(),
-            CenterX(),
-            Bottom()
-        ]
+        view = searchView
     }
     
     func search(withTerm term: String) {

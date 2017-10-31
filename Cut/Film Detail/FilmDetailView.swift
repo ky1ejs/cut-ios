@@ -79,8 +79,6 @@ class FilmDetailView: UIView {
         scrollView.addSubview(runningTimeLabel)
         scrollView.addSubview(synopsisLabel)
         
-        scrollView <- Edges()
-        
         let ratingViews: [RatingSource : CircularRatingView] = [
             .cutUsers       : CircularRatingView(),
             .rottenTomatoes : CircularRatingView(),
@@ -107,6 +105,7 @@ class FilmDetailView: UIView {
             } else {
                 spacer <- Leading()
             }
+            spacer <- [Top(), Bottom()]
             
             ratingsContainer.addSubview(v)
             v <- [Leading().to(spacer), Top(), Bottom()]
@@ -115,7 +114,7 @@ class FilmDetailView: UIView {
                 let trailingSpacer = UIView()
                 spacers.append(trailingSpacer)
                 ratingsContainer.addSubview(trailingSpacer)
-                trailingSpacer <- [Leading().to(v), Trailing()]
+                trailingSpacer <- [Leading().to(v), Top(), Bottom(), Trailing()]
             }
         }
         
@@ -128,17 +127,19 @@ class FilmDetailView: UIView {
             s <- Width().like(prev)
             previousSpacer = s
         }
-        
         scrollView.addSubview(ratingsContainer)
-        ratingsContainer <- [
-            Leading().to(synopsisLabel, .leading),
-            Trailing().to(synopsisLabel, .trailing),
-            Top(15).to(synopsisLabel),
-            Bottom(30)
+        
+        
+        // Layout
+        scrollView <- [
+            Top().to(safeAreaLayoutGuide, .top),
+            Leading(),
+            CenterX(),
+            Bottom()
         ]
         
         trailerView <- [
-            Top(),
+            Top(10),
             Leading(),
             Trailing(),
             Width().like(self),
@@ -178,6 +179,13 @@ class FilmDetailView: UIView {
             Top(20).to(releaseDateLabel),
             Leading().to(releaseDateLabel, .leading),
             CenterX()
+        ]
+        
+        ratingsContainer <- [
+            Leading().to(synopsisLabel, .leading),
+            Trailing().to(synopsisLabel, .trailing),
+            Top(15).to(synopsisLabel),
+            Bottom(30)
         ]
     }
     

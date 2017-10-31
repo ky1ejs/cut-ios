@@ -24,7 +24,7 @@ class SearchView: UIView {
         addSubview(filmTableView)
         
         segmentedControl <- [
-            Top(10),
+            Top(10).to(safeAreaLayoutGuide, .top),
             Leading(20),
             CenterX()
         ]
