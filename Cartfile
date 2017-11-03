@@ -1,4 +1,4 @@
-github "ReactiveX/RxSwift" "swift4.0"
+github "ReactiveX/RxSwift"
 github "onevcat/Kingfisher"
 github "basvankuijck/EasyPeasy"
 github "mac-cain13/R.swift.Library"

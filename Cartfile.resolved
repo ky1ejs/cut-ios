@@ -1,4 +1,5 @@
-github "ReactiveX/RxSwift" "a1c2f0dc8338e35b7450d5cea3b0d0ec27a11856"
+github "ReactiveX/RxSwift" "4.0.0"
 github "basvankuijck/EasyPeasy" "1.4.2"
-github "mac-cain13/R.swift.Library" "v3.0.2"
-github "onevcat/Kingfisher" "4.0.1"
+github "kylejm/Bugger" "v0.1.0"
+github "mac-cain13/R.swift.Library" "v4.0.0"
+github "onevcat/Kingfisher" "4.2.0"

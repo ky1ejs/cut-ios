@@ -20,6 +20,12 @@
 		AF2106D41F20206A00FBF0DB /* Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2106D21F20206A00FBF0DB /* Watch.swift */; };
 		AF2106E91F21360900FBF0DB /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2106E81F21360900FBF0DB /* FeedCell.swift */; };
 		AF2106EA1F21360900FBF0DB /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2106E81F21360900FBF0DB /* FeedCell.swift */; };
+		AF219C2E1FA62768004C7E1A /* BuggerImgurStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF219C2C1FA62768004C7E1A /* BuggerImgurStore.framework */; };
+		AF219C2F1FA62768004C7E1A /* BuggerImgurStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF219C2C1FA62768004C7E1A /* BuggerImgurStore.framework */; };
+		AF219C301FA62768004C7E1A /* Bugger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF219C2D1FA62768004C7E1A /* Bugger.framework */; };
+		AF219C311FA62768004C7E1A /* Bugger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF219C2D1FA62768004C7E1A /* Bugger.framework */; };
+		AF219C331FA71DB9004C7E1A /* BuggerConfigExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF219C321FA71DB9004C7E1A /* BuggerConfigExtensions.swift */; };
+		AF219C341FA71DB9004C7E1A /* BuggerConfigExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF219C321FA71DB9004C7E1A /* BuggerConfigExtensions.swift */; };
 		AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
 		AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED281E68E96100553D86 /* Assets.xcassets */; };
 		AF3EED341E68E9B300553D86 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED331E68E9B300553D86 /* Film.swift */; };
@@ -139,6 +145,9 @@
 		AF2106CF1F20202E00FBF0DB /* GetFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeed.swift; sourceTree = "<group>"; };
 		AF2106D21F20206A00FBF0DB /* Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watch.swift; sourceTree = "<group>"; };
 		AF2106E81F21360900FBF0DB /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		AF219C2C1FA62768004C7E1A /* BuggerImgurStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BuggerImgurStore.framework; path = Carthage/Build/iOS/BuggerImgurStore.framework; sourceTree = "<group>"; };
+		AF219C2D1FA62768004C7E1A /* Bugger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugger.framework; path = Carthage/Build/iOS/Bugger.framework; sourceTree = "<group>"; };
+		AF219C321FA71DB9004C7E1A /* BuggerConfigExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuggerConfigExtensions.swift; sourceTree = "<group>"; };
 		AF3EED1E1E68E96100553D86 /* Cut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3EED211E68E96100553D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF3EED281E68E96100553D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,10 +211,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */,
+				AF219C2E1FA62768004C7E1A /* BuggerImgurStore.framework in Frameworks */,
 				AFC304F31E85CB9E0012515E /* Kingfisher.framework in Frameworks */,
 				AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */,
 				AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */,
 				AFC304F91E85D1EE0012515E /* EasyPeasy.framework in Frameworks */,
+				AF219C301FA62768004C7E1A /* Bugger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,10 +225,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFB0C8151F1C0AEC00A96169 /* RxSwift.framework in Frameworks */,
+				AF219C2F1FA62768004C7E1A /* BuggerImgurStore.framework in Frameworks */,
 				AFB0C8161F1C0AEC00A96169 /* Kingfisher.framework in Frameworks */,
 				AFB0C8171F1C0AEC00A96169 /* RxCocoa.framework in Frameworks */,
 				AFB0C8181F1C0AEC00A96169 /* Rswift.framework in Frameworks */,
 				AFB0C8191F1C0AEC00A96169 /* EasyPeasy.framework in Frameworks */,
+				AF219C311FA62768004C7E1A /* Bugger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +240,8 @@
 		AF168E111E8483B40033CEEF /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
+				AF219C2D1FA62768004C7E1A /* Bugger.framework */,
+				AF219C2C1FA62768004C7E1A /* BuggerImgurStore.framework */,
 				AF5317A81EA3F44900AB90B9 /* Rswift.framework */,
 				AFC304F81E85D1EE0012515E /* EasyPeasy.framework */,
 				AFC304F21E85CB9E0012515E /* Kingfisher.framework */,
@@ -355,6 +370,7 @@
 			children = (
 				AF9F90E51ECBA9E60068182E /* CGFloatExtensions.swift */,
 				AFA3882D1EF6EE6F00CF70F8 /* CGRectExtensions.swift */,
+				AF219C321FA71DB9004C7E1A /* BuggerConfigExtensions.swift */,
 				AFE6E33A1EB9196C000453D4 /* StringExtensions.swift */,
 			);
 			path = Extensions;
@@ -437,6 +453,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF3EED301E68E96100553D86 /* Build configuration list for PBXNativeTarget "Cut" */;
 			buildPhases = (
+				AF219C351FA71E6F004C7E1A /* Generate BuggerConfig */,
 				AF5317A51EA3F31400AB90B9 /* R.swift */,
 				AF3EED1A1E68E96100553D86 /* Sources */,
 				AF3EED1B1E68E96100553D86 /* Frameworks */,
@@ -456,6 +473,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFB0C81E1F1C0AEC00A96169 /* Build configuration list for PBXNativeTarget "Local" */;
 			buildPhases = (
+				AF219C361FA71EF3004C7E1A /* Generate BuggerConfig */,
 				AFB0C7E21F1C0AEC00A96169 /* R.swift */,
 				AFB0C7E31F1C0AEC00A96169 /* Sources */,
 				AFB0C8131F1C0AEC00A96169 /* Frameworks */,
@@ -549,6 +567,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EasyPeasy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bugger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BuggerImgurStore.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -556,6 +576,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		AF219C351FA71E6F004C7E1A /* Generate BuggerConfig */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate BuggerConfig";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ! -f Cut/Extensions/BuggerConfigExtensions.swift ]; then\necho \"Ly8KLy8gIEZpbGUuc3dpZnQKLy8gIEN1dAovLwovLyAgQ3JlYXRlZCBieSBLeWxlIE1jQWxwaW5lIG9uIDMwLzEwLzIwMTcuCi8vICBDb3B5cmlnaHQgwqkgMjAxNyBLeWxlIE1jQWxwaW5lLiBBbGwgcmlnaHRzIHJlc2VydmVkLgovLwoKaW1wb3J0IEZvdW5kYXRpb24KaW1wb3J0IEJ1Z2dlcgppbXBvcnQgQnVnZ2VySW1ndXJTdG9yZQoKZXh0ZW5zaW9uIEJ1Z2dlckNvbmZpZyB7CiAgICBzdGF0aWMgdmFyIGN1dENvbmZpZzogQnVnZ2VyQ29uZmlnIHsKICAgICAgICBsZXQgc3RvcmUgPSBCdWdnZXJJbWd1clN0b3JlKGNsaWVudElEOiAiIikKICAgICAgICBsZXQgY29uZmlnID0gQnVnZ2VyQ29uZmlnKHRva2VuOiAiIiwgb3duZXI6ICJreWxlam0iLCByZXBvOiAiQ3V0Iiwgc3RvcmU6IC5pbWFnZShzdG9yZSkpCiAgICAgICAgcmV0dXJuIGNvbmZpZwogICAgfQp9Cg==\" | base64 --decode >> Cut/Extensions/BuggerConfigExtensions.swift\nfi\n";
+		};
+		AF219C361FA71EF3004C7E1A /* Generate BuggerConfig */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate BuggerConfig";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ! -f Cut/Extensions/BuggerConfigExtensions.swift ]; then\necho \"Ly8KLy8gIEZpbGUuc3dpZnQKLy8gIEN1dAovLwovLyAgQ3JlYXRlZCBieSBLeWxlIE1jQWxwaW5lIG9uIDMwLzEwLzIwMTcuCi8vICBDb3B5cmlnaHQgwqkgMjAxNyBLeWxlIE1jQWxwaW5lLiBBbGwgcmlnaHRzIHJlc2VydmVkLgovLwoKaW1wb3J0IEZvdW5kYXRpb24KaW1wb3J0IEJ1Z2dlcgppbXBvcnQgQnVnZ2VySW1ndXJTdG9yZQoKZXh0ZW5zaW9uIEJ1Z2dlckNvbmZpZyB7CiAgICBzdGF0aWMgdmFyIGN1dENvbmZpZzogQnVnZ2VyQ29uZmlnIHsKICAgICAgICBsZXQgc3RvcmUgPSBCdWdnZXJJbWd1clN0b3JlKGNsaWVudElEOiAiIikKICAgICAgICBsZXQgY29uZmlnID0gQnVnZ2VyQ29uZmlnKHRva2VuOiAiIiwgb3duZXI6ICJreWxlam0iLCByZXBvOiAiQ3V0Iiwgc3RvcmU6IC5pbWFnZShzdG9yZSkpCiAgICAgICAgcmV0dXJuIGNvbmZpZwogICAgfQp9Cg==\" | base64 --decode >> Cut/Extensions/BuggerConfigExtensions.swift\nfi\n";
 		};
 		AF5317A51EA3F31400AB90B9 /* R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -596,6 +644,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/EasyPeasy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BuggerImgurStore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bugger.framework",
 			);
 			name = Carthage;
 			outputPaths = (
