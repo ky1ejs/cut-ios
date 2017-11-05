@@ -24,7 +24,7 @@ struct CutEndpoints {
     static let search           = base.appendingPathComponent("search")
     static let users            = base.appendingPathComponent("users")
     static let login            = base.appendingPathComponent("login")
-    static let logout            = base.appendingPathComponent("logout")
+    static let logout           = base.appendingPathComponent("logout")
     static let signUp           = base.appendingPathComponent("sign-up")
     
     static let devices          = base.appendingPathComponent("devices")
