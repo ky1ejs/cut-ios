@@ -89,14 +89,14 @@ class ProfileVC: UIViewController {
                 }
         }
         
-        _ = profileView.watchListCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
+        _ = profileView.watchListCollectionView.rx.modelSelected(Watch.self).subscribe(onNext: { [weak self] watch in
             guard let safeSelf = self else { return }
-            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
+            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
         })
         
-        _ = profileView.ratedCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
+        _ = profileView.ratedCollectionView.rx.modelSelected(Watch.self).subscribe(onNext: { [weak self] watch in
             guard let safeSelf = self else { return }
-            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
+            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
         })
     }
     
