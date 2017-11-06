@@ -40,6 +40,25 @@ end
 extend FastlaneHelpers
 
 platform :ios do
+  ###############################################################
+  # Deployment
+  ###############################################################
+  lane :store do
+    sh("git status")
+    # ensure_git_status_clean
+    ensure_git_branch(branch: 'master')
+    gym scheme: 'Cut'
+    ENV["DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS"] = "-t DAV" # https://github.com/fastlane-old/deliver/issues/235
+    pilot(distribute_external:                  false,
+          skip_submission:                      true,
+          skip_waiting_for_build_processing:    true)
+
+    clean_build_artifacts
+  end
+
+  ###############################################################
+  # Code Signing
+  ###############################################################
   lane :renew_certificates do
     puts ''
     puts '##################################'
@@ -93,6 +112,7 @@ platform :ios do
       renew_all_profiles
     end
   end
+  ###############################################################
 end
 
 

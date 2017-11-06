@@ -5,3 +5,9 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_8e6d1d0872bc_key -iv $encrypted_8e6d1d0872bc_iv
   -in BuggerConfigExtensions.swift.enc -out Cut/Extensions/BuggerConfigExtensions.swift
   -d
+
+deploy:
+  - provider: script
+    script: fastlane store
+    on:
+      branch: master
