@@ -32,7 +32,7 @@ class AuthenticationVC: UIViewController {
             guard let safeSelf = self else { return }
             
             guard let emailOrUsername = safeSelf.authView.emailTextField.text,
-                let password = safeSelf.authView.passwordTextField.text else {
+            let password = safeSelf.authView.passwordTextField.text else {
                     return
             }
             

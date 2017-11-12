@@ -15,12 +15,14 @@ class User: JSONDecodeable {
     var email: Variable<String?>
     var username: Variable<String?>
     var following: Variable<Bool>
+    var followerCount: Variable<Int>
     let profileImageURL: URL?
     var isFullUser: Bool { return email.value != nil && username.value != nil }
     
     required init(json: JsonType) throws {
         email = Variable(json["email"] as? String)
         username = Variable(json["username"] as? String)
+        followerCount = Variable(json["follower_count"] as? Int ?? 0)
         
         let following = (json["following"] as? Bool) ?? false
         self.following = Variable(following)
@@ -150,6 +152,18 @@ class User: JSONDecodeable {
             }
             
             return Disposables.create { followUnfollow.dispose() }
+        }
+    }
+    
+    var observable: Observable<User> {
+        return Observable.create { observer -> Disposable in
+            return Disposables.create([
+                self.email.asObservable().bind() { _ in observer.onNext(self) },
+                self.username.asObservable().bind() { _ in observer.onNext(self) },
+                self.following.asObservable().bind() { _ in observer.onNext(self) }
+//            let profileImageURL: URL?
+//            var isFullUser: Bool { return email.value != nil && username.value != nil }
+            ])
         }
     }
 }

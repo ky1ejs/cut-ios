@@ -7,16 +7,32 @@
 //
 
 import UIKit
+import RxSwift
+import EasyPeasy
 
-class FeedTVC: UITableViewController {
-
+class FeedTVC: UIViewController {
+    let tableView = UITableView()
+    
+    var thing: FeedIntroView?
+    
     init() {
-        super.init(style: .plain)
+        super.init(nibName: nil, bundle: nil)
         title = "Feed"
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        view = UIView()
+        view.addSubview(tableView)
+        tableView <- [
+            Top().to(view.safeAreaLayoutGuide, .top),
+            Leading(),
+            Trailing(),
+            Bottom().to(view.safeAreaLayoutGuide, .top)
+        ]
     }
     
     override func viewDidLoad() {
@@ -30,24 +46,36 @@ class FeedTVC: UITableViewController {
         
         _ = tableView
             .rx
-            .itemSelected
-            .takeUntil(self.rx.deallocated)
-            .subscribe(onNext: { [weak self] indexPath in
-                guard let safeSelf = self else { return }
-                guard let cell = safeSelf.tableView.cellForRow(at: indexPath) as? FeedCell else { return }
-                guard let film = cell.watch?.film else { return }
-                safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
+            .modelSelected(Watch.self)
+            .takeUntil(rx.deallocated)
+            .subscribe(onNext: { watch in
+                self.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
             })
     }
     
     
     func loadFilms() {
-        _ = GetFeed()
-            .call()
-            .takeUntil(rx.deallocated)
-            .bind(to: tableView.rx.items(cellIdentifier: FeedCell.reuseIdentifier, cellType: FeedCell.self)) { (index, watch, cell) in
-                assert(Thread.isMainThread)
-                cell.watch = watch
+        _ = Store.user.observeOn(MainScheduler.instance).takeUntil(rx.deallocated).subscribe { event in
+            guard case .next(let state) = event else { return }
+            guard case .latest(let user) = state else { return }
+            
+            if !user.isFullUser || user.followerCount.value == 0 {
+                let mode: FeedIntroViewMode = user.isFullUser ? .followFriends : .loginSignUp
+                let thing = FeedIntroView(mode: mode)
+                self.view.addSubview(thing)
+                self.thing = thing
+                thing <- Edges()
+            } else {
+                self.thing?.removeFromSuperview()
+                _ = GetFeed()
+                    .call()
+                    .takeUntil(self.rx.deallocated)
+                    .bind(to: self.tableView.rx.items(cellIdentifier: FeedCell.reuseIdentifier, cellType: FeedCell.self)) { (index, watch, cell) in
+                        assert(Thread.isMainThread)
+                        cell.watch = watch
+                }
+            }
+            
         }
     }
 

@@ -36,21 +36,26 @@ class FeedIntroView: UIView {
     init(mode: FeedIntroViewMode) {
         super.init(frame: .zero)
         
+        backgroundColor = .white
+        
         let bodyLabel = UILabel()
-        bodyLabel.text = ""
+        bodyLabel.text = mode.body
         bodyLabel.numberOfLines = 0
+        bodyLabel.textAlignment = .center
         
         let ctaButton = UIButton(type: .custom)
-        ctaButton.setTitle(mode.body, for: .normal)
+        ctaButton.setTitle(mode.cta, for: .normal)
         ctaButton.setTitleColor(.white, for: .normal)
         ctaButton.backgroundColor = .red
+        ctaButton.layer.cornerRadius = 5
             
         addSubview(bodyLabel)
         addSubview(ctaButton)
         
         bodyLabel <- [
-            Center(),
-            Leading(20)
+            Leading(20),
+            CenterX(),
+            CenterY()
         ]
         
         ctaButton <- [
