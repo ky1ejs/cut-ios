@@ -11,9 +11,8 @@ import RxSwift
 import EasyPeasy
 
 class FeedTVC: UIViewController {
-    let tableView = UITableView()
-    
-    var thing: FeedIntroView?
+    let feedView = FeedView(state: .loading)
+    var ctaDisposeBag = DisposeBag()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -25,26 +24,19 @@ class FeedTVC: UIViewController {
     }
     
     override func loadView() {
-        view = UIView()
-        view.addSubview(tableView)
-        tableView <- [
-            Top().to(view.safeAreaLayoutGuide, .top),
-            Leading(),
-            Trailing(),
-            Bottom().to(view.safeAreaLayoutGuide, .bottom)
-        ]
+        view = feedView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
-        tableView.register(cellClass: FeedCell.self)
+        feedView.tableView.rowHeight = UITableViewAutomaticDimension
+        feedView.tableView.estimatedRowHeight = 100
+        feedView.tableView.register(cellClass: FeedCell.self)
         
         loadFilms()
         
-        _ = tableView
+        _ = feedView.tableView
             .rx
             .modelSelected(Watch.self)
             .takeUntil(rx.deallocated)
@@ -59,24 +51,34 @@ class FeedTVC: UIViewController {
             guard case .next(let state) = event else { return }
             guard case .latest(let user) = state else { return }
             
-            if !user.isFullUser || user.followerCount.value == 0 {
-                guard self.thing == nil else { return }
-                let mode: FeedIntroViewMode = user.isFullUser ? .followFriends : .loginSignUp
-                let thing = FeedIntroView(mode: mode)
-                self.view.addSubview(thing)
-                self.thing = thing
-                thing <- Edges()
-            } else {
-                self.thing?.removeFromSuperview()
-                _ = GetFeed()
-                    .call()
-                    .takeUntil(self.rx.deallocated)
-                    .bind(to: self.tableView.rx.items(cellIdentifier: FeedCell.reuseIdentifier, cellType: FeedCell.self)) { (index, watch, cell) in
+            self.ctaDisposeBag = DisposeBag()
+            
+            self.feedView.state.value = {
+                if !user.isFullUser || user.followerCount.value == 0 {
+                    _ = self.feedView.ctaButton.rx.tap.subscribe({ _ in
+                        switch self.feedView.state.value {
+                        case .loginSignUp:
+                            self.present(AuthenticationVC(user: user), animated: true, completion: nil)
+                        case .followFriends:
+                            break
+                        default:
+                            break
+                        }
+                    }).disposed(by: self.ctaDisposeBag)
+                    return user.isFullUser ? .followFriends : .loginSignUp
+                }
+                
+                let feed = GetFeed().call().takeUntil(self.rx.deallocated)
+                _ = feed.bind(to: self.feedView.tableView.rx.items(cellIdentifier: FeedCell.reuseIdentifier, cellType: FeedCell.self)) { (index, watch, cell) in
                         assert(Thread.isMainThread)
                         cell.watch = watch
                 }
-            }
-            
+                _ = feed.subscribe({ _ in
+                    self.feedView.state.value = .showFeed
+                })
+                
+                return .loading
+            }()
         }
     }
 

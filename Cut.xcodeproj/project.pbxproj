@@ -43,8 +43,8 @@
 		AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */; };
 		AF5317AD1EA4FDFF00AB90B9 /* GetRatedFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */; };
 		AF69493B1FAF6ADA004E19EC /* LocalUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69493A1FAF6ADA004E19EC /* LocalUnitTests.swift */; };
-		AF6949451FB04976004E19EC /* FeedIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949441FB04976004E19EC /* FeedIntroView.swift */; };
-		AF6949461FB04976004E19EC /* FeedIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949441FB04976004E19EC /* FeedIntroView.swift */; };
+		AF6949451FB04976004E19EC /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949441FB04976004E19EC /* FeedView.swift */; };
+		AF6949461FB04976004E19EC /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949441FB04976004E19EC /* FeedView.swift */; };
 		AF6949481FB46272004E19EC /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949471FB46272004E19EC /* Store.swift */; };
 		AF6949491FB46272004E19EC /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949471FB46272004E19EC /* Store.swift */; };
 		AF802F8B1ECE369C00CF197C /* FilmDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF802F8A1ECE369C00CF197C /* FilmDetailVC.swift */; };
@@ -184,7 +184,7 @@
 		AF6949381FAF6ADA004E19EC /* LocalUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF69493A1FAF6ADA004E19EC /* LocalUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUnitTests.swift; sourceTree = "<group>"; };
 		AF69493C1FAF6ADA004E19EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF6949441FB04976004E19EC /* FeedIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedIntroView.swift; sourceTree = "<group>"; };
+		AF6949441FB04976004E19EC /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		AF6949471FB46272004E19EC /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		AF802F8A1ECE369C00CF197C /* FilmDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailVC.swift; sourceTree = "<group>"; };
 		AF8069CF1F272EB7004B0796 /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
@@ -388,7 +388,7 @@
 			children = (
 				AF2106CC1F201FD100FBF0DB /* FeedTVC.swift */,
 				AF2106E81F21360900FBF0DB /* FeedCell.swift */,
-				AF6949441FB04976004E19EC /* FeedIntroView.swift */,
+				AF6949441FB04976004E19EC /* FeedView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -782,7 +782,7 @@
 				AFA9B2511E9D835A0072401F /* FilmFilter.swift in Sources */,
 				AF94AF581E8320840087080B /* ListFilms.swift in Sources */,
 				AF4139611EA0E04100F7AB8D /* UserCell.swift in Sources */,
-				AF6949451FB04976004E19EC /* FeedIntroView.swift in Sources */,
+				AF6949451FB04976004E19EC /* FeedView.swift in Sources */,
 				AFD4B2701F690B960004D1D7 /* LogOut.swift in Sources */,
 				AFCCA5C71E9C118D000B6102 /* User.swift in Sources */,
 				AFDC63F31EB93F1C006195E8 /* CutEndpoints.swift in Sources */,
@@ -853,7 +853,7 @@
 				AFB0C7F41F1C0AEC00A96169 /* FilmFilter.swift in Sources */,
 				AFB0C7F51F1C0AEC00A96169 /* ListFilms.swift in Sources */,
 				AFB0C7F61F1C0AEC00A96169 /* UserCell.swift in Sources */,
-				AF6949461FB04976004E19EC /* FeedIntroView.swift in Sources */,
+				AF6949461FB04976004E19EC /* FeedView.swift in Sources */,
 				AF8B08631F6EC51E0078D387 /* LogOut.swift in Sources */,
 				AFB0C7F71F1C0AEC00A96169 /* User.swift in Sources */,
 				AFB0C7F81F1C0AEC00A96169 /* CutEndpoints.swift in Sources */,
