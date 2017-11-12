@@ -36,6 +36,10 @@ struct Store {
             }
         }
     }
+    
+    static func update(_ user: User) {
+        userState.value = .latest(user)
+    }
 }
 
 enum StoreState<Data> {

@@ -31,7 +31,7 @@ class FeedTVC: UIViewController {
             Top().to(view.safeAreaLayoutGuide, .top),
             Leading(),
             Trailing(),
-            Bottom().to(view.safeAreaLayoutGuide, .top)
+            Bottom().to(view.safeAreaLayoutGuide, .bottom)
         ]
     }
     
@@ -60,6 +60,7 @@ class FeedTVC: UIViewController {
             guard case .latest(let user) = state else { return }
             
             if !user.isFullUser || user.followerCount.value == 0 {
+                guard self.thing == nil else { return }
                 let mode: FeedIntroViewMode = user.isFullUser ? .followFriends : .loginSignUp
                 let thing = FeedIntroView(mode: mode)
                 self.view.addSubview(thing)

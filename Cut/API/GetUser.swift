@@ -13,4 +13,7 @@ struct GetUser {}
 extension GetUser: Endpoint {
     typealias SuccessData = User
     var url: URL { return CutEndpoints.base }
+    var onSuccess: (SuccessData) -> () {
+        return { user in Store.update(user) }
+    }
 }

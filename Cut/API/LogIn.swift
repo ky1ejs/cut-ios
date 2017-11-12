@@ -24,4 +24,7 @@ extension LogIn: Endpoint {
     }
     var url: URL { return CutEndpoints.login }
     var method: HTTPMethod { return .post }
+    var onSuccess: (SuccessData) -> () {
+        return { user in Store.update(user) }
+    }
 }
