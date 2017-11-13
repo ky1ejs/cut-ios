@@ -14,53 +14,11 @@ class ProfileVC: UIViewController {
     let profileView = ProfileView()
     let authButton = UIBarButtonItem(title: "Login/Sign Up", style: .plain, target: nil, action: nil)
     let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: nil, action: nil)
-    
-    var userDisposeBag = DisposeBag()
-    var user: User? {
-        didSet {
-            userDisposeBag = DisposeBag() // Empties the bag by generating a new one
-            
-            profileView.emailLabel.text = user?.email.value
-            profileView.usernameLabel.text = user?.username.value
-            
-            guard let user = user else { return }
-            
-            _ = user.username
-                .asObservable()
-                .takeUntil(rx.deallocated)
-                .bind(to: profileView.usernameLabel.rx.text)
-                .disposed(by: userDisposeBag)
-                
-            _ = user.email
-                .asObservable()
-                .takeUntil(rx.deallocated)
-                .bind(to: profileView.emailLabel.rx.text)
-                .disposed(by: userDisposeBag)
-            
-            
-            
-            _ = Observable.combineLatest(user.email.asObservable(), user.username.asObservable(), resultSelector: { (email, username) -> Bool in
-                guard let _ = email else { return false }
-                guard let _ = username else { return false }
-                return true
-            }).takeUntil(rx.deallocated)
-                .observeOn(MainScheduler.instance)
-                .subscribe(onNext: { isLoggedIn in
-                    self.navigationItem.rightBarButtonItem = isLoggedIn ? self.logOutButton : self.authButton
-                })
-                .disposed(by: userDisposeBag)
-        }
-    }
+    var actionDisposeBag = DisposeBag()
     
     init() {
         super.init(nibName: nil, bundle: nil)
         title = "Profile"
-        
-        authButton.target = self
-        authButton.action = #selector(showAccountController)
-        
-        logOutButton.target = self
-        logOutButton.action = #selector(logOut)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,17 +35,11 @@ class ProfileVC: UIViewController {
         profileView.watchListCollectionView.register(cellClass: FilmCollectionCell.self)
         profileView.ratedCollectionView.register(cellClass: FilmCollectionCell.self)
         
-        _ = GetUser()
-            .call()
+        
+        _ = Store.user
             .takeUntil(rx.deallocated)
             .observeOn(MainScheduler.instance)
-            .subscribe { [weak self] event in
-                switch event {
-                case .next(let user):   self?.user = user
-                case .error(let error): print(error)
-                case .completed:        break
-                }
-        }
+            .subscribe(self)
         
         _ = profileView.watchListCollectionView.rx.modelSelected(Watch.self).subscribe(onNext: { [weak self] watch in
             guard let safeSelf = self else { return }
@@ -117,12 +69,24 @@ class ProfileVC: UIViewController {
                 cell.film = watch.film
         }
     }
+}
+
+extension ProfileVC: ObserverType {
+    typealias E = StoreState<User>
     
-    @objc func showAccountController() {
-        present(AuthenticationVC(user: user!), animated: true)
-    }
-    
-    @objc func logOut() {
-        _ = user?.logOut().takeUntil(rx.deallocated).subscribe()
+    func on(_ event: Event<ProfileVC.E>) {
+        guard case .next(let state) = event else { return }
+        guard case .latest(let user) = state else { return }
+        profileView.emailLabel.text = user.email.value
+        profileView.usernameLabel.text = user.username.value
+        navigationItem.rightBarButtonItem = user.isFullUser ? logOutButton : authButton
+        
+        _ = authButton.rx.tap.subscribe({ _ in
+            self.present(AuthenticationVC(user: user), animated: true)
+        }).disposed(by: actionDisposeBag)
+        
+        _ = logOutButton.rx.tap.subscribe({ _ in
+            _ = user.logOut().takeUntil(self.rx.deallocated).subscribe()
+        }).disposed(by: actionDisposeBag)
     }
 }
