@@ -5,7 +5,7 @@ xcode_scheme: Local
 before_install:
   - openssl aes-256-cbc -K $encrypted_8e6d1d0872bc_key -iv $encrypted_8e6d1d0872bc_iv
     -in BuggerConfigExtensions.swift.enc -out Cut/Extensions/BuggerConfigExtensions.swift
-  -d
+    -d
 script:
   - carthage bootstrap --platform ios
   - xcodebuild -project $TRAVIS_XCODE_PROJECT -scheme $TRAVIS_XCODE_SCHEME -destination 'platform=iOS Simulator,name=iPhone X,OS=latest' build test | xcpretty
