@@ -13,7 +13,7 @@ import AVKit
 
 class FilmDetailView: UIView {
     let scrollView          = UIScrollView()
-    let trailerView         = UIImageView()
+    let trailerButton       = UIButton()
     let posterImageView     = UIImageView()
     let watchView           : WatchView
     let titleLabel          = UILabel()
@@ -64,14 +64,16 @@ class FilmDetailView: UIView {
             runningTimeLabel.text = runningTimeString
         }
         
-        trailerView.backgroundColor = .black
+        trailerButton.backgroundColor = .black
         posterImageView.backgroundColor = .gray
         
         titleLabel.numberOfLines = 2
         synopsisLabel.numberOfLines = 0
         
+        trailerButton.kf.setBackgroundImage(with: film.trailers?.first?.previewImageURL, for: .normal)
+        
         addSubview(scrollView)
-        scrollView.addSubview(trailerView)
+        scrollView.addSubview(trailerButton)
         scrollView.addSubview(posterImageView)
         scrollView.addSubview(watchView)
         scrollView.addSubview(titleLabel)
@@ -138,17 +140,17 @@ class FilmDetailView: UIView {
             Bottom()
         ]
         
-        trailerView <- [
+        trailerButton <- [
             Top(10),
             Leading(),
             Trailing(),
             Width().like(self),
-            Height(*0.5625).like(trailerView, .width)
+            Height(*0.5625).like(trailerButton, .width)
         ]
         
         posterImageView <- [
             Leading(40),
-            CenterY(-20).to(trailerView, .bottom),
+            CenterY(-20).to(trailerButton, .bottom),
             Width(100),
             Height(*CGFloat.posterWidthToHeightRation).like(posterImageView, .width)
         ]
@@ -156,7 +158,7 @@ class FilmDetailView: UIView {
         watchView <- [
             Leading(20).to(posterImageView),
             Bottom().to(posterImageView, .bottom),
-            Trailing(40).to(trailerView, .trailing)
+            Trailing(40).to(trailerButton, .trailing)
         ]
         
         titleLabel <- [

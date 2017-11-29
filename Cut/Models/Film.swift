@@ -20,6 +20,7 @@ class Film {
     let ratings:                        [PercentageRating]
     let theaterReleaseDate:             Date?
     let relativeTheaterReleaseDate:     String?
+    let trailers:                       [Trailer]?
     
     fileprivate(set) var status: Variable<FilmStatus?>
     
@@ -51,23 +52,14 @@ class Film {
         
         ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.flatMap(PercentageRating.init) ?? [PercentageRating]()
         
-        if let posters = json.tryParseDict(key: "posters") {
-            let thumbnailUrlString: String = try posters.parseDict(key: "thumbnail").parse(key: "url")
-            let profileUrlString:   String = try posters.parseDict(key: "profile").parse(key: "url")
-            let heroUrlString:      String = try posters.parseDict(key: "hero").parse(key: "url")
+        let posters = json.tryParseDict(key: "posters")
+        thumbnailImageURL = posters?.tryParseDict(key: "thumbnail")?.parseDecodable(key: "url")
+        profileImageURL = posters?.tryParseDict(key: "profile")?.parseDecodable(key: "url")
+        heroImageURL = posters?.tryParseDict(key: "hero")?.parseDecodable(key: "url")
         
-            guard let thumbnailUrl  = URL(string: thumbnailUrlString)   else { throw ParserError.couldNotParse }
-            guard let profileUrl    = URL(string: profileUrlString)     else { throw ParserError.couldNotParse }
-            guard let heroImageURL  = URL(string: heroUrlString)        else { throw ParserError.couldNotParse }
-            
-            self.thumbnailImageURL = thumbnailUrl
-            self.profileImageURL = profileUrl
-            self.heroImageURL = heroImageURL
-        } else {
-            thumbnailImageURL = nil
-            profileImageURL = nil
-            heroImageURL = nil
-        }
+        let trailerJSON: [String : Trailer.JsonType] = try json.parse(key: "trailers")
+        trailers = try? ArrayResponse<Trailer>(json: Array(trailerJSON.values)).models
+        print(trailers)
     }
     
     func addToWatchList() -> Observable<AddFilmToWatchList.SuccessData> {

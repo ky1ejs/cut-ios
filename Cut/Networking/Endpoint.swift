@@ -20,27 +20,6 @@ protocol URLResponseDecodeable {
     init(responseParams: NSURLSessionCompletionHandlerParams) throws
 }
 
-protocol JSONDecodeable: URLResponseDecodeable {
-    associatedtype JsonType
-    init(json: JsonType) throws
-}
-
-extension JSONDecodeable  {
-    init(responseParams: NSURLSessionCompletionHandlerParams) throws {
-        guard let data = responseParams.data else { throw ParserError.couldNotParse }
-        let json: JsonType = try {
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                guard let expectedTypeJson = json as? JsonType else { throw ParserError.invalidJsonType }
-                return expectedTypeJson
-            } catch let error {
-                throw ParserError.invalidJson(error: error)
-            }
-        }()
-        try self.init(json: json)
-    }
-}
-
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"

@@ -24,9 +24,9 @@ struct SearchResults {
 }
 
 extension SearchResults: JSONDecodeable {
-    typealias JsonType = [AnyHashable : Any]
+    typealias JsonType = [String : Any]
     init(json: JsonType) throws {
-        let filmsJson: [[AnyHashable : Any]] = try json.parse(key: "films")
+        let filmsJson: [[String : Any]] = try json.parse(key: "films")
         let films = try ArrayResponse<Film>(json: filmsJson)
         self.films = films.models
         

@@ -8,14 +8,29 @@
 
 import UIKit
 import EasyPeasy
+import AVKit
 
 class FilmDetailVC: UIViewController {
+    let detailView: FilmDetailView
     let film: Film
     
     init(film: Film) {
         self.film = film
+        self.detailView = FilmDetailView(film: film)
+        
         super.init(nibName: nil, bundle: nil)
+        
         title = film.title
+        
+        detailView.trailerButton.rx.tap.takeUntil(rx.deallocated).subscribe(onNext: { _ in
+            guard let url = film.trailers?.first?.url else { return }
+            let player = AVPlayer(url: url)
+            let controller = AVPlayerViewController()
+            controller.player = player
+            self.present(controller, animated: true, completion: {
+                player.play()
+            })
+        })
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,6 +38,6 @@ class FilmDetailVC: UIViewController {
     }
     
     override func loadView() {
-        view = FilmDetailView(film: film)
+        view = detailView
     }
 }
