@@ -15,7 +15,7 @@ class FilmDetailView: UIView {
     let scrollView          = UIScrollView()
     let trailerButton       = UIButton()
     let posterImageView     = UIImageView()
-    let watchView           : WatchView
+    let watchView           : WatchActionView
     let titleLabel          = UILabel()
     let releaseDateLabel    = UILabel()
     let runningTimeLabel    = UILabel()
@@ -25,7 +25,7 @@ class FilmDetailView: UIView {
     
     init(film: Film) {
         self.film = film
-        watchView = WatchView(film: film)
+        watchView = WatchActionView(film: film)
         
         super.init(frame: .zero)
         
