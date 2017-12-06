@@ -10,48 +10,42 @@ import UIKit
 import EasyPeasy
 
 class StarRatingView: UIView {
+    var draggingEnabled: Bool { didSet { panGesture.isEnabled = draggingEnabled } }
+    
     private let stars: [UIImageView]
+    private let panGesture = UIPanGestureRecognizer()
+    private let starContainer = UIView()
     
     var rating: StarRating? {
         didSet {
-            guard let rating = rating else {
-                stars.forEach() { $0.image = nil }
-                return
-            }
+            let ceilRating = Int(ceil(rating?.rawValue ?? 0))
             
-            let ceilRating = Int(ceil(rating.rawValue))
-            
-            guard ceilRating != 0 else {
+            guard let rating = rating, ceilRating != 0 else {
                 stars.forEach() { $0.image = R.image.emptyStar() }
                 return
             }
             
-            guard ceilRating != 5 else {
-                stars.forEach() { $0.image = R.image.fullStar() }
-                return
-            }
-            
-            for i in 0...ceilRating {
+            for i in 0...ceilRating - 1 {
                 let star = stars[i]
-                if i == ceilRating && rating.rawValue > Double(ceilRating) - 1 {
+                if i == ceilRating - 1 && rating.rawValue < Double(ceilRating) {
                     star.image = R.image.halfStarLeft()
                 } else {
                     star.image = R.image.fullStar()
                 }
             }
             
-            for i in (ceilRating + 1)..<5 { stars[i].image = R.image.emptyStar() }
+            for i in ceilRating..<5 { stars[i].image = R.image.emptyStar() }
         }
     }
     
-    init() {
+    init(draggingEnabled: Bool = false) {
+        self.draggingEnabled = draggingEnabled
         stars = (0..<5).map() { _ in UIImageView() }
         
         super.init(frame: .zero)
         
-        let container = UIView()
-        addSubview(container)
-        container <- [
+        addSubview(starContainer)
+        starContainer <- [
             CenterX(),
             CenterY(),
             Leading(>=0),
@@ -62,7 +56,7 @@ class StarRatingView: UIView {
         
         for i in 0..<stars.count {
             let star = stars[i]
-            container.addSubview(star)
+            starContainer.addSubview(star)
             
             if i > 0 {
                 star <- Leading(10).to(stars[i - 1])
@@ -78,9 +72,32 @@ class StarRatingView: UIView {
             
             if i == stars.count - 1 { star <- Trailing() }
         }
+        
+        panGesture.isEnabled = draggingEnabled
+        _ = panGesture.rx.event.asObservable().takeUntil(rx.deallocated).subscribe(onNext: { pan in
+            guard let view = pan.view else { return }
+            self.updateWithTouch(location: pan.location(in: view))
+        })
+        addGestureRecognizer(panGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        updateWithTouch(location: touch.location(in: self))
+    }
+    
+    private func updateWithTouch(location: CGPoint) {
+        let starWidth = self.starContainer.frame.width
+        let location = location.x - self.starContainer.frame.origin.x
+        self.rating = {
+            var rating = Double(location / starWidth) * StarRating.five.rawValue
+            let denominator: Double = 2
+            rating = (rating * denominator).rounded(.toNearestOrAwayFromZero) / denominator
+            return StarRating(rawValue: rating)
+        }()
     }
 }

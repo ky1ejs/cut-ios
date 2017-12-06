@@ -22,7 +22,7 @@ class FilmDetailVC: UIViewController {
         
         title = film.title
         
-        detailView.trailerButton.rx.tap.takeUntil(rx.deallocated).subscribe(onNext: { _ in
+        _ = detailView.trailerButton.rx.tap.takeUntil(rx.deallocated).subscribe(onNext: { _ in
             guard let url = film.trailers?.first?.url else { return }
             let player = AVPlayer(url: url)
             let controller = AVPlayerViewController()
@@ -30,6 +30,10 @@ class FilmDetailVC: UIViewController {
             self.present(controller, animated: true, completion: {
                 player.play()
             })
+        })
+        
+        _ = detailView.watchView.rateButton.rx.tap.takeUntil(rx.deallocated).subscribe({ _ in
+            self.present(RatingPopUpVC(film: self.film), animated: true, completion: nil)
         })
     }
     
