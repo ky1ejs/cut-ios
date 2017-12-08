@@ -13,22 +13,27 @@ import AVKit
 class FilmDetailVC: UIViewController {
     let detailView: FilmDetailView
     let film: Film
+    let player: AVPlayer?
     
     init(film: Film) {
         self.film = film
         self.detailView = FilmDetailView(film: film)
+        
+        if let url = film.trailers?.first?.url {
+            player = AVPlayer(url: url)
+        } else {
+            player = nil
+        }
         
         super.init(nibName: nil, bundle: nil)
         
         title = film.title
         
         _ = detailView.trailerButton.rx.tap.takeUntil(rx.deallocated).subscribe(onNext: { _ in
-            guard let url = film.trailers?.first?.url else { return }
-            let player = AVPlayer(url: url)
             let controller = AVPlayerViewController()
-            controller.player = player
+            controller.player = self.player
             self.present(controller, animated: true, completion: {
-                player.play()
+                self.player?.play()
             })
         })
         
