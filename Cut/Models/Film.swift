@@ -59,7 +59,6 @@ class Film {
         
         let trailerJSON: [String : Trailer.JsonType] = try json.parse(key: "trailers")
         trailers = try? ArrayResponse<Trailer>(json: Array(trailerJSON.values)).models
-        print(trailers)
     }
     
     func addToWatchList() -> Observable<AddFilmToWatchList.SuccessData> {

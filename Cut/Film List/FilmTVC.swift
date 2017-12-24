@@ -34,6 +34,7 @@ class FilmTVC: UITableViewController {
             .rx
             .itemSelected
             .takeUntil(self.rx.deallocated)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] indexPath in
                 guard let safeSelf = self else { return }
                 guard let cell = safeSelf.tableView.cellForRow(at: indexPath) as? FilmTableCell else { return }
