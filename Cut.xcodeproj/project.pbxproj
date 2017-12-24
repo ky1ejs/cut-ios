@@ -545,13 +545,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF3EED301E68E96100553D86 /* Build configuration list for PBXNativeTarget "Cut" */;
 			buildPhases = (
+				AF3EED1C1E68E96100553D86 /* Resources */,
 				AF5317A51EA3F31400AB90B9 /* R.swift */,
 				AF168E141E848E6C0033CEEF /* Carthage */,
 				AF219C351FA71E6F004C7E1A /* Generate BuggerConfig */,
 				AF6949421FAFC374004E19EC /* set_version.sh */,
 				AF3EED1B1E68E96100553D86 /* Frameworks */,
 				AF3EED1A1E68E96100553D86 /* Sources */,
-				AF3EED1C1E68E96100553D86 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -584,13 +584,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFB0C81E1F1C0AEC00A96169 /* Build configuration list for PBXNativeTarget "Local" */;
 			buildPhases = (
+				AFB0C81A1F1C0AEC00A96169 /* Resources */,
 				AFB0C7E21F1C0AEC00A96169 /* R.swift */,
 				AFB0C81D1F1C0AEC00A96169 /* Carthage */,
 				AF219C361FA71EF3004C7E1A /* Generate BuggerConfig */,
 				AF6949431FAFC3A3004E19EC /* set_version.sh */,
 				AFB0C8131F1C0AEC00A96169 /* Frameworks */,
 				AFB0C7E31F1C0AEC00A96169 /* Sources */,
-				AFB0C81A1F1C0AEC00A96169 /* Resources */,
 			);
 			buildRules = (
 			);
