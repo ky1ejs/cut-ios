@@ -19,11 +19,11 @@ class FilmDetailVC: UIViewController {
         self.film = film
         self.detailView = FilmDetailView(film: film)
         
-//        if let url = film.trailers?.first?.url {
-//            player = AVPlayer(url: url)
-//        } else {
+        if let url = film.trailers?.first?.url {
+            player = AVPlayer(url: url)
+        } else {
             player = nil
-//        }
+        }
         
         super.init(nibName: nil, bundle: nil)
         
