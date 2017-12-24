@@ -33,6 +33,7 @@ Carthage/
 
 ## Fastlane
 fastlane/screenshots/
+fastlane/test_output/
 fastlane/*.xml
 fastlane/*.md
 fastlane/*.html
@@ -41,6 +42,14 @@ fastlane/*.html
 
 ## R.swift https://github.com/mac-cain13/R.swift
 *.generated.swift
+
+## Bundler
+.bundle/
+vendor/
+
+## Travis
+*.tar
+.travis/
 
 *.pkey
 *.pem

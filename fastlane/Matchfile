@@ -1,2 +1,2 @@
-git_url "https://github.com/kylejm/code-signing"
+git_url "git@github.com:kylejm/code-signing.git"
 username "k@kylejm.io"

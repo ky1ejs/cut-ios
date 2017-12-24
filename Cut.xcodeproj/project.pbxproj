@@ -505,13 +505,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF3EED301E68E96100553D86 /* Build configuration list for PBXNativeTarget "Cut" */;
 			buildPhases = (
+				AF5317A51EA3F31400AB90B9 /* R.swift */,
+				AF168E141E848E6C0033CEEF /* Carthage */,
 				AF219C351FA71E6F004C7E1A /* Generate BuggerConfig */,
 				AF6949421FAFC374004E19EC /* set_version.sh */,
-				AF5317A51EA3F31400AB90B9 /* R.swift */,
-				AF3EED1A1E68E96100553D86 /* Sources */,
 				AF3EED1B1E68E96100553D86 /* Frameworks */,
+				AF3EED1A1E68E96100553D86 /* Sources */,
 				AF3EED1C1E68E96100553D86 /* Resources */,
-				AF168E141E848E6C0033CEEF /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -544,13 +544,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFB0C81E1F1C0AEC00A96169 /* Build configuration list for PBXNativeTarget "Local" */;
 			buildPhases = (
+				AFB0C7E21F1C0AEC00A96169 /* R.swift */,
+				AFB0C81D1F1C0AEC00A96169 /* Carthage */,
 				AF219C361FA71EF3004C7E1A /* Generate BuggerConfig */,
 				AF6949431FAFC3A3004E19EC /* set_version.sh */,
-				AFB0C7E21F1C0AEC00A96169 /* R.swift */,
-				AFB0C7E31F1C0AEC00A96169 /* Sources */,
 				AFB0C8131F1C0AEC00A96169 /* Frameworks */,
+				AFB0C7E31F1C0AEC00A96169 /* Sources */,
 				AFB0C81A1F1C0AEC00A96169 /* Resources */,
-				AFB0C81D1F1C0AEC00A96169 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -657,6 +657,13 @@
 			);
 			name = Carthage;
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EasyPeasy.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Rswift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Bugger.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BuggerImgurStore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -762,6 +769,13 @@
 			);
 			name = Carthage;
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EasyPeasy.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Rswift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Bugger.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BuggerImgurStore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1045,7 +1059,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = watch.cut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "64c3d1d7-3e0e-45ce-bc0e-c13008b8b2ce";
+				PROVISIONING_PROFILE = "15a33b91-93b3-449b-8785-3e556b66f479";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development watch.cut";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;

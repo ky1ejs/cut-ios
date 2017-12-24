@@ -2,17 +2,35 @@ osx_image: xcode9.1
 language: objective-c
 xcode_project: Cut.xcodeproj
 xcode_scheme: Local
+cache:
+  bundler: true
+  directories:
+  - Carthage
 before_install:
-  - openssl aes-256-cbc -K $encrypted_8e6d1d0872bc_key -iv $encrypted_8e6d1d0872bc_iv
-    -in BuggerConfigExtensions.swift.enc -out Cut/Extensions/BuggerConfigExtensions.swift
-    -d
+- openssl aes-256-cbc -K $encrypted_8e6d1d0872bc_key -iv $encrypted_8e6d1d0872bc_iv
+  -in .travis.tar.enc -out .travis.tar -d
+- tar xvf .travis.tar
+- mv .travis/BuggerConfigExtensions.swift Cut/Extensions/BuggerConfigExtensions.swift
+- |
+  declare -r SSH_KEY="$(mktemp -u $HOME/.ssh/cut_bot_github_key)"
+  mv .travis/cut_bot_github_key $SSH_KEY
+  eval "$(ssh-agent -s)"
+  chmod 600 $SSH_KEY
+  ssh-add $SSH_KEY
+  ssh-keyscan github.com >> ~/.ssh/known_hosts
+- carthage bootstrap --platform iOS --cache-builds
+- |
+  if [ $TRAVIS_PULL_REQUEST = "false" ]; then
+    git checkout $TRAVIS_BRANCH
+  else
+    git checkout $TRAVIS_PULL_REQUEST_BRANCH
+  fi
 script:
-  - carthage bootstrap --platform ios
-  - xcodebuild -project $TRAVIS_XCODE_PROJECT -scheme $TRAVIS_XCODE_SCHEME -destination 'platform=iOS Simulator,name=iPhone X,OS=latest' build test | xcpretty
-deploy:
-  - provider: script
-    script:
-      - bundle install
-      - fastlane store
-    on:
-      branch: master
+- bundle exec fastlane ci
+env:
+  global:
+  - MATCH_KEYCHAIN_NAME=ci
+  - MATCH_PASSWORD=supersecret
+  - secure: KUs0aHh/dkZUTt4xFQ26cusPxgridiSC92JS/GO9VM1ZQklpZR9TfUWWj5Z7YZMMFOt9ooPdhX/mf/DM4OY+qHAaetu/aL1DiuiKFY44b40L1/5mJm6ut1z6jD5NlBGIkYhIt7StIapqlHKxYzYSL7d0eW8FU//hqYHinQtb2ADJzw0UueoIPUzlthFpEAl+2RFMPJa0RTaKx0Xz4JXLpAytQXXG99cTN8pa95tqxO6kCS/69oB8ZNdv9+S4R0FKtntWC6ok8k/53aPkDPpxP8TBeex3Loepoi0hmRJMoL5WZispCiVmLNzYpi3Xo0TuiDwq/57BdI3NYCc+SVOv60Qpuiz8uMum+2v8epOh5RzWhk/+kCOXqptym4PGLKPknNMt7THqcdYVeC1a7WBYysoDLOOmaLDZ5luc0WHkBSz9mydTpedjyiF0/YATy9D1IkDrOlKQpEnLKLnty+bN83AwCEoB6tj+U7opYuDmFiUY40BYQsSnvY4VqT5OxUkHmANPYq2e6QPu1Yus+U8mCu5ecr3RzAUOvcheGnD8qCR12PpGxIuG4sl3HKOci+4EAe1NzlCqYTUwTOHDKwl0pFm57Q+ds2W3R1qFXCIZ6IWm1zQqqsWOhoSS1lszgj/3BvjG87zTQiuBbQIyRUDaedLv4MSPGbYN2Ym+oYmF8iY=
+  - secure: o+v5blru01Fc7NYc/V7PX7y1LYdaiHYeDeU+ebDeVSNOqKu6WSzkKCvUkjRavrjj+L+jvKFsVRuL4KBJ7Ka2Flds86jucc9AVqeWc7lnplF1x/DstUWnb7Cr7ZwKJsJN7HulKgo2SbWHO2XBkYh6byrdNm9u5dxoP7eIBDjmC+g5YK8Fh3LwcjHY2kSDMGBmpK75fGAYi4rqszt4guOSWmbjFGLXE6uO/Qb7LyYyKwf8krujNfqhSfEovwtQOf2d1zxW04DA6bLqT8KgCfq04qqEKgwT65RdNwW+WXMdFtqQp1PsSe2PqMETtsWC293gp8jvTlPNeWiiddEQJPKPUkX0Zn3J2bK2DsQYqJJodnDvxVP7GCjvEzzrraCc2gMQtowTQ+zJl5jnEOepqhrXTLdiH5q74VqtwHmzZDkDe69K0cKXPQR6cBJlYHkkV+Gj+1CGwcKL5v998Y1Gv9CWi4DLu0raGwtpG1tJo9/V1jY6ehU5bD/egrRdBKKGjPAbtMYmhXDGXjPLdPBMrqRLjuwu3jY2Er8l4tNySxXe14ZNh9IYP72FeVUgtu1Pj35jzX1lHe56bvITOnFH1lr06Qi5P/w6bseaWGOsSg4S8k52aQZEe0qcGMMbnMZ8+Ib3yHZ0gddqj5ExpJe5OWThV0LIIH0elfzL4IzvWAqzdVY=
+  - secure: aELnXIsDXELJnbsEoMgzDlzm+HQR599SCI/Q3TFW06FEkl9svuru2TVoU2o6x2zosx9XZd9zDV+FOdlknFTP/3JSxsSPEI5aHKi1ez+MvHG7Ru7jOL43WjsQ8jpLp/0pzLSRSwIcwP8soD6r1zhWk25w0Z35M2nKPyckIHrqOknZRBdTIPZShgOQIMfCXWADgUgVPZoUjrex8moj5HMOSewUXZug0l4YmecrbL+fBD5u/7c594MF3+kL+otQllnbS+yWeUKvl97VUZsYGbMBkDD97P3ob9T/T9qQQu8jGJeZMDPR8OokwP8FaPRr7nr1ZAmYrR1vJFKtIV/HfKQmCYxRlsBW5nZjXPLbS3vOwST29yeydOAW5xWO3x3KWDBylQxIB5N7uOz2EGEc6i7ZuDTSQ+booM+haS0rnzhD0Srxni6iVpWEICcvxCGJidFVgjsuin949cj32kE5lRfoeFh1Dxmjq4jB5/YOJOc0XzsxPnoo93qfoeR7RQpmaW/Za7gevPjprwr1RDYVmXTGT0kcRUKYgDJ/i6LHXOrgtO9Zj+pT4o2OFEZ2rirUwAx1jmQ3tReKhM9xjDdhGtACUR8U+XaGgnJwB8V7vFnBtzsosY+cOJKkLNw5YN0a9QSCC8C4WldO7v8Gn2ep91yU99RqfqAvqlknai+GksnU1QI=

@@ -41,12 +41,43 @@ extend FastlaneHelpers
 
 platform :ios do
   ###############################################################
+  # CI
+  ###############################################################
+  lane :ci do
+    scan(
+      scheme: 'Local',
+      devices: ['iPhone X'],
+      skip_build: true
+    )
+
+    if `git rev-parse --abbrev-ref HEAD`.strip == 'master'
+      if ENV["MATCH_KEYCHAIN_NAME"] != nil && ENV["MATCH_PASSWORD"] != nil
+        create_keychain(
+          name: ENV["MATCH_KEYCHAIN_NAME"],
+          password: ENV["MATCH_PASSWORD"],
+          default_keychain: true,
+          unlock: true,
+          timeout: 3600,
+          add_to_search_list: true
+        )
+
+        download_all_store_profiles
+
+        # Stop prompt for allowing access to cert
+        sh("security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k #{ENV["MATCH_PASSWORD"]} #{ENV["MATCH_KEYCHAIN_NAME"]}")
+      end
+
+      store
+    end
+  end
+
+  ###############################################################
   # Deployment
   ###############################################################
   lane :store do
     sh("git status")
-    # ensure_git_status_clean
-    ensure_git_branch(branch: 'master')
+    ensure_git_status_clean
+    ensure_git_branch branch: 'master'
     gym scheme: 'Cut'
     ENV["DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS"] = "-t DAV" # https://github.com/fastlane-old/deliver/issues/235
     pilot(distribute_external:                  false,
