@@ -46,9 +46,9 @@ class ProfileVC: UIViewController {
             safeSelf.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
         })
         
-        _ = profileView.ratedCollectionView.rx.modelSelected(Watch.self).subscribe(onNext: { [weak self] watch in
+        _ = profileView.ratedCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
             guard let safeSelf = self else { return }
-            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
+            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
         })
     }
     
@@ -65,8 +65,8 @@ class ProfileVC: UIViewController {
         _ = GetRatedFilms()
             .call()
             .takeUntil(rx.deallocated)
-            .bind(to: profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, watch, cell in
-                cell.film = watch.film
+            .bind(to: profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
+                cell.film = film
         }
     }
 }

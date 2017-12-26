@@ -11,6 +11,6 @@ import Foundation
 struct GetRatedFilms {}
 
 extension GetRatedFilms: Endpoint {
-    typealias SuccessData = ArrayResponse<Watch>
+    typealias SuccessData = ArrayResponse<Film>
     var url: URL { return CutEndpoints.ratings }
 }
