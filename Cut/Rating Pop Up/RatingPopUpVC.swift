@@ -23,7 +23,18 @@ class RatingPopUpVC: UIViewController {
     }
     
     override func loadView() {
-        view = RatingPopUpView(rating: film.status.value?.ratingScore)
+        let popUpView = RatingPopUpView(rating: film.status.value?.ratingScore)
+        _ = popUpView.rateButton.rx
+            .tap
+            .asObservable()
+            .takeUntil(rx.deallocated)
+            .subscribe(onNext: { _ in
+                let rating = popUpView.ratingView.rating?.rawValue ?? 0
+                _ = RateFilm(film: self.film, rating: rating).call().subscribe({ event in
+                    self.dismiss(animated: true, completion: nil)
+                })
+            })
+        view = popUpView
     }
 }
 
