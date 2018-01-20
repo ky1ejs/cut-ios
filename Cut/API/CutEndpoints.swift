@@ -26,6 +26,7 @@ struct CutEndpoints {
     static let login            = base.appendingPathComponent("login")
     static let logout           = base.appendingPathComponent("logout")
     static let signUp           = base.appendingPathComponent("sign-up")
+    static let qrCode           = base.appendingPathComponent("qr")
     
     static let devices          = base.appendingPathComponent("devices")
     static let devicePushToken  = devices.appendingPathComponent("push-token")

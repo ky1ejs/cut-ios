@@ -28,6 +28,12 @@
 		AF219C341FA71DB9004C7E1A /* BuggerConfigExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF219C321FA71DB9004C7E1A /* BuggerConfigExtensions.swift */; };
 		AF2D78711FDADDF0008B6777 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D78701FDADDF0008B6777 /* R.generated.swift */; };
 		AF2D78721FDADDF0008B6777 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D78701FDADDF0008B6777 /* R.generated.swift */; };
+		AF2EB09D20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB09C20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift */; };
+		AF2EB09E20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB09C20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift */; };
+		AF2EB0A02011EA5A00556B71 /* QrCodePresenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB09F2011EA5A00556B71 /* QrCodePresenterVC.swift */; };
+		AF2EB0A12011EA5A00556B71 /* QrCodePresenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB09F2011EA5A00556B71 /* QrCodePresenterVC.swift */; };
+		AF2EB0A32011EA6400556B71 /* QrCodePresenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB0A22011EA6400556B71 /* QrCodePresenterView.swift */; };
+		AF2EB0A42011EA6400556B71 /* QrCodePresenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB0A22011EA6400556B71 /* QrCodePresenterView.swift */; };
 		AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
 		AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED281E68E96100553D86 /* Assets.xcassets */; };
 		AF3EED341E68E9B300553D86 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED331E68E9B300553D86 /* Film.swift */; };
@@ -174,6 +180,9 @@
 		AF219C2D1FA62768004C7E1A /* Bugger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugger.framework; path = Carthage/Build/iOS/Bugger.framework; sourceTree = "<group>"; };
 		AF219C321FA71DB9004C7E1A /* BuggerConfigExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuggerConfigExtensions.swift; sourceTree = "<group>"; };
 		AF2D78701FDADDF0008B6777 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		AF2EB09C20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutQrCodeImageDownloadRequestModifier.swift; sourceTree = "<group>"; };
+		AF2EB09F2011EA5A00556B71 /* QrCodePresenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodePresenterVC.swift; sourceTree = "<group>"; };
+		AF2EB0A22011EA6400556B71 /* QrCodePresenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodePresenterView.swift; sourceTree = "<group>"; };
 		AF3EED1E1E68E96100553D86 /* Cut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3EED211E68E96100553D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF3EED281E68E96100553D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -483,6 +492,9 @@
 			isa = PBXGroup;
 			children = (
 				AF3EED211E68E96100553D86 /* AppDelegate.swift */,
+				AF2EB09F2011EA5A00556B71 /* QrCodePresenterVC.swift */,
+				AF2EB0A22011EA6400556B71 /* QrCodePresenterView.swift */,
+				AF2EB09C20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift */,
 				AF6949471FB46272004E19EC /* Store.swift */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
 				AF2106E71F20A0E200FBF0DB /* API */,
@@ -865,6 +877,7 @@
 				AF918DB11EA029F800ABAE3A /* SearchView.swift in Sources */,
 				AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */,
 				AF9F90E21ECA43610068182E /* FilmDetailView.swift in Sources */,
+				AF2EB0A32011EA6400556B71 /* QrCodePresenterView.swift in Sources */,
 				AF6949481FB46272004E19EC /* Store.swift in Sources */,
 				AFA388301EF6FBB800CF70F8 /* WatchActionView.swift in Sources */,
 				AF94AF561E831F980087080B /* Endpoint.swift in Sources */,
@@ -881,6 +894,7 @@
 				AF2106CD1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
 				AF2106D31F20206A00FBF0DB /* Watch.swift in Sources */,
 				AF449E4C1EC2753500053DAC /* PercentageRating.swift in Sources */,
+				AF2EB09D20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift in Sources */,
 				AF9E97531FCF475900DB7CF4 /* RatingPopUpView.swift in Sources */,
 				AFA9B2541E9D838B0072401F /* SignUp.swift in Sources */,
 				AF3EED381E68EC3900553D86 /* FilmTVC.swift in Sources */,
@@ -888,6 +902,7 @@
 				AF00B20B1EA3E5F4009BF608 /* Star.swift in Sources */,
 				AF8BA9AC1FF01EFF00DB9249 /* CrossFadeTransition.swift in Sources */,
 				AFA9B2421E9CABC90072401F /* UIDevice.swift in Sources */,
+				AF2EB0A02011EA5A00556B71 /* QrCodePresenterVC.swift in Sources */,
 				AF8069D01F272EB7004B0796 /* LogIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -941,6 +956,7 @@
 				AFB0C8001F1C0AEC00A96169 /* SearchView.swift in Sources */,
 				AFB0C8011F1C0AEC00A96169 /* AddFilmToWatchList.swift in Sources */,
 				AFB0C8021F1C0AEC00A96169 /* FilmDetailView.swift in Sources */,
+				AF2EB0A42011EA6400556B71 /* QrCodePresenterView.swift in Sources */,
 				AF6949491FB46272004E19EC /* Store.swift in Sources */,
 				AFB0C8031F1C0AEC00A96169 /* WatchActionView.swift in Sources */,
 				AFB0C8041F1C0AEC00A96169 /* Endpoint.swift in Sources */,
@@ -957,6 +973,7 @@
 				AF2106CE1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
 				AF2106D41F20206A00FBF0DB /* Watch.swift in Sources */,
 				AFB0C80D1F1C0AEC00A96169 /* PercentageRating.swift in Sources */,
+				AF2EB09E20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift in Sources */,
 				AF9E97541FCF475900DB7CF4 /* RatingPopUpView.swift in Sources */,
 				AFB0C80E1F1C0AEC00A96169 /* SignUp.swift in Sources */,
 				AFB0C80F1F1C0AEC00A96169 /* FilmTVC.swift in Sources */,
@@ -964,6 +981,7 @@
 				AFB0C8111F1C0AEC00A96169 /* Star.swift in Sources */,
 				AF8BA9AD1FF01EFF00DB9249 /* CrossFadeTransition.swift in Sources */,
 				AFB0C8121F1C0AEC00A96169 /* UIDevice.swift in Sources */,
+				AF2EB0A12011EA5A00556B71 /* QrCodePresenterVC.swift in Sources */,
 				AF8069D11F294ECB004B0796 /* LogIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

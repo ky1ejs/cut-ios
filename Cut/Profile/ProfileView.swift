@@ -13,6 +13,7 @@ class ProfileView: UIView {
     let emailLabel = UILabel()
     let usernameLabel = UILabel()
     let segmentedControl = UISegmentedControl(items: ["Watch List", "Ratings"])
+    let qrCodeButton = UIButton(type: .custom)
     
     let watchListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilmPosterLayout())
     let ratedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilmPosterLayout())
@@ -24,6 +25,9 @@ class ProfileView: UIView {
         backgroundColor = .white
         
         segmentedControl.selectedSegmentIndex = 0
+        
+        qrCodeButton.setTitle("QR", for: .normal)
+        qrCodeButton.setTitleColor(.blue, for: .normal)
         
         _ = segmentedControl
             .rx
@@ -39,11 +43,11 @@ class ProfileView: UIView {
         addSubview(detailsContainer)
         detailsContainer.addSubview(detailsCenteringContainer)
         detailsContainer.addSubview(segmentedControl)
-        addSubview(ratedCollectionView)
-        addSubview(watchListCollectionView)
-        
+        detailsCenteringContainer.addSubview(qrCodeButton)
         detailsCenteringContainer.addSubview(emailLabel)
         detailsCenteringContainer.addSubview(usernameLabel)
+        addSubview(ratedCollectionView)
+        addSubview(watchListCollectionView)
         
         detailsContainer <- [
             Leading(),
@@ -73,6 +77,11 @@ class ProfileView: UIView {
             Leading().to(emailLabel, .leading),
             Top(10).to(emailLabel),
             Bottom()
+        ]
+        
+        qrCodeButton <- [
+            Top().to(emailLabel, .top),
+            Trailing(20)
         ]
         
         watchListCollectionView <- [

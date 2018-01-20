@@ -50,6 +50,11 @@ class ProfileVC: UIViewController {
             guard let safeSelf = self else { return }
             safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
         })
+        
+        _ = profileView.qrCodeButton.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
+            guard let safeSelf = self else { return }
+            safeSelf.present(QrCodePresenterVC(), animated: true, completion: nil)
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
