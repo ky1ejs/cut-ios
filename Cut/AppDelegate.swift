@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Bugger.with(config: BuggerConfig.cutConfig)
         
         let tabBar = UITabBarController(nibName: nil, bundle: nil)
-        tabBar.viewControllers = [FilmTVC(), FeedTVC(), SearchVC(), ProfileVC()].map(UINavigationController.init)
+        tabBar.viewControllers = [FilmTVC(), FeedTVC(), SearchVC(), CurrentUserVC()].map(UINavigationController.init)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabBar

@@ -1,5 +1,5 @@
 //
-//  ProfileVC.swift
+//  CurrentUserVC.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 10/04/2017.
@@ -10,7 +10,7 @@ import UIKit
 import EasyPeasy
 import RxSwift
 
-class ProfileVC: UIViewController {
+class CurrentUserVC: UIViewController {
     let profileView = ProfileView()
     let authButton = UIBarButtonItem(title: "Login/Sign Up", style: .plain, target: nil, action: nil)
     let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: nil, action: nil)
@@ -76,10 +76,10 @@ class ProfileVC: UIViewController {
     }
 }
 
-extension ProfileVC: ObserverType {
+extension CurrentUserVC: ObserverType {
     typealias E = StoreState<User>
     
-    func on(_ event: Event<ProfileVC.E>) {
+    func on(_ event: Event<CurrentUserVC.E>) {
         guard case .next(let state) = event else { return }
         guard case .latest(let user) = state else { return }
         profileView.emailLabel.text = user.email.value
