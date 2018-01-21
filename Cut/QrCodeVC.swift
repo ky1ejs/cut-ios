@@ -29,43 +29,30 @@ class QrCodeVC: UIViewController {
             self.dismiss(animated: true, completion: nil)
         })
         
-        // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: .video, position: .back)
-        
-        guard let captureDevice = deviceDiscoverySession.devices.first else {
-            print("Failed to get the camera device")
-            return
-        }
         
         let captureSession = AVCaptureSession()
         do {
-            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
+            guard let captureDevice = deviceDiscoverySession.devices.first else {
+                print("Failed to get the camera device")
+                return
+            }
             let input = try AVCaptureDeviceInput(device: captureDevice)
-            
-            // Set the input device on the capture session.
             captureSession.addInput(input)
-            
-            // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
-            let captureMetadataOutput = AVCaptureMetadataOutput()
-            captureSession.addOutput(captureMetadataOutput)
-            
-            // Set delegate and use the default dispatch queue to execute the call back
-            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            captureMetadataOutput.metadataObjectTypes = [.qr]
-            //            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
-            
-        } catch {
-            // If any error occurs, simply print it out and don't continue any more.
+        } catch let error {
             print(error)
             return
         }
         
-        // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
+        let captureMetadataOutput = AVCaptureMetadataOutput()
+        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        captureMetadataOutput.metadataObjectTypes = [.qr]
+        captureSession.addOutput(captureMetadataOutput)
+        
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        videoPreviewLayer?.videoGravity = .resizeAspectFill
         qrView.scannerContainer.layer.addSublayer(videoPreviewLayer!)
         
-        // Start video capture.
         captureSession.startRunning()
     }
     
