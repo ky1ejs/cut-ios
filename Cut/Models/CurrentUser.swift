@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  CurrentUser.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 10/04/2017.
@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class User: JSONDecodeable {
+class CurrentUser: JSONDecodeable {
     typealias JsonType = [AnyHashable : Any]
     
     var email: Variable<String?>
@@ -35,7 +35,7 @@ class User: JSONDecodeable {
         }()
     }
     
-    func signUp(email: String, username: String, password: String) -> Observable<User> {
+    func signUp(email: String, username: String, password: String) -> Observable<CurrentUser> {
         return Observable.create { [weak self] observer in
             guard let safeSelf = self, !safeSelf.isFullUser else {
                 observer.on(.error(RxError.unknown))
@@ -66,7 +66,7 @@ class User: JSONDecodeable {
         }
     }
     
-    func login(emailOrUsername: String, password: String) -> Observable<User> {
+    func login(emailOrUsername: String, password: String) -> Observable<CurrentUser> {
         return Observable.create { [weak self] observer in
             guard let safeSelf = self, !safeSelf.isFullUser else {
                 observer.on(.error(RxError.unknown))
@@ -97,7 +97,7 @@ class User: JSONDecodeable {
         }
     }
     
-    func logOut() -> Observable<User> {
+    func logOut() -> Observable<CurrentUser> {
         return Observable.create { [weak self] observer in
             guard let safeSelf = self, safeSelf.isFullUser else {
                 observer.on(.error(RxError.unknown))
@@ -155,7 +155,7 @@ class User: JSONDecodeable {
         }
     }
     
-    var observable: Observable<User> {
+    var observable: Observable<CurrentUser> {
         return Observable.create { observer -> Disposable in
             return Disposables.create([
                 self.email.asObservable().bind() { _ in observer.onNext(self) },

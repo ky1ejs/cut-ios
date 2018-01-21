@@ -14,7 +14,7 @@ struct LogIn {
 }
 
 extension LogIn: Endpoint {
-    typealias SuccessData = User
+    typealias SuccessData = CurrentUser
     var body: [String : Any] {
         return [
             "email_or_username" : emailOrUsername,

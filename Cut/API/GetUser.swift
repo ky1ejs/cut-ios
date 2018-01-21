@@ -11,7 +11,7 @@ import Foundation
 struct GetUser {}
 
 extension GetUser: Endpoint {
-    typealias SuccessData = User
+    typealias SuccessData = CurrentUser
     var url: URL { return CutEndpoints.base }
     var onSuccess: (SuccessData) -> () {
         return { user in Store.update(user) }

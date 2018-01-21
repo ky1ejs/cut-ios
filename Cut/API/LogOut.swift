@@ -11,10 +11,10 @@ import Foundation
 struct LogOut {}
 
 extension LogOut: Endpoint {
-    typealias SuccessData = User
+    typealias SuccessData = CurrentUser
     var url: URL { return CutEndpoints.logout }
     var method: HTTPMethod { return .post }
-    var onSuccess: (User) -> () {
+    var onSuccess: (CurrentUser) -> () {
         return { user in Store.update(user) }
     }
 }

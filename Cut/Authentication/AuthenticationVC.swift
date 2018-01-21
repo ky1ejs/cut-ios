@@ -10,10 +10,10 @@ import UIKit
 import RxSwift
 
 class AuthenticationVC: UIViewController {
-    let user: User
+    let user: CurrentUser
     let authView = AuthenticationView()
     
-    init(user: User) {
+    init(user: CurrentUser) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
     }

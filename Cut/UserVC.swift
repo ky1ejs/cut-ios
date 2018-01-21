@@ -9,9 +9,9 @@
 import UIKit
 
 class UserVC: UIViewController {
-    let user: User
+    let user: CurrentUser
     
-    init(user: User) {
+    init(user: CurrentUser) {
         
     }
 }

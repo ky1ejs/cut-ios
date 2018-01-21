@@ -15,7 +15,7 @@ struct SignUp {
 }
 
 extension SignUp: Endpoint {
-    typealias SuccessData = User
+    typealias SuccessData = CurrentUser
     var url: URL { return CutEndpoints.signUp }
     var body: [String : Any] {
         return [

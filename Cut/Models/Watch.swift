@@ -9,7 +9,7 @@
 import Foundation
 
 struct Watch {
-    let user: User
+    let user: CurrentUser
     let film: Film
     let rating: StarRating?
     let comment: String?
@@ -23,7 +23,7 @@ extension Watch: JSONDecodeable {
     typealias JsonType = [AnyHashable : Any]
     
     init(json: JsonType) throws {
-        user = try User(json: try json.parseDict(key: "user"))
+        user = try CurrentUser(json: try json.parseDict(key: "user"))
         film = try Film(json: try json.parseDict(key: "film"))
         if let ratingValue = json["rating"] as? Double {
             rating = StarRating(rawValue: ratingValue)

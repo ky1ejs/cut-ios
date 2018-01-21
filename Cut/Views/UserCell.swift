@@ -11,7 +11,7 @@ import EasyPeasy
 import Kingfisher
 
 class UserCell: UITableViewCell {
-    var user: User? {
+    var user: CurrentUser? {
         didSet {
             profileImageView.kf.setImage(with: user?.profileImageURL)
             usernameTitleLabel.text = user?.username.value

@@ -77,7 +77,7 @@ class CurrentUserVC: UIViewController {
 }
 
 extension CurrentUserVC: ObserverType {
-    typealias E = StoreState<User>
+    typealias E = StoreState<CurrentUser>
     
     func on(_ event: Event<CurrentUserVC.E>) {
         guard case .next(let state) = event else { return }

@@ -16,9 +16,9 @@ import RxSwift
 // 5. On error, the store notifies observers - how does the key VC know when to show an error for a given user action (e.g. system error, no internet)
 
 struct Store {
-    private static var userState = Variable(StoreState<User>.notFetched)
+    private static var userState = Variable(StoreState<CurrentUser>.notFetched)
     
-    static let user = Observable<StoreState<User>>.create { (observer) -> Disposable in
+    static let user = Observable<StoreState<CurrentUser>>.create { (observer) -> Disposable in
         let variableSub = userState.asObservable().subscribe(observer)
         
         if case .notFetched = userState.value { updateUser() }
@@ -37,7 +37,7 @@ struct Store {
         }
     }
     
-    static func update(_ user: User) {
+    static func update(_ user: CurrentUser) {
         userState.value = .latest(user)
     }
 }
