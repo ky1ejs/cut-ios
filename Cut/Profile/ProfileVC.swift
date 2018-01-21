@@ -53,7 +53,7 @@ class ProfileVC: UIViewController {
         
         _ = profileView.qrCodeButton.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
             guard let safeSelf = self else { return }
-            safeSelf.present(QrCodePresenterVC(), animated: true, completion: nil)
+            safeSelf.present(QrCodeVC(), animated: true, completion: nil)
         })
     }
     

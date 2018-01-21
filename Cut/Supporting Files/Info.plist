@@ -69,5 +69,7 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>For following people easily and quickly using QR codes.</string>
 </dict>
 </plist>

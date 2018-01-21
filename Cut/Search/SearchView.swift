@@ -19,6 +19,8 @@ class SearchView: UIView {
         
         backgroundColor = .white
         
+        segmentedControl.selectedSegmentIndex = 0
+        
         addSubview(segmentedControl)
         addSubview(userTableView)
         addSubview(filmTableView)

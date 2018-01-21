@@ -19,7 +19,14 @@ class SearchVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         title = "Search"
+        searchTF.placeholder = "Search"
         navigationItem.titleView = searchTF
+        
+        let qrButton = UIBarButtonItem(title: "QR", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = qrButton
+        _ = qrButton.rx.tap.subscribe(onNext: { _ in
+            self.present(QrCodeVC(), animated: true, completion: nil)
+        })
         
         searchTF <- Width(200)
         
