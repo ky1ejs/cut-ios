@@ -107,6 +107,12 @@
 		AF2EB0F32015164E00556B71 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2411E9CABC90072401F /* UIDevice.swift */; };
 		AF2EB0F42015164E00556B71 /* QrCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB09F2011EA5A00556B71 /* QrCodeVC.swift */; };
 		AF2EB0F52015164E00556B71 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8069CF1F272EB7004B0796 /* LogIn.swift */; };
+		AF2EB0FD201524EC00556B71 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB0FC201524EC00556B71 /* UserVC.swift */; };
+		AF2EB0FE201524EC00556B71 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB0FC201524EC00556B71 /* UserVC.swift */; };
+		AF2EB0FF201524EC00556B71 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB0FC201524EC00556B71 /* UserVC.swift */; };
+		AF2EB1012015256500556B71 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB1002015256500556B71 /* UserView.swift */; };
+		AF2EB1022015256500556B71 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB1002015256500556B71 /* UserView.swift */; };
+		AF2EB1032015256500556B71 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB1002015256500556B71 /* UserView.swift */; };
 		AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
 		AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED281E68E96100553D86 /* Assets.xcassets */; };
 		AF3EED341E68E9B300553D86 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED331E68E9B300553D86 /* Film.swift */; };
@@ -257,6 +263,8 @@
 		AF2EB09F2011EA5A00556B71 /* QrCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeVC.swift; sourceTree = "<group>"; };
 		AF2EB0A22011EA6400556B71 /* QrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeView.swift; sourceTree = "<group>"; };
 		AF2EB0F92015164F00556B71 /* Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staging.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF2EB0FC201524EC00556B71 /* UserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
+		AF2EB1002015256500556B71 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		AF3EED1E1E68E96100553D86 /* Cut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3EED211E68E96100553D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF3EED281E68E96100553D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -592,6 +600,8 @@
 			children = (
 				AF3EED211E68E96100553D86 /* AppDelegate.swift */,
 				AF6949471FB46272004E19EC /* Store.swift */,
+				AF2EB0FC201524EC00556B71 /* UserVC.swift */,
+				AF2EB1002015256500556B71 /* UserView.swift */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
 				AF2106E71F20A0E200FBF0DB /* API */,
 				AF2106DA1F20A00D00FBF0DB /* Authentication */,
@@ -1077,6 +1087,7 @@
 				AF2EB0D72015164E00556B71 /* CircularRatingView.swift in Sources */,
 				AF2EB0D82015164E00556B71 /* SearchView.swift in Sources */,
 				AF2EB0D92015164E00556B71 /* AddFilmToWatchList.swift in Sources */,
+				AF2EB0FF201524EC00556B71 /* UserVC.swift in Sources */,
 				AF2EB0DA2015164E00556B71 /* FilmDetailView.swift in Sources */,
 				AF2EB0DB2015164E00556B71 /* QrCodeView.swift in Sources */,
 				AF2EB0DC2015164E00556B71 /* Store.swift in Sources */,
@@ -1095,6 +1106,7 @@
 				AF2EB0E92015164E00556B71 /* FeedTVC.swift in Sources */,
 				AF2EB0EA2015164E00556B71 /* Watch.swift in Sources */,
 				AF2EB0EB2015164E00556B71 /* PercentageRating.swift in Sources */,
+				AF2EB1032015256500556B71 /* UserView.swift in Sources */,
 				AF2EB0EC2015164E00556B71 /* CutQrCodeImageDownloadRequestModifier.swift in Sources */,
 				AF2EB0ED2015164E00556B71 /* RatingPopUpView.swift in Sources */,
 				AF2EB0EE2015164E00556B71 /* SignUp.swift in Sources */,
@@ -1148,6 +1160,7 @@
 				AFA3882C1EF6EBD400CF70F8 /* CircularRatingView.swift in Sources */,
 				AF918DB11EA029F800ABAE3A /* SearchView.swift in Sources */,
 				AFE548AC1E999A0C00C99278 /* AddFilmToWatchList.swift in Sources */,
+				AF2EB0FD201524EC00556B71 /* UserVC.swift in Sources */,
 				AF9F90E21ECA43610068182E /* FilmDetailView.swift in Sources */,
 				AF2EB0A32011EA6400556B71 /* QrCodeView.swift in Sources */,
 				AF6949481FB46272004E19EC /* Store.swift in Sources */,
@@ -1166,6 +1179,7 @@
 				AF2106CD1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
 				AF2106D31F20206A00FBF0DB /* Watch.swift in Sources */,
 				AF449E4C1EC2753500053DAC /* PercentageRating.swift in Sources */,
+				AF2EB1012015256500556B71 /* UserView.swift in Sources */,
 				AF2EB09D20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift in Sources */,
 				AF9E97531FCF475900DB7CF4 /* RatingPopUpView.swift in Sources */,
 				AFA9B2541E9D838B0072401F /* SignUp.swift in Sources */,
@@ -1227,6 +1241,7 @@
 				AFB0C7FE1F1C0AEC00A96169 /* CircularRatingView.swift in Sources */,
 				AFB0C8001F1C0AEC00A96169 /* SearchView.swift in Sources */,
 				AFB0C8011F1C0AEC00A96169 /* AddFilmToWatchList.swift in Sources */,
+				AF2EB0FE201524EC00556B71 /* UserVC.swift in Sources */,
 				AFB0C8021F1C0AEC00A96169 /* FilmDetailView.swift in Sources */,
 				AF2EB0A42011EA6400556B71 /* QrCodeView.swift in Sources */,
 				AF6949491FB46272004E19EC /* Store.swift in Sources */,
@@ -1245,6 +1260,7 @@
 				AF2106CE1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
 				AF2106D41F20206A00FBF0DB /* Watch.swift in Sources */,
 				AFB0C80D1F1C0AEC00A96169 /* PercentageRating.swift in Sources */,
+				AF2EB1022015256500556B71 /* UserView.swift in Sources */,
 				AF2EB09E20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift in Sources */,
 				AF9E97541FCF475900DB7CF4 /* RatingPopUpView.swift in Sources */,
 				AFB0C80E1F1C0AEC00A96169 /* SignUp.swift in Sources */,
