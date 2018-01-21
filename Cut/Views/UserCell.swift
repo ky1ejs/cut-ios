@@ -11,10 +11,10 @@ import EasyPeasy
 import Kingfisher
 
 class UserCell: UITableViewCell {
-    var user: CurrentUser? {
+    var user: User? {
         didSet {
             profileImageView.kf.setImage(with: user?.profileImageURL)
-            usernameTitleLabel.text = user?.username.value
+            usernameTitleLabel.text = user?.username
             _ = user?.following.asObservable().subscribe(onNext: { following in
                 self.followButton.setTitle(following ? "Unfollow" : "Follow", for: .normal)
             })
@@ -63,7 +63,7 @@ class UserCell: UITableViewCell {
             Width(80)
         ]
         
-        _ = followButton.rx.tap.takeUntil(rx.deallocated).subscribe(onNext: { _ in
+        _ = followButton.rx.tap.takeUntil(rx.deallocated).subscribe({ _ in
             _ = self.user?.toggleFollowing().subscribe()
         })
     }

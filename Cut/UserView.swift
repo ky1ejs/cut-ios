@@ -16,7 +16,7 @@ class UserView: UIView {
     let segmentedControl = UISegmentedControl(items: ["Watch List", "Ratings"])
     
     init(user: User) {
-        
+        super.init(frame: .zero)
     }
     
     required init?(coder aDecoder: NSCoder) {

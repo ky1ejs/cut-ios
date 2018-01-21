@@ -113,6 +113,9 @@
 		AF2EB1012015256500556B71 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB1002015256500556B71 /* UserView.swift */; };
 		AF2EB1022015256500556B71 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB1002015256500556B71 /* UserView.swift */; };
 		AF2EB1032015256500556B71 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB1002015256500556B71 /* UserView.swift */; };
+		AF2EB1052015297900556B71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB1042015297900556B71 /* User.swift */; };
+		AF2EB1062015297900556B71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB1042015297900556B71 /* User.swift */; };
+		AF2EB1072015297900556B71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2EB1042015297900556B71 /* User.swift */; };
 		AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
 		AF3EED291E68E96100553D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3EED281E68E96100553D86 /* Assets.xcassets */; };
 		AF3EED341E68E9B300553D86 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED331E68E9B300553D86 /* Film.swift */; };
@@ -265,6 +268,7 @@
 		AF2EB0F92015164F00556B71 /* Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2EB0FC201524EC00556B71 /* UserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
 		AF2EB1002015256500556B71 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		AF2EB1042015297900556B71 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AF3EED1E1E68E96100553D86 /* Cut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3EED211E68E96100553D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF3EED281E68E96100553D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -602,6 +606,7 @@
 				AF6949471FB46272004E19EC /* Store.swift */,
 				AF2EB0FC201524EC00556B71 /* UserVC.swift */,
 				AF2EB1002015256500556B71 /* UserView.swift */,
+				AF2EB1042015297900556B71 /* User.swift */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
 				AF2106E71F20A0E200FBF0DB /* API */,
 				AF2106DA1F20A00D00FBF0DB /* Authentication */,
@@ -1096,6 +1101,7 @@
 				AF2EB0DF2015164E00556B71 /* R.generated.swift in Sources */,
 				AF2EB0E02015164E00556B71 /* FilmPosterLayout.swift in Sources */,
 				AF2EB0E12015164E00556B71 /* FollowUnfollowUser.swift in Sources */,
+				AF2EB1072015297900556B71 /* User.swift in Sources */,
 				AF2EB0E22015164E00556B71 /* FilmTableCell.swift in Sources */,
 				AF2EB0E32015164E00556B71 /* StarRating.swift in Sources */,
 				AF2EB0E42015164E00556B71 /* AuthenticationView.swift in Sources */,
@@ -1169,6 +1175,7 @@
 				AF2D78711FDADDF0008B6777 /* R.generated.swift in Sources */,
 				AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */,
 				AF4292881EA0EE1A008D387C /* FollowUnfollowUser.swift in Sources */,
+				AF2EB1052015297900556B71 /* User.swift in Sources */,
 				AFC304F51E85CCA60012515E /* FilmTableCell.swift in Sources */,
 				AF449E4E1EC2759F00053DAC /* StarRating.swift in Sources */,
 				AFA9B2461E9CB20F0072401F /* AuthenticationView.swift in Sources */,
@@ -1250,6 +1257,7 @@
 				AF2D78721FDADDF0008B6777 /* R.generated.swift in Sources */,
 				AFB0C8051F1C0AEC00A96169 /* FilmPosterLayout.swift in Sources */,
 				AFB0C8061F1C0AEC00A96169 /* FollowUnfollowUser.swift in Sources */,
+				AF2EB1062015297900556B71 /* User.swift in Sources */,
 				AFB0C8071F1C0AEC00A96169 /* FilmTableCell.swift in Sources */,
 				AFB0C8081F1C0AEC00A96169 /* StarRating.swift in Sources */,
 				AFB0C8091F1C0AEC00A96169 /* AuthenticationView.swift in Sources */,

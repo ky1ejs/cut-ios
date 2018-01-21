@@ -20,7 +20,7 @@ extension Search: Endpoint {
 
 struct SearchResults {
     let films: [Film]
-    let users: [CurrentUser]
+    let users: [User]
 }
 
 extension SearchResults: JSONDecodeable {
@@ -31,7 +31,7 @@ extension SearchResults: JSONDecodeable {
         self.films = films.models
         
         let usersJson: [[AnyHashable : Any]] = try json.parse(key: "users")
-        let users = try ArrayResponse<CurrentUser>(json: usersJson)
+        let users = try ArrayResponse<User>(json: usersJson)
         self.users = users.models
     }
 }

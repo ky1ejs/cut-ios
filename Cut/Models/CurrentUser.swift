@@ -128,33 +128,6 @@ class CurrentUser: JSONDecodeable {
         }
     }
     
-    func toggleFollowing() -> Observable<FollowUnfollowUser.SuccessData> {
-        guard let username = username.value else {
-            return Observable.create { observer in
-                observer.onError(RxError.unknown)
-                observer.onCompleted()
-                
-                return Disposables.create()
-            }
-        }
-        
-        return Observable.create { observer in
-            let followUnfollow = FollowUnfollowUser(username: username, follow: !self.following.value).call().subscribe { event in
-                switch event {
-                case .next(let empty):
-                    self.following.value = !self.following.value
-                    observer.onNext(empty)
-                case .error(let error):
-                    observer.onError(error)
-                case .completed:
-                    observer.onCompleted()
-                }
-            }
-            
-            return Disposables.create { followUnfollow.dispose() }
-        }
-    }
-    
     var observable: Observable<CurrentUser> {
         return Observable.create { observer -> Disposable in
             return Disposables.create([
