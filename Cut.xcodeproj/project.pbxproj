@@ -556,6 +556,16 @@
 			path = "Rating Pop Up";
 			sourceTree = "<group>";
 		};
+		AF2EB0FB201524BD00556B71 /* QR Code */ = {
+			isa = PBXGroup;
+			children = (
+				AF2EB09F2011EA5A00556B71 /* QrCodeVC.swift */,
+				AF2EB0A22011EA6400556B71 /* QrCodeView.swift */,
+				AF2EB09C20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift */,
+			);
+			path = "QR Code";
+			sourceTree = "<group>";
+		};
 		AF3EED151E68E96100553D86 = {
 			isa = PBXGroup;
 			children = (
@@ -581,9 +591,6 @@
 			isa = PBXGroup;
 			children = (
 				AF3EED211E68E96100553D86 /* AppDelegate.swift */,
-				AF2EB09F2011EA5A00556B71 /* QrCodeVC.swift */,
-				AF2EB0A22011EA6400556B71 /* QrCodeView.swift */,
-				AF2EB09C20112A9100556B71 /* CutQrCodeImageDownloadRequestModifier.swift */,
 				AF6949471FB46272004E19EC /* Store.swift */,
 				AF3EED281E68E96100553D86 /* Assets.xcassets */,
 				AF2106E71F20A0E200FBF0DB /* API */,
@@ -597,6 +604,7 @@
 				AF2106DE1F20A04100FBF0DB /* Networking */,
 				AF2106DD1F20A03200FBF0DB /* Profile */,
 				AF2106DC1F20A02500FBF0DB /* Protocols */,
+				AF2EB0FB201524BD00556B71 /* QR Code */,
 				AF2CA5701FDFCF5E0094AB23 /* Rating Pop Up */,
 				AF2106DB1F20A01A00FBF0DB /* Search */,
 				AF2106D91F209FFC00FBF0DB /* Supporting Files */,
