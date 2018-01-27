@@ -1,5 +1,5 @@
 //
-//  ProfileView.swift
+//  CurrentUserView.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 10/04/2017.
@@ -9,7 +9,7 @@
 import UIKit
 import EasyPeasy
 
-class ProfileView: UIView {
+class CurrentUserView: UIView {
     let emailLabel = UILabel()
     let usernameLabel = UILabel()
     let segmentedControl = UISegmentedControl(items: ["Watch List", "Ratings"])

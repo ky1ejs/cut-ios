@@ -11,7 +11,7 @@ import EasyPeasy
 import RxSwift
 
 class CurrentUserVC: UIViewController {
-    let profileView = ProfileView()
+    let profileView = CurrentUserView()
     let authButton = UIBarButtonItem(title: "Login/Sign Up", style: .plain, target: nil, action: nil)
     let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: nil, action: nil)
     var actionDisposeBag = DisposeBag()
