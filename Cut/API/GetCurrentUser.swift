@@ -1,5 +1,5 @@
 //
-//  GetUser.swift
+//  GetCurrentUser.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 11/04/2017.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct GetUser {}
+struct GetCurrentUser {}
 
-extension GetUser: Endpoint {
+extension GetCurrentUser: Endpoint {
     typealias SuccessData = CurrentUser
     var url: URL { return CutEndpoints.base }
     var onSuccess: (SuccessData) -> () {

@@ -13,6 +13,8 @@ struct User {
     let username: String
     let followerCount: Int
     let followingCount: Int
+    let watchListCount: Int
+    let ratedCount: Int
     let profileImageURL: URL?
     
     let following: Variable<Bool>
@@ -25,6 +27,8 @@ extension User: JSONDecodeable {
         username = try json.parse(key: "username")
         followerCount = try json.parse(key: "follower_count")
         followingCount = try json.parse(key: "following_count")
+        watchListCount = try json.parse(key: "watch_list_count")
+        ratedCount = try json.parse(key: "rated_count")
         profileImageURL = {
             guard let urlString = json["profile_image"] as? String else { return nil }
             return URL(string: urlString)

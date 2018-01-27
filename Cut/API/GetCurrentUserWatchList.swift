@@ -1,5 +1,5 @@
 //
-//  GetWatchList.swift
+//  GetCurrentUserWatchList.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 16/04/2017.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct GetWatchList {}
+struct GetCurrentUserWatchList {}
 
-extension GetWatchList: Endpoint {
+extension GetCurrentUserWatchList: Endpoint {
     typealias SuccessData = ArrayResponse<Film>
     var url: URL { return CutEndpoints.watchList }
 }

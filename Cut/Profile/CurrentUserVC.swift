@@ -41,9 +41,9 @@ class CurrentUserVC: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(self)
         
-        _ = profileView.watchListCollectionView.rx.modelSelected(Watch.self).subscribe(onNext: { [weak self] watch in
+        _ = profileView.watchListCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
             guard let safeSelf = self else { return }
-            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
+            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
         })
         
         _ = profileView.ratedCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
@@ -60,14 +60,14 @@ class CurrentUserVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        _ = GetWatchList()
+        _ = GetCurrentUserWatchList()
             .call()
             .takeUntil(rx.deallocated)
             .bind(to: profileView.watchListCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
                 cell.film = film
         }
         
-        _ = GetRatedFilms()
+        _ = GetCurrentUserRatedFilms()
             .call()
             .takeUntil(rx.deallocated)
             .bind(to: profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in

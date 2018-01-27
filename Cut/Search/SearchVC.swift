@@ -64,6 +64,13 @@ class SearchVC: UIViewController {
                 guard let film = cell.film else { return }
                 safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
             })
+        
+        _ = searchView.userTableView.rx
+            .modelSelected(User.self)
+            .takeUntil(self.rx.deallocated)
+            .subscribe(onNext: { user in
+                self.navigationController?.pushViewController(UserVC(user: user), animated: true)
+            })
     }
     
     required init?(coder aDecoder: NSCoder) {

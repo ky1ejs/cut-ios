@@ -16,6 +16,43 @@ class UserVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    override func loadView() {
+        let userView = UserView(user: user)
+        
+        userView.watchListCollectionView.register(cellClass: FilmCollectionCell.self)
+        userView.ratedCollectionView.register(cellClass: FilmCollectionCell.self)
+        
+        _ = GetUserWatchList(username: user.username)
+            .call()
+            .bind(to: userView
+                .watchListCollectionView
+                .rx
+                .items(cellClass: FilmCollectionCell.self)) { _, film, cell in
+                    cell.film = film
+        }
+        
+        _ = GetUserRatings(username: user.username)
+            .call()
+            .bind(to: userView
+                .ratedCollectionView
+                .rx
+                .items(cellClass: FilmCollectionCell.self)) { _, watch, cell in
+                    cell.film = watch.film
+        }
+        
+        _ = userView.watchListCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
+            guard let safeSelf = self else { return }
+            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: film), animated: true)
+        })
+        
+        _ = userView.ratedCollectionView.rx.modelSelected(Watch.self).subscribe(onNext: { [weak self] watch in
+            guard let safeSelf = self else { return }
+            safeSelf.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
+        })
+        
+        view = userView
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

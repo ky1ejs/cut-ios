@@ -1,5 +1,5 @@
 //
-//  GetRatedFilms.swift
+//  GetCurrentUserRatedFilms.swift
 //  Cut
 //
 //  Created by Kyle McAlpine on 17/04/2017.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct GetRatedFilms {}
+struct GetCurrentUserRatedFilms {}
 
-extension GetRatedFilms: Endpoint {
+extension GetCurrentUserRatedFilms: Endpoint {
     typealias SuccessData = ArrayResponse<Film>
     var url: URL { return CutEndpoints.ratings }
 }

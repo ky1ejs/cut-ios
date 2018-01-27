@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF00B2091EA376C2009BF608 /* GetWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00B2081EA376C2009BF608 /* GetWatchList.swift */; };
+		AF00B2091EA376C2009BF608 /* GetCurrentUserWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00B2081EA376C2009BF608 /* GetCurrentUserWatchList.swift */; };
 		AF00B20B1EA3E5F4009BF608 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00B20A1EA3E5F4009BF608 /* Star.swift */; };
 		AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0D1E8483B00033CEEF /* RxCocoa.framework */; };
 		AF168E101E8483B00033CEEF /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF168E0E1E8483B00033CEEF /* RxSwift.framework */; };
@@ -51,8 +51,8 @@
 		AF2EB0BB2015164E00556B71 /* PercentageRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF449E491EC274B900053DAC /* PercentageRatingView.swift */; };
 		AF2EB0BC2015164E00556B71 /* FilmCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF971AD21EA279EC003A249E /* FilmCollectionCell.swift */; };
 		AF2EB0BD2015164E00556B71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
-		AF2EB0BE2015164E00556B71 /* GetWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00B2081EA376C2009BF608 /* GetWatchList.swift */; };
-		AF2EB0BF2015164E00556B71 /* GetRatedFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */; };
+		AF2EB0BE2015164E00556B71 /* GetCurrentUserWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00B2081EA376C2009BF608 /* GetCurrentUserWatchList.swift */; };
+		AF2EB0BF2015164E00556B71 /* GetCurrentUserRatedFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AC1EA4FDFF00AB90B9 /* GetCurrentUserRatedFilms.swift */; };
 		AF2EB0C02015164E00556B71 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE6E33A1EB9196C000453D4 /* StringExtensions.swift */; };
 		AF2EB0C12015164E00556B71 /* AlertPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8BA9AF1FF01F6900DB9249 /* AlertPresentationController.swift */; };
 		AF2EB0C22015164E00556B71 /* CurrentUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AD1E9C108300C99278 /* CurrentUserVC.swift */; };
@@ -60,7 +60,7 @@
 		AF2EB0C42015164E00556B71 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F90E31ECA44260068182E /* StarRatingView.swift */; };
 		AF2EB0C52015164E00556B71 /* FIlmStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF449E4F1EC275E500053DAC /* FIlmStatus.swift */; };
 		AF2EB0C62015164E00556B71 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEB1B81E9E14240095D66E /* SearchVC.swift */; };
-		AF2EB0C72015164E00556B71 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2431E9CAC9A0072401F /* GetUser.swift */; };
+		AF2EB0C72015164E00556B71 /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2431E9CAC9A0072401F /* GetCurrentUser.swift */; };
 		AF2EB0C82015164E00556B71 /* FilmFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2501E9D835A0072401F /* FilmFilter.swift */; };
 		AF2EB0C92015164E00556B71 /* ListFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF571E8320840087080B /* ListFilms.swift */; };
 		AF2EB0CA2015164E00556B71 /* RatingPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF514B941FCF495500A488FA /* RatingPopUpVC.swift */; };
@@ -132,7 +132,13 @@
 		AF514B961FCF495500A488FA /* RatingPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF514B941FCF495500A488FA /* RatingPopUpVC.swift */; };
 		AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5317A81EA3F44900AB90B9 /* Rswift.framework */; };
 		AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */; };
-		AF5317AD1EA4FDFF00AB90B9 /* GetRatedFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */; };
+		AF5317AD1EA4FDFF00AB90B9 /* GetCurrentUserRatedFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AC1EA4FDFF00AB90B9 /* GetCurrentUserRatedFilms.swift */; };
+		AF604B9C201A6634006D1DA8 /* GetUserWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604B9B201A6634006D1DA8 /* GetUserWatchList.swift */; };
+		AF604B9D201A6634006D1DA8 /* GetUserWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604B9B201A6634006D1DA8 /* GetUserWatchList.swift */; };
+		AF604B9E201A6634006D1DA8 /* GetUserWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604B9B201A6634006D1DA8 /* GetUserWatchList.swift */; };
+		AF604BA0201A6769006D1DA8 /* GetUserRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604B9F201A6769006D1DA8 /* GetUserRatings.swift */; };
+		AF604BA1201A6769006D1DA8 /* GetUserRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604B9F201A6769006D1DA8 /* GetUserRatings.swift */; };
+		AF604BA2201A6769006D1DA8 /* GetUserRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604B9F201A6769006D1DA8 /* GetUserRatings.swift */; };
 		AF69493B1FAF6ADA004E19EC /* LocalUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69493A1FAF6ADA004E19EC /* LocalUnitTests.swift */; };
 		AF6949451FB04976004E19EC /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949441FB04976004E19EC /* FeedView.swift */; };
 		AF6949461FB04976004E19EC /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949441FB04976004E19EC /* FeedView.swift */; };
@@ -162,7 +168,7 @@
 		AFA3882E1EF6EE6F00CF70F8 /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA3882D1EF6EE6F00CF70F8 /* CGRectExtensions.swift */; };
 		AFA388301EF6FBB800CF70F8 /* WatchActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA3882F1EF6FBB800CF70F8 /* WatchActionView.swift */; };
 		AFA9B2421E9CABC90072401F /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2411E9CABC90072401F /* UIDevice.swift */; };
-		AFA9B2441E9CAC9A0072401F /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2431E9CAC9A0072401F /* GetUser.swift */; };
+		AFA9B2441E9CAC9A0072401F /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2431E9CAC9A0072401F /* GetCurrentUser.swift */; };
 		AFA9B2461E9CB20F0072401F /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2451E9CB20F0072401F /* AuthenticationView.swift */; };
 		AFA9B24F1E9D83270072401F /* ArrayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B24E1E9D83270072401F /* ArrayResponse.swift */; };
 		AFA9B2511E9D835A0072401F /* FilmFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2501E9D835A0072401F /* FilmFilter.swift */; };
@@ -175,15 +181,15 @@
 		AFB0C7E81F1C0AEC00A96169 /* PercentageRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF449E491EC274B900053DAC /* PercentageRatingView.swift */; };
 		AFB0C7E91F1C0AEC00A96169 /* FilmCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF971AD21EA279EC003A249E /* FilmCollectionCell.swift */; };
 		AFB0C7EA1F1C0AEC00A96169 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED211E68E96100553D86 /* AppDelegate.swift */; };
-		AFB0C7EB1F1C0AEC00A96169 /* GetWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00B2081EA376C2009BF608 /* GetWatchList.swift */; };
-		AFB0C7EC1F1C0AEC00A96169 /* GetRatedFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */; };
+		AFB0C7EB1F1C0AEC00A96169 /* GetCurrentUserWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00B2081EA376C2009BF608 /* GetCurrentUserWatchList.swift */; };
+		AFB0C7EC1F1C0AEC00A96169 /* GetCurrentUserRatedFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5317AC1EA4FDFF00AB90B9 /* GetCurrentUserRatedFilms.swift */; };
 		AFB0C7ED1F1C0AEC00A96169 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE6E33A1EB9196C000453D4 /* StringExtensions.swift */; };
 		AFB0C7EE1F1C0AEC00A96169 /* CurrentUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE548AD1E9C108300C99278 /* CurrentUserVC.swift */; };
 		AFB0C7EF1F1C0AEC00A96169 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EED331E68E9B300553D86 /* Film.swift */; };
 		AFB0C7F01F1C0AEC00A96169 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F90E31ECA44260068182E /* StarRatingView.swift */; };
 		AFB0C7F11F1C0AEC00A96169 /* FIlmStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF449E4F1EC275E500053DAC /* FIlmStatus.swift */; };
 		AFB0C7F21F1C0AEC00A96169 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEB1B81E9E14240095D66E /* SearchVC.swift */; };
-		AFB0C7F31F1C0AEC00A96169 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2431E9CAC9A0072401F /* GetUser.swift */; };
+		AFB0C7F31F1C0AEC00A96169 /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2431E9CAC9A0072401F /* GetCurrentUser.swift */; };
 		AFB0C7F41F1C0AEC00A96169 /* FilmFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9B2501E9D835A0072401F /* FilmFilter.swift */; };
 		AFB0C7F51F1C0AEC00A96169 /* ListFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94AF571E8320840087080B /* ListFilms.swift */; };
 		AFB0C7F61F1C0AEC00A96169 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4139601EA0E04100F7AB8D /* UserCell.swift */; };
@@ -249,7 +255,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AF00B2081EA376C2009BF608 /* GetWatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetWatchList.swift; sourceTree = "<group>"; };
+		AF00B2081EA376C2009BF608 /* GetCurrentUserWatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCurrentUserWatchList.swift; sourceTree = "<group>"; };
 		AF00B20A1EA3E5F4009BF608 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		AF168E0D1E8483B00033CEEF /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		AF168E0E1E8483B00033CEEF /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -286,7 +292,9 @@
 		AF514B941FCF495500A488FA /* RatingPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingPopUpVC.swift; sourceTree = "<group>"; };
 		AF5317A81EA3F44900AB90B9 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateFilm.swift; sourceTree = "<group>"; };
-		AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRatedFilms.swift; sourceTree = "<group>"; };
+		AF5317AC1EA4FDFF00AB90B9 /* GetCurrentUserRatedFilms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCurrentUserRatedFilms.swift; sourceTree = "<group>"; };
+		AF604B9B201A6634006D1DA8 /* GetUserWatchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserWatchList.swift; sourceTree = "<group>"; };
+		AF604B9F201A6769006D1DA8 /* GetUserRatings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRatings.swift; sourceTree = "<group>"; };
 		AF6949381FAF6ADA004E19EC /* LocalUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF69493A1FAF6ADA004E19EC /* LocalUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUnitTests.swift; sourceTree = "<group>"; };
 		AF69493C1FAF6ADA004E19EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -310,7 +318,7 @@
 		AFA3882D1EF6EE6F00CF70F8 /* CGRectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectExtensions.swift; sourceTree = "<group>"; };
 		AFA3882F1EF6FBB800CF70F8 /* WatchActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchActionView.swift; sourceTree = "<group>"; };
 		AFA9B2411E9CABC90072401F /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
-		AFA9B2431E9CAC9A0072401F /* GetUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUser.swift; sourceTree = "<group>"; };
+		AFA9B2431E9CAC9A0072401F /* GetCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCurrentUser.swift; sourceTree = "<group>"; };
 		AFA9B2451E9CB20F0072401F /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		AFA9B24E1E9D83270072401F /* ArrayResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayResponse.swift; sourceTree = "<group>"; };
 		AFA9B2501E9D835A0072401F /* FilmFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmFilter.swift; sourceTree = "<group>"; };
@@ -545,9 +553,11 @@
 				AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */,
 				AF4292871EA0EE1A008D387C /* FollowUnfollowUser.swift */,
 				AF2106CF1F20202E00FBF0DB /* GetFeed.swift */,
-				AF5317AC1EA4FDFF00AB90B9 /* GetRatedFilms.swift */,
-				AFA9B2431E9CAC9A0072401F /* GetUser.swift */,
-				AF00B2081EA376C2009BF608 /* GetWatchList.swift */,
+				AF5317AC1EA4FDFF00AB90B9 /* GetCurrentUserRatedFilms.swift */,
+				AF00B2081EA376C2009BF608 /* GetCurrentUserWatchList.swift */,
+				AFA9B2431E9CAC9A0072401F /* GetCurrentUser.swift */,
+				AF604B9B201A6634006D1DA8 /* GetUserWatchList.swift */,
+				AF604B9F201A6769006D1DA8 /* GetUserRatings.swift */,
 				AF8069CF1F272EB7004B0796 /* LogIn.swift */,
 				AFD4B26F1F690B960004D1D7 /* LogOut.swift */,
 				AF5317AA1EA4F60B00AB90B9 /* RateFilm.swift */,
@@ -1064,8 +1074,8 @@
 				AF2EB0BB2015164E00556B71 /* PercentageRatingView.swift in Sources */,
 				AF2EB0BC2015164E00556B71 /* FilmCollectionCell.swift in Sources */,
 				AF2EB0BD2015164E00556B71 /* AppDelegate.swift in Sources */,
-				AF2EB0BE2015164E00556B71 /* GetWatchList.swift in Sources */,
-				AF2EB0BF2015164E00556B71 /* GetRatedFilms.swift in Sources */,
+				AF2EB0BE2015164E00556B71 /* GetCurrentUserWatchList.swift in Sources */,
+				AF2EB0BF2015164E00556B71 /* GetCurrentUserRatedFilms.swift in Sources */,
 				AF2EB0C02015164E00556B71 /* StringExtensions.swift in Sources */,
 				AF2EB0C12015164E00556B71 /* AlertPresentationController.swift in Sources */,
 				AF2EB0C22015164E00556B71 /* CurrentUserVC.swift in Sources */,
@@ -1073,7 +1083,7 @@
 				AF2EB0C42015164E00556B71 /* StarRatingView.swift in Sources */,
 				AF2EB0C52015164E00556B71 /* FIlmStatus.swift in Sources */,
 				AF2EB0C62015164E00556B71 /* SearchVC.swift in Sources */,
-				AF2EB0C72015164E00556B71 /* GetUser.swift in Sources */,
+				AF2EB0C72015164E00556B71 /* GetCurrentUser.swift in Sources */,
 				AF2EB0C82015164E00556B71 /* FilmFilter.swift in Sources */,
 				AF2EB0C92015164E00556B71 /* ListFilms.swift in Sources */,
 				AF2EB0CA2015164E00556B71 /* RatingPopUpVC.swift in Sources */,
@@ -1101,6 +1111,7 @@
 				AF2EB0DF2015164E00556B71 /* R.generated.swift in Sources */,
 				AF2EB0E02015164E00556B71 /* FilmPosterLayout.swift in Sources */,
 				AF2EB0E12015164E00556B71 /* FollowUnfollowUser.swift in Sources */,
+				AF604B9E201A6634006D1DA8 /* GetUserWatchList.swift in Sources */,
 				AF2EB1072015297900556B71 /* User.swift in Sources */,
 				AF2EB0E22015164E00556B71 /* FilmTableCell.swift in Sources */,
 				AF2EB0E32015164E00556B71 /* StarRating.swift in Sources */,
@@ -1108,6 +1119,7 @@
 				AF2EB0E52015164E00556B71 /* TableCellIdentifiable.swift in Sources */,
 				AF2EB0E62015164E00556B71 /* RateFilm.swift in Sources */,
 				AF2EB0E72015164E00556B71 /* BuggerConfigExtensions.swift in Sources */,
+				AF604BA2201A6769006D1DA8 /* GetUserRatings.swift in Sources */,
 				AF2EB0E82015164E00556B71 /* CGFloatExtensions.swift in Sources */,
 				AF2EB0E92015164E00556B71 /* FeedTVC.swift in Sources */,
 				AF2EB0EA2015164E00556B71 /* Watch.swift in Sources */,
@@ -1138,8 +1150,8 @@
 				AF449E4A1EC274B900053DAC /* PercentageRatingView.swift in Sources */,
 				AF971AD31EA279EC003A249E /* FilmCollectionCell.swift in Sources */,
 				AF3EED221E68E96100553D86 /* AppDelegate.swift in Sources */,
-				AF00B2091EA376C2009BF608 /* GetWatchList.swift in Sources */,
-				AF5317AD1EA4FDFF00AB90B9 /* GetRatedFilms.swift in Sources */,
+				AF00B2091EA376C2009BF608 /* GetCurrentUserWatchList.swift in Sources */,
+				AF5317AD1EA4FDFF00AB90B9 /* GetCurrentUserRatedFilms.swift in Sources */,
 				AFE6E33B1EB9196C000453D4 /* StringExtensions.swift in Sources */,
 				AF8BA9B01FF01F6900DB9249 /* AlertPresentationController.swift in Sources */,
 				AFE548AE1E9C108300C99278 /* CurrentUserVC.swift in Sources */,
@@ -1147,7 +1159,7 @@
 				AF9F90E41ECA44260068182E /* StarRatingView.swift in Sources */,
 				AF449E501EC275E500053DAC /* FIlmStatus.swift in Sources */,
 				AFBEB1B91E9E14240095D66E /* SearchVC.swift in Sources */,
-				AFA9B2441E9CAC9A0072401F /* GetUser.swift in Sources */,
+				AFA9B2441E9CAC9A0072401F /* GetCurrentUser.swift in Sources */,
 				AFA9B2511E9D835A0072401F /* FilmFilter.swift in Sources */,
 				AF94AF581E8320840087080B /* ListFilms.swift in Sources */,
 				AF514B951FCF495500A488FA /* RatingPopUpVC.swift in Sources */,
@@ -1175,6 +1187,7 @@
 				AF2D78711FDADDF0008B6777 /* R.generated.swift in Sources */,
 				AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */,
 				AF4292881EA0EE1A008D387C /* FollowUnfollowUser.swift in Sources */,
+				AF604B9C201A6634006D1DA8 /* GetUserWatchList.swift in Sources */,
 				AF2EB1052015297900556B71 /* User.swift in Sources */,
 				AFC304F51E85CCA60012515E /* FilmTableCell.swift in Sources */,
 				AF449E4E1EC2759F00053DAC /* StarRating.swift in Sources */,
@@ -1182,6 +1195,7 @@
 				AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */,
 				AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */,
 				AF219C331FA71DB9004C7E1A /* BuggerConfigExtensions.swift in Sources */,
+				AF604BA0201A6769006D1DA8 /* GetUserRatings.swift in Sources */,
 				AF9F90E61ECBA9E60068182E /* CGFloatExtensions.swift in Sources */,
 				AF2106CD1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
 				AF2106D31F20206A00FBF0DB /* Watch.swift in Sources */,
@@ -1220,8 +1234,8 @@
 				AFB0C7E81F1C0AEC00A96169 /* PercentageRatingView.swift in Sources */,
 				AFB0C7E91F1C0AEC00A96169 /* FilmCollectionCell.swift in Sources */,
 				AFB0C7EA1F1C0AEC00A96169 /* AppDelegate.swift in Sources */,
-				AFB0C7EB1F1C0AEC00A96169 /* GetWatchList.swift in Sources */,
-				AFB0C7EC1F1C0AEC00A96169 /* GetRatedFilms.swift in Sources */,
+				AFB0C7EB1F1C0AEC00A96169 /* GetCurrentUserWatchList.swift in Sources */,
+				AFB0C7EC1F1C0AEC00A96169 /* GetCurrentUserRatedFilms.swift in Sources */,
 				AFB0C7ED1F1C0AEC00A96169 /* StringExtensions.swift in Sources */,
 				AF8BA9B11FF01F6900DB9249 /* AlertPresentationController.swift in Sources */,
 				AFB0C7EE1F1C0AEC00A96169 /* CurrentUserVC.swift in Sources */,
@@ -1229,7 +1243,7 @@
 				AFB0C7F01F1C0AEC00A96169 /* StarRatingView.swift in Sources */,
 				AFB0C7F11F1C0AEC00A96169 /* FIlmStatus.swift in Sources */,
 				AFB0C7F21F1C0AEC00A96169 /* SearchVC.swift in Sources */,
-				AFB0C7F31F1C0AEC00A96169 /* GetUser.swift in Sources */,
+				AFB0C7F31F1C0AEC00A96169 /* GetCurrentUser.swift in Sources */,
 				AFB0C7F41F1C0AEC00A96169 /* FilmFilter.swift in Sources */,
 				AFB0C7F51F1C0AEC00A96169 /* ListFilms.swift in Sources */,
 				AF514B961FCF495500A488FA /* RatingPopUpVC.swift in Sources */,
@@ -1257,6 +1271,7 @@
 				AF2D78721FDADDF0008B6777 /* R.generated.swift in Sources */,
 				AFB0C8051F1C0AEC00A96169 /* FilmPosterLayout.swift in Sources */,
 				AFB0C8061F1C0AEC00A96169 /* FollowUnfollowUser.swift in Sources */,
+				AF604B9D201A6634006D1DA8 /* GetUserWatchList.swift in Sources */,
 				AF2EB1062015297900556B71 /* User.swift in Sources */,
 				AFB0C8071F1C0AEC00A96169 /* FilmTableCell.swift in Sources */,
 				AFB0C8081F1C0AEC00A96169 /* StarRating.swift in Sources */,
@@ -1264,6 +1279,7 @@
 				AFB0C80A1F1C0AEC00A96169 /* TableCellIdentifiable.swift in Sources */,
 				AFB0C80B1F1C0AEC00A96169 /* RateFilm.swift in Sources */,
 				AF219C341FA71DB9004C7E1A /* BuggerConfigExtensions.swift in Sources */,
+				AF604BA1201A6769006D1DA8 /* GetUserRatings.swift in Sources */,
 				AFB0C80C1F1C0AEC00A96169 /* CGFloatExtensions.swift in Sources */,
 				AF2106CE1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
 				AF2106D41F20206A00FBF0DB /* Watch.swift in Sources */,

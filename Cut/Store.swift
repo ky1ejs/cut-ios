@@ -28,7 +28,7 @@ struct Store {
     
     static func updateUser() {
         // force a user update
-        _ = GetUser().call().subscribe { event in
+        _ = GetCurrentUser().call().subscribe { event in
             switch event {
             case .next(let user):   userState.value = .latest(user)
             case .error(let error): userState.value = .error(error)
