@@ -45,9 +45,9 @@ class QrCodeVC: UIViewController {
         }
         
         let captureMetadataOutput = AVCaptureMetadataOutput()
+        captureSession.addOutput(captureMetadataOutput)
         captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         captureMetadataOutput.metadataObjectTypes = [.qr]
-        captureSession.addOutput(captureMetadataOutput)
         
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = .resizeAspectFill
@@ -61,13 +61,16 @@ class QrCodeVC: UIViewController {
         videoPreviewLayer?.frame = qrView.scannerContainer.bounds
     }
     
-    func follow(user: String) {
+    func presentUserWith(username: String) {
         qrView.mode = .loading
-        _ = FollowUnfollowUser(username: user, follow: true).call().observeOn(MainScheduler.instance).subscribe { event in
+        _ = GetUser(username: username).call().observeOn(MainScheduler.instance).subscribe { event in
             switch event {
-            case .completed, .next(_):
-                self.qrView.mode = .scan
-            case .error:
+            case .next(let user):
+                let vc = UINavigationController(rootViewController: UserVC(user: user))
+                self.present(vc, animated: true, completion: {
+                    self.qrView.mode = .scan
+                })
+            default:
                 self.qrView.mode = .scan
             }
         }
@@ -80,6 +83,6 @@ extension QrCodeVC: AVCaptureMetadataOutputObjectsDelegate {
         guard let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject else { return }
         guard metadataObj.type == .qr else { return }
         guard let username = metadataObj.stringValue else { return }
-        follow(user: username)
+        presentUserWith(username: username)
     }
 }

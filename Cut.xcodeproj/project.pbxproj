@@ -139,6 +139,9 @@
 		AF604BA0201A6769006D1DA8 /* GetUserRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604B9F201A6769006D1DA8 /* GetUserRatings.swift */; };
 		AF604BA1201A6769006D1DA8 /* GetUserRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604B9F201A6769006D1DA8 /* GetUserRatings.swift */; };
 		AF604BA2201A6769006D1DA8 /* GetUserRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604B9F201A6769006D1DA8 /* GetUserRatings.swift */; };
+		AF604BA4201CE3B6006D1DA8 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604BA3201CE3B6006D1DA8 /* GetUser.swift */; };
+		AF604BA5201CE3B6006D1DA8 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604BA3201CE3B6006D1DA8 /* GetUser.swift */; };
+		AF604BA6201CE3B6006D1DA8 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF604BA3201CE3B6006D1DA8 /* GetUser.swift */; };
 		AF69493B1FAF6ADA004E19EC /* LocalUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69493A1FAF6ADA004E19EC /* LocalUnitTests.swift */; };
 		AF6949451FB04976004E19EC /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949441FB04976004E19EC /* FeedView.swift */; };
 		AF6949461FB04976004E19EC /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6949441FB04976004E19EC /* FeedView.swift */; };
@@ -295,6 +298,7 @@
 		AF5317AC1EA4FDFF00AB90B9 /* GetCurrentUserRatedFilms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCurrentUserRatedFilms.swift; sourceTree = "<group>"; };
 		AF604B9B201A6634006D1DA8 /* GetUserWatchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserWatchList.swift; sourceTree = "<group>"; };
 		AF604B9F201A6769006D1DA8 /* GetUserRatings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRatings.swift; sourceTree = "<group>"; };
+		AF604BA3201CE3B6006D1DA8 /* GetUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUser.swift; sourceTree = "<group>"; };
 		AF6949381FAF6ADA004E19EC /* LocalUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF69493A1FAF6ADA004E19EC /* LocalUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUnitTests.swift; sourceTree = "<group>"; };
 		AF69493C1FAF6ADA004E19EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -553,6 +557,7 @@
 				AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */,
 				AF4292871EA0EE1A008D387C /* FollowUnfollowUser.swift */,
 				AF2106CF1F20202E00FBF0DB /* GetFeed.swift */,
+				AF604BA3201CE3B6006D1DA8 /* GetUser.swift */,
 				AF5317AC1EA4FDFF00AB90B9 /* GetCurrentUserRatedFilms.swift */,
 				AF00B2081EA376C2009BF608 /* GetCurrentUserWatchList.swift */,
 				AFA9B2431E9CAC9A0072401F /* GetCurrentUser.swift */,
@@ -1119,6 +1124,7 @@
 				AF2EB0E52015164E00556B71 /* TableCellIdentifiable.swift in Sources */,
 				AF2EB0E62015164E00556B71 /* RateFilm.swift in Sources */,
 				AF2EB0E72015164E00556B71 /* BuggerConfigExtensions.swift in Sources */,
+				AF604BA6201CE3B6006D1DA8 /* GetUser.swift in Sources */,
 				AF604BA2201A6769006D1DA8 /* GetUserRatings.swift in Sources */,
 				AF2EB0E82015164E00556B71 /* CGFloatExtensions.swift in Sources */,
 				AF2EB0E92015164E00556B71 /* FeedTVC.swift in Sources */,
@@ -1195,6 +1201,7 @@
 				AFC304F71E85D0580012515E /* TableCellIdentifiable.swift in Sources */,
 				AF5317AB1EA4F60B00AB90B9 /* RateFilm.swift in Sources */,
 				AF219C331FA71DB9004C7E1A /* BuggerConfigExtensions.swift in Sources */,
+				AF604BA4201CE3B6006D1DA8 /* GetUser.swift in Sources */,
 				AF604BA0201A6769006D1DA8 /* GetUserRatings.swift in Sources */,
 				AF9F90E61ECBA9E60068182E /* CGFloatExtensions.swift in Sources */,
 				AF2106CD1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
@@ -1279,6 +1286,7 @@
 				AFB0C80A1F1C0AEC00A96169 /* TableCellIdentifiable.swift in Sources */,
 				AFB0C80B1F1C0AEC00A96169 /* RateFilm.swift in Sources */,
 				AF219C341FA71DB9004C7E1A /* BuggerConfigExtensions.swift in Sources */,
+				AF604BA5201CE3B6006D1DA8 /* GetUser.swift in Sources */,
 				AF604BA1201A6769006D1DA8 /* GetUserRatings.swift in Sources */,
 				AFB0C80C1F1C0AEC00A96169 /* CGFloatExtensions.swift in Sources */,
 				AF2106CE1F201FD100FBF0DB /* FeedTVC.swift in Sources */,
