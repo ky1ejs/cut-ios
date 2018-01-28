@@ -9,6 +9,7 @@
 import UIKit
 import EasyPeasy
 import Kingfisher
+import RxSwift
 
 class UserView: UIView {
     let profileImageView = UIImageView()
@@ -55,8 +56,8 @@ class UserView: UIView {
                 self.watchListCollectionView.isHidden = !showWatchList
             })
         
-        _ = user.following.asObservable().bind { following in
-            self.followButton.setTitle(following ? "Following" : "Unfollow", for: .normal)
+        _ = user.following.asObservable().observeOn(MainScheduler.instance).bind { following in
+            self.followButton.setTitle(following ? "Unfollow" : "Follow", for: .normal)
         }
         
         watchListCollectionView.backgroundColor = .white

@@ -50,7 +50,23 @@ class UserVC: UIViewController {
             safeSelf.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
         })
         
+        _ = userView.followButton.rx.tap.subscribe(onNext: {
+            _ = self.user.toggleFollowing().subscribe()
+        })
+        
         view = userView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if self === navigationController?.viewControllers.first {
+            let dismissButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+            _ = dismissButton.rx.tap.subscribe(onNext: {
+                self.dismiss(animated: true, completion: nil)
+            })
+            navigationItem.rightBarButtonItem = dismissButton
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
