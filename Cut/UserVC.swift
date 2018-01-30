@@ -54,6 +54,14 @@ class UserVC: UIViewController {
             _ = self.user.toggleFollowing().subscribe()
         })
         
+        _ = userView.followerCountButton.rx.tap.subscribe(onNext: {
+            self.navigationController?.pushViewController(FollowersTVC(user: self.user), animated: true)
+        })
+        
+        _ = userView.followingCountButton.rx.tap.subscribe(onNext: {
+            self.navigationController?.pushViewController(FollowingTVC(user: self.user), animated: true)
+        })
+        
         view = userView
     }
     
