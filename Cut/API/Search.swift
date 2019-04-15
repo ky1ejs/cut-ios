@@ -27,11 +27,9 @@ extension SearchResults: JSONDecodeable {
     typealias JsonType = [String : Any]
     init(json: JsonType) throws {
         let filmsJson: [[String : Any]] = try json.parse(key: "films")
-        let films = try ArrayResponse<Film>(json: filmsJson)
-        self.films = films.models
+        films = try Array<Film>(json: filmsJson)
         
         let usersJson: [[AnyHashable : Any]] = try json.parse(key: "users")
-        let users = try ArrayResponse<User>(json: usersJson)
-        self.users = users.models
+        users = try Array<User>(json: usersJson)
     }
 }

@@ -13,7 +13,7 @@ struct GetUserRatings {
 }
 
 extension GetUserRatings: Endpoint {
-    typealias SuccessData = ArrayResponse<Watch>
+    typealias SuccessData = Array<Watch>
     var url: URL { return CutEndpoints.users.appendingPathComponent("\(username)/ratings") }
 }
 

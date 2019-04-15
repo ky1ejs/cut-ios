@@ -14,7 +14,7 @@ struct LogIn {
 }
 
 extension LogIn: Endpoint {
-    typealias SuccessData = CurrentUser
+    typealias SuccessData = CurrentSignedUpUser
     var body: [String : Any] {
         return [
             "email_or_username" : emailOrUsername,
@@ -24,7 +24,4 @@ extension LogIn: Endpoint {
     }
     var url: URL { return CutEndpoints.login }
     var method: HTTPMethod { return .post }
-    var onSuccess: (SuccessData) -> () {
-        return { user in Store.update(user) }
-    }
 }

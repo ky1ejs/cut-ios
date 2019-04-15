@@ -7,18 +7,45 @@
 //
 
 import UIKit
-import EasyPeasy
 import RxSwift
+import RocketData
 
 class CurrentUserVC: UIViewController {
     let profileView = CurrentUserView()
     let authButton = UIBarButtonItem(title: "Login/Sign Up", style: .plain, target: nil, action: nil)
     let logOutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: nil, action: nil)
     var actionDisposeBag = DisposeBag()
+    let repo = EitherCurrentUserRepository()
     
     init() {
         super.init(nibName: nil, bundle: nil)
         title = "Profile"
+        _ = repo.takeUntil(rx.deallocated).observeOn(MainScheduler.instance).subscribe(onNext: { state in
+            self.actionDisposeBag = DisposeBag()
+            
+            switch state {
+            case .notFetched:
+                break
+            case .latest(let user):
+                switch user {
+                case .currentUser(let user):
+                    self.profileView.emailLabel.text = nil
+                    self.profileView.usernameLabel.text = nil
+                    self.navigationItem.rightBarButtonItem = self.authButton
+                    _ = self.authButton.rx.tap.subscribe({ _ in
+                        self.present(AuthenticationVC(user: user), animated: true)
+                    }).disposed(by: self.actionDisposeBag)
+                case .currentSignedUpUser(let user):
+                    self.profileView.emailLabel.text = user.email
+                    self.profileView.usernameLabel.text = user.info.username
+                    self.navigationItem.rightBarButtonItem = self.logOutButton
+                    _ = self.logOutButton.rx.tap.subscribe({ _ in
+                        _ = self.repo.logOut()
+                    }).disposed(by: self.actionDisposeBag)
+                }
+            case .error(let error):
+                break
+            }})
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,12 +61,6 @@ class CurrentUserVC: UIViewController {
         
         profileView.watchListCollectionView.register(cellClass: FilmCollectionCell.self)
         profileView.ratedCollectionView.register(cellClass: FilmCollectionCell.self)
-        
-        
-        _ = Store.user
-            .takeUntil(rx.deallocated)
-            .observeOn(MainScheduler.instance)
-            .subscribe(self)
         
         _ = profileView.watchListCollectionView.rx.modelSelected(Film.self).subscribe(onNext: { [weak self] film in
             guard let safeSelf = self else { return }
@@ -73,25 +94,5 @@ class CurrentUserVC: UIViewController {
             .bind(to: profileView.ratedCollectionView.rx.items(cellClass: FilmCollectionCell.self)) { index, film, cell in
                 cell.film = film
         }
-    }
-}
-
-extension CurrentUserVC: ObserverType {
-    typealias E = StoreState<CurrentUser>
-    
-    func on(_ event: Event<CurrentUserVC.E>) {
-        guard case .next(let state) = event else { return }
-        guard case .latest(let user) = state else { return }
-        profileView.emailLabel.text = user.email.value
-        profileView.usernameLabel.text = user.username.value
-        navigationItem.rightBarButtonItem = user.isFullUser ? logOutButton : authButton
-        
-        _ = authButton.rx.tap.subscribe({ _ in
-            self.present(AuthenticationVC(user: user), animated: true)
-        }).disposed(by: actionDisposeBag)
-        
-        _ = logOutButton.rx.tap.subscribe({ _ in
-            _ = user.logOut().takeUntil(self.rx.deallocated).subscribe()
-        }).disposed(by: actionDisposeBag)
     }
 }

@@ -23,7 +23,7 @@ class RatingPopUpVC: UIViewController {
     }
     
     override func loadView() {
-        let popUpView = RatingPopUpView(rating: film.status.value?.ratingScore)
+        let popUpView = RatingPopUpView(rating: film.status?.ratingScore)
         _ = popUpView.rateButton.rx
             .tap
             .asObservable()

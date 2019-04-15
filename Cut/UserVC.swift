@@ -9,20 +9,20 @@
 import UIKit
 
 class UserVC: UIViewController {
-    let user: User
+    let repo: UserRepository
     
     init(user: User) {
-        self.user = user
+        repo = UserRepository(user: user)
         super.init(nibName: nil, bundle: nil)
     }
     
     override func loadView() {
-        let userView = UserView(user: user)
+        let userView = UserView(user: repo.user)
         
         userView.watchListCollectionView.register(cellClass: FilmCollectionCell.self)
         userView.ratedCollectionView.register(cellClass: FilmCollectionCell.self)
         
-        _ = GetUserWatchList(username: user.username)
+        _ = GetUserWatchList(username: repo.user.info.username)
             .call()
             .bind(to: userView
                 .watchListCollectionView
@@ -31,7 +31,7 @@ class UserVC: UIViewController {
                     cell.film = film
         }
         
-        _ = GetUserRatings(username: user.username)
+        _ = GetUserRatings(username: repo.user.info.username)
             .call()
             .bind(to: userView
                 .ratedCollectionView
@@ -50,16 +50,18 @@ class UserVC: UIViewController {
             safeSelf.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
         })
         
-        _ = userView.followButton.rx.tap.subscribe(onNext: {
-            _ = self.user.toggleFollowing().subscribe()
-        })
+        _ = userView.followButton.rx.tap.subscribe(onNext: { _ = self.repo.toggleFollowing() })
         
         _ = userView.followerCountButton.rx.tap.subscribe(onNext: {
-            self.navigationController?.pushViewController(FollowersTVC(user: self.user), animated: true)
+            let endpoint = GetFollowers(username: self.repo.user.info.username)
+            let vc = EndpointTVC<UserCell, GetFollowers, EitherSignedUpUser>(endpoint: endpoint, title: "Followers")
+            self.navigationController?.pushViewController(vc, animated: true)
         })
         
         _ = userView.followingCountButton.rx.tap.subscribe(onNext: {
-            self.navigationController?.pushViewController(FollowingTVC(user: self.user), animated: true)
+            let endpoint = GetFollowing(username: self.repo.user.info.username)
+            let vc = EndpointTVC<UserCell, GetFollowing, EitherSignedUpUser>(endpoint: endpoint, title: "Following")
+            self.navigationController?.pushViewController(vc, animated: true)
         })
         
         view = userView

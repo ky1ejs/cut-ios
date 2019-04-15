@@ -11,6 +11,6 @@ import Foundation
 struct GetCurrentUserRatedFilms {}
 
 extension GetCurrentUserRatedFilms: Endpoint {
-    typealias SuccessData = ArrayResponse<Film>
+    typealias SuccessData = Array<Film>
     var url: URL { return CutEndpoints.ratings }
 }

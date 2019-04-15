@@ -8,8 +8,8 @@
 
 import UIKit
 import EasyPeasy
-import RxSwift
-
+import RocketData
+import ConsistencyManager
 
 // States
 
@@ -18,7 +18,7 @@ import RxSwift
 // * neither of the above - show rate and watch buttons
 
 class WatchActionView: UIView {
-    let film                    : Film
+    private(set) var film       : Film              { didSet { updateFilm() } }
     let ratingView              : StarRatingView
     let rateButton              = UIButton()
     let addWatchListButton      = UIButton()
@@ -30,7 +30,8 @@ class WatchActionView: UIView {
         
         super.init(frame: .zero)
         
-        ratingView.rating = film.status.value?.ratingScore
+        ratingView.rating = film.status?.ratingScore
+        updateFilm()
         
         rateButton.setImage(R.image.fullStar(), for: .normal)
         rateButton.imageView?.contentMode = .scaleAspectFit
@@ -66,22 +67,14 @@ class WatchActionView: UIView {
             Trailing(),
             Width().like(rateButton)
         ]
-        
-        _ = film.status.asObservable().takeUntil(rx.deallocated).bind(to: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-extension WatchActionView: ObserverType {
-    typealias E = FilmStatus?
     
-    func on(_ event: Event<FilmStatus?>) {
-        guard case .next(let status) = event else { return }
-        
-        switch status {
+    fileprivate func updateFilm() {
+        switch film.status {
         case .rated(let rating)?:
             rateButton.alpha = 0
             addWatchListButton.alpha = 0
@@ -99,5 +92,16 @@ extension WatchActionView: ObserverType {
             removeWatchListButton.alpha = 0
             ratingView.alpha = 0
         }
+    }
+}
+
+extension WatchActionView: ConsistencyManagerListener {
+    func currentModel() -> ConsistencyManagerModel? {
+        return film
+    }
+    
+    func modelUpdated(_ model: ConsistencyManagerModel?, updates: ModelUpdates, context: Any?) {
+        guard let film = model as? Film else { return }
+        self.film = film
     }
 }

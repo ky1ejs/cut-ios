@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import RocketData
 
 struct Watch {
-    let user: CurrentUser
+    let id: String
+    let user: EitherSignedUpUser
     let film: Film
     let rating: StarRating?
     let comment: String?
@@ -23,7 +25,8 @@ extension Watch: JSONDecodeable {
     typealias JsonType = [AnyHashable : Any]
     
     init(json: JsonType) throws {
-        user = try CurrentUser(json: try json.parseDict(key: "user"))
+        id = try json.parse(key: "id")
+        user = try EitherSignedUpUser(json: json)
         film = try Film(json: try json.parseDict(key: "film"))
         if let ratingValue = json["rating"] as? Double {
             rating = StarRating(rawValue: ratingValue)
@@ -33,3 +36,18 @@ extension Watch: JSONDecodeable {
         comment = json["comment"] as? String
     }
 }
+
+extension Watch: Model {
+    var modelIdentifier: String? { return id }
+    func map(_ transform: (Model) -> Model?) -> Watch? {
+        guard let user = transform(user) as? EitherSignedUpUser else { return nil }
+        guard let film = transform(film) as? Film else { return nil }
+        return Watch(id: id, user: user, film: film, rating: rating, comment: comment)
+    }
+    func forEach(_ visit: (Model) -> Void) {
+        visit(user)
+        visit(film)
+    }
+}
+
+extension Watch: AutoEquatable {}

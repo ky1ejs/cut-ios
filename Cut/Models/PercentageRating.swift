@@ -13,15 +13,6 @@ struct PercentageRating: JSONDecodeable {
     let score: Double
     let count: Int?
     
-    typealias JsonType = [AnyHashable : Any]
-    
-    init(json: JsonType) throws {
-        guard let source = RatingSource(rawValue: try json.parse(key: "source")) else { throw ParserError.couldNotParse }
-        self.source = source
-        score = try json.parse(key: "score")
-        count = json["count"] as? Int
-    }
-    
     var icon: UIImage {
         switch source {
         case .rottenTomatoes:
@@ -36,3 +27,5 @@ struct PercentageRating: JSONDecodeable {
         }
     }
 }
+
+extension PercentageRating: AutoEquatable {}

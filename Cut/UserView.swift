@@ -21,22 +21,21 @@ class UserView: UIView {
     let watchListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilmPosterLayout())
     let ratedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilmPosterLayout())
     
+    let repo: UserRepository
+    
     init(user: User) {
+        repo = UserRepository(user: user)
+        
         super.init(frame: .zero)
         
         backgroundColor = .white
         
         profileImageView.kf.indicatorType = .activity
-        profileImageView.kf.setImage(with: user.profileImageURL)
         
-        usernameLabel.text = user.username
-        
-        followerCountButton.setTitle("\(user.followerCount.description)\nfollowers", for: .normal)
         followerCountButton.setTitleColor(.blue, for: .normal)
         followerCountButton.titleLabel?.numberOfLines = 0
         followerCountButton.titleLabel?.textAlignment = .center
         
-        followingCountButton.setTitle("\(user.followingCount.description)\nfollowing", for: .normal)
         followingCountButton.setTitleColor(.blue, for: .normal)
         followingCountButton.titleLabel?.numberOfLines = 0
         followingCountButton.titleLabel?.textAlignment = .center
@@ -45,8 +44,6 @@ class UserView: UIView {
         followButton.backgroundColor = .blue
         followButton.layer.cornerRadius = 5
         
-        segmentedControl.setTitle("Watch List (\(user.watchListCount))", forSegmentAt: 0)
-        segmentedControl.setTitle("Ratings (\(user.ratedCount))", forSegmentAt: 1)
         segmentedControl.selectedSegmentIndex = 0
         _ = segmentedControl
             .rx
@@ -55,10 +52,6 @@ class UserView: UIView {
             .subscribe(onNext: { showWatchList in
                 self.watchListCollectionView.isHidden = !showWatchList
             })
-        
-        _ = user.following.asObservable().observeOn(MainScheduler.instance).bind { following in
-            self.followButton.setTitle(following ? "Unfollow" : "Follow", for: .normal)
-        }
         
         watchListCollectionView.backgroundColor = .white
         ratedCollectionView.backgroundColor = .white
@@ -124,6 +117,16 @@ class UserView: UIView {
             Leading().to(watchListCollectionView, .leading),
             Trailing().to(watchListCollectionView, .trailing)
         ]
+        
+        _ = repo.takeUntil(rx.deallocated).bind { user in
+            self.followerCountButton.setTitle("\(user.info.followerCount.description)\nfollowers", for: .normal)
+            self.usernameLabel.text = user.info.username
+            self.profileImageView.kf.setImage(with: user.info.profileImageURL)
+            self.followingCountButton.setTitle("\(user.info.followingCount.description)\nfollowing", for: .normal)
+            self.followButton.setTitle(user.following ? "Unfollow" : "Follow", for: .normal)
+            self.segmentedControl.setTitle("Watch List (\(user.info.watchListCount))", forSegmentAt: 0)
+            self.segmentedControl.setTitle("Ratings (\(user.info.ratedCount))", forSegmentAt: 1)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

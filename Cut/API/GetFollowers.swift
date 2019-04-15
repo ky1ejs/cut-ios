@@ -9,10 +9,10 @@
 import Foundation
 
 struct GetFollowers {
-    let user: User
+    let username: String
 }
 
 extension GetFollowers: Endpoint {
-    typealias SuccessData = ArrayResponse<User>
-    var url: URL { return CutEndpoints.users.appendingPathComponent("\(user.username)/followers") }
+    typealias SuccessData = Array<EitherSignedUpUser>
+    var url: URL { return CutEndpoints.users.appendingPathComponent("\(username)/followers") }
 }

@@ -8,37 +8,17 @@
 
 import Foundation
 
-struct Trailer {
+struct Trailer: JSONDecodeable {
     let url: URL
     let quality: VideoQuality
     let previewImageURL: URL
 }
 
-extension Trailer: JSONDecodeable {
-    typealias JsonType = [String : Any]
-    init(json: JsonType) throws {
-        url = try json.parseDecodable(key: "url")
-        quality = try json.parseDecodable(key: "quality")
-        previewImageURL = try json.parseDecodable(key: "preview_image_url")
-    }
-}
+extension Trailer: AutoEquatable {}
 
-enum VideoQuality {
+enum VideoQuality: String, JSONDecodeable {
     case low
     case medium
     case high
     case hd
-}
-
-extension VideoQuality: JSONDecodeable {
-    typealias JsonType = String
-    init(json: JsonType) throws {
-        switch json {
-        case "low":     self = .low
-        case "medium":  self = .medium
-        case "high":    self = .high
-        case "hd":      self = .hd
-        default:        throw ParserError.couldNotParse
-        }
-    }
 }

@@ -8,9 +8,13 @@
 
 import Foundation
 
-enum FilmStatus {
+enum FilmStatus: JSONDecodeable {
     case wantToWatch
     case rated(StarRating)
+    
+    init(from decoder: Decoder) throws {
+        
+    }
     
     var ratingScore: StarRating? {
         switch self {
@@ -20,11 +24,4 @@ enum FilmStatus {
     }
 }
 
-extension FilmStatus: Equatable {}
-func ==(lhs: FilmStatus, rhs: FilmStatus) -> Bool {
-    switch (lhs, rhs) {
-    case (.wantToWatch, .wantToWatch): return true
-    case let (.rated(lhsRating), .rated(rhsRating)): return lhsRating == rhsRating
-    default: return false
-    }
-}
+extension FilmStatus: AutoEquatable {}

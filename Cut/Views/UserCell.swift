@@ -9,21 +9,43 @@
 import UIKit
 import EasyPeasy
 import Kingfisher
+import RocketData
+import ConsistencyManager
+import RxSwift
 
 class UserCell: UITableViewCell {
-    var user: User? {
+    var user: EitherSignedUpUser? {
         didSet {
-            profileImageView.kf.setImage(with: user?.profileImageURL)
-            usernameTitleLabel.text = user?.username
-            _ = user?.following.asObservable().subscribe(onNext: { following in
-                self.followButton.setTitle(following ? "Unfollow" : "Follow", for: .normal)
-            })
+            // Clean up from previous user
+            actionDisposeBag = DisposeBag()
+            DataModelManager.sharedInstance.consistencyManager.removeListener(self)
+            
+            profileImageView.kf.setImage(with: user?.userInfo.profileImageURL)
+            usernameTitleLabel.text = user?.userInfo.username
+            
+            switch user {
+            case .some(.currentUser(let user)):
+                DataModelManager.sharedInstance.consistencyManager.addListener(self, to: user)
+                followButton.isHidden = true
+            case .some(.user(let user)):
+                DataModelManager.sharedInstance.consistencyManager.addListener(self, to: user)
+                followButton.isHidden = false
+                followButton.setTitle(user.following ? "Unfollow" : "Follow", for: .normal)
+                _ = followButton.rx.tap.subscribe({ _ in
+                    _ = FollowUnfollowUser(username: user.info.username, follow: !user.following).call().subscribe(onNext: { user in
+                        DataModelManager.sharedInstance.consistencyManager.updateModel(EitherSignedUpUser.user(user))
+                    })
+                }).disposed(by: actionDisposeBag)
+            default:
+                break
+            }
         }
     }
     
     let profileImageView = UIImageView()
     let usernameTitleLabel = UILabel()
     let followButton = UIButton()
+    var actionDisposeBag = DisposeBag()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -62,13 +84,27 @@ class UserCell: UITableViewCell {
             Height(34),
             Width(80)
         ]
-        
-        _ = followButton.rx.tap.takeUntil(rx.deallocated).subscribe({ _ in
-            _ = self.user?.toggleFollowing().subscribe()
-        })
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UserCell: ConsistencyManagerListener {
+    func currentModel() -> ConsistencyManagerModel? {
+        return user
+    }
+    
+    func modelUpdated(_ model: ConsistencyManagerModel?, updates: ModelUpdates, context: Any?) {
+        self.user = model as? EitherSignedUpUser
+    }
+}
+
+extension UserCell: TableCell {
+    typealias Model = EitherSignedUpUser
+    var model: Model? {
+        get { return user }
+        set { user = newValue }
     }
 }

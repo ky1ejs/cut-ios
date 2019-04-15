@@ -14,8 +14,5 @@ extension LogOut: Endpoint {
     typealias SuccessData = CurrentUser
     var url: URL { return CutEndpoints.logout }
     var method: HTTPMethod { return .post }
-    var onSuccess: (CurrentUser) -> () {
-        return { user in Store.update(user) }
-    }
 }
 

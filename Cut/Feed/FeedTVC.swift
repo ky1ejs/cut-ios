@@ -9,10 +9,13 @@
 import UIKit
 import RxSwift
 import EasyPeasy
+import RocketData
+import ConsistencyManager
 
 class FeedTVC: UIViewController {
-    let feedView = FeedView(state: .loading)
-    var ctaDisposeBag = DisposeBag()
+    private let feedView = FeedView(state: .loading)
+    private var ctaDisposeBag = DisposeBag()
+    private var user: EitherSignedUpUser?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -33,8 +36,9 @@ class FeedTVC: UIViewController {
         feedView.tableView.rowHeight = UITableViewAutomaticDimension
         feedView.tableView.estimatedRowHeight = 100
         feedView.tableView.register(cellClass: FeedCell.self)
+        feedView.state.value = .loading
         
-        loadFilms()
+        DataModelManager.sharedInstance.consistencyManager.addModelUpdatesListener(self)
         
         _ = feedView.tableView
             .rx
@@ -44,42 +48,36 @@ class FeedTVC: UIViewController {
                 self.navigationController?.pushViewController(FilmDetailVC(film: watch.film), animated: true)
             })
     }
-    
-    
-    func loadFilms() {
-        _ = Store.user.observeOn(MainScheduler.instance).takeUntil(rx.deallocated).subscribe { event in
-            guard case .next(let state) = event else { return }
-            guard case .latest(let user) = state else { return }
-            
-            self.ctaDisposeBag = DisposeBag()
-            
-            self.feedView.state.value = {
-                if !user.isFullUser || user.followerCount.value == 0 {
-                    _ = self.feedView.ctaButton.rx.tap.subscribe({ _ in
-                        switch self.feedView.state.value {
-                        case .loginSignUp:
-                            self.present(AuthenticationVC(user: user), animated: true, completion: nil)
-                        case .followFriends:
-                            break
-                        default:
-                            break
-                        }
-                    }).disposed(by: self.ctaDisposeBag)
-                    return user.isFullUser ? .followFriends : .loginSignUp
-                }
+}
+
+extension FeedTVC: ConsistencyManagerUpdatesListener {
+    func consistencyManager(_ consistencyManager: ConsistencyManager, updatedModel model: ConsistencyManagerModel, changes: [String : ModelChange], context: Any?) {
+        
+        self.ctaDisposeBag = DisposeBag()
+        
+        self.feedView.state.value = {
+            if let currentUser = model as? CurrentUser {
+                _ = self.feedView.ctaButton.rx.tap.subscribe({ _ in
+                    self.present(AuthenticationVC(user: currentUser), animated: true, completion: nil)
+                }).disposed(by: self.ctaDisposeBag)
                 
-                let feed = GetFeed().call().takeUntil(self.rx.deallocated)
-                _ = feed.bind(to: self.feedView.tableView.rx.items(cellIdentifier: FeedCell.reuseIdentifier, cellType: FeedCell.self)) { (index, watch, cell) in
+                return .loginSignUp
+            } else if let currentSignedUpUser = model as? CurrentSignedUpUser {
+                if currentSignedUpUser.info.followingCount == 0 {
+                    return .followFriends
+                } else {
+                    let feed = GetFeed().call().takeUntil(self.rx.deallocated).share()
+                    _ = feed.bind(to: self.feedView.tableView.rx.items(cellIdentifier: FeedCell.reuseIdentifier, cellType: FeedCell.self)) { (index, watch, cell) in
                         assert(Thread.isMainThread)
                         cell.watch = watch
+                    }
+                    _ = feed.subscribe({ _ in
+                        self.feedView.state.value = .showFeed
+                    })
                 }
-                _ = feed.subscribe({ _ in
-                    self.feedView.state.value = .showFeed
-                })
-                
-                return .loading
-            }()
-        }
+            }
+            
+            return .loading
+        }()
     }
-
 }

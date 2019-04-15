@@ -13,6 +13,6 @@ struct GetUserWatchList {
 }
 
 extension GetUserWatchList: Endpoint {
-    typealias SuccessData = ArrayResponse<Film>
+    typealias SuccessData = Array<Film>
     var url: URL { return CutEndpoints.users.appendingPathComponent("\(username)/watch-list") }
 }

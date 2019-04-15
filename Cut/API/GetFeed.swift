@@ -11,6 +11,6 @@ import Foundation
 struct GetFeed {}
 
 extension GetFeed: Endpoint {
-    typealias SuccessData = ArrayResponse<Watch>
+    typealias SuccessData = Array<Watch>
     var url: URL { return CutEndpoints.feed }
 }

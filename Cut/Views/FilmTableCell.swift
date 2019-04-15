@@ -57,7 +57,7 @@ class FilmTableCell: UITableViewCell {
             textLabel.text = film.title
             posterImageView.kf.indicatorType = .activity
             posterImageView.kf.setImage(with: film.profileImageURL, placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil, completionHandler: nil)
-            backgroundColor = film.status.value == .wantToWatch ? .red : .white
+            backgroundColor = film.status == .wantToWatch ? .red : .white
             releaseDateLabel.text = film.relativeTheaterReleaseDate
         }
     }
@@ -162,7 +162,7 @@ class FilmTableCell: UITableViewCell {
             let distanceTravelled           = fullColorThreshold - distanceLeftToTravel
             let watchBackgroundColorAlpha   = distanceTravelled / fullColorThreshold
             
-            let color: UIColor = film?.status.value == nil ? .green : .red
+            let color: UIColor = film?.status == nil ? .green : .red
             watchActionView.backgroundColor = color.withAlphaComponent(watchBackgroundColorAlpha)
         case .ended:
             UIView.animate(withDuration: 0.3, animations: {
@@ -182,7 +182,7 @@ class FilmTableCell: UITableViewCell {
                 guard let bgColor = watchActionView?.backgroundColor else { return }
                 let alpha = bgColor.cgColor.alpha
                 guard alpha >= 1 else { return }
-                let action: WatchListAction = film.status.value == nil ? .add : .remove
+                let action: WatchListAction = film.status == nil ? .add : .remove
                 _ = AddFilmToWatchList(film: film, action: action).call().subscribe()
             }
         default:

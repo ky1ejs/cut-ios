@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RocketData
 
 class AuthenticationVC: UIViewController {
     let user: CurrentUser
@@ -36,39 +37,26 @@ class AuthenticationVC: UIViewController {
                     return
             }
             
-            if safeSelf.authView.mode == .logIn {
-                _ = safeSelf.user.login(emailOrUsername: emailOrUsername, password: password)
-                    .observeOn(MainScheduler.instance)
-                    .subscribe { [weak self] event in
-                        guard let safeSelf = self else { return }
-                        switch event {
-                        case .next:
-                            safeSelf.dismiss(animated: true, completion: nil)
-                        case .error(let error):
-                            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: ":simple_smile:", style: .default, handler: nil))
-                            safeSelf.present(alert, animated: true)
-                        case .completed:
-                            break
-                        }
+            let handleAuth: (Event<CurrentSignedUpUser>) -> () = { [weak self] event in
+                guard let safeSelf = self else { return }
+                switch event {
+                case .next(let user):
+                    DataModelManager.sharedInstance.consistencyManager.updateModel(user)
+                    safeSelf.dismiss(animated: true, completion: nil)
+                case .error(let error):
+                    let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: ":simple_smile:", style: .default, handler: nil))
+                    safeSelf.present(alert, animated: true)
+                case .completed:
+                    break
                 }
+            }
+            
+            if safeSelf.authView.mode == .logIn {
+                _ = LogIn(emailOrUsername: emailOrUsername, password: password).call().observeOn(MainScheduler.instance).subscribe(handleAuth)
             } else {
                 guard let username = safeSelf.authView.usernameTextField.text else { return }
-                _ = safeSelf.user.signUp(email: emailOrUsername, username: username, password: password)
-                    .observeOn(MainScheduler.instance)
-                    .subscribe { [weak self] event in
-                        guard let safeSelf = self else { return }
-                        switch event {
-                        case .next:
-                            safeSelf.dismiss(animated: true, completion: nil)
-                        case .error(let error):
-                            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: ":simple_smile:", style: .default, handler: nil))
-                            safeSelf.present(alert, animated: true)
-                        case .completed:
-                            break
-                        }
-                }
+                _ = SignUp(email: emailOrUsername, username: username, password: password).call().observeOn(MainScheduler.instance).subscribe(handleAuth)
             }
         })
         

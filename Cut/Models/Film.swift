@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import RxSwift
+import RocketData
 
-class Film {
+struct Film: JSONDecodeable {
     let id:                             String
     let title:                          String
     let synopsis:                       String?
@@ -21,24 +21,43 @@ class Film {
     let theaterReleaseDate:             Date?
     let relativeTheaterReleaseDate:     String?
     let trailers:                       [Trailer]?
+    let status:                         FilmStatus?
     
-    fileprivate(set) var status: Variable<FilmStatus?>
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case synopsis
+        case runningTime
+        case userRating
+        case rating
+        case wantToWatch
+    }
     
-    required init(json: JsonType) throws {
-        id = try json.parse(key: "id")
-        title = try json.parse(key: "title")
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        runningTime = json["running_time"] as? Int
-        synopsis = json["synopsis"] as? String
+        id = try container.decode(key: .id)
+        title = try container.decode(key: .title)
         
-        let userRating = json["user_rating"] as? [AnyHashable : Any]
+        runningTime = try? container.decode(key: .runningTime)
+        synopsis = try? container.decode(key: .synopsis)
+        
+        let userRating: [String : Any]? = try? container.decode([String : Any], forKey: CodingKeys.userRating)
         if let userRatingScore = userRating?["rating"] as? Double, let rating = StarRating(rawValue: userRatingScore) {
-            status = Variable(.rated(rating))
-        } else if let wantToWatch = json["want_to_watch"] as? Bool, wantToWatch {
-            status = Variable(.wantToWatch)
+            status = .rated(rating)
+        } else if let wantToWatch = try? container.decode(key: .wantToWatch), wantToWatch {
+            status = .wantToWatch
         } else {
-            status = Variable(nil)
+            status = nil
         }
+    }
+}
+
+extension Film: CustomJSONDecodable {
+    typealias JsonType = [AnyHashable : Any]
+    
+    init(json: JsonType) throws {
+        
         
         if let releaseDateString = json["theater_release_date"] as? String {
             let df = DateFormatter()
@@ -58,36 +77,40 @@ class Film {
         heroImageURL = posters?.tryParseDict(key: "hero")?.parseDecodable(key: "url")
         
         let trailerJSON: [String : Trailer.JsonType] = try json.parse(key: "trailers")
-        trailers = try? ArrayResponse<Trailer>(json: Array(trailerJSON.values)).models
-    }
-    
-    func addToWatchList() -> Observable<AddFilmToWatchList.SuccessData> {
-        return Observable.create { obserable in
-            guard self.status.value != .wantToWatch else {
-                obserable.on(.next(NoSuccessData()))
-                obserable.on(.completed)
-                return Disposables.create()
-            }
-            
-            let observable = AddFilmToWatchList(film: self, action: .add).call()
-            return observable.subscribe { [weak self] event in
-                switch event {
-                case .next(let success):
-                    self?.status.value = .wantToWatch
-                    obserable.on(.next(success))
-                case .error(let error):
-                    obserable.on(.error(error))
-                case .completed:
-                    obserable.on(.completed)
-                }
-            }
-        }
-        
+        trailers = try? Array<Trailer>(json: Array(trailerJSON.values))
     }
 }
 
-extension Film: JSONDecodeable {
-    typealias JsonType = [AnyHashable : Any]
+extension Film: Model {
+    var modelIdentifier: String? { return id }
+    func map(_ transform: (Model) -> Model?) -> Film? { return self }
+    func forEach(_ visit: (Model) -> Void) {}
 }
 
+extension Film: AutoEquatable {}
 
+//func addToWatchList() -> Observable<AddFilmToWatchList.SuccessData> {
+//    return Observable.create { obserable in
+//        guard self.status.value != .wantToWatch else {
+//            obserable.on(.next(NoSuccessData()))
+//            obserable.on(.completed)
+//            return Disposables.create()
+//        }
+//
+//        let observable = AddFilmToWatchList(film: self, action: .add).call()
+//        return observable.subscribe { [weak self] event in
+//            switch event {
+//            case .next(let success):
+//                self?.status.value = .wantToWatch
+//                obserable.on(.next(success))
+//            case .error(let error):
+//                obserable.on(.error(error))
+//            case .completed:
+//                obserable.on(.completed)
+//            }
+//        }
+//    }
+//
+//}
+//
+//

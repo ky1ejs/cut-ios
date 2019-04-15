@@ -10,7 +10,10 @@ import Foundation
 
 struct CutEndpoints {
     #if LOCAL
-        static let host = URL(string: "http://localhost:3000")!
+        static let host: URL = {
+            let local = Bundle.main.infoDictionary!["LocalIP"] as! String
+            return URL(string: "http://\(local):3000")!
+        }()
     #elseif STAGING
         static let host = URL(string: "https://cut-api-staging.herokuapp.com")!
     #else

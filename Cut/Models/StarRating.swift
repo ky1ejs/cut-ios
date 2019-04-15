@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum StarRating: Double, RawRepresentable {
+enum StarRating: Double, RawRepresentable, JSONDecodeable {
     case pointFive = 0.5
     case one = 1
     case onePointFive = 1.5

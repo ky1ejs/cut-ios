@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum RatingSource: String {
+enum RatingSource: String, JSONDecodeable {
     case cutUsers = "cut_users"
     case imdbUsers = "imdb_users"
     case rottenTomatoes = "rotten_tomatoes"

@@ -11,6 +11,6 @@ import Foundation
 struct GetCurrentUserWatchList {}
 
 extension GetCurrentUserWatchList: Endpoint {
-    typealias SuccessData = ArrayResponse<Film>
+    typealias SuccessData = Array<Film>
     var url: URL { return CutEndpoints.watchList }
 }

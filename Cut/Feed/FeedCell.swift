@@ -12,9 +12,9 @@ import EasyPeasy
 class FeedCell: UITableViewCell {
     var watch: Watch? {
         didSet {
-            userProfileImageView.kf.setImage(with: watch?.user.profileImageURL)
+            userProfileImageView.kf.setImage(with: watch?.user.userInfo.profileImageURL)
             posterImageView.kf.setImage(with: watch?.film.profileImageURL)
-            usernameLabel.text = watch?.user.username.value
+            usernameLabel.text = watch?.user.userInfo.username
             titleLabel.text = watch?.film.title
             
             bodyLabel.text = watch?.watched == .some(true) ? "Watched" : "Added to watch list"

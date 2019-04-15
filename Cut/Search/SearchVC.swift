@@ -91,7 +91,7 @@ class SearchVC: UIViewController {
             }
             _ = Observable.just(results.users)
                 .bind(to: self.searchView.userTableView.rx.items(cellClass: UserCell.self)) { _, user, cell in
-                    cell.user = user
+                    cell.user = EitherSignedUpUser.user(user)
             }
         })
     }

@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct ArrayResponse<Model: JSONDecodeable>: JSONDecodeable {
-    typealias JsonType = [Model.JsonType]
-    let models: [Model]
-    
+extension Array where Element: JSONDecodeable {
     init(json: JsonType) throws {
-        models = try json.map(Model.init)
+        guard let json = json as? [Element.JsonType] else { throw ParserError.couldNotParse }
+        self.init(try json.map(Element.init))
     }
 }
 
-extension ArrayResponse: Sequence {
-    func makeIterator() -> Array<Model>.Iterator {
-        return models.makeIterator()
+extension Array: JSONDecodeable {
+    typealias JsonType = Any
+    
+    init(json: JsonType) throws {
+        throw ParserError.couldNotParse
     }
 }

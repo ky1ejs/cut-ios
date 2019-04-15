@@ -15,7 +15,7 @@ struct ListFilms {
 }
 
 extension ListFilms: Endpoint {
-    typealias SuccessData = ArrayResponse<Film>
+    typealias SuccessData = Array<Film>
     var urlParams: [String : String] { return ["filter" : filter.rawValue] }
     var url: URL { return CutEndpoints.films }
 }
