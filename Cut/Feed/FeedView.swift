@@ -45,7 +45,7 @@ class FeedView: UIView {
     let tableView = UITableView(frame: .zero, style: .plain)
     
     fileprivate let loadingContainer = UIView()
-    fileprivate let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    fileprivate let spinner = UIActivityIndicatorView(style: .gray)
     
     fileprivate let introContainer = UIView()
     fileprivate let bodyLabel = UILabel()

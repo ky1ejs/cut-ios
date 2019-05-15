@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Kingfisher
         ImageCache.default.maxDiskCacheSize         = 50 * 1024 * 1024 // 50 MB
         ImageCache.default.maxCachePeriodInSecond   = 60 * 60 * 24 * 3 // 3 days

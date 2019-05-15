@@ -30,7 +30,7 @@ class FeedTVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        feedView.tableView.rowHeight = UITableViewAutomaticDimension
+        feedView.tableView.rowHeight = UITableView.automaticDimension
         feedView.tableView.estimatedRowHeight = 100
         feedView.tableView.register(cellClass: FeedCell.self)
         

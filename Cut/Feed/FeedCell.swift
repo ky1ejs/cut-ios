@@ -30,7 +30,7 @@ class FeedCell: UITableViewCell {
     private let bodyLabel = UILabel()
     private let ratingView = StarRatingView()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         userProfileImageView.layer.cornerRadius = 15

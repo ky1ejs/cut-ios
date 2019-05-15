@@ -62,7 +62,7 @@ class FilmTableCell: UITableViewCell {
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         _textLabel = UILabel()
         posterImageView = UIImageView()
         

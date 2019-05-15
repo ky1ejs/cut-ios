@@ -43,10 +43,10 @@ class SearchVC: UIViewController {
         searchView.userTableView.register(cellClass: UserCell.self)
         
         searchView.filmTableView.estimatedRowHeight = 60
-        searchView.filmTableView.rowHeight = UITableViewAutomaticDimension
+        searchView.filmTableView.rowHeight = UITableView.automaticDimension
         
         searchView.userTableView.estimatedRowHeight = 60
-        searchView.userTableView.rowHeight = UITableViewAutomaticDimension
+        searchView.userTableView.rowHeight = UITableView.automaticDimension
         
         _ = searchView.segmentedControl.rx.controlEvent(.valueChanged).map { _ in 
             return self.searchView.segmentedControl.selectedSegmentIndex == 0

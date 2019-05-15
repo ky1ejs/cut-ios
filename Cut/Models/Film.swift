@@ -50,7 +50,7 @@ class Film {
         }
         relativeTheaterReleaseDate = json["relative_theater_release_date"] as? String
         
-        ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.flatMap(PercentageRating.init) ?? [PercentageRating]()
+        ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.compactMap(PercentageRating.init) ?? [PercentageRating]()
         
         let posters = json.tryParseDict(key: "posters")
         thumbnailImageURL = posters?.tryParseDict(key: "thumbnail")?.parseDecodable(key: "url")
