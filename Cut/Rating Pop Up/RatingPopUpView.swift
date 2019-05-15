@@ -33,24 +33,24 @@ class RatingPopUpView: UIView {
         addSubview(rateButton)
         addSubview(cancelButton)
         
-        ratingView <- [
+        ratingView.easy.layout([
             Width(180),
             Height(90),
             Edges(10)
-        ]
-        starRatingContainer <- [CenterX(), CenterY()]
-        cancelButton <- [
+        ])
+        starRatingContainer.easy.layout([CenterX(), CenterY()])
+        cancelButton.easy.layout([
             Leading(),
             Bottom(),
             Height(50)
-        ]
-        rateButton <- [
+        ])
+        rateButton.easy.layout([
             Leading().to(cancelButton),
             Trailing(),
             Bottom(),
             Height().like(cancelButton),
             Width().like(cancelButton)
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

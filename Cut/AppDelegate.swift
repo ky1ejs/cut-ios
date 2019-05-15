@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Kingfisher
-        ImageCache.default.maxDiskCacheSize         = 50 * 1024 * 1024 // 50 MB
-        ImageCache.default.maxCachePeriodInSecond   = 60 * 60 * 24 * 3 // 3 days
+        ImageCache.default.diskStorage.config.sizeLimit = 50 * 1024 * 1024 // 50 MB
+        ImageCache.default.diskStorage.config.expiration = .days(3)
         
         // Bugger
         Bugger.with(config: BuggerConfig.cutConfig)

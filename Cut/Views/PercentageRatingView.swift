@@ -34,20 +34,20 @@ class PercentageRatingView: UIView {
         addSubview(label)
         addSubview(icon)
         
-        icon <- [
+        icon.easy.layout([
             Leading(),
             Top(),
             CenterY(),
             Size(20)
-        ]
+        ])
         
-        label <- [
+        label.easy.layout([
             Leading(3).to(icon),
             Top(),
             CenterY(),
             Trailing(),
             Size(CGSize(width: 30, height: 20))
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

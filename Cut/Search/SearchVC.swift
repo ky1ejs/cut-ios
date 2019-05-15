@@ -28,12 +28,12 @@ class SearchVC: UIViewController {
             self.present(QrCodeVC(), animated: true, completion: nil)
         })
         
-        searchTF <- Width(200)
+        searchTF.easy.layout(Width(200))
         
         _ = searchTF.rx
             .controlEvent(.editingChanged)
             .asObservable()
-            .throttle(0.8, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] term in
                 guard let `self` = self, let term = `self`.searchTF.text else { return }
                 `self`.search(withTerm: term)

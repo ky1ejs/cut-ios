@@ -8,24 +8,25 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class CurrentUser: JSONDecodeable {
     typealias JsonType = [AnyHashable : Any]
     
-    var email: Variable<String?>
-    var username: Variable<String?>
-    var following: Variable<Bool>
-    var followerCount: Variable<Int>
+    var email: BehaviorRelay<String?>
+    var username: BehaviorRelay<String?>
+    var following: BehaviorRelay<Bool>
+    var followerCount: BehaviorRelay<Int>
     let profileImageURL: URL?
     var isFullUser: Bool { return email.value != nil && username.value != nil }
     
     required init(json: JsonType) throws {
-        email = Variable(json["email"] as? String)
-        username = Variable(json["username"] as? String)
-        followerCount = Variable(json["follower_count"] as? Int ?? 0)
+        email = BehaviorRelay(value: json["email"] as? String)
+        username = BehaviorRelay(value: json["username"] as? String)
+        followerCount = BehaviorRelay(value: json["follower_count"] as? Int ?? 0)
         
         let following = (json["following"] as? Bool) ?? false
-        self.following = Variable(following)
+        self.following = BehaviorRelay(value: following)
         
         profileImageURL = {
             if let imageUrl = json["profile_image"] as? String {
@@ -51,8 +52,8 @@ class CurrentUser: JSONDecodeable {
                 }
                 switch event {
                 case .next(let user):
-                    safeSelf.email.value = user.email.value
-                    safeSelf.username.value = user.username.value
+                    safeSelf.email.accept(user.email.value)
+                    safeSelf.username.accept(user.username.value)
                     observer.onNext(safeSelf)
                     observer.onCompleted()
                 case .error(let error):
@@ -82,8 +83,8 @@ class CurrentUser: JSONDecodeable {
                 }
                 switch event {
                 case .next(let user):
-                    safeSelf.email.value = user.email.value
-                    safeSelf.username.value = user.username.value
+                    safeSelf.email.accept(user.email.value)
+                    safeSelf.username.accept(user.username.value)
                     observer.onNext(safeSelf)
                     observer.onCompleted()
                 case .error(let error):
@@ -113,8 +114,8 @@ class CurrentUser: JSONDecodeable {
                 }
                 switch event {
                 case .next(let user):
-                    safeSelf.email.value = user.email.value
-                    safeSelf.username.value = user.username.value
+                    safeSelf.email.accept(user.email.value)
+                    safeSelf.username.accept(user.username.value)
                     observer.onNext(safeSelf)
                     observer.onCompleted()
                 case .error(let error):

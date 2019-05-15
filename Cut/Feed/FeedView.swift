@@ -9,6 +9,7 @@
 import UIKit
 import EasyPeasy
 import RxSwift
+import RxCocoa
 
 enum FeedViewState {
     case loading
@@ -40,7 +41,7 @@ enum FeedViewState {
 }
 
 class FeedView: UIView {
-    let state: Variable<FeedViewState>
+    let state: BehaviorRelay<FeedViewState>
     let ctaButton = UIButton(type: .custom)
     let tableView = UITableView(frame: .zero, style: .plain)
     
@@ -53,7 +54,7 @@ class FeedView: UIView {
     let messageContainer = UIView()
     
     init(state: FeedViewState) {
-        self.state = Variable(state)
+        self.state = BehaviorRelay(value: state)
         super.init(frame: .zero)
         
         backgroundColor = .white
@@ -68,21 +69,21 @@ class FeedView: UIView {
         ctaButton.layer.cornerRadius = 5
         
         loadingContainer.addSubview(spinner)
-        spinner <- Center()
+        spinner.easy.layout(Center())
         
         introContainer.addSubview(bodyLabel)
         introContainer.addSubview(ctaButton)
-        bodyLabel <- [
+        bodyLabel.easy.layout([
             Leading(20),
             CenterX(),
             CenterY()
-        ]
-        ctaButton <- [
+        ])
+        ctaButton.easy.layout([
             Top(20).to(bodyLabel),
             CenterX(),
             Leading(50),
             Height(44)
-        ]
+        ])
         
         addSubview(tableView)
         addSubview(introContainer)
@@ -93,9 +94,9 @@ class FeedView: UIView {
             Top().to(safeAreaLayoutGuide, .top),
             Bottom().to(safeAreaLayoutGuide, .bottom)
         ]
-        tableView <- containerContstraints
-        introContainer <- containerContstraints
-        loadingContainer <- containerContstraints
+        tableView.easy.layout(containerContstraints)
+        introContainer.easy.layout(containerContstraints)
+        loadingContainer.easy.layout(containerContstraints)
         
         _ = self.state.asObservable().takeUntil(rx.deallocated).observeOn(MainScheduler.instance).subscribe(self)
     }

@@ -76,28 +76,28 @@ class QrCodeView: UIView {
         addSubview(doneButton)
         addSubview(switchModeButton)
         
-        switchModeButton <- [
+        switchModeButton.easy.layout([
             Top(10).to(safeAreaLayoutGuide, .top),
             Leading(20)
-        ]
+        ])
         
-        doneButton <- [
+        doneButton.easy.layout([
             Top().to(switchModeButton, .top),
             Trailing(20)
-        ]
+        ])
         
-        spinner <- Center()
+        spinner.easy.layout(Center())
         
-        qrCodeContainer <- Edges()
+        qrCodeContainer.easy.layout(Edges())
         
-        scannerContainer <- Edges()
+        scannerContainer.easy.layout(Edges())
         
-        imageView <- [
+        imageView.easy.layout([
             CenterX(),
             CenterY(),
             Leading(30),
             Height().like(imageView, .width)
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

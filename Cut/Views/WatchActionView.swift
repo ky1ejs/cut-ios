@@ -44,28 +44,28 @@ class WatchActionView: UIView {
         addSubview(rateButton)
         addSubview(addWatchListButton)
         
-        self <- Height(35)
+        self.easy.layout(Height(35))
         
-        ratingView <- [
+        ratingView.easy.layout([
             Leading(),
             Top(),
             Bottom(),
             Trailing()
-        ]
+        ])
         
-        rateButton <- [
+        rateButton.easy.layout([
             Leading(),
             Top(),
             Bottom()
-        ]
+        ])
         
-        addWatchListButton <- [
+        addWatchListButton.easy.layout([
             Leading(20).to(rateButton),
             Top(),
             Bottom(),
             Trailing(),
             Width().like(rateButton)
-        ]
+        ])
         
         _ = film.status.asObservable().takeUntil(rx.deallocated).bind(to: self)
     }

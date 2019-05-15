@@ -25,25 +25,25 @@ class SearchView: UIView {
         addSubview(userTableView)
         addSubview(filmTableView)
         
-        segmentedControl <- [
+        segmentedControl.easy.layout([
             Top(10).to(safeAreaLayoutGuide, .top),
             Leading(20),
             CenterX()
-        ]
+        ])
         
-        filmTableView <- [
+        filmTableView.easy.layout([
             Top(10).to(segmentedControl),
             Leading(),
             CenterX(),
             Bottom()
-        ]
+        ])
         
-        userTableView <- [
+        userTableView.easy.layout([
             Top().to(filmTableView, .top),
             Leading(),
             CenterX(),
             Bottom()
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

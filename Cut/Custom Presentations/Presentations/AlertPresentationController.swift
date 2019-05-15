@@ -21,7 +21,7 @@ class AlertPresentationController: UIPresentationController {
         dimmingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismiss)))
         containerView?.addSubview(dimmingView)
         presentedView?.layer.cornerRadius = 20
-        dimmingView <- Edges()
+        dimmingView.easy.layout(Edges())
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (context) -> Void in
             self.dimmingView.alpha = 0.4
         }, completion: nil)

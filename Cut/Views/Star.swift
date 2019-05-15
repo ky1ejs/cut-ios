@@ -59,7 +59,7 @@ class Star: UIView {
         imageView.image = size.image()
         addSubview(imageView)
         
-        imageView <- [
+        imageView.easy.layout([
             CenterX(),
             CenterY(),
             Top().with(.low),
@@ -67,7 +67,7 @@ class Star: UIView {
             Leading(>=0),
             Top(>=0),
             Width(1.051467785).like(imageView, .height)
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

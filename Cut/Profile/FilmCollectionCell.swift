@@ -24,7 +24,7 @@ class FilmCollectionCell: UICollectionViewCell {
         
         addSubview(posterImageView)
         
-        posterImageView <- Edges()
+        posterImageView.easy.layout(Edges())
     }
     
     required init?(coder aDecoder: NSCoder) {

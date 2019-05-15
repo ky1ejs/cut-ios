@@ -45,32 +45,32 @@ class StarRatingView: UIView {
         super.init(frame: .zero)
         
         addSubview(starContainer)
-        starContainer <- [
+        starContainer.easy.layout([
             CenterX(),
             CenterY(),
             Leading(>=0),
             Leading().with(.low),
             Top(>=0),
             Top().with(.low)
-        ]
+        ])
         
         for i in 0..<stars.count {
             let star = stars[i]
             starContainer.addSubview(star)
             
             if i > 0 {
-                star <- Leading(10).to(stars[i - 1])
+                star.easy.layout(Leading(10).to(stars[i - 1]))
             } else {
-                star <- Leading()
+                star.easy.layout(Leading())
             }
             
-            star <- [
+            star.easy.layout([
                 Top(),
                 Size(20),
                 Bottom()
-            ]
+            ])
             
-            if i == stars.count - 1 { star <- Trailing() }
+            if i == stars.count - 1 { star.easy.layout(Trailing()) }
         }
         
         panGesture.isEnabled = draggingEnabled

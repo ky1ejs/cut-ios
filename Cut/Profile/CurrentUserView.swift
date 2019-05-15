@@ -49,54 +49,54 @@ class CurrentUserView: UIView {
         addSubview(ratedCollectionView)
         addSubview(watchListCollectionView)
         
-        detailsContainer <- [
+        detailsContainer.easy.layout([
             Leading(),
             Top(),
             CenterX(),
             Height(*0.3).like(self)
-        ]
+        ])
         
-        detailsCenteringContainer <- [
+        detailsCenteringContainer.easy.layout([
             Leading(20),
             CenterX(),
             CenterY()
-        ]
+        ])
         
-        segmentedControl <- [
+        segmentedControl.easy.layout([
             Bottom(10),
             CenterX()
-        ]
+        ])
         
-        emailLabel <- [
+        emailLabel.easy.layout([
             Leading(30),
             Top(),
             CenterX()
-        ]
+        ])
         
-        usernameLabel <- [
+        usernameLabel.easy.layout([
             Leading().to(emailLabel, .leading),
             Top(10).to(emailLabel),
             Bottom()
-        ]
+        ])
         
-        qrCodeButton <- [
+        qrCodeButton.easy.layout([
             Top().to(emailLabel, .top),
             Trailing(20)
-        ]
+        ])
         
-        watchListCollectionView <- [
+        watchListCollectionView.easy.layout([
             Top().to(detailsContainer),
             Leading(),
             CenterX(),
             Bottom()
-        ]
+        ])
         
-        ratedCollectionView <- [
+        ratedCollectionView.easy.layout([
             Top().to(detailsContainer),
             Leading(),
             CenterX(),
             Bottom()
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

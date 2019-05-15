@@ -103,20 +103,20 @@ class FilmDetailView: UIView {
             spacers.append(spacer)
             ratingsContainer.addSubview(spacer)
             if i > 0 {
-                spacer <- Leading().to(ratingViews[orderedKeys[i - 1]]!)
+                spacer.easy.layout(Leading().to(ratingViews[orderedKeys[i - 1]]!))
             } else {
-                spacer <- Leading()
+                spacer.easy.layout(Leading())
             }
-            spacer <- [Top(), Bottom()]
+            spacer.easy.layout([Top(), Bottom()])
             
             ratingsContainer.addSubview(v)
-            v <- [Leading().to(spacer), Top(), Bottom()]
+            v.easy.layout([Leading().to(spacer), Top(), Bottom()])
             
             if i == orderedKeys.count - 1 {
                 let trailingSpacer = UIView()
                 spacers.append(trailingSpacer)
                 ratingsContainer.addSubview(trailingSpacer)
-                trailingSpacer <- [Leading().to(v), Top(), Bottom(), Trailing()]
+                trailingSpacer.easy.layout([Leading().to(v), Top(), Bottom(), Trailing()])
             }
         }
         
@@ -126,69 +126,69 @@ class FilmDetailView: UIView {
                 previousSpacer = s
                 continue
             }
-            s <- Width().like(prev)
+            s.easy.layout(Width().like(prev))
             previousSpacer = s
         }
         scrollView.addSubview(ratingsContainer)
         
         
         // Layout
-        scrollView <- [
+        scrollView.easy.layout([
             Top().to(safeAreaLayoutGuide, .top),
             Leading(),
             CenterX(),
             Bottom()
-        ]
+        ])
         
-        trailerButton <- [
+        trailerButton.easy.layout([
             Top(10),
             Leading(),
             Trailing(),
             Width().like(self),
             Height(*0.5625).like(trailerButton, .width)
-        ]
+        ])
         
-        posterImageView <- [
+        posterImageView.easy.layout([
             Leading(40),
             CenterY(-20).to(trailerButton, .bottom),
             Width(100),
             Height(*CGFloat.posterWidthToHeightRation).like(posterImageView, .width)
-        ]
+        ])
         
-        watchView <- [
+        watchView.easy.layout([
             Leading(20).to(posterImageView),
             Bottom().to(posterImageView, .bottom),
             Trailing(40).to(trailerButton, .trailing)
-        ]
+        ])
         
-        titleLabel <- [
+        titleLabel.easy.layout([
             Top(15).to(posterImageView),
             Leading().to(posterImageView, .leading),
             CenterX()
-        ]
+        ])
         
-        releaseDateLabel <- [
+        releaseDateLabel.easy.layout([
             Top(5).to(titleLabel),
             Leading().to(titleLabel, .leading)
-        ]
+        ])
         
-        runningTimeLabel <- [
+        runningTimeLabel.easy.layout([
             Bottom().to(releaseDateLabel, .bottom),
             Leading(15).to(releaseDateLabel)
-        ]
+        ])
         
-        synopsisLabel <- [
+        synopsisLabel.easy.layout([
             Top(20).to(releaseDateLabel),
             Leading().to(releaseDateLabel, .leading),
             CenterX()
-        ]
+        ])
         
-        ratingsContainer <- [
+        ratingsContainer.easy.layout([
             Leading().to(synopsisLabel, .leading),
             Trailing().to(synopsisLabel, .trailing),
             Top(15).to(synopsisLabel),
             Bottom(30)
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

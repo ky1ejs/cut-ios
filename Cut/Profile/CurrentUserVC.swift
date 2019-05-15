@@ -79,7 +79,7 @@ class CurrentUserVC: UIViewController {
 extension CurrentUserVC: ObserverType {
     typealias E = StoreState<CurrentUser>
     
-    func on(_ event: Event<CurrentUserVC.E>) {
+    func on(_ event: Event<E>) {
         guard case .next(let state) = event else { return }
         guard case .latest(let user) = state else { return }
         profileView.emailLabel.text = user.email.value
