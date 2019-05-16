@@ -25,7 +25,7 @@ class UserCell: UITableViewCell {
     let usernameTitleLabel = UILabel()
     let followButton = UIButton()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(profileImageView)
@@ -41,27 +41,27 @@ class UserCell: UITableViewCell {
         followButton.layer.borderWidth = 2
         followButton.layer.cornerRadius = 5
         
-        profileImageView <- [
+        profileImageView.easy.layout([
             Leading(20),
             CenterY(),
             Top(>=20),
             Height(40),
             Width().like(profileImageView, .height)
-        ]
+        ])
         
-        usernameTitleLabel <- [
+        usernameTitleLabel.easy.layout([
             Leading(15).to(profileImageView),
             CenterY(),
             Top(>=20)
-        ]
+        ])
         
-        followButton <- [
+        followButton.easy.layout([
             CenterY(),
             Leading(15).to(usernameTitleLabel),
             Trailing(20),
             Height(34),
             Width(80)
-        ]
+        ])
         
         _ = followButton.rx.tap.takeUntil(rx.deallocated).subscribe({ _ in
             _ = self.user?.toggleFollowing().subscribe()

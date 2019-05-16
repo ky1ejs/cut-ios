@@ -23,7 +23,7 @@ extension Dictionary {
         return self[key] as? T
     }
     
-    func parseDecodable<T: JSONDecodeable>(key: Key) -> T? {
+    func parseDecodableSafe<T: JSONDecodeable>(key: Key) -> T? {
         return try? parseDecodable(key: key)
     }
 }

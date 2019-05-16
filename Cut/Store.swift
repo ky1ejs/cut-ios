@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 // 1. VC subsribes to data
 // 2. Store gives current state immediately - VC should be able to set loading or show no data state
@@ -16,7 +17,7 @@ import RxSwift
 // 5. On error, the store notifies observers - how does the key VC know when to show an error for a given user action (e.g. system error, no internet)
 
 struct Store {
-    private static var userState = Variable(StoreState<CurrentUser>.notFetched)
+    private static var userState = BehaviorRelay(value: StoreState<CurrentUser>.notFetched)
     
     static let user = Observable<StoreState<CurrentUser>>.create { (observer) -> Disposable in
         let variableSub = userState.asObservable().subscribe(observer)
@@ -30,15 +31,15 @@ struct Store {
         // force a user update
         _ = GetCurrentUser().call().subscribe { event in
             switch event {
-            case .next(let user):   userState.value = .latest(user)
-            case .error(let error): userState.value = .error(error)
+            case .next(let user):   userState.accept(.latest(user))
+            case .error(let error): userState.accept(.error(error))
             case .completed:        break
             }
         }
     }
     
     static func update(_ user: CurrentUser) {
-        userState.value = .latest(user)
+        userState.accept(.latest(user))
     }
 }
 

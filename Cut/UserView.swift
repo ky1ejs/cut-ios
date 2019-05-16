@@ -72,58 +72,58 @@ class UserView: UIView {
         addSubview(ratedCollectionView)
         addSubview(watchListCollectionView)
         
-        profileImageView <- [
+        profileImageView.easy.layout([
             Top(20).to(safeAreaLayoutGuide, .top),
             Leading(20),
             Width(115),
             Height().like(profileImageView, .width)
-        ]
+        ])
         
-        usernameLabel <- [
+        usernameLabel.easy.layout([
             Top(20).to(profileImageView),
             Leading(20),
             Trailing(20)
-        ]
+        ])
         
-        followerCountButton <- [
+        followerCountButton.easy.layout([
             Leading(20).to(profileImageView),
             Top().to(profileImageView, .top),
             Height(50),
             Width(80)
-        ]
+        ])
         
-        followingCountButton <- [
+        followingCountButton.easy.layout([
             Leading(20).to(followerCountButton),
             Top().to(followerCountButton, .top),
             Height().like(followerCountButton),
             Width().like(followerCountButton)
-        ]
+        ])
         
-        followButton <- [
+        followButton.easy.layout([
             Bottom(20).to(profileImageView, .bottom),
             Leading().to(followerCountButton, .leading),
             Trailing().to(followingCountButton, .trailing),
             Height(40)
-        ]
+        ])
         
-        segmentedControl <- [
+        segmentedControl.easy.layout([
             Top(20).to(usernameLabel),
             CenterX()
-        ]
+        ])
         
-        watchListCollectionView <- [
+        watchListCollectionView.easy.layout([
             Top(20).to(segmentedControl),
             Leading(),
             Trailing(),
             Bottom()
-        ]
+        ])
         
-        ratedCollectionView <- [
+        ratedCollectionView.easy.layout([
             Top().to(watchListCollectionView, .top),
             Bottom().to(watchListCollectionView, .bottom),
             Leading().to(watchListCollectionView, .leading),
             Trailing().to(watchListCollectionView, .trailing)
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

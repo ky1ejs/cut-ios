@@ -21,7 +21,7 @@ class QrCodeView: UIView {
     let imageView = UIImageView()
     let doneButton = UIButton(type: .custom)
     private let switchModeButton = UIButton(type: .custom)
-    private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    private let spinner = UIActivityIndicatorView(style: .gray)
     var mode: QrCodeViewMode = .present {
         didSet {
             qrCodeContainer.alpha = 1
@@ -31,10 +31,10 @@ class QrCodeView: UIView {
             spinner.stopAnimating()
             switch mode {
             case .present:
-                bringSubview(toFront: qrCodeContainer)
+                bringSubviewToFront(qrCodeContainer)
                 switchModeButton.setTitle("Scan", for: .normal)
             case .scan:
-                bringSubview(toFront: scannerContainer)
+                bringSubviewToFront(scannerContainer)
                 switchModeButton.setTitle("Show My QR", for: .normal)
             case .loading:
                 UIView.animate(withDuration: 0.3, animations: {
@@ -46,8 +46,8 @@ class QrCodeView: UIView {
                 spinner.startAnimating()
                 
             }
-            bringSubview(toFront: switchModeButton)
-            bringSubview(toFront: doneButton)
+            bringSubviewToFront(switchModeButton)
+            bringSubviewToFront(doneButton)
             
         }
     }
@@ -76,28 +76,28 @@ class QrCodeView: UIView {
         addSubview(doneButton)
         addSubview(switchModeButton)
         
-        switchModeButton <- [
+        switchModeButton.easy.layout([
             Top(10).to(safeAreaLayoutGuide, .top),
             Leading(20)
-        ]
+        ])
         
-        doneButton <- [
+        doneButton.easy.layout([
             Top().to(switchModeButton, .top),
             Trailing(20)
-        ]
+        ])
         
-        spinner <- Center()
+        spinner.easy.layout(Center())
         
-        qrCodeContainer <- Edges()
+        qrCodeContainer.easy.layout(Edges())
         
-        scannerContainer <- Edges()
+        scannerContainer.easy.layout(Edges())
         
-        imageView <- [
+        imageView.easy.layout([
             CenterX(),
             CenterY(),
             Leading(30),
             Height().like(imageView, .width)
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

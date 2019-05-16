@@ -30,7 +30,7 @@ class FeedCell: UITableViewCell {
     private let bodyLabel = UILabel()
     private let ratingView = StarRatingView()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         userProfileImageView.layer.cornerRadius = 15
@@ -46,46 +46,46 @@ class FeedCell: UITableViewCell {
         contentView.addSubview(bodyLabel)
         contentView.addSubview(ratingView)
         
-        userProfileImageView <- [
+        userProfileImageView.easy.layout([
             Leading(20),
             Top(10),
             Size(CGSize(width: 30, height: 30))
-        ]
+        ])
         
-        usernameLabel <- [
+        usernameLabel.easy.layout([
             Leading(10).to(userProfileImageView),
             Bottom().to(userProfileImageView, .bottom)
-        ]
+        ])
         
-        createdLabel <- [
+        createdLabel.easy.layout([
             Bottom().to(userProfileImageView, .bottom),
             Trailing(20)
-        ]
+        ])
         
-        titleLabel <- [
+        titleLabel.easy.layout([
             Leading().to(userProfileImageView, .leading),
             Top(20).to(userProfileImageView),
-        ]
+        ])
         
-        bodyLabel <- [
+        bodyLabel.easy.layout([
             Leading().to(userProfileImageView, .leading),
             Top(10).to(titleLabel)
-        ]
+        ])
         
-        ratingView <- [
+        ratingView.easy.layout([
             Top(10).to(bodyLabel),
             Leading().to(bodyLabel, .leading)
-        ]
+        ])
         
         let posterWidth: CGFloat = 100
-        posterImageView <- [
+        posterImageView.easy.layout([
             Leading(30).to(titleLabel),
             Trailing().to(createdLabel, .trailing),
             Top().to(userProfileImageView, .top),
             Width(100),
             Height(posterWidth * .posterWidthToHeightRation),
             CenterY().with(.medium)
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

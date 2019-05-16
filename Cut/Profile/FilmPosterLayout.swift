@@ -66,7 +66,7 @@ class FilmPosterLayout: UICollectionViewLayout {
         startIndex = min(startIndex, filmCount - 1)
         endIndex = min(endIndex, filmCount - 1)
         
-        return (startIndex...endIndex).map() { IndexPath(item: $0, section: 0) }.flatMap(layoutAttributesForItem)
+        return (startIndex...endIndex).map() { IndexPath(item: $0, section: 0) }.compactMap(layoutAttributesForItem)
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {

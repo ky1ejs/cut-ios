@@ -251,6 +251,9 @@
 		AFCCA5C51E9C1176000B6102 /* CurrentUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C41E9C1176000B6102 /* CurrentUserView.swift */; };
 		AFCCA5C71E9C118D000B6102 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C61E9C118D000B6102 /* CurrentUser.swift */; };
 		AFD4B2701F690B960004D1D7 /* LogOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD4B26F1F690B960004D1D7 /* LogOut.swift */; };
+		AFD720F3228DB4E600DD666C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD720F2228DB4E600DD666C /* RxRelay.framework */; };
+		AFD720F4228DB4E600DD666C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD720F2228DB4E600DD666C /* RxRelay.framework */; };
+		AFD720F5228DB4E600DD666C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD720F2228DB4E600DD666C /* RxRelay.framework */; };
 		AFDC63F31EB93F1C006195E8 /* CutEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */; };
 		AFDC63F51EB9C2C1006195E8 /* UploadPushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC63F41EB9C2C1006195E8 /* UploadPushToken.swift */; };
 		AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */; };
@@ -354,6 +357,7 @@
 		AFCCA5C41E9C1176000B6102 /* CurrentUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserView.swift; sourceTree = "<group>"; };
 		AFCCA5C61E9C118D000B6102 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		AFD4B26F1F690B960004D1D7 /* LogOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOut.swift; sourceTree = "<group>"; };
+		AFD720F2228DB4E600DD666C /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutEndpoints.swift; sourceTree = "<group>"; };
 		AFDC63F41EB9C2C1006195E8 /* UploadPushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPushToken.swift; sourceTree = "<group>"; };
 		AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmPosterLayout.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 				AF2EB0AF2015164E00556B71 /* BuggerImgurStore.framework in Frameworks */,
 				AF2EB0B02015164E00556B71 /* Kingfisher.framework in Frameworks */,
 				AF2EB0B12015164E00556B71 /* RxCocoa.framework in Frameworks */,
+				AFD720F5228DB4E600DD666C /* RxRelay.framework in Frameworks */,
 				AF2EB0B22015164E00556B71 /* Rswift.framework in Frameworks */,
 				AF2EB0B32015164E00556B71 /* EasyPeasy.framework in Frameworks */,
 				AF2EB0B42015164E00556B71 /* Bugger.framework in Frameworks */,
@@ -386,6 +391,7 @@
 				AF219C2E1FA62768004C7E1A /* BuggerImgurStore.framework in Frameworks */,
 				AFC304F31E85CB9E0012515E /* Kingfisher.framework in Frameworks */,
 				AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */,
+				AFD720F3228DB4E600DD666C /* RxRelay.framework in Frameworks */,
 				AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */,
 				AFC304F91E85D1EE0012515E /* EasyPeasy.framework in Frameworks */,
 				AF219C301FA62768004C7E1A /* Bugger.framework in Frameworks */,
@@ -407,6 +413,7 @@
 				AF219C2F1FA62768004C7E1A /* BuggerImgurStore.framework in Frameworks */,
 				AFB0C8161F1C0AEC00A96169 /* Kingfisher.framework in Frameworks */,
 				AFB0C8171F1C0AEC00A96169 /* RxCocoa.framework in Frameworks */,
+				AFD720F4228DB4E600DD666C /* RxRelay.framework in Frameworks */,
 				AFB0C8181F1C0AEC00A96169 /* Rswift.framework in Frameworks */,
 				AFB0C8191F1C0AEC00A96169 /* EasyPeasy.framework in Frameworks */,
 				AF219C311FA62768004C7E1A /* Bugger.framework in Frameworks */,
@@ -426,6 +433,7 @@
 				AFC304F21E85CB9E0012515E /* Kingfisher.framework */,
 				AF168E0D1E8483B00033CEEF /* RxCocoa.framework */,
 				AF168E0E1E8483B00033CEEF /* RxSwift.framework */,
+				AFD720F2228DB4E600DD666C /* RxRelay.framework */,
 			);
 			name = Carthage;
 			sourceTree = "<group>";
@@ -788,7 +796,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Kyle McAlpine";
 				TargetAttributes = {
 					AF2EB0A52015164E00556B71 = {
@@ -807,17 +815,19 @@
 					};
 					AF6949371FAF6ADA004E19EC = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = AFB0C7E11F1C0AEC00A96169;
 					};
 					AFB0C7E11F1C0AEC00A96169 = {
 						DevelopmentTeam = X2TBSUCASC;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
 			buildConfigurationList = AF3EED191E68E96100553D86 /* Build configuration list for PBXProject "Cut" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -887,6 +897,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Bugger.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BuggerImgurStore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -900,7 +911,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		AF219C351FA71E6F004C7E1A /* Generate BuggerConfig */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -957,6 +968,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BuggerImgurStore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Bugger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -970,7 +982,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		AF2EB0AB2015164E00556B71 /* Generate BuggerConfig */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1069,6 +1081,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BuggerImgurStore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Bugger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -1082,7 +1095,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1400,6 +1413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1409,6 +1423,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1416,6 +1431,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1458,6 +1474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1467,6 +1484,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1474,6 +1492,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1565,7 +1584,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.LocalUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Local.app/Local";
 			};
@@ -1586,7 +1605,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kylejm.LocalUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Local.app/Local";
 			};
@@ -1610,8 +1629,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "64c3d1d7-3e0e-45ce-bc0e-c13008b8b2ce";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development watch.cut";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1634,8 +1652,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a30fcc29-2666-4dab-9dc7-1c7657439c45";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore watch.cut";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

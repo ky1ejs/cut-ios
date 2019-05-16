@@ -30,7 +30,7 @@ class FeedTVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        feedView.tableView.rowHeight = UITableViewAutomaticDimension
+        feedView.tableView.rowHeight = UITableView.automaticDimension
         feedView.tableView.estimatedRowHeight = 100
         feedView.tableView.register(cellClass: FeedCell.self)
         
@@ -53,7 +53,7 @@ class FeedTVC: UIViewController {
             
             self.ctaDisposeBag = DisposeBag()
             
-            self.feedView.state.value = {
+            self.feedView.state.accept({
                 if !user.isFullUser || user.followerCount.value == 0 {
                     _ = self.feedView.ctaButton.rx.tap.subscribe({ _ in
                         switch self.feedView.state.value {
@@ -74,11 +74,11 @@ class FeedTVC: UIViewController {
                         cell.watch = watch
                 }
                 _ = feed.subscribe({ _ in
-                    self.feedView.state.value = .showFeed
+                    self.feedView.state.accept(.showFeed)
                 })
                 
                 return .loading
-            }()
+            }())
         }
     }
 

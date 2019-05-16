@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class Film {
     let id:                             String
@@ -22,7 +23,7 @@ class Film {
     let relativeTheaterReleaseDate:     String?
     let trailers:                       [Trailer]?
     
-    fileprivate(set) var status: Variable<FilmStatus?>
+    fileprivate(set) var status: BehaviorRelay<FilmStatus?>
     
     required init(json: JsonType) throws {
         id = try json.parse(key: "id")
@@ -33,11 +34,11 @@ class Film {
         
         let userRating = json["user_rating"] as? [AnyHashable : Any]
         if let userRatingScore = userRating?["rating"] as? Double, let rating = StarRating(rawValue: userRatingScore) {
-            status = Variable(.rated(rating))
+            status = BehaviorRelay(value: .rated(rating))
         } else if let wantToWatch = json["want_to_watch"] as? Bool, wantToWatch {
-            status = Variable(.wantToWatch)
+            status = BehaviorRelay(value: .wantToWatch)
         } else {
-            status = Variable(nil)
+            status = BehaviorRelay(value: nil)
         }
         
         if let releaseDateString = json["theater_release_date"] as? String {
@@ -50,12 +51,12 @@ class Film {
         }
         relativeTheaterReleaseDate = json["relative_theater_release_date"] as? String
         
-        ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.flatMap(PercentageRating.init) ?? [PercentageRating]()
+        ratings = try (json["ratings"] as? [[AnyHashable : Any]])?.compactMap(PercentageRating.init) ?? [PercentageRating]()
         
         let posters = json.tryParseDict(key: "posters")
-        thumbnailImageURL = posters?.tryParseDict(key: "thumbnail")?.parseDecodable(key: "url")
-        profileImageURL = posters?.tryParseDict(key: "profile")?.parseDecodable(key: "url")
-        heroImageURL = posters?.tryParseDict(key: "hero")?.parseDecodable(key: "url")
+        thumbnailImageURL = posters?.tryParseDict(key: "thumbnail")?.parseDecodableSafe(key: "url")
+        profileImageURL = posters?.tryParseDict(key: "profile")?.parseDecodableSafe(key: "url")
+        heroImageURL = posters?.tryParseDict(key: "hero")?.parseDecodableSafe(key: "url")
         
         let trailerJSON: [String : Trailer.JsonType] = try json.parse(key: "trailers")
         trailers = try? ArrayResponse<Trailer>(json: Array(trailerJSON.values)).models
@@ -73,7 +74,7 @@ class Film {
             return observable.subscribe { [weak self] event in
                 switch event {
                 case .next(let success):
-                    self?.status.value = .wantToWatch
+                    self?.status.accept(.wantToWatch)
                     obserable.on(.next(success))
                 case .error(let error):
                     obserable.on(.error(error))

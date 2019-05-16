@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 struct User {
     let username: String
@@ -17,7 +18,7 @@ struct User {
     let ratedCount: Int
     let profileImageURL: URL?
     
-    let following: Variable<Bool>
+    let following: BehaviorRelay<Bool>
 }
 
 extension User: JSONDecodeable {
@@ -33,7 +34,7 @@ extension User: JSONDecodeable {
             guard let urlString = json["profile_image"] as? String else { return nil }
             return URL(string: urlString)
         }()
-        following = Variable(try json.parse(key: "following"))
+        following = BehaviorRelay(value: try json.parse(key: "following"))
     }
     
     func toggleFollowing() -> Observable<FollowUnfollowUser.SuccessData> {
@@ -41,7 +42,7 @@ extension User: JSONDecodeable {
             let followUnfollow = FollowUnfollowUser(username: self.username, follow: !self.following.value).call().subscribe { event in
                 switch event {
                 case .next(let empty):
-                    self.following.value = !self.following.value
+                    self.following.accept(!self.following.value)
                     observer.onNext(empty)
                 case .error(let error):
                     observer.onError(error)

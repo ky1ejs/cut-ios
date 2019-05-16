@@ -35,17 +35,17 @@ class CircularRatingView: UIView {
         addSubview(icon)
         layer.addSublayer(arcLayer)
         
-        self <- [
+        self.easy.layout([
             Width(55),
             Height().like(self, .width),
-        ]
+        ])
         
-        icon <- [
+        icon.easy.layout([
             Top(12),
             Leading(12),
             CenterX(),
             CenterY()
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

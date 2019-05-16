@@ -21,7 +21,7 @@ class AuthenticationView: UIView {
     
     var mode: SignUpMode = .signUp {
         didSet {
-            passwordTextField <- Top(20).to(mode == .signUp ? usernameTextField : emailTextField)
+            passwordTextField.easy.layout(Top(20).to(mode == .signUp ? usernameTextField : emailTextField))
             actionButton.setTitle(mode.title, for: .normal)
             UIView.animate(withDuration: 0.3) {
                 self.usernameTextField.alpha = self.mode == .signUp ? 1 : 0
@@ -80,79 +80,79 @@ class AuthenticationView: UIView {
         textFieldCenteringContainer.addSubview(passwordTextField)
         textFieldCenteringContainer.addSubview(actionButton)
         
-        titleDescriptionContainer <- [
+        titleDescriptionContainer.easy.layout([
             Top(),
             Leading(),
             CenterX(),
             Height(*0.35)
-        ]
+        ])
         
-        textFieldContainer <- [
+        textFieldContainer.easy.layout([
             Top().to(titleDescriptionContainer),
             Leading(),
             CenterX(),
             Bottom()
-        ]
+        ])
         
-        titleCenteringContainer <- [
+        titleCenteringContainer.easy.layout([
             Leading(30),
             CenterX(),
             CenterY()
-        ]
+        ])
         
-        textFieldCenteringContainer <- [
+        textFieldCenteringContainer.easy.layout([
             Leading(30),
             CenterX(),
             CenterY()
-        ]
+        ])
         
-        titleLabel <- [
+        titleLabel.easy.layout([
             Top(),
             Leading(),
             CenterX()
-        ]
+        ])
         
-        descriptionLabel <- [
+        descriptionLabel.easy.layout([
             Top(10).to(titleCenteringContainer),
             Leading().to(titleLabel, .leading),
             CenterX(),
             Bottom()
-        ]
+        ])
         
-        segmentedControl <- [
+        segmentedControl.easy.layout([
             Top(),
             CenterX()
-        ]
+        ])
         
-        emailTextField <- [
+        emailTextField.easy.layout([
             Top(30).to(segmentedControl),
             Leading(30),
             CenterX(),
-        ]
+        ])
         
-        usernameTextField <- [
+        usernameTextField.easy.layout([
             Top(20).to(emailTextField),
             Leading().to(emailTextField, .leading),
             CenterX()
-        ]
+        ])
         
-        passwordTextField <- [
+        passwordTextField.easy.layout([
             Top(20).to(usernameTextField),
             Leading().to(usernameTextField, .leading),
             CenterX()
-        ]
+        ])
         
-        actionButton <- [
+        actionButton.easy.layout([
             Top(20).to(passwordTextField),
             Leading().to(passwordTextField, .leading),
             CenterX(),
             Bottom()
-        ]
+        ])
         
-        cancelButton <- [
+        cancelButton.easy.layout([
             Top(40),
             Leading(20)
-        ]
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {

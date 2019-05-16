@@ -56,13 +56,13 @@ class FilmTableCell: UITableViewCell {
             
             textLabel.text = film.title
             posterImageView.kf.indicatorType = .activity
-            posterImageView.kf.setImage(with: film.profileImageURL, placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil, completionHandler: nil)
+            posterImageView.kf.setImage(with: film.profileImageURL, placeholder: nil, options: [.transition(.fade(0.3))])
             backgroundColor = film.status.value == .wantToWatch ? .red : .white
             releaseDateLabel.text = film.relativeTheaterReleaseDate
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         _textLabel = UILabel()
         posterImageView = UIImageView()
         
@@ -83,34 +83,34 @@ class FilmTableCell: UITableViewCell {
                 
             contentView.addSubview(view)
             
-            view <- Bottom().to(posterImageView, .bottom)
+            view.easy.layout(Bottom().to(posterImageView, .bottom))
             
             if let previousRatingView = previousRatingView {
-                view <- Leading(15).to(previousRatingView)
+                view.easy.layout(Leading(15).to(previousRatingView))
             } else {
-                view <- Leading(60).to(posterImageView)
+                view.easy.layout(Leading(60).to(posterImageView))
             }
             
             previousRatingView = view
         }
         
-        textLabel <- [
+        textLabel.easy.layout([
             Bottom(2).to(self, .centerY),
             Leading(30).to(posterImageView),
             Trailing(5)
-        ]
+        ])
         
-        releaseDateLabel <- [
+        releaseDateLabel.easy.layout([
             Top(2).to(self, .centerY),
             Leading().to(textLabel, .leading)
-        ]
+        ])
         
-        posterImageView <- [
+        posterImageView.easy.layout([
             Top(5),
             CenterY(),
             Leading(5),
             Size(CGSize(width: 61, height: 91))
-        ]
+        ])
         
         panGesture.addTarget(self, action: #selector(pan(gesture:)))
         panGesture.delegate = self
@@ -154,8 +154,8 @@ class FilmTableCell: UITableViewCell {
             
             center = CGPoint(x: originalCenter.x + translation, y: originalCenter.y)
             
-            ratingActionView <- Width(translation)
-            watchActionView <- Width(-translation)
+            ratingActionView.easy.layout(Width(translation))
+            watchActionView.easy.layout(Width(-translation))
             
             let fullColorThreshold          = glasses.frame.origin.x + glasses.frame.width + 20
             let distanceLeftToTravel        = fullColorThreshold - -translation
@@ -200,20 +200,20 @@ class FilmTableCell: UITableViewCell {
         addSubview(watchActionView)
         watchActionView.addSubview(glasses)
         
-        watchActionView <- [
+        watchActionView.easy.layout([
             Leading().to(self, .trailing),
             Top(),
             Height().like(self),
             Width(0)
-        ]
+        ])
         
-        glasses <- [
+        glasses.easy.layout([
             Trailing(>=30),
             Leading(30).with(.low),
             Height(50),
             Width(50),
             CenterY()
-        ]
+        ])
         
         self.watchActionView = watchActionView
     }
@@ -235,15 +235,15 @@ class FilmTableCell: UITableViewCell {
         for star in stars {
             ratingActionView.addSubview(star)
             
-            star <- [
+            star.easy.layout([
                 CenterY(),
                 Size(CGSize(width: 30, height: 30))
-            ]
+            ])
             
             if let previousStar = previousStar {
-                star <- Leading(15).to(previousStar)
+                star.easy.layout(Leading(15).to(previousStar))
             } else {
-                star <- Leading(20)
+                star.easy.layout(Leading(20))
             }
             
             previousStar = star
@@ -251,12 +251,12 @@ class FilmTableCell: UITableViewCell {
         
         addSubview(ratingActionView)
         
-        ratingActionView <- [
+        ratingActionView.easy.layout([
             Trailing().to(self, .leading),
             Top(),
             Height().like(self),
             Width(0)
-        ]
+        ])
         
         self.ratingActionView = ratingActionView
     }
