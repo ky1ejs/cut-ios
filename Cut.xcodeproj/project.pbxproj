@@ -251,6 +251,9 @@
 		AFCCA5C51E9C1176000B6102 /* CurrentUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C41E9C1176000B6102 /* CurrentUserView.swift */; };
 		AFCCA5C71E9C118D000B6102 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCCA5C61E9C118D000B6102 /* CurrentUser.swift */; };
 		AFD4B2701F690B960004D1D7 /* LogOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD4B26F1F690B960004D1D7 /* LogOut.swift */; };
+		AFD720F3228DB4E600DD666C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD720F2228DB4E600DD666C /* RxRelay.framework */; };
+		AFD720F4228DB4E600DD666C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD720F2228DB4E600DD666C /* RxRelay.framework */; };
+		AFD720F5228DB4E600DD666C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD720F2228DB4E600DD666C /* RxRelay.framework */; };
 		AFDC63F31EB93F1C006195E8 /* CutEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */; };
 		AFDC63F51EB9C2C1006195E8 /* UploadPushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDC63F41EB9C2C1006195E8 /* UploadPushToken.swift */; };
 		AFDDD1D11EA260A60039EAA8 /* FilmPosterLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */; };
@@ -354,6 +357,7 @@
 		AFCCA5C41E9C1176000B6102 /* CurrentUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserView.swift; sourceTree = "<group>"; };
 		AFCCA5C61E9C118D000B6102 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		AFD4B26F1F690B960004D1D7 /* LogOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOut.swift; sourceTree = "<group>"; };
+		AFD720F2228DB4E600DD666C /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		AFDC63F21EB93F1C006195E8 /* CutEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutEndpoints.swift; sourceTree = "<group>"; };
 		AFDC63F41EB9C2C1006195E8 /* UploadPushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPushToken.swift; sourceTree = "<group>"; };
 		AFDDD1D01EA260A60039EAA8 /* FilmPosterLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmPosterLayout.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 				AF2EB0AF2015164E00556B71 /* BuggerImgurStore.framework in Frameworks */,
 				AF2EB0B02015164E00556B71 /* Kingfisher.framework in Frameworks */,
 				AF2EB0B12015164E00556B71 /* RxCocoa.framework in Frameworks */,
+				AFD720F5228DB4E600DD666C /* RxRelay.framework in Frameworks */,
 				AF2EB0B22015164E00556B71 /* Rswift.framework in Frameworks */,
 				AF2EB0B32015164E00556B71 /* EasyPeasy.framework in Frameworks */,
 				AF2EB0B42015164E00556B71 /* Bugger.framework in Frameworks */,
@@ -386,6 +391,7 @@
 				AF219C2E1FA62768004C7E1A /* BuggerImgurStore.framework in Frameworks */,
 				AFC304F31E85CB9E0012515E /* Kingfisher.framework in Frameworks */,
 				AF168E0F1E8483B00033CEEF /* RxCocoa.framework in Frameworks */,
+				AFD720F3228DB4E600DD666C /* RxRelay.framework in Frameworks */,
 				AF5317A91EA3F44900AB90B9 /* Rswift.framework in Frameworks */,
 				AFC304F91E85D1EE0012515E /* EasyPeasy.framework in Frameworks */,
 				AF219C301FA62768004C7E1A /* Bugger.framework in Frameworks */,
@@ -407,6 +413,7 @@
 				AF219C2F1FA62768004C7E1A /* BuggerImgurStore.framework in Frameworks */,
 				AFB0C8161F1C0AEC00A96169 /* Kingfisher.framework in Frameworks */,
 				AFB0C8171F1C0AEC00A96169 /* RxCocoa.framework in Frameworks */,
+				AFD720F4228DB4E600DD666C /* RxRelay.framework in Frameworks */,
 				AFB0C8181F1C0AEC00A96169 /* Rswift.framework in Frameworks */,
 				AFB0C8191F1C0AEC00A96169 /* EasyPeasy.framework in Frameworks */,
 				AF219C311FA62768004C7E1A /* Bugger.framework in Frameworks */,
@@ -426,6 +433,7 @@
 				AFC304F21E85CB9E0012515E /* Kingfisher.framework */,
 				AF168E0D1E8483B00033CEEF /* RxCocoa.framework */,
 				AF168E0E1E8483B00033CEEF /* RxSwift.framework */,
+				AFD720F2228DB4E600DD666C /* RxRelay.framework */,
 			);
 			name = Carthage;
 			sourceTree = "<group>";
@@ -889,6 +897,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Bugger.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BuggerImgurStore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -959,6 +968,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BuggerImgurStore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Bugger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -972,7 +982,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		AF2EB0AB2015164E00556B71 /* Generate BuggerConfig */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1071,6 +1081,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Rswift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BuggerImgurStore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Bugger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -1084,7 +1095,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
